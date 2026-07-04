@@ -105,7 +105,7 @@ msgstr "&larr; بازگشت به همه نمونه‌ها"
 
 #: bika/lims/validators.py:884
 msgid "'Max' value must be above 'Min' value"
-msgstr ""
+msgstr "مقدار «حداکثر» باید از «حداقل» بزرگ‌تر باشد"
 
 #: bika/lims/validators.py:879
 msgid "'Max' value must be numeric"
@@ -439,7 +439,7 @@ msgstr "آدرس"
 
 #: senaite/core/behaviors/configure.zcml:60
 msgid "Adds the ability to add/remove labels"
-msgstr ""
+msgstr "امکان افزودن/حذف برچسب را فراهم می‌کند"
 
 #: senaite/core/behaviors/configure.zcml:49
 msgid "Adds the ability to share a content across clients"
@@ -734,7 +734,7 @@ msgstr "انواع پیوست"
 
 #: senaite/core/browser/attachment/attachment.py:215
 msgid "Attachment added to all '{}' analyses"
-msgstr ""
+msgstr "پیوست به همه آنالیزهای '{}' افزوده شد"
 
 #: senaite/core/browser/attachment/attachment.py:182
 msgid "Attachment added to analysis '{}'"
@@ -742,7 +742,7 @@ msgstr "پیوست به آنالیز '{}' افزوده شد"
 
 #: senaite/core/browser/attachment/attachment.py:281
 msgid "Attachment added to the current sample"
-msgstr ""
+msgstr "پیوست به نمونه فعلی افزوده شد"
 
 #: senaite/core/browser/widgets/services_widget.py:326
 msgid "Attachment required"
@@ -750,7 +750,7 @@ msgstr "پیوست الزامیست"
 
 #: bika/lims/content/abstractbaseanalysis.py:348
 msgid "Attachment required for verification"
-msgstr ""
+msgstr "پیوست برای تأیید الزامی است"
 
 #: senaite/core/browser/attachment/attachment.py:349
 msgid "Attachment(s) deleted"
@@ -826,7 +826,7 @@ msgstr ""
 
 #: bika/lims/content/analysisservice.py:61
 msgid "Available methods to perform the test"
-msgstr ""
+msgstr "روش‌های موجود برای انجام آزمون"
 
 #: senaite/core/browser/worksheets/worksheet/templates/print.pt:119
 msgid "Available templates"
@@ -973,7 +973,7 @@ msgstr "محاسبه"
 
 #: senaite/core/browser/form/adapters/method.py:100
 msgid "Calculation '{}' is used by service '{}'"
-msgstr ""
+msgstr "محاسبه '{}' توسط سرویس '{}' استفاده می‌شود"
 
 #: bika/lims/content/calculation.py:132
 msgid "Calculation Formula"
@@ -1049,7 +1049,7 @@ msgstr ""
 
 #: senaite/core/browser/samples/invalidate_samples.py:93
 msgid "Cannot invalidate ${sample_id}: ${error}"
-msgstr ""
+msgstr "ابطال ${sample_id} ممکن نیست: ${error}"
 
 #: senaite/core/browser/samples/invalidate_samples.py:262
 msgid "Cannot send email for ${sample_id}: ${error}"
@@ -1061,7 +1061,7 @@ msgstr ""
 
 #: bika/lims/browser/analyses/view.py:1619
 msgid "Cannot verify, submitted by current user"
-msgstr ""
+msgstr "تأیید ممکن نیست؛ ثبت‌کننده خودِ شما هستید"
 
 #: bika/lims/browser/analyses/view.py:1628
 msgid "Cannot verify, was verified by current user"
@@ -1126,11 +1126,11 @@ msgstr "تغییرات ذخیره شد."
 
 #: senaite/core/browser/viewlets/templates/sampleheader.pt:99
 msgid "Changes will be propagated to partitions"
-msgstr ""
+msgstr "تغییرات به پارتیشن‌ها اعمال خواهد شد"
 
 #: bika/lims/content/method.py:67
 msgid "Check if the method has been accredited"
-msgstr ""
+msgstr "اگر روش دارای اعتباربخشی است علامت بزنید"
 
 #: bika/lims/content/abstractbaseanalysis.py:495
 msgid ""
@@ -1563,7 +1563,7 @@ msgstr ""
 
 #: senaite/core/browser/idserver/templates/numbergenerator.pt:103
 msgid "Counter <span class=\"sort-indicator\" />"
-msgstr ""
+msgstr "شمارنده <span class=\"sort-indicator\" />"
 
 #: senaite/core/content/senaitesetup.py:235
 msgid "Counter Ref"
@@ -1758,7 +1758,7 @@ msgstr "تاریخ دریافت"
 
 #: bika/lims/content/instrumentcertification.py:137
 msgid "Date until the certificate is valid"
-msgstr ""
+msgstr "تاریخ پایان اعتبار گواهی"
 
 #: bika/lims/content/instrumentcalibration.py:89
 #: bika/lims/content/instrumentmaintenancetask.py:76
@@ -1789,7 +1789,7 @@ msgstr "روزها"
 
 #: bika/lims/content/instrument.py:186
 msgid "De-activate until next calibration test"
-msgstr ""
+msgstr "غیرفعال تا آزمون کالیبراسیون بعدی"
 
 #: senaite/core/profiles/default/workflows/senaite_client_workflow/definition.xml
 #: senaite/core/profiles/default/workflows/senaite_clientcontact_workflow/definition.xml
@@ -1915,7 +1915,7 @@ msgstr "منطقهٔ زمانی پیش‌فرض"
 
 #: senaite/core/content/senaitesetup.py:1037
 msgid "Default turnaround time for analyses."
-msgstr ""
+msgstr "زمان تحویل پیش‌فرض آنالیزها."
 
 #: bika/lims/browser/fields/interimfieldsfield.py:54
 #: bika/lims/content/analysisservice.py:224
@@ -2096,7 +2096,7 @@ msgstr "نمایش انتخاب‌گر حد تشخیص"
 
 #: bika/lims/content/bikasetup.py:721
 msgid "Display sample partitions to clients"
-msgstr ""
+msgstr "نمایش پارتیشن‌های نمونه به مشتری‌ها"
 
 #: senaite/core/profiles/default/workflows/senaite_referencesample_workflow/definition.xml
 msgid "Dispose"
@@ -2311,7 +2311,7 @@ msgstr "اعلان ایمیلی"
 
 #: senaite/core/content/senaitesetup.py:1062
 msgid "Email notification on Sample rejection"
-msgstr ""
+msgstr "اعلان ایمیلی هنگام رد نمونه"
 
 #: senaite/core/content/resultsreport.py:257
 msgid "Email send log"
@@ -2930,7 +2930,7 @@ msgstr "غیرفعال"
 
 #: bika/lims/content/bikasetup.py:240
 msgid "Include and display pricing information"
-msgstr ""
+msgstr "نمایش اطلاعات قیمت"
 
 #: bika/lims/content/pricelist.py:75
 msgid "Include descriptions"
@@ -2995,7 +2995,7 @@ msgstr "دستگاه"
 
 #: senaite/core/browser/form/adapters/method.py:74
 msgid "Instrument '{}' is used by service '{}'"
-msgstr ""
+msgstr "دستگاه '{}' توسط سرویس '{}' استفاده می‌شود"
 
 #: bika/lims/browser/instrument.py:193
 msgid "Instrument Calibrations"
@@ -3059,7 +3059,7 @@ msgstr "درون‌ریزی از دستگاه پایان یافت"
 
 #: bika/lims/browser/viewlets/templates/instrument_qc_failures_viewlet.pt:92
 msgid "Instrument in calibration progress:"
-msgstr ""
+msgstr "دستگاه در حال کالیبراسیون:"
 
 #: bika/lims/browser/viewlets/templates/instrument_qc_failures_viewlet.pt:73
 msgid "Instrument in validation progress:"
@@ -3102,11 +3102,11 @@ msgstr ""
 
 #: bika/lims/browser/viewlets/templates/instrument_qc_failures_viewlet.pt:96
 msgid "Instruments in calibration progress:"
-msgstr ""
+msgstr "دستگاه‌های در حال کالیبراسیون:"
 
 #: bika/lims/browser/viewlets/templates/instrument_qc_failures_viewlet.pt:77
 msgid "Instruments in validation progress:"
-msgstr ""
+msgstr "دستگاه‌های در حال صحه‌گذاری:"
 
 #: bika/lims/content/method.py:103
 msgid "Instruments supporting this method"
@@ -3176,7 +3176,7 @@ msgstr ""
 
 #: bika/lims/validators.py:528
 msgid "Invalid wildcards found: ${wildcards}"
-msgstr ""
+msgstr "کاراکتر عام نامعتبر: ${wildcards}"
 
 #: senaite/core/browser/samples/templates/invalidate_samples.pt:152
 #: senaite/core/profiles/default/workflows/senaite_sample_workflow/definition.xml
@@ -3251,7 +3251,7 @@ msgstr "کلید"
 
 #: senaite/core/browser/idserver/templates/numbergenerator.pt:98
 msgid "Key <span class=\"sort-indicator\" />"
-msgstr ""
+msgstr "کلید <span class=\"sort-indicator\" />"
 
 #: bika/lims/browser/fields/interimfieldsfield.py:52
 #: bika/lims/browser/templates/analysisservice_info.pt:80
@@ -3454,7 +3454,7 @@ msgstr "بارگذاری از فایل"
 
 #: bika/lims/content/instrumentcertification.py:195
 msgid "Load the certificate document here"
-msgstr ""
+msgstr "سند گواهی را اینجا بارگذاری کنید"
 
 # senaite.core: Sidebar loading state
 msgid "Loading navigation..."
@@ -3826,7 +3826,7 @@ msgstr "انتخاب چندگانه"
 
 #: senaite/core/config/vocabularies.py:59
 msgid "Multiple selection (with duplicates)"
-msgstr ""
+msgstr "انتخاب چندگانه (با تکرار)"
 
 #: bika/lims/browser/fields/interimfieldsfield.py:108
 msgid "Multiple values"
@@ -3865,7 +3865,7 @@ msgstr ""
 
 #: senaite/core/browser/idserver/templates/numbergenerator.pt:108
 msgid "Next ID <span class=\"sort-indicator\" />"
-msgstr ""
+msgstr "شناسه بعدی <span class=\"sort-indicator\" />"
 
 #: senaite/core/browser/controlpanel/samplecontainers/view.py:168
 #: senaite/core/browser/widgets/services_widget.py:305
@@ -3883,7 +3883,7 @@ msgstr "بدون نشانی ایمیل"
 
 #: senaite/core/browser/form/adapters/analysisservice.py:43
 msgid "No Method selected for this Service"
-msgstr ""
+msgstr "روشی برای این سرویس انتخاب نشده"
 
 #: senaite/core/exportimport/instruments/importer.py:415
 msgid "No Sample found for {sid}"
@@ -3925,7 +3925,7 @@ msgstr "هیچ انالیزی در این کاربرگ اضافه نشده اس�
 
 #: senaite/core/browser/attachment/attachment.py:219
 msgid "No analysis found for service '{}'"
-msgstr ""
+msgstr "آنالیزی برای سرویس '{}' یافت نشد"
 
 #: senaite/core/exportimport/instruments/biodrop/ulite/ulite.py:53
 #: senaite/core/exportimport/instruments/lifetechnologies/qubit/qubit.py:54
@@ -3938,7 +3938,7 @@ msgstr "سرویس آنالیزی انتخاب نشده"
 
 #: bika/lims/controlpanel/templates/analysisservice_copy.pt:27
 msgid "No analysis services were selected."
-msgstr ""
+msgstr "سرویس آنالیزی انتخاب نشده."
 
 #: senaite/core/browser/idserver/view.py:135
 msgid "No changes"
@@ -3978,7 +3978,7 @@ msgstr "فایلی انتخاب نشده"
 
 #: senaite/core/browser/form/adapters/data_import.py:81
 msgid "No importer not found for interface '{}'"
-msgstr ""
+msgstr "درون‌ریزی برای رابط '{}' یافت نشد"
 
 #: senaite/core/browser/form/adapters/data_import.py:126
 msgid "No instrument import interfaces available for {}"
@@ -4051,7 +4051,7 @@ msgstr ""
 
 #: senaite/core/browser/samples/templates/multi_results.pt:115
 msgid "No visible analyses for this sample"
-msgstr ""
+msgstr "آنالیز قابل نمایشی برای این نمونه نیست"
 
 #: senaite/core/browser/form/adapters/analysisservice.py:70
 #: senaite/core/browser/modals/analysis/vocabularies.py:53
@@ -4067,7 +4067,7 @@ msgstr ""
 
 #: senaite/core/browser/modals/conditions.py:133
 msgid "Not allowed to update conditions: {}"
-msgstr ""
+msgstr "به‌روزرسانی شرایط مجاز نیست: {}"
 
 #: senaite/core/browser/worksheets/worksheet/templates/manage_results.pt:86
 msgid "Not defined"
@@ -4200,7 +4200,7 @@ msgstr "باز کردن"
 
 #: senaite/core/browser/samples/view.py:231
 msgid "Open / To be verified / Verified / Total"
-msgstr ""
+msgstr "باز / در انتظار تأیید / تأییدشده / کل"
 
 #: bika/lims/profiles.zcml:15
 msgid "Open Source Web based Laboratory Information Management System"
@@ -4254,7 +4254,7 @@ msgstr "منقضی"
 
 #: senaite/core/exportimport/instruments/importer.py:377
 msgid "Override non-empty analysis results"
-msgstr ""
+msgstr "بازنویسی نتایج غیرخالی"
 
 #: senaite/core/exportimport/instruments/importer.py:379
 msgid "Override non-empty analysis results, also with empty"
@@ -4371,7 +4371,7 @@ msgstr ""
 
 #: senaite/core/browser/clients/client/contacts/login_details.py:222
 msgid "Please select a User from the list"
-msgstr ""
+msgstr "کاربری از فهرست انتخاب کنید"
 
 #: senaite/core/browser/stickers/view.py:257
 msgid "Please select a sticker template"
@@ -4469,11 +4469,11 @@ msgstr "نتایج از پیش تعریف‌شده"
 
 #: bika/lims/content/bikasetup.py:312
 msgid "Preferred decimal mark for reports."
-msgstr ""
+msgstr "علامت اعشار ترجیحی برای گزارش‌ها."
 
 #: bika/lims/content/bikasetup.py:546
 msgid "Preferred decimal mark for results"
-msgstr ""
+msgstr "علامت اعشار ترجیحی برای نتایج"
 
 #: bika/lims/content/bikasetup.py:574
 msgid ""
@@ -4513,7 +4513,7 @@ msgstr "طبقه بندی نگهداری"
 
 #: senaite/core/content/samplecontainer.py:117
 msgid "Preservation method of this container"
-msgstr ""
+msgstr "روش نگهداری این ظرف"
 
 #: bika/lims/content/analysisservice.py:182
 msgid "Preservation per sample type"
@@ -4894,7 +4894,7 @@ msgstr "اظهارات"
 
 #: bika/lims/content/analysisrequest.py:1103
 msgid "Remarks and comments for this request"
-msgstr ""
+msgstr "ملاحظات و نظرات این درخواست"
 
 #: senaite/core/browser/worksheets/worksheet/analyses_listing.py:672
 msgid "Remarks of {}"
@@ -5210,7 +5210,7 @@ msgstr "نمونه"
 
 #: bika/lims/browser/analysisrequest/add2.py:2195
 msgid "Sample ${AR} was successfully created."
-msgstr ""
+msgstr "نمونه ${AR} با موفقیت ایجاد شد."
 
 #: senaite/core/browser/samples/invalidate_samples.py:149
 msgid "Sample ${sample_id} has been successfully invalidated."
@@ -5305,7 +5305,7 @@ msgstr "نمای نمونه"
 
 #: bika/lims/content/artemplate.py:118
 msgid "Sample collected by the laboratory"
-msgstr ""
+msgstr "نمونه توسط آزمایشگاه گرفته شده"
 
 #: bika/lims/browser/analysisrequest/add2.py:1992
 msgid "Sample creation cancelled"
@@ -5313,7 +5313,7 @@ msgstr "ایجاد نمونه لغو شد"
 
 #: bika/lims/browser/workflow/analysisrequest.py:248
 msgid "Sample date required for sample %s"
-msgstr ""
+msgstr "تاریخ نمونه برای نمونه %s الزامی است"
 
 #: senaite/core/profiles/default/workflows/senaite_sample_workflow/definition.xml
 msgid "Sample due"
@@ -5730,7 +5730,7 @@ msgstr ""
 
 #: bika/lims/content/instrumentmaintenancetask.py:128
 msgid "Set the maintenance task as closed."
-msgstr ""
+msgstr "بستن وظیفه نگهداشت."
 
 #: senaite/core/content/senaitesetup.py:1073
 msgid ""
@@ -5931,7 +5931,7 @@ msgstr "تاریخ شروع"
 
 #: bika/lims/validators.py:237
 msgid "Start date must be before End Date"
-msgstr ""
+msgstr "تاریخ شروع باید قبل از تاریخ پایان باشد"
 
 #: senaite/core/browser/samples/view.py:246
 #: senaite/core/browser/worksheets/worksheet/analyses_listing.py:123
@@ -6025,7 +6025,7 @@ msgstr "سرویس‌های پشتیبانی‌شده"
 
 #: bika/lims/content/method.py:116
 msgid "Supported calculations of this method"
-msgstr ""
+msgstr "محاسبات پشتیبانی‌شده این روش"
 
 #: bika/lims/content/person.py:75
 msgid "Surname"
@@ -6089,7 +6089,7 @@ msgstr "متن"
 
 #: senaite/core/browser/setup/templates/email_body_sample_publication.pt:5
 msgid "Thank you for your analysis request."
-msgstr ""
+msgstr "از درخواست آنالیز شما متشکریم."
 
 #: senaite/core/browser/install/templates/senaite-addsite.pt:54
 msgid ""
@@ -6137,7 +6137,7 @@ msgstr ""
 
 #: bika/lims/content/analysisrequest.py:852
 msgid "The client side identifier of the sample"
-msgstr ""
+msgstr "شناسه نمونه در سمت مشتری"
 
 #: bika/lims/content/analysisrequest.py:818
 msgid "The client side order number for this request"
@@ -6149,15 +6149,15 @@ msgstr ""
 
 #: bika/lims/content/instrument.py:348
 msgid "The date the instrument was installed"
-msgstr ""
+msgstr "تاریخ نصب دستگاه"
 
 #: bika/lims/content/analysisrequest.py:623
 msgid "The date when the sample was preserved"
-msgstr ""
+msgstr "تاریخ نگهداری نمونه"
 
 #: bika/lims/content/analysisrequest.py:1077
 msgid "The date when the sample was received"
-msgstr ""
+msgstr "تاریخ دریافت نمونه"
 
 #: bika/lims/content/client.py:226
 msgid "The decimal mark selected in Bika Setup will be used."
@@ -6291,7 +6291,7 @@ msgstr ""
 
 #: bika/lims/content/analysisrequest.py:644
 msgid "The person who preserved the sample"
-msgstr ""
+msgstr "شخصی که نمونه را نگهداری کرده"
 
 #: bika/lims/content/analysisrequest.py:477
 msgid "The person who took the sample"
@@ -6352,7 +6352,7 @@ msgstr "امکان دریافت نمونه نیست"
 
 #: bika/lims/content/artemplate.py:110
 msgid "The sample is a mix of sub samples"
-msgstr ""
+msgstr "این نمونه ترکیبی از زیرنمونه‌هاست"
 
 #: bika/lims/content/instrument.py:146
 msgid "The serial number that uniquely identifies the instrument"
@@ -6360,7 +6360,7 @@ msgstr ""
 
 #: bika/lims/content/abstractbaseanalysis.py:866
 msgid "The service's analytical protocol ID"
-msgstr ""
+msgstr "شناسه پروتکل تحلیلی سرویس"
 
 #: bika/lims/content/abstractbaseanalysis.py:854
 msgid "The service's commercial ID for accounting purposes"
@@ -6400,7 +6400,7 @@ msgstr ""
 
 #: senaite/core/browser/samples/rejection/templates/reject_samples.pt:93
 msgid "There are no pre-defined conditions set"
-msgstr ""
+msgstr "شرایط از پیش تعریف‌شده‌ای وجود ندارد"
 
 #: bika/lims/browser/viewlets/templates/dynamic_specs_viewlet.pt:14
 msgid "This Analysis Specification has a Dynamic Specification assigned"
@@ -6420,7 +6420,7 @@ msgstr "این یک نمونه ثانویه است از"
 
 #: bika/lims/browser/viewlets/templates/detached_partition_viewlet.pt:15
 msgid "This is a detached partition from Sample"
-msgstr ""
+msgstr "این یک پارتیشن جداشده است از نمونه"
 
 #: bika/lims/content/bikasetup.py:768
 msgid ""
@@ -6685,17 +6685,17 @@ msgstr "کاربر بدون پیوند"
 
 #: senaite/core/exportimport/instruments/panalytical/omnia/axios_xrf.py:53
 msgid "Unrecognized file format ${file_format}"
-msgstr ""
+msgstr "قالب فایل ناشناخته ${file_format}"
 
 #: senaite/core/exportimport/instruments/abaxis/vetscan/vs2.py:51
 #: senaite/core/exportimport/instruments/abbott/m2000rt/m2000rt.py:63
 #: senaite/core/exportimport/instruments/alere/pima/beads.py:51
 msgid "Unrecognized file format ${fileformat}"
-msgstr ""
+msgstr "قالب فایل ناشناخته ${fileformat}"
 
 #: senaite/core/exportimport/instruments/horiba/jobinyvon/icp.py:57
 msgid "Unrecognized file format ${format}"
-msgstr ""
+msgstr "قالب فایل ناشناخته ${format}"
 
 #: senaite/core/browser/samples/view.py:425
 msgid "Unsassigned"
@@ -6727,7 +6727,7 @@ msgstr "استفاده از قیمت پروفایل آنالیز"
 
 #: bika/lims/content/bikasetup.py:591
 msgid "Use Dashboard as default front page"
-msgstr ""
+msgstr "استفاده از داشبورد به‌عنوان صفحه نخست"
 
 #: senaite/core/browser/viewlets/templates/resultsinterpretation.pt:84
 msgid "Use Template"
@@ -6735,7 +6735,7 @@ msgstr "استفاده از قالب"
 
 #: bika/lims/content/analysisservice.py:87
 msgid "Use the Default Calculation of Method"
-msgstr ""
+msgstr "استفاده از محاسبه پیش‌فرض روش"
 
 #: bika/lims/content/instrument.py:292
 msgid ""
@@ -6840,15 +6840,15 @@ msgstr ""
 
 #: bika/lims/validators.py:1465
 msgid "Validation failed: '{}' is not numeric"
-msgstr ""
+msgstr "اعتبارسنجی ناموفق: '{}' عددی نیست"
 
 #: bika/lims/validators.py:624
 msgid "Validation failed: Bearing must be E/W"
-msgstr ""
+msgstr "اعتبارسنجی ناموفق: جهت باید E/W باشد"
 
 #: bika/lims/validators.py:605
 msgid "Validation failed: Bearing must be N/S"
-msgstr ""
+msgstr "اعتبارسنجی ناموفق: جهت باید N/S باشد"
 
 #: bika/lims/validators.py:1350
 msgid "Validation failed: Could not import module '%s'"
@@ -7220,7 +7220,7 @@ msgstr "الگوهای کاربرگ"
 
 #: senaite/core/registry/schema.py:109
 msgid "Worksheet printing templates order"
-msgstr ""
+msgstr "ترتیب قالب‌های چاپ برگه کار"
 
 #: senaite/core/browser/dashboard/dashboard.py:489
 #: senaite/core/profiles/default/types/Worksheets.xml
@@ -7233,7 +7233,7 @@ msgstr "طول IBAN نادرست به اندازه %s: %s"
 
 #: bika/lims/validators.py:1139
 msgid "Wrong IBAN length by %s: %sshort by %i"
-msgstr ""
+msgstr "طول IBAN نادرست %s: %s کوتاه به اندازه %i"
 
 #: senaite/core/browser/controlpanel/samplecontainers/view.py:166
 #: senaite/core/browser/widgets/services_widget.py:305
@@ -7347,7 +7347,7 @@ msgstr ""
 #. Default: "Changes saved."
 #: senaite/core/browser/worksheets/worksheet/manage_results.py:57
 msgid "change_worksheet_result_layout_message"
-msgstr ""
+msgstr "چیدمان نتایج برگه کار تغییر کرد"
 
 #. Default: "Changes saved."
 #: senaite/core/browser/worksheets/worksheet/add_analyses.py:168
@@ -7381,7 +7381,7 @@ msgstr ""
 #. Default: "Empty keys are not supported"
 #: senaite/core/validators/interimfields.py:169
 msgid "choices_empty_keys_validator_error"
-msgstr ""
+msgstr "کلید خالی در گزینه‌ها مجاز نیست"
 
 #. Default: "At least, two options for choices field are required"
 #: senaite/core/validators/interimfields.py:195
@@ -7391,7 +7391,7 @@ msgstr "تعداد گزینه‌ها کمتر از حد مجاز است"
 #. Default: "Duplicate keys in choices field"
 #: senaite/core/validators/interimfields.py:183
 msgid "choices_unique_keys_validator_error"
-msgstr ""
+msgstr "کلیدهای گزینه‌ها باید یکتا باشند"
 
 #: bika/lims/content/instrumentcertification.py:250
 msgid "daily"
@@ -7455,12 +7455,12 @@ msgstr "نام نهاد اعتباربخشی (مثلاً مرکز ملی تأی�
 #. pixels."
 #: senaite/core/content/laboratory.py:198
 msgid "description_accreditation_body_logo"
-msgstr ""
+msgstr "لوگوی نهاد اعتباربخشی"
 
 #. Default: "Web address for the accreditation body"
 #: senaite/core/content/laboratory.py:163
 msgid "description_accreditation_body_url"
-msgstr ""
+msgstr "نشانی وب نهاد اعتباربخشی"
 
 #. following fields are available: lab_is_accredited, lab_name, lab_country,
 #. confidence, accreditation_body_name, accreditation_standard,
@@ -7471,12 +7471,12 @@ msgstr ""
 #. accreditation_reference"
 #: senaite/core/content/laboratory.py:220
 msgid "description_accreditation_page_header"
-msgstr ""
+msgstr "سربرگ صفحه اعتباربخشی"
 
 #. Default: "The reference code issued to the lab by the accreditation body"
 #: senaite/core/content/laboratory.py:186
 msgid "description_accreditation_reference"
-msgstr ""
+msgstr "شماره/مرجع گواهی اعتباربخشی"
 
 #. Default: "The category the analysis service belongs to"
 #: bika/lims/content/abstractbaseanalysis.py:533
@@ -7505,7 +7505,7 @@ msgstr "بخش مسئول این آنالیز"
 #. view."
 #: bika/lims/content/abstractbaseanalysis.py:457
 msgid "description_analysis_maxholdingtime"
-msgstr ""
+msgstr "حداکثر زمان مجاز نگهداری تا انجام آنالیز"
 
 #. in results entry listings. Note this only applies to the options displayed
 #. in the selection list. It does not have any effect to the order in which
@@ -7562,19 +7562,19 @@ msgstr "گزینه‌های واحد اندازه‌گیری"
 #. reports."
 #: senaite/core/content/analysiscategory.py:64
 msgid "description_analysiscategory_comments"
-msgstr ""
+msgstr "نظرات این دسته"
 
 #. Default: "Select the responsible department"
 #: senaite/core/content/analysiscategory.py:85
 msgid "description_analysiscategory_department"
-msgstr ""
+msgstr "بخش این دسته آنالیز"
 
 #. Duplicate values are ordered alphabetically."
 #. Default: "Float value from 0.0 - 1000.0 indicating the sort order.
 #. Duplicate values are ordered alphabetically."
 #: senaite/core/content/analysiscategory.py:99
 msgid "description_analysiscategory_sort_key"
-msgstr ""
+msgstr "کلید مرتب‌سازی این دسته"
 
 #. Default: "Commercial ID used for accounting"
 #: senaite/core/content/analysisprofile.py:125
@@ -7584,7 +7584,7 @@ msgstr ""
 #. Default: "Please provide a unique profile keyword"
 #: senaite/core/content/analysisprofile.py:94
 msgid "description_analysisprofile_profile_key"
-msgstr ""
+msgstr "کلیدواژه یکتای پروفایل"
 
 #. Default: "Please provide the price excluding VAT"
 #: senaite/core/content/analysisprofile.py:149
@@ -7596,7 +7596,7 @@ msgstr ""
 #. price"
 #: senaite/core/content/analysisprofile.py:161
 msgid "description_analysisprofile_profile_vat"
-msgstr ""
+msgstr "درصد مالیات این پروفایل"
 
 #. profile won't be available for selection in sample creation and edit forms
 #. unless the selected sample type is one of these. If no sample type is set
@@ -7609,12 +7609,12 @@ msgstr ""
 #. the sample type of the sample."
 #: senaite/core/content/analysisprofile.py:184
 msgid "description_analysisprofile_sampletypes"
-msgstr ""
+msgstr "انواع نمونه مجاز برای این پروفایل"
 
 #. Default: "Select the included analyses for this profile"
 #: senaite/core/content/analysisprofile.py:110
 msgid "description_analysisprofile_services"
-msgstr ""
+msgstr "سرویس‌های این پروفایل"
 
 #. Default: "Use profile price instead of single analyses prices"
 #: senaite/core/content/analysisprofile.py:137
@@ -7624,12 +7624,12 @@ msgstr ""
 #. Default: "Number of samples to create with the information provided"
 #: bika/lims/content/analysisrequest.py:1441
 msgid "description_analysisrequest_numsamples"
-msgstr ""
+msgstr "تعداد نمونه‌هایی که ایجاد می‌شود"
 
 #. Default: "Link dynamic analysis specification"
 #: bika/lims/content/analysisspec.py:72
 msgid "description_analysisspec_dynamicspec"
-msgstr ""
+msgstr "مشخصات پویا از فایل پیوست خوانده می‌شود"
 
 #. outside this results range will raise an alert.<br/>'Min warn' and 'Max
 #. warn' values indicate a shoulder range. Any result outside the results
@@ -7648,17 +7648,17 @@ msgstr ""
 #. results report as well"
 #: bika/lims/content/analysisspec.py:91
 msgid "description_analysisspec_resultsrange"
-msgstr ""
+msgstr "محدوده‌های قابل قبول نتایج"
 
 #. Default: "Select the sample type for this specification"
 #: bika/lims/content/analysisspec.py:52
 msgid "description_analysisspec_sampletype"
-msgstr ""
+msgstr "نوع نمونه این مشخصات"
 
 #. Default: "Contained samples in the PDF"
 #: bika/lims/content/arreport.py:82
 msgid "description_arreport_contained_samples"
-msgstr ""
+msgstr "نمونه‌های موجود در این گزارش"
 
 #. Default: "The primary sample of the PDF"
 #: bika/lims/content/arreport.py:52
@@ -7673,7 +7673,7 @@ msgstr "پروفایل آنالیز این قالب"
 #. Default: "Select the sample point for this template"
 #: bika/lims/content/artemplate.py:58
 msgid "description_artemplate_samplepoint"
-msgstr ""
+msgstr "نقطه نمونه‌گیری این قالب"
 
 #. Default: "Select the sample type for this template"
 #: bika/lims/content/artemplate.py:89
@@ -7688,7 +7688,7 @@ msgstr "نوع پیوست"
 #. Default: "Assign the instrument for this log"
 #: bika/lims/content/autoimportlog.py:53
 msgid "description_autoimportlog_instrument"
-msgstr ""
+msgstr "دستگاه مرتبط با این گزارش"
 
 #. Default: "The date and time when the log was created"
 #: bika/lims/content/autoimportlog.py:90
@@ -7849,14 +7849,14 @@ msgstr "فیلدهای میانی مورد استفاده در محاسبه"
 #. services that this calculation depends on to calculate results."
 #: senaite/core/content/calculation.py:321
 msgid "description_calculation_test_params"
-msgstr ""
+msgstr "پارامترهایی برای آزمایش فرمول"
 
 #. values."
 #. Default: "The result after the calculation has taken place with test
 #. values."
 #: senaite/core/content/calculation.py:345
 msgid "description_calculation_test_result"
-msgstr ""
+msgstr "نتیجه آزمایش فرمول"
 
 #. Default: "Select the responsible department"
 #: bika/lims/content/analysiscategory.py:62
@@ -7866,12 +7866,12 @@ msgstr "بخش مرتبط با این دسته"
 #. Default: "Always expand the selected categories"
 #: bika/lims/content/client.py:184
 msgid "description_client_defaultcategories"
-msgstr ""
+msgstr "دسته‌های پیش‌فرض نمایش‌داده‌شده برای این مشتری"
 
 #. Default: "Show only selected categories"
 #: bika/lims/content/client.py:208
 msgid "description_client_restrictcategories"
-msgstr ""
+msgstr "محدودکردن دسته‌های قابل مشاهده برای این مشتری"
 
 #. Default: "This value is reported at the bottom of all published results"
 #: senaite/core/content/laboratory.py:127
@@ -7888,7 +7888,7 @@ msgstr "مخاطبین رونوشت"
 #. could be selected here."
 #: bika/lims/content/container.py:100
 msgid "description_container_preservation"
-msgstr ""
+msgstr "روش نگهداری این ظرف"
 
 #. Default: "Select the type of this container"
 #: bika/lims/content/container.py:57
@@ -7927,12 +7927,12 @@ msgstr ""
 #. Default: "Select the type of this instrument"
 #: bika/lims/content/instrument.py:82
 msgid "description_instrument_instrumenttype"
-msgstr ""
+msgstr "نوع این دستگاه"
 
 #. Default: "Select the manufacturer of this instrument"
 #: bika/lims/content/instrument.py:102
 msgid "description_instrument_manufacturer"
-msgstr ""
+msgstr "تولیدکننده این دستگاه"
 
 #. Default: "Methods that are supported by this analytical instrument"
 #: bika/lims/content/instrument.py:174
@@ -7962,7 +7962,7 @@ msgstr "تأمین‌کننده این دستگاه"
 #. Default: "The person who performed the task"
 #: bika/lims/content/instrumentcalibration.py:130
 msgid "description_instrumentcalibration_worker"
-msgstr ""
+msgstr "شخصی که کالیبراسیون را انجام داده"
 
 #. Default: "The person at the supplier who prepared the certificat"
 #: bika/lims/content/instrumentcertification.py:149
@@ -7977,7 +7977,7 @@ msgstr ""
 #. Default: "The person who performed the task"
 #: bika/lims/content/instrumentvalidation.py:112
 msgid "description_instrumentvalidation_worker"
-msgstr ""
+msgstr "شخصی که صحه‌گذاری را انجام داده"
 
 #. selected departments."
 #. Default: "Select a default department for this contact from one of the
@@ -7989,7 +7989,7 @@ msgstr ""
 #. Default: "Assigned laboratory departments"
 #: bika/lims/content/labcontact.py:62
 msgid "description_labcontact_departments"
-msgstr ""
+msgstr "بخش‌هایی که این مخاطب در آن‌ها فعال است"
 
 #. Default: "Check this box if your laboratory is accredited"
 #: senaite/core/content/laboratory.py:140
@@ -8026,14 +8026,14 @@ msgstr "درصد مالیات محصول"
 #. Default: "Location where the document set is shelved"
 #: senaite/core/content/multifile.py:71
 msgid "description_multifile_document_location"
-msgstr ""
+msgstr "محل نگهداری سند"
 
 #. image, ...)"
 #. Default: "Type of document (e.g. user manual, instrument specifications,
 #. image, ...)"
 #: senaite/core/content/multifile.py:83
 msgid "description_multifile_document_type"
-msgstr ""
+msgstr "نوع سند (گواهی، دفترچه راهنما و…)"
 
 #. Default: "File upload"
 #: senaite/core/content/multifile.py:51
@@ -8048,7 +8048,7 @@ msgstr "عنوان مخاطب (آقا/خانم/دکتر)"
 #. Default: "Reference sample values are zero or 'blank'"
 #: bika/lims/content/referencedefinition.py:77
 msgid "description_referencedefinition_blank"
-msgstr ""
+msgstr "آیا این تعریف مرجع شاهد است؟"
 
 #. definition."
 #. Default: "Hazard categories that apply to samples of this reference
@@ -8089,7 +8089,7 @@ msgstr ""
 #. Default: "Select the manufacturer for this sample"
 #: bika/lims/content/referencesample.py:136
 msgid "description_referencesample_manufacturer"
-msgstr ""
+msgstr "تولیدکننده این نمونه مرجع"
 
 #. Default: "Select the reference definition for this sample"
 #: bika/lims/content/referencesample.py:82
@@ -8103,7 +8103,7 @@ msgstr ""
 #. will only show for the fields listed here."
 #: senaite/core/registry/schema.py:375
 msgid "description_registry_allow_multi_paste"
-msgstr ""
+msgstr "امکان چسباندن چند مقدار هم‌زمان"
 
 #. catalogs in which these portal types should be indexed, beyond the default
 #. catalogs. A restart is required for these changes to take effect."
@@ -8112,7 +8112,7 @@ msgstr ""
 #. catalogs. A restart is required for these changes to take effect."
 #: senaite/core/registry/schema.py:278
 msgid "description_registry_catalog_mappings"
-msgstr ""
+msgstr "نگاشت انواع محتوا به کاتالوگ‌ها"
 
 #. logs into the system, or when a client is selected from the client folder
 #. listing"
@@ -8121,7 +8121,7 @@ msgstr ""
 #. listing"
 #: senaite/core/registry/schema.py:51
 msgid "description_registry_client_landing_page"
-msgstr ""
+msgstr "صفحه پیش‌فرض کاربران مشتری"
 
 #. structure of the site via Generic Setup"
 #. Default: "List of portal types to be skipped when exporting the content
@@ -8192,7 +8192,7 @@ msgstr ""
 #. Default: "Worksheet view configuration"
 #: senaite/core/registry/schema.py:99
 msgid "description_registry_worksheet_settings"
-msgstr ""
+msgstr "تنظیمات مربوط به برگه‌های کار"
 
 #. Default: "Contained samples in the PDF"
 #: senaite/core/content/resultsreport.py:186
@@ -8242,7 +8242,7 @@ msgstr "نمونه‌ای که این نمونه از آن جدا شده"
 #. Default: "Reference to the source sample this sample was duplicated from"
 #: bika/lims/content/analysisrequest.py:1283
 msgid "description_sample_duplicated_from"
-msgstr ""
+msgstr "نمونه‌ای که این نمونه از آن تکرار شده"
 
 #. Default: "Generated invoice for this sample"
 #: bika/lims/content/analysisrequest.py:1049
@@ -8284,7 +8284,7 @@ msgstr "نمونه‌ای که این نمونه از آن پس گرفته شد�
 #. Default: "The condition of the sample"
 #: bika/lims/content/analysisrequest.py:900
 msgid "description_sample_samplecondition"
-msgstr ""
+msgstr "وضعیت نمونه هنگام دریافت"
 
 #. Default: "Location where the sample was taken"
 #: bika/lims/content/analysisrequest.py:770
@@ -8304,7 +8304,7 @@ msgstr "تاریخ برنامه‌ریزی‌شده برای نمونه‌گیر
 #. Default: "Deviation between the sample and how it was sampled"
 #: bika/lims/content/analysisrequest.py:872
 msgid "description_sample_samplingdeviation"
-msgstr ""
+msgstr "انحراف رخ‌داده هنگام نمونه‌گیری"
 
 #. Default: "Select an analysis specification for this sample"
 #: bika/lims/content/analysisrequest.py:693
@@ -8314,7 +8314,7 @@ msgstr "مشخصات اعمال‌شده بر این نمونه"
 #. Default: "Location where the sample is kept"
 #: bika/lims/content/analysisrequest.py:794
 msgid "description_sample_storagelocation"
-msgstr ""
+msgstr "محل نگهداری نمونه"
 
 #. Default: "The assigned batch sub group of this request"
 #: bika/lims/content/analysisrequest.py:366
@@ -8362,7 +8362,7 @@ msgstr "مکان جغرافیایی نقطه نمونه‌گیری"
 #. regardless of the type."
 #: bika/lims/content/samplepoint.py:98
 msgid "description_samplepoint_sampletypes"
-msgstr ""
+msgstr "انواع نمونه مجاز در این نقطه"
 
 #. frequency here, e.g. weekly"
 #. Default: "If a sample is taken periodically at this sample point, enter
@@ -8394,24 +8394,24 @@ msgstr ""
 #. Default: "Select if the sample is a mix of sub samples"
 #: senaite/core/content/sampletemplate.py:219
 msgid "description_sampletemplate_composite"
-msgstr ""
+msgstr "آیا نمونه این قالب مرکب است؟"
 
 #. ID'"
 #. Default: "Each line defines a new partition identified by the 'Partition
 #. ID'"
 #: senaite/core/content/sampletemplate.py:245
 msgid "description_sampletemplate_partitions"
-msgstr ""
+msgstr "پارتیشن‌های این قالب"
 
 #. Default: "Select the sample point for this template"
 #: senaite/core/content/sampletemplate.py:187
 msgid "description_sampletemplate_samplepoint"
-msgstr ""
+msgstr "نقطه نمونه‌گیری این قالب"
 
 #. Default: "Select the sample type for this template"
 #: senaite/core/content/sampletemplate.py:209
 msgid "description_sampletemplate_sampletype"
-msgstr ""
+msgstr "نوع نمونه این قالب"
 
 #. Default: "Enable sampling workflow for the created samples"
 #: senaite/core/content/sampletemplate.py:228
@@ -8421,7 +8421,7 @@ msgstr ""
 #. Default: "Select the services for this template"
 #: senaite/core/content/sampletemplate.py:273
 msgid "description_sampletemplate_services"
-msgstr ""
+msgstr "سرویس‌های آنالیز این قالب"
 
 #. Default: "Defines the stickers to use for this sample type."
 #: senaite/core/content/sampletype.py:281
@@ -8435,21 +8435,21 @@ msgstr ""
 #. specified in more details per analysis service"
 #: senaite/core/content/sampletype.py:258
 msgid "description_sampletype_containertype"
-msgstr ""
+msgstr "نوع ظرف پیش‌فرض این نوع نمونه"
 
 #. before they expire and cannot be analysed any further"
 #. Default: "The period for which unpreserved samples of this type can be kept
 #. before they expire and cannot be analysed any further"
 #: senaite/core/content/sampletype.py:155
 msgid "description_sampletype_duration_period"
-msgstr ""
+msgstr "حداکثر مدت نگهداری این نوع نمونه"
 
 #. display the appropriate pictograms in reports and lists."
 #. Default: "Hazard categories that apply to samples of this type. Used to
 #. display the appropriate pictograms in reports and lists."
 #: senaite/core/content/sampletype.py:180
 msgid "description_sampletype_hazard_categories"
-msgstr ""
+msgstr "دسته‌های خطر این نوع نمونه"
 
 #. Default: "Samples of this type should be treated as hazardous"
 #: senaite/core/content/sampletype.py:168
@@ -8471,7 +8471,7 @@ msgstr "پیشوند استفاده‌شده در شناسه نمونه"
 #. Default: "Select the sample matrix for this sample type"
 #: senaite/core/content/sampletype.py:208
 msgid "description_sampletype_samplematrix"
-msgstr ""
+msgstr "ماتریکس این نوع نمونه"
 
 #. entered manually for analyses"
 #. Default: "If this option is activated, the result capture date can be
@@ -8503,7 +8503,7 @@ msgstr ""
 #. 0 disables automatic log-off"
 #: senaite/core/content/senaitesetup.py:427
 msgid "description_senaitesetup_auto_log_off"
-msgstr ""
+msgstr "خروج خودکار کاربر پس از مدت بی‌کاری (دقیقه)"
 
 #. results are verified. Otherwise, users with enough privileges have to
 #. manually verify the sample afterwards. Default: enabled"
@@ -8548,12 +8548,12 @@ msgstr ""
 #. Default: "Preferred decimal mark for reports."
 #: senaite/core/content/senaitesetup.py:557
 msgid "description_senaitesetup_decimal_mark"
-msgstr ""
+msgstr "علامت اعشار پیش‌فرض"
 
 #. Default: "Select the country the site will show by default"
 #: senaite/core/content/senaitesetup.py:510
 msgid "description_senaitesetup_default_country"
-msgstr ""
+msgstr "کشور پیش‌فرض نشانی‌ها"
 
 #. to create new Samples"
 #. Default: "Default value of the 'Sample count' when users click 'ADD' button
@@ -8581,7 +8581,7 @@ msgstr ""
 #. Default: "Analysis specifications which are edited directly on the Sample."
 #: senaite/core/content/senaitesetup.py:612
 msgid "description_senaitesetup_enable_ar_specs"
-msgstr ""
+msgstr "فعال‌سازی مشخصات در سطح نمونه"
 
 #. 'Reject' option will be displayed in the actions menu."
 #. Default: "Select this to activate the rejection workflow for Samples. A
@@ -8624,7 +8624,7 @@ msgstr ""
 #. selected, the default frontpage is displayed."
 #: senaite/core/content/senaitesetup.py:874
 msgid "description_senaitesetup_landing_page"
-msgstr ""
+msgstr "صفحه پیش‌فرض پس از ورود کاربر"
 
 #. the value set for the field 'Number of samples' on the sample registration
 #. form"
@@ -8642,7 +8642,7 @@ msgstr ""
 #. associates deserving of this discount"
 #: senaite/core/content/senaitesetup.py:524
 msgid "description_senaitesetup_member_discount"
-msgstr ""
+msgstr "درصد تخفیف اعضا"
 
 #. acceptable minimum number of results before QC statistics will be
 #. calculated and plotted"
@@ -8651,7 +8651,7 @@ msgstr ""
 #. calculated and plotted"
 #: senaite/core/content/senaitesetup.py:583
 msgid "description_senaitesetup_minimum_results"
-msgstr ""
+msgstr "حداقل تعداد نتایج برای محاسبات آماری"
 
 #. considered as 'verified'. This setting can be overrided for any Analysis in
 #. Analysis Service edit view. By default, 1"
@@ -8761,7 +8761,7 @@ msgstr ""
 #. with links to the primary sample will be displayed to client contacts."
 #: senaite/core/content/senaitesetup.py:898
 msgid "description_senaitesetup_show_partitions"
-msgstr ""
+msgstr "نمایش پارتیشن‌ها به کاربران"
 
 #. navigation. The order of selection determines the display order in the
 #. sidebar. If none are selected, all folders will be shown in the default
@@ -8772,7 +8772,7 @@ msgstr ""
 #. order."
 #: senaite/core/content/senaitesetup.py:913
 msgid "description_senaitesetup_sidebar_folders"
-msgstr ""
+msgstr "پوشه‌های نمایش‌داده‌شده در نوار کناری"
 
 #. top-level folders, level 2 includes their children, and so on."
 #. Default: "Maximum depth of the sidebar navigation tree. Level 1 shows only
@@ -8856,7 +8856,7 @@ msgstr ""
 #. Default: "Code the the shelf"
 #: senaite/core/content/storagelocation.py:154
 msgid "description_storagelocation_shelf_code"
-msgstr ""
+msgstr "کد قفسه"
 
 #. Default: "Description of the shelf"
 #: senaite/core/content/storagelocation.py:166
@@ -8866,12 +8866,12 @@ msgstr ""
 #. Default: "Title of the shelf"
 #: senaite/core/content/storagelocation.py:142
 msgid "description_storagelocation_shelf_title"
-msgstr ""
+msgstr "عنوان قفسه"
 
 #. Default: "Code for the site"
 #: senaite/core/content/storagelocation.py:70
 msgid "description_storagelocation_site_code"
-msgstr ""
+msgstr "کد سایت این محل نگهداری"
 
 #. Default: "Description of the site"
 #: senaite/core/content/storagelocation.py:82
@@ -8881,7 +8881,7 @@ msgstr ""
 #. Default: "Title of the site"
 #: senaite/core/content/storagelocation.py:58
 msgid "description_storagelocation_site_title"
-msgstr ""
+msgstr "عنوان سایت"
 
 #. Duplicate values are ordered alphabetically."
 #. Default: "Float value from 0.0 - 1000.0 indicating the sort order.
@@ -8910,7 +8910,7 @@ msgstr "مخاطب مرتبط با این کاربر"
 #. Default: "Select the preferred instrument"
 #: senaite/core/content/worksheettemplate.py:266
 msgid "description_worksheettemplate_instrument"
-msgstr ""
+msgstr "دستگاه پیش‌فرض این قالب"
 
 #. with the selected method.<br/>In order to apply this change to the services
 #. list, you should save the change first."
@@ -8924,7 +8924,7 @@ msgstr ""
 #. Default: "Select which Analyses should be included on the Worksheet"
 #: senaite/core/content/worksheettemplate.py:350
 msgid "description_worksheettemplate_services"
-msgstr ""
+msgstr "سرویس‌های این قالب برگه کار"
 
 #. specific instrument's tray size. Then select an Analysis 'type' per
 #. Worksheet position. Where QC samples are selected, also select which
@@ -9031,7 +9031,7 @@ msgstr "آنالیزها"
 #. Default: "Partitions"
 #: senaite/core/content/sampletemplate.py:141
 msgid "fieldset_sampletemplate_partitions"
-msgstr ""
+msgstr "پارتیشن‌ها"
 
 #. Default: "Validation chain internal error: ${error}"
 #: senaite/core/validators/formula.py:121
@@ -9279,7 +9279,7 @@ msgstr "در"
 #. Default: "Instrument exporter not found"
 #: senaite/core/browser/worksheets/worksheet/export.py:66
 msgid "instrument_exporter_not_found_message"
-msgstr ""
+msgstr "خروجی‌گیر دستگاه یافت نشد"
 
 #. Default: "Interim field ${row_num}: ${message}"
 #: senaite/core/validators/interimfields.py:299
@@ -9294,7 +9294,7 @@ msgstr "خطا در زنجیره فیلدهای میانی"
 #. Default: "'${field_name}' contains invalid characters"
 #: senaite/core/validators/interimfields.py:68
 msgid "invalid_characters_validator_error"
-msgstr ""
+msgstr "کاراکترهای نامعتبر"
 
 #. Default: "AnalysesServices not found for keywords: ${keywords}"
 #: senaite/core/validators/formula.py:92
@@ -9381,7 +9381,7 @@ msgstr "حداکثر زمان نگهداری"
 #. Default: "Sorting criteria"
 #: bika/lims/content/abstractbaseanalysis.py:766
 msgid "label_analysis_results_options_sorting"
-msgstr ""
+msgstr "مرتب‌سازی گزینه‌های نتیجه"
 
 #. Default: "Default Unit"
 #: bika/lims/content/abstractbaseanalysis.py:108
@@ -9518,12 +9518,12 @@ msgstr ""
 #. Default: "Categorize sample analyses"
 #: bika/lims/content/bikasetup.py:366
 msgid "label_bikasetup_categorizesampleanalyses"
-msgstr ""
+msgstr "دسته‌بندی آنالیزهای نمونه"
 
 #. Default: "Date sampled required"
 #: bika/lims/content/bikasetup.py:685
 msgid "label_bikasetup_date_sampled_required"
-msgstr ""
+msgstr "الزام تاریخ نمونه‌گیری"
 
 #. Default: "Email body for Sample publication notifications"
 #: bika/lims/content/bikasetup.py:826
@@ -9538,12 +9538,12 @@ msgstr ""
 #. Default: "Immediate results entry"
 #: bika/lims/content/bikasetup.py:441
 msgid "label_bikasetup_immediateresultsentry"
-msgstr ""
+msgstr "ثبت فوری نتایج"
 
 #. Default: "Email body for Sample Invalidation notifications"
 #: bika/lims/content/bikasetup.py:942
 msgid "label_bikasetup_invalidation_email_body"
-msgstr ""
+msgstr "متن ایمیل ابطال"
 
 #. Default: "Invalidation reason required"
 #: bika/lims/content/bikasetup.py:909
@@ -9553,17 +9553,17 @@ msgstr ""
 #. Default: "Require sample analyses"
 #: bika/lims/content/bikasetup.py:380
 msgid "label_bikasetup_sampleanalysesrequired"
-msgstr ""
+msgstr "الزام وجود آنالیز برای نمونه"
 
 #. Default: "DependentServices"
 #: senaite/core/content/calculation.py:352
 msgid "label_calculation_dependent_services"
-msgstr ""
+msgstr "سرویس‌های وابسته"
 
 #. Default: "Dependent services"
 #: bika/lims/content/calculation.py:81
 msgid "label_calculation_dependentservices"
-msgstr ""
+msgstr "سرویس‌های وابسته"
 
 #. Default: "Calculation Formula"
 #: senaite/core/content/calculation.py:287
@@ -9573,12 +9573,12 @@ msgstr "فرمول"
 #. Default: "Function"
 #: senaite/core/content/calculation.py:185
 msgid "label_calculation_import_function_name"
-msgstr ""
+msgstr "نام تابع"
 
 #. Default: "Module"
 #: senaite/core/content/calculation.py:179
 msgid "label_calculation_import_module_name"
-msgstr ""
+msgstr "نام ماژول"
 
 #. Default: "Additional Python Libraries"
 #: senaite/core/content/calculation.py:266
@@ -9593,17 +9593,17 @@ msgstr "فیلدهای میانی محاسبه"
 #. Default: "Raw Test Result"
 #: senaite/core/content/calculation.py:336
 msgid "label_calculation_raw_test_keywords"
-msgstr ""
+msgstr "کلیدواژه‌های آزمایشی خام"
 
 #. Default: "Keyword"
 #: senaite/core/content/calculation.py:198
 msgid "label_calculation_test_param_keyword"
-msgstr ""
+msgstr "کلیدواژه"
 
 #. Default: "Value"
 #: senaite/core/content/calculation.py:207
 msgid "label_calculation_test_param_value"
-msgstr ""
+msgstr "مقدار"
 
 #. Default: "Test Parameters"
 #: senaite/core/content/calculation.py:317
@@ -9675,7 +9675,7 @@ msgstr ""
 #. Default: "Bank Details"
 #: senaite/core/content/supplier.py:72
 msgid "label_fieldset_supplier_bank_details"
-msgstr ""
+msgstr "اطلاعات بانکی"
 
 #. Default: "Analyses"
 #: senaite/core/content/worksheettemplate.py:332
@@ -9685,7 +9685,7 @@ msgstr ""
 #. Default: "Layout"
 #: senaite/core/content/worksheettemplate.py:275
 msgid "label_fieldset_worksheettemplate_layout"
-msgstr ""
+msgstr "چیدمان"
 
 #. Default: "Include client contacts"
 #: senaite/core/browser/controlpanel/contacts/templates/contacts_filter.pt:10
@@ -9695,7 +9695,7 @@ msgstr "شامل مخاطبین مشتری"
 #. Default: "Location"
 #: bika/lims/content/instrument.py:319
 msgid "label_instrument_instrumentlocation"
-msgstr ""
+msgstr "محل دستگاه"
 
 #. Default: "Instrument type"
 #: bika/lims/content/instrument.py:79
@@ -9715,7 +9715,7 @@ msgstr "روش‌های دستگاه"
 #. Default: "Result files folders"
 #: bika/lims/content/instrument.py:265
 msgid "label_instrument_result_file_folder"
-msgstr ""
+msgstr "پوشه فایل نتایج"
 
 #. Default: "Supplier"
 #: bika/lims/content/instrument.py:119
@@ -9725,17 +9725,17 @@ msgstr "تأمین‌کننده دستگاه"
 #. Default: "Performed by"
 #: bika/lims/content/instrumentcalibration.py:127
 msgid "label_instrumentcalibration_worker"
-msgstr ""
+msgstr "انجام‌دهنده کالیبراسیون"
 
 #. Default: "Prepared by"
 #: bika/lims/content/instrumentcertification.py:146
 msgid "label_instrumentcertification_preparator"
-msgstr ""
+msgstr "آماده‌کننده گواهی"
 
 #. Default: "Approved by"
 #: bika/lims/content/instrumentcertification.py:170
 msgid "label_instrumentcertification_validator"
-msgstr ""
+msgstr "تأییدکننده گواهی"
 
 #. Default: "Performed by"
 #: bika/lims/content/instrumentvalidation.py:109
@@ -9795,7 +9795,7 @@ msgstr "واحد"
 #. Default: "Default Department"
 #: bika/lims/content/labcontact.py:86
 msgid "label_labcontact_default_department"
-msgstr ""
+msgstr "بخش پیش‌فرض"
 
 #. Default: "Departments"
 #: bika/lims/content/labcontact.py:59
@@ -9950,7 +9950,7 @@ msgstr ""
 #. Default: "Hazardous"
 #: bika/lims/content/referencedefinition.py:89
 msgid "label_referencedefinition_hazardous"
-msgstr ""
+msgstr "خطرناک"
 
 #. Default: "Reference Values"
 #: bika/lims/content/referencedefinition.py:53
@@ -9960,12 +9960,12 @@ msgstr ""
 #. Default: "Hazard categories"
 #: bika/lims/content/referencesample.py:116
 msgid "label_referencesample_hazard_categories"
-msgstr ""
+msgstr "دسته‌های خطر"
 
 #. Default: "Manufacturer"
 #: bika/lims/content/referencesample.py:133
 msgid "label_referencesample_manufacturer"
-msgstr ""
+msgstr "تولیدکننده نمونه مرجع"
 
 #. Default: "Reference Definition"
 #: bika/lims/content/referencesample.py:79
@@ -9980,12 +9980,12 @@ msgstr "نگاشت کاتالوگ‌ها"
 #. Default: "Portal type"
 #: senaite/core/registry/schema.py:286
 msgid "label_registry_catalog_mappings_key"
-msgstr ""
+msgstr "کلید"
 
 #. Default: "Catalogs"
 #: senaite/core/registry/schema.py:293
 msgid "label_registry_catalog_mappings_value"
-msgstr ""
+msgstr "مقدار"
 
 #. Default: "Catalogs"
 #: senaite/core/registry/schema.py:265
@@ -9995,7 +9995,7 @@ msgstr "کاتالوگ‌ها"
 #. Default: "Client landing page"
 #: senaite/core/registry/schema.py:47
 msgid "label_registry_client_landing_page"
-msgstr ""
+msgstr "صفحه فرود مشتری"
 
 #. Default: "Portal types to skip on content structure export"
 #: senaite/core/registry/schema.py:234
@@ -10015,7 +10015,7 @@ msgstr ""
 #. Default: "Submit Analyses upon import"
 #: senaite/core/registry/schema.py:452
 msgid "label_registry_import_analysis_submit"
-msgstr ""
+msgstr "ثبت آنالیز هنگام درون‌ریزی"
 
 #. Default: "Allow multi paste"
 #: senaite/core/registry/schema.py:371
@@ -10060,7 +10060,7 @@ msgstr "تنظیمات برگه کار"
 #. Default: "Contained Samples"
 #: senaite/core/content/resultsreport.py:183
 msgid "label_resultsreport_contained_samples"
-msgstr ""
+msgstr "نمونه‌های موجود در گزارش"
 
 #. Default: "Primary Sample"
 #: senaite/core/content/resultsreport.py:155
@@ -10135,7 +10135,7 @@ msgstr "پروفایل‌ها"
 #. Default: "Publication Specification"
 #: bika/lims/content/analysisrequest.py:734
 msgid "label_sample_publicationspecification"
-msgstr ""
+msgstr "مشخصات انتشار"
 
 #. Default: "Retest from sample"
 #: bika/lims/content/analysisrequest.py:1336
@@ -10200,12 +10200,12 @@ msgstr "دسته نگهداری"
 #. Default: "Container"
 #: senaite/core/content/sampletemplate.py:81
 msgid "label_sampletemplate_partition_container"
-msgstr ""
+msgstr "ظرف پارتیشن"
 
 #. Default: "Partition ID"
 #: senaite/core/content/sampletemplate.py:60
 msgid "label_sampletemplate_partition_part_id"
-msgstr ""
+msgstr "شناسه پارتیشن"
 
 #. Default: "Preservation"
 #: senaite/core/content/sampletemplate.py:103
@@ -10285,7 +10285,7 @@ msgstr "آزمایشگاه تندیس"
 #. Default: "Maximum value for 'Number of samples' field on registration"
 #: senaite/core/content/senaitesetup.py:368
 msgid "label_senaitesetup_maxnumberofsamplesadd"
-msgstr ""
+msgstr "حداکثر تعداد نمونه در افزودن"
 
 #. Default: "Landing Page"
 #: bika/lims/content/bikasetup.py:613
@@ -10341,7 +10341,7 @@ msgstr "نام کامل"
 #. Default: "Preferred instrument"
 #: senaite/core/content/worksheettemplate.py:262
 msgid "label_worksheettemplate_instrument"
-msgstr ""
+msgstr "دستگاه"
 
 #. Default: "Restrict to Method"
 #: senaite/core/content/worksheettemplate.py:236
@@ -10356,7 +10356,7 @@ msgstr ""
 #. Default: "Client"
 #: senaite/core/browser/worksheets/worksheet/add_analyses.py:93
 msgid "listing_add_analyses_column_client"
-msgstr ""
+msgstr "مشتری"
 
 #. Default: "Order"
 #: senaite/core/browser/worksheets/worksheet/add_analyses.py:102
@@ -10371,12 +10371,12 @@ msgstr ""
 #. Default: "Due Date"
 #: senaite/core/browser/worksheets/worksheet/add_analyses.py:139
 msgid "listing_add_analyses_column_due_date"
-msgstr ""
+msgstr "مهلت"
 
 #. Default: "Request ID"
 #: senaite/core/browser/worksheets/worksheet/add_analyses.py:110
 msgid "listing_add_analyses_column_request_id"
-msgstr ""
+msgstr "شناسه درخواست"
 
 #. Default: "Analysis"
 #: senaite/core/browser/worksheets/worksheet/add_analyses.py:125
@@ -10426,12 +10426,12 @@ msgstr "افزودن تکرار"
 #. Default: "Client"
 #: senaite/core/browser/worksheets/worksheet/add_duplicate.py:81
 msgid "listing_add_duplication_column_client"
-msgstr ""
+msgstr "مشتری"
 
 #. Default: "Date Requested"
 #: senaite/core/browser/worksheets/worksheet/add_duplicate.py:88
 msgid "listing_add_duplication_column_created"
-msgstr ""
+msgstr "تاریخ ایجاد"
 
 #. Default: "Request ID"
 #: senaite/core/browser/worksheets/worksheet/add_duplicate.py:74
@@ -10441,12 +10441,12 @@ msgstr ""
 #. Default: "Position"
 #: senaite/core/browser/worksheets/worksheet/add_duplicate.py:67
 msgid "listing_add_duplication_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/analysiscategories/view.py:50
 msgid "listing_analysiscategories_action_add"
-msgstr ""
+msgstr "افزودن دسته"
 
 #. Default: "Department"
 #: senaite/core/browser/controlpanel/analysiscategories/view.py:80
@@ -10466,17 +10466,17 @@ msgstr ""
 #. Default: "Category"
 #: senaite/core/browser/controlpanel/analysiscategories/view.py:66
 msgid "listing_analysiscategories_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Active"
 #: senaite/core/browser/controlpanel/analysiscategories/view.py:98
 msgid "listing_analysiscategories_state_active"
-msgstr ""
+msgstr "فعال"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/analysiscategories/view.py:114
 msgid "listing_analysiscategories_state_all"
-msgstr ""
+msgstr "همه"
 
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/analysiscategories/view.py:106
@@ -10491,7 +10491,7 @@ msgstr "دسته‌های آنالیز"
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/analysisprofiles/view.py:54
 msgid "listing_analysisprofiles_action_add"
-msgstr ""
+msgstr "افزودن پروفایل"
 
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/analysisprofiles/view.py:76
@@ -10511,22 +10511,22 @@ msgstr ""
 #. Default: "Profile"
 #: senaite/core/browser/controlpanel/analysisprofiles/view.py:69
 msgid "listing_analysisprofiles_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Active"
 #: senaite/core/browser/controlpanel/analysisprofiles/view.py:103
 msgid "listing_analysisprofiles_state_active"
-msgstr ""
+msgstr "فعال"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/analysisprofiles/view.py:119
 msgid "listing_analysisprofiles_state_all"
-msgstr ""
+msgstr "همه"
 
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/analysisprofiles/view.py:111
 msgid "listing_analysisprofiles_state_inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #. Default: "Analysis Profiles"
 #: senaite/core/browser/controlpanel/analysisprofiles/view.py:61
@@ -10536,7 +10536,7 @@ msgstr "پروفایل‌های آنالیز"
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/attachmenttypes/view.py:50
 msgid "listing_attachmenttypes_action_add"
-msgstr ""
+msgstr "افزودن نوع پیوست"
 
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/attachmenttypes/view.py:73
@@ -10546,12 +10546,12 @@ msgstr ""
 #. Default: "Title"
 #: senaite/core/browser/controlpanel/attachmenttypes/view.py:67
 msgid "listing_attachmenttypes_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Active"
 #: senaite/core/browser/controlpanel/attachmenttypes/view.py:83
 msgid "listing_attachmenttypes_state_active"
-msgstr ""
+msgstr "فعال"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/attachmenttypes/view.py:99
@@ -10561,7 +10561,7 @@ msgstr "همه"
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/attachmenttypes/view.py:91
 msgid "listing_attachmenttypes_state_inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #. Default: "Attachment Types"
 #: senaite/core/browser/controlpanel/attachmenttypes/view.py:57
@@ -10591,7 +10591,7 @@ msgstr "همه"
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/batchlabels/view.py:85
 msgid "listing_batchlabels_state_inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #. Default: "Batch Labels"
 #: senaite/core/browser/controlpanel/batchlabels/view.py:57
@@ -10631,7 +10631,7 @@ msgstr "همه"
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/calculations/view.py:102
 msgid "listing_calculations_state_inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #. Default: "Calculations"
 #: senaite/core/browser/controlpanel/calculations/view.py:58
@@ -10651,12 +10651,12 @@ msgstr ""
 #. Default: "Title"
 #: senaite/core/browser/controlpanel/containertypes/view.py:66
 msgid "listing_containertypes_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Active"
 #: senaite/core/browser/controlpanel/containertypes/view.py:82
 msgid "listing_containertypes_state_active"
-msgstr ""
+msgstr "فعال"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/containertypes/view.py:98
@@ -10666,7 +10666,7 @@ msgstr "همه"
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/containertypes/view.py:90
 msgid "listing_containertypes_state_inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #. Default: "Container Types"
 #: senaite/core/browser/controlpanel/containertypes/view.py:58
@@ -10676,12 +10676,12 @@ msgstr "انواع ظرف"
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/dynamicanalysisspecs/view.py:52
 msgid "listing_dynamic_analysisspec_action_add"
-msgstr ""
+msgstr "افزودن مشخصات پویا"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/dynamicanalysisspecs/dynamicanalysisspec.py:61
 msgid "listing_dynamic_analysisspec_state_all"
-msgstr ""
+msgstr "همه"
 
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/dynamicanalysisspecs/view.py:76
@@ -10701,7 +10701,7 @@ msgstr ""
 #. Default: "All"
 #: senaite/core/browser/controlpanel/dynamicanalysisspecs/view.py:102
 msgid "listing_dynamic_analysisspecs_state_all"
-msgstr ""
+msgstr "همه"
 
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/dynamicanalysisspecs/view.py:94
@@ -10711,12 +10711,12 @@ msgstr ""
 #. Default: "Dynamic Analysis Specifications"
 #: senaite/core/browser/controlpanel/dynamicanalysisspecs/view.py:61
 msgid "listing_dynamic_analysisspecs_title"
-msgstr ""
+msgstr "مشخصات پویای آنالیز"
 
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/instrumentlocations/view.py:52
 msgid "listing_instrumentlocations_action_add"
-msgstr ""
+msgstr "افزودن محل دستگاه"
 
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/instrumentlocations/view.py:74
@@ -10726,17 +10726,17 @@ msgstr ""
 #. Default: "Location"
 #: senaite/core/browser/controlpanel/instrumentlocations/view.py:67
 msgid "listing_instrumentlocations_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Active"
 #: senaite/core/browser/controlpanel/instrumentlocations/view.py:94
 msgid "listing_instrumentlocations_state_active"
-msgstr ""
+msgstr "فعال"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/instrumentlocations/view.py:86
 msgid "listing_instrumentlocations_state_all"
-msgstr ""
+msgstr "همه"
 
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/instrumentlocations/view.py:102
@@ -10751,7 +10751,7 @@ msgstr "محل‌های دستگاه"
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/instrumenttypes/view.py:49
 msgid "listing_instrumenttypes_action_add"
-msgstr ""
+msgstr "افزودن نوع دستگاه"
 
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/instrumenttypes/view.py:72
@@ -10761,12 +10761,12 @@ msgstr ""
 #. Default: "Title"
 #: senaite/core/browser/controlpanel/instrumenttypes/view.py:65
 msgid "listing_instrumenttypes_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Active"
 #: senaite/core/browser/controlpanel/instrumenttypes/view.py:83
 msgid "listing_instrumenttypes_state_active"
-msgstr ""
+msgstr "فعال"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/instrumenttypes/view.py:101
@@ -10776,7 +10776,7 @@ msgstr "همه"
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/instrumenttypes/view.py:92
 msgid "listing_instrumenttypes_state_inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #. Default: "Instrument Types"
 #: senaite/core/browser/controlpanel/instrumenttypes/view.py:56
@@ -10826,7 +10826,7 @@ msgstr ""
 #. Default: "Interpretation Templates"
 #: senaite/core/browser/controlpanel/interpretationtemplates/view.py:58
 msgid "listing_interpretationtemplates_title"
-msgstr ""
+msgstr "قالب‌های تفسیر"
 
 #. Default: "Add"
 #: view.py:49
@@ -10846,7 +10846,7 @@ msgstr "عنوان"
 #. Default: "Total Price"
 #: view.py:102
 msgid "listing_labproducts_column_total_price"
-msgstr ""
+msgstr "قیمت کل"
 
 #. Default: "Unit"
 #: view.py:80
@@ -10856,7 +10856,7 @@ msgstr "واحد"
 #. Default: "VAT Amount"
 #: view.py:95
 msgid "listing_labproducts_column_vatamount"
-msgstr ""
+msgstr "مبلغ مالیات"
 
 #. Default: "Volume"
 #: view.py:73
@@ -10876,7 +10876,7 @@ msgstr "همه"
 #. Default: "Inactive"
 #: view.py:123
 msgid "listing_labproducts_state_inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #. Default: "Lab Products"
 #: view.py:56
@@ -10891,17 +10891,17 @@ msgstr "افزودن تولیدکننده"
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/manufacturers/view.py:80
 msgid "listing_manufacturers_column_description"
-msgstr ""
+msgstr "توضیحات"
 
 #. Default: "Title"
 #: senaite/core/browser/controlpanel/manufacturers/view.py:74
 msgid "listing_manufacturers_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Active"
 #: senaite/core/browser/controlpanel/manufacturers/view.py:91
 msgid "listing_manufacturers_state_active"
-msgstr ""
+msgstr "فعال"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/manufacturers/view.py:107
@@ -10911,7 +10911,7 @@ msgstr "همه"
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/manufacturers/view.py:99
 msgid "listing_manufacturers_state_inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #. Default: "Manufacturers"
 #: senaite/core/browser/controlpanel/manufacturers/view.py:58
@@ -10931,12 +10931,12 @@ msgstr ""
 #. Default: "Reference Sample"
 #: senaite/core/browser/worksheets/worksheet/referencesamples.py:72
 msgid "listing_reference_samples_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "All"
 #: senaite/core/browser/worksheets/worksheet/referencesamples.py:98
 msgid "listing_reference_samples_state_all"
-msgstr ""
+msgstr "همه"
 
 #. Default: "Add Control Reference"
 #: senaite/core/browser/worksheets/worksheet/referencesamples.py:54
@@ -10946,17 +10946,17 @@ msgstr "نمونه‌های مرجع"
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/suppliers/referencesamples.py:36
 msgid "listing_referencesamples_action_add"
-msgstr ""
+msgstr "افزودن نمونه مرجع"
 
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/samplecontainers/view.py:51
 msgid "listing_sampleconatiners_action_add"
-msgstr ""
+msgstr "افزودن ظرف نمونه"
 
 #. Default: "Capacity"
 #: senaite/core/browser/controlpanel/samplecontainers/view.py:86
 msgid "listing_sampleconatiners_column_capacity"
-msgstr ""
+msgstr "ظرفیت"
 
 #. Default: "Container Type"
 #: senaite/core/browser/controlpanel/samplecontainers/view.py:79
@@ -10981,22 +10981,22 @@ msgstr ""
 #. Default: "Container"
 #: senaite/core/browser/controlpanel/samplecontainers/view.py:65
 msgid "listing_sampleconatiners_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Active"
 #: senaite/core/browser/controlpanel/samplecontainers/view.py:111
 msgid "listing_sampleconatiners_state_active"
-msgstr ""
+msgstr "فعال"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/samplecontainers/view.py:127
 msgid "listing_sampleconatiners_state_all"
-msgstr ""
+msgstr "همه"
 
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/samplecontainers/view.py:119
 msgid "listing_sampleconatiners_state_inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #. Default: "Sample Containers"
 #: senaite/core/browser/controlpanel/samplecontainers/view.py:56
@@ -11006,7 +11006,7 @@ msgstr "ظرف‌های نمونه"
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/sampleconditions/view.py:47
 msgid "listing_sampleconditions_action_add"
-msgstr ""
+msgstr "افزودن وضعیت نمونه"
 
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/sampleconditions/view.py:68
@@ -11016,22 +11016,22 @@ msgstr ""
 #. Default: "Sample Condition"
 #: senaite/core/browser/controlpanel/sampleconditions/view.py:62
 msgid "listing_sampleconditions_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Active"
 #: senaite/core/browser/controlpanel/sampleconditions/view.py:78
 msgid "listing_sampleconditions_state_active"
-msgstr ""
+msgstr "فعال"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/sampleconditions/view.py:96
 msgid "listing_sampleconditions_state_all"
-msgstr ""
+msgstr "همه"
 
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/sampleconditions/view.py:87
 msgid "listing_sampleconditions_state_inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #. Default: "Sample Conditions"
 #: senaite/core/browser/controlpanel/sampleconditions/view.py:54
@@ -11051,12 +11051,12 @@ msgstr ""
 #. Default: "Sample Matrix"
 #: senaite/core/browser/controlpanel/samplematrices/view.py:62
 msgid "listing_samplematrices_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Active"
 #: senaite/core/browser/controlpanel/samplematrices/view.py:78
 msgid "listing_samplematrices_state_active"
-msgstr ""
+msgstr "فعال"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/samplematrices/view.py:94
@@ -11066,7 +11066,7 @@ msgstr "همه"
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/samplematrices/view.py:86
 msgid "listing_samplematrices_state_inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #. Default: "Sample Matrices"
 #: senaite/core/browser/controlpanel/samplematrices/view.py:54
@@ -11081,12 +11081,12 @@ msgstr "افزودن نقطه نمونه‌گیری"
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/samplepoints/view.py:73
 msgid "listing_samplepoints_column_description"
-msgstr ""
+msgstr "توضیحات"
 
 #. Default: "Sample Types"
 #: senaite/core/browser/controlpanel/samplepoints/view.py:80
 msgid "listing_samplepoints_column_sampletypes"
-msgstr ""
+msgstr "انواع نمونه"
 
 #. Default: "Sample Point"
 #: senaite/core/browser/controlpanel/samplepoints/view.py:66
@@ -11106,7 +11106,7 @@ msgstr "همه"
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/samplepoints/view.py:100
 msgid "listing_samplepoints_state_inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #. Default: "Sample Points"
 #: senaite/core/browser/controlpanel/samplepoints/view.py:58
@@ -11116,7 +11116,7 @@ msgstr "نقاط نمونه‌گیری"
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/samplepreservations/view.py:47
 msgid "listing_samplepreservations_action_add"
-msgstr ""
+msgstr "افزودن نگهداری نمونه"
 
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/samplepreservations/view.py:68
@@ -11126,17 +11126,17 @@ msgstr ""
 #. Default: "Sample Preservation"
 #: senaite/core/browser/controlpanel/samplepreservations/view.py:62
 msgid "listing_samplepreservations_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Active"
 #: senaite/core/browser/controlpanel/samplepreservations/view.py:78
 msgid "listing_samplepreservations_state_active"
-msgstr ""
+msgstr "فعال"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/samplepreservations/view.py:96
 msgid "listing_samplepreservations_state_all"
-msgstr ""
+msgstr "همه"
 
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/samplepreservations/view.py:87
@@ -11151,7 +11151,7 @@ msgstr "نگهداری‌های نمونه"
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/sampletemplates/view.py:52
 msgid "listing_sampletemplates_action_add"
-msgstr ""
+msgstr "افزودن قالب نمونه"
 
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/sampletemplates/view.py:73
@@ -11161,12 +11161,12 @@ msgstr ""
 #. Default: "Sample Template"
 #: senaite/core/browser/controlpanel/sampletemplates/view.py:67
 msgid "listing_sampletemplates_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Active"
 #: senaite/core/browser/controlpanel/sampletemplates/view.py:83
 msgid "listing_sampletemplates_state_active"
-msgstr ""
+msgstr "فعال"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/sampletemplates/view.py:99
@@ -11176,7 +11176,7 @@ msgstr "همه"
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/sampletemplates/view.py:91
 msgid "listing_sampletemplates_state_inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #. Default: "Sample Templates"
 #: senaite/core/browser/controlpanel/sampletemplates/view.py:59
@@ -11196,17 +11196,17 @@ msgstr ""
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/sampletypes/view.py:72
 msgid "listing_sampletypes_column_description"
-msgstr ""
+msgstr "توضیحات"
 
 #. Default: "Hazardous"
 #: senaite/core/browser/controlpanel/sampletypes/view.py:79
 msgid "listing_sampletypes_column_hazardous"
-msgstr ""
+msgstr "خطرناک"
 
 #. Default: "Minimum Volume"
 #: senaite/core/browser/controlpanel/sampletypes/view.py:91
 msgid "listing_sampletypes_column_min_vol"
-msgstr ""
+msgstr "حداقل حجم"
 
 #. Default: "Prefix"
 #: senaite/core/browser/controlpanel/sampletypes/view.py:85
@@ -11221,7 +11221,7 @@ msgstr ""
 #. Default: "SampleMatrix"
 #: senaite/core/browser/controlpanel/sampletypes/view.py:103
 msgid "listing_sampletypes_column_sample_matrix"
-msgstr ""
+msgstr "ماتریکس نمونه"
 
 #. Default: "Sample Type"
 #: senaite/core/browser/controlpanel/sampletypes/view.py:66
@@ -11241,7 +11241,7 @@ msgstr "همه"
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/sampletypes/view.py:127
 msgid "listing_sampletypes_state_inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #. Default: "Sample Types"
 #: senaite/core/browser/controlpanel/sampletypes/view.py:58
@@ -11251,7 +11251,7 @@ msgstr "انواع نمونه"
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/samplingdeviations/view.py:49
 msgid "listing_samplingdeviations_action_add"
-msgstr ""
+msgstr "افزودن انحراف نمونه‌گیری"
 
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/samplingdeviations/view.py:72
@@ -11261,17 +11261,17 @@ msgstr ""
 #. Default: "Sampling Deviation"
 #: senaite/core/browser/controlpanel/samplingdeviations/view.py:65
 msgid "listing_samplingdeviations_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Active"
 #: senaite/core/browser/controlpanel/samplingdeviations/view.py:92
 msgid "listing_samplingdeviations_state_active"
-msgstr ""
+msgstr "فعال"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/samplingdeviations/view.py:84
 msgid "listing_samplingdeviations_state_all"
-msgstr ""
+msgstr "همه"
 
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/samplingdeviations/view.py:100
@@ -11286,7 +11286,7 @@ msgstr "انحرافات نمونه‌گیری"
 #. Default: "Calculation"
 #: senaite/core/browser/widgets/worksheettemplate_services_widget.py:70
 msgid "listing_services_column_calculation"
-msgstr ""
+msgstr "محاسبه"
 
 #. Default: "Hidden"
 #: senaite/core/browser/widgets/services_widget.py:112
@@ -11334,7 +11334,7 @@ msgstr "همه"
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/storagelocations/view.py:49
 msgid "listing_storagelocations_action_add"
-msgstr ""
+msgstr "افزودن محل نگهداری"
 
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/storagelocations/view.py:75
@@ -11374,22 +11374,22 @@ msgstr ""
 #. Default: "Storage Location"
 #: senaite/core/browser/controlpanel/storagelocations/view.py:68
 msgid "listing_storagelocations_column_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Active"
 #: senaite/core/browser/controlpanel/storagelocations/view.py:129
 msgid "listing_storagelocations_state_active"
-msgstr ""
+msgstr "فعال"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/storagelocations/view.py:147
 msgid "listing_storagelocations_state_all"
-msgstr ""
+msgstr "همه"
 
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/storagelocations/view.py:138
 msgid "listing_storagelocations_state_inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #. Default: "Storage Locations"
 #: senaite/core/browser/controlpanel/storagelocations/view.py:55
@@ -11404,7 +11404,7 @@ msgstr "افزودن زیرگروه"
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/subgroups/view.py:73
 msgid "listing_subgroups_column_description"
-msgstr ""
+msgstr "توضیحات"
 
 #. Default: "Sort Key"
 #: senaite/core/browser/controlpanel/subgroups/view.py:80
@@ -11439,7 +11439,7 @@ msgstr "زیرگروه‌ها"
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/suppliers/contacts.py:51
 msgid "listing_suppliercontacts_action_add"
-msgstr ""
+msgstr "افزودن مخاطب تأمین‌کننده"
 
 #. Default: "Business Phone"
 #: senaite/core/browser/controlpanel/suppliers/contacts.py:79
@@ -11454,12 +11454,12 @@ msgstr ""
 #. Default: "Fax"
 #: senaite/core/browser/controlpanel/suppliers/contacts.py:91
 msgid "listing_suppliercontacts_column_fax"
-msgstr ""
+msgstr "نمابر"
 
 #. Default: "FullName"
 #: senaite/core/browser/controlpanel/suppliers/contacts.py:67
 msgid "listing_suppliercontacts_column_fullname"
-msgstr ""
+msgstr "نام کامل"
 
 #. Default: "Mobile Phone"
 #: senaite/core/browser/controlpanel/suppliers/contacts.py:85
@@ -11469,7 +11469,7 @@ msgstr ""
 #. Default: "All"
 #: senaite/core/browser/controlpanel/suppliers/contacts.py:101
 msgid "listing_suppliercontacts_state_all"
-msgstr ""
+msgstr "همه"
 
 #. Default: "Contacts"
 #: senaite/core/browser/controlpanel/suppliers/contacts.py:58
@@ -11549,17 +11549,17 @@ msgstr ""
 #. Default: "Samples"
 #: senaite/core/browser/worksheets/view.py:128
 msgid "listing_worksheets_column_number_samples"
-msgstr ""
+msgstr "تعداد نمونه‌ها"
 
 #. Default: "Progress"
 #: senaite/core/browser/worksheets/view.py:101
 msgid "listing_worksheets_column_progress"
-msgstr ""
+msgstr "پیشرفت"
 
 #. Default: "State"
 #: senaite/core/browser/worksheets/view.py:153
 msgid "listing_worksheets_column_state_title"
-msgstr ""
+msgstr "وضعیت"
 
 #. Default: "Template"
 #: senaite/core/browser/worksheets/view.py:121
@@ -11594,7 +11594,7 @@ msgstr "باز"
 #. Default: "To be verified"
 #: senaite/core/browser/worksheets/view.py:195
 msgid "listing_worksheets_state_to_be_verified"
-msgstr ""
+msgstr "در انتظار تأیید"
 
 #. Default: "Verified"
 #: senaite/core/browser/worksheets/view.py:209
@@ -11609,7 +11609,7 @@ msgstr "برگه‌های کار"
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/worksheettemplates/view.py:54
 msgid "listing_worksheettemplates_action_add"
-msgstr ""
+msgstr "افزودن قالب برگه کار"
 
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/worksheettemplates/view.py:77
@@ -11629,17 +11629,17 @@ msgstr ""
 #. Default: "Name"
 #: senaite/core/browser/controlpanel/worksheettemplates/view.py:70
 msgid "listing_worksheettemplates_column_name"
-msgstr ""
+msgstr "نام"
 
 #. Default: "Active"
 #: senaite/core/browser/controlpanel/worksheettemplates/view.py:103
 msgid "listing_worksheettemplates_state_active"
-msgstr ""
+msgstr "فعال"
 
 #. Default: "All"
 #: senaite/core/browser/controlpanel/worksheettemplates/view.py:119
 msgid "listing_worksheettemplates_state_all"
-msgstr ""
+msgstr "همه"
 
 #. Default: "Inactive"
 #: senaite/core/browser/controlpanel/worksheettemplates/view.py:111
@@ -11662,7 +11662,7 @@ msgstr "ماهانه"
 #. Default: "No analyses added to this worksheet."
 #: senaite/core/browser/worksheets/worksheet/add_analyses.py:177
 msgid "no_analyses_added_to_this_worksheet"
-msgstr ""
+msgstr "آنالیزی به این برگه کار افزوده نشده"
 
 #. Default: "No analyses were added"
 #: senaite/core/browser/worksheets/worksheet/view.py:39
@@ -11677,7 +11677,7 @@ msgstr "داده‌ای از دستگاه دریافت نشد"
 #. Default: "Keyword '${duplicate}' duplicate found for a Analysis Service"
 #: senaite/core/validators/interimfields.py:97
 msgid "no_dup_service_keyword_validator_error"
-msgstr ""
+msgstr "کلیدواژه سرویس تکراری است"
 
 #. Default: "'${duplicate}' duplicates found"
 #: senaite/core/validators/interimfields.py:83
@@ -11699,7 +11699,7 @@ msgstr "این فیلد نمی‌تواند خالی باشد"
 #. view."
 #: senaite/core/browser/worksheets/worksheet/manage_results.py:66
 msgid "not_found_worksheet_layout_message"
-msgstr ""
+msgstr "چیدمان برگه کار یافت نشد"
 
 #. Default: "Set"
 #: senaite/core/browser/form/adapters/worksheettemplate.py:239
@@ -11744,7 +11744,7 @@ msgstr ""
 #. Default: "Lab Preservation"
 #: senaite/core/config/vocabularies.py:28
 msgid "sample_preservation_category_vocab_lab"
-msgstr ""
+msgstr "آزمایشگاه"
 
 #. Default: "Only ASCII characters in prefix allowed"
 #: senaite/core/content/sampletype.py:88
@@ -11769,17 +11769,17 @@ msgstr ""
 #. Default: "Show in report"
 #: senaite/core/browser/modals/templates/set_analysis_conditions.pt:37
 msgid "set_analysis_conditions_colname_report"
-msgstr ""
+msgstr "نمایش در گزارش"
 
 #. Default: "Value"
 #: senaite/core/browser/modals/templates/set_analysis_conditions.pt:36
 msgid "set_analysis_conditions_colname_value"
-msgstr ""
+msgstr "مقدار"
 
 #. Default: "Folder to import the instrument results from"
 #: bika/lims/content/instrument.py:250
 msgid "subfield_label_instrument_import_folder"
-msgstr ""
+msgstr "پوشه درون‌ریزی"
 
 #. Default: "Interface Code"
 #: bika/lims/content/instrument.py:248
@@ -11789,7 +11789,7 @@ msgstr ""
 #. Default: "This sample has been dispatched by ${actor} on ${date}"
 #: senaite/core/browser/viewlets/templates/sample_dispatched_viewlet.pt:14
 msgid "this_sample_has_been_dispatched_by"
-msgstr ""
+msgstr "این نمونه ارسال شده توسط"
 
 #. Default: "${I}:${M} ${p}"
 #. The variables used here are the same as used in the strftime formating.
@@ -11851,7 +11851,7 @@ msgstr "بخش دسته آنالیز"
 #. Default: "Description"
 #: senaite/core/content/analysiscategory.py:52
 msgid "title_analysiscategory_description"
-msgstr ""
+msgstr "توضیحات دسته آنالیز"
 
 #. Default: "Sort Key"
 #: senaite/core/content/analysiscategory.py:95
@@ -11866,7 +11866,7 @@ msgstr "عنوان دسته آنالیز"
 #. Default: "Commercial ID"
 #: senaite/core/content/analysisprofile.py:121
 msgid "title_analysisprofile_commercial_id"
-msgstr ""
+msgstr "شناسه تجاری پروفایل"
 
 #. Default: "Description"
 #: senaite/core/content/analysisprofile.py:82
@@ -11881,7 +11881,7 @@ msgstr "کلیدواژه پروفایل"
 #. Default: "Price (excluding VAT)"
 #: senaite/core/content/analysisprofile.py:145
 msgid "title_analysisprofile_profile_price"
-msgstr ""
+msgstr "قیمت پروفایل"
 
 #. Default: "VAT %"
 #: senaite/core/content/analysisprofile.py:157
@@ -11901,7 +11901,7 @@ msgstr "عنوان پروفایل آنالیز"
 #. Default: "Use analysis profile price"
 #: senaite/core/content/analysisprofile.py:133
 msgid "title_analysisprofile_use_profile_price"
-msgstr ""
+msgstr "استفاده از قیمت پروفایل"
 
 #. Default: "Analyst"
 #: senaite/core/permissions/localroles.py:30
@@ -11986,7 +11986,7 @@ msgstr "بدون دستگاه"
 #. Default: "Description"
 #: senaite/core/content/instrumentlocation.py:44
 msgid "title_instrumentlocation_description"
-msgstr ""
+msgstr "توضیحات محل دستگاه"
 
 #. Default: "Name"
 #: senaite/core/content/instrumentlocation.py:36
@@ -12011,7 +12011,7 @@ msgstr ""
 #. Default: "Name"
 #: senaite/core/content/interpretationtemplate.py:43
 msgid "title_interpretationtemplate_title"
-msgstr ""
+msgstr "عنوان قالب تفسیر"
 
 #. Default: "Lab Clerk"
 #: senaite/core/permissions/localroles.py:44
@@ -12111,7 +12111,7 @@ msgstr "جایگاه"
 #. Default: "Reference"
 #: senaite/core/content/worksheettemplate.py:169
 msgid "title_layout_record_reference_proxy"
-msgstr ""
+msgstr "مرجع"
 
 #. Default: "Analysis Type"
 #: senaite/core/content/worksheettemplate.py:106
@@ -12141,12 +12141,12 @@ msgstr "روش مشخص نشده"
 #. Default: "Bank Branch"
 #: senaite/core/content/organization.py:156
 msgid "title_organization_account_bank_branch"
-msgstr ""
+msgstr "شعبه بانک"
 
 #. Default: "Bank Name"
 #: senaite/core/content/organization.py:148
 msgid "title_organization_account_bank_name"
-msgstr ""
+msgstr "نام بانک"
 
 #. Default: "Account Name"
 #: senaite/core/content/organization.py:132
@@ -12268,12 +12268,12 @@ msgstr "مکان نقطه نمونه‌گیری"
 #. Default: "Sampling Frequency"
 #: senaite/core/content/samplepoint.py:99
 msgid "title_samplepoint_sampling_frequency"
-msgstr ""
+msgstr "بازه نمونه‌گیری"
 
 #. Default: "Sample Types"
 #: senaite/core/content/samplepoint.py:122
 msgid "title_samplepoint_sampling_sample_types"
-msgstr ""
+msgstr "انواع نمونه این نقطه"
 
 #. Default: "Name"
 #: senaite/core/content/samplepoint.py:56
@@ -12283,7 +12283,7 @@ msgstr "نقطه نمونه‌گیری"
 #. Default: "Description"
 #: senaite/core/content/samplepreservation.py:47
 msgid "title_samplepreservation_description"
-msgstr ""
+msgstr "توضیحات نگهداری نمونه"
 
 #. Default: "Name"
 #: senaite/core/content/samplepreservation.py:39
@@ -12298,7 +12298,7 @@ msgstr "نمونه‌بردار"
 #. Default: "Auto-partition on sample reception"
 #: senaite/core/content/sampletemplate.py:256
 msgid "title_sampletemplate_auto_partition"
-msgstr ""
+msgstr "پارتیشن‌بندی خودکار"
 
 #. Default: "Composite"
 #: senaite/core/content/sampletemplate.py:217
@@ -12313,7 +12313,7 @@ msgstr "توضیحات قالب نمونه"
 #. Default: "Sample collected by the laboratory"
 #: senaite/core/content/sampletemplate.py:226
 msgid "title_sampletemplate_sampling_required"
-msgstr ""
+msgstr "الزام نمونه‌گیری"
 
 #. Default: "Services"
 #: senaite/core/content/sampletemplate.py:269
@@ -12333,7 +12333,7 @@ msgstr "دوره نگهداری"
 #. Default: "Hazard categories"
 #: senaite/core/content/sampletype.py:178
 msgid "title_sampletype_hazard_categories"
-msgstr ""
+msgstr "دسته‌های خطر نوع نمونه"
 
 #. Default: "Hazardous"
 #: senaite/core/content/sampletype.py:166
@@ -12353,7 +12353,7 @@ msgstr "پیشوند نوع نمونه"
 #. Default: "Description"
 #: senaite/core/content/samplingdeviation.py:44
 msgid "title_samplingdeviation_description"
-msgstr ""
+msgstr "توضیحات انحراف نمونه‌گیری"
 
 #. Default: "Name"
 #: senaite/core/content/samplingdeviation.py:36
@@ -12383,7 +12383,7 @@ msgstr "خروج خودکار"
 #. Default: "Automatic verification of samples"
 #: senaite/core/content/senaitesetup.py:650
 msgid "title_senaitesetup_auto_verify_samples"
-msgstr ""
+msgstr "تأیید خودکار نمونه‌ها"
 
 #. Default: "Categorise analysis services"
 #: senaite/core/content/senaitesetup.py:595
@@ -12403,7 +12403,7 @@ msgstr "واحد پول"
 #. Default: "Use Dashboard as default front page"
 #: senaite/core/content/senaitesetup.py:857
 msgid "title_senaitesetup_dashboard_by_default"
-msgstr ""
+msgstr "داشبورد به‌عنوان صفحه پیش‌فرض"
 
 #. Default: "Date sampled required"
 #: senaite/core/content/senaitesetup.py:383
@@ -12418,7 +12418,7 @@ msgstr "علامت اعشار"
 #. Default: "Country"
 #: senaite/core/content/senaitesetup.py:506
 msgid "title_senaitesetup_default_country"
-msgstr ""
+msgstr "کشور پیش‌فرض"
 
 #. Default: "Default count of Sample to add."
 #: senaite/core/content/senaitesetup.py:740
@@ -12438,7 +12438,7 @@ msgstr ""
 #. Default: "Enable Sample Specifications"
 #: senaite/core/content/senaitesetup.py:608
 msgid "title_senaitesetup_enable_ar_specs"
-msgstr ""
+msgstr "فعال‌سازی مشخصات نمونه"
 
 #. Default: "Enable the rejection workflow"
 #: senaite/core/content/senaitesetup.py:754
@@ -12463,12 +12463,12 @@ msgstr "صفحه فرود"
 #. Default: "Member discount %"
 #: senaite/core/content/senaitesetup.py:520
 msgid "title_senaitesetup_member_discount"
-msgstr ""
+msgstr "تخفیف اعضا"
 
 #. Default: "Minimum number of results for QC stats calculations"
 #: senaite/core/content/senaitesetup.py:579
 msgid "title_senaitesetup_minimum_results"
-msgstr ""
+msgstr "حداقل نتایج"
 
 #. Default: "Number of required verifications"
 #: senaite/core/content/senaitesetup.py:683
@@ -12483,7 +12483,7 @@ msgstr ""
 #. Default: "Rejection reasons"
 #: senaite/core/content/senaitesetup.py:769
 msgid "title_senaitesetup_rejection_reasons"
-msgstr ""
+msgstr "دلایل رد"
 
 #. Default: "Restrict worksheet management to lab managers"
 #: senaite/core/content/senaitesetup.py:467
@@ -12498,7 +12498,7 @@ msgstr ""
 #. Default: "Default decimal mark"
 #: senaite/core/content/senaitesetup.py:714
 msgid "title_senaitesetup_results_decimal_mark"
-msgstr ""
+msgstr "علامت اعشار نتایج"
 
 #. Default: "Allow sample duplication"
 #: senaite/core/content/senaitesetup.py:964
@@ -12538,7 +12538,7 @@ msgstr ""
 #. Default: "Display sample partitions to clients"
 #: senaite/core/content/senaitesetup.py:894
 msgid "title_senaitesetup_show_partitions"
-msgstr ""
+msgstr "نمایش پارتیشن‌ها"
 
 #. Default: "Include and display pricing information"
 #: senaite/core/content/senaitesetup.py:484
@@ -12548,7 +12548,7 @@ msgstr "نمایش قیمت‌ها"
 #. Default: "Sidebar navigation folders"
 #: senaite/core/content/senaitesetup.py:909
 msgid "title_senaitesetup_sidebar_folders"
-msgstr ""
+msgstr "پوشه‌های نوار کناری"
 
 #. Default: "Sidebar navigation depth"
 #: senaite/core/content/senaitesetup.py:928
@@ -12558,7 +12558,7 @@ msgstr ""
 #. Default: "Sidebar skipped portal types"
 #: senaite/core/content/senaitesetup.py:945
 msgid "title_senaitesetup_sidebar_skip_types"
-msgstr ""
+msgstr "انواع حذف‌شده از نوار کناری"
 
 #. Default: "Multi Verification type"
 #: senaite/core/content/senaitesetup.py:699
@@ -12573,12 +12573,12 @@ msgstr "درصد مالیات"
 #. Default: "Default layout in worksheet view"
 #: senaite/core/content/senaitesetup.py:841
 msgid "title_senaitesetup_worksheet_layout"
-msgstr ""
+msgstr "چیدمان برگه کار"
 
 #. Default: "Worksheet view analysis columns"
 #: senaite/core/content/senaitesetup.py:820
 msgid "title_senaitesetup_wsview_columns_order"
-msgstr ""
+msgstr "ترتیب ستون‌های نمای برگه کار"
 
 #. Default: "Service UID"
 #: senaite/core/content/worksheettemplate.py:86
@@ -12593,7 +12593,7 @@ msgstr "توضیحات محل نگهداری"
 #. Default: "Location Code"
 #: senaite/core/content/storagelocation.py:102
 msgid "title_storagelocation_location_code"
-msgstr ""
+msgstr "کد مکان"
 
 #. Default: "Location Description"
 #: senaite/core/content/storagelocation.py:114
@@ -12603,12 +12603,12 @@ msgstr ""
 #. Default: "Location Title"
 #: senaite/core/content/storagelocation.py:90
 msgid "title_storagelocation_location_title"
-msgstr ""
+msgstr "عنوان مکان"
 
 #. Default: "Location Type"
 #: senaite/core/content/storagelocation.py:126
 msgid "title_storagelocation_location_type"
-msgstr ""
+msgstr "نوع مکان"
 
 #. Default: "Shelf Code"
 #: senaite/core/content/storagelocation.py:150
@@ -12618,7 +12618,7 @@ msgstr "کد قفسه"
 #. Default: "Shelf Description"
 #: senaite/core/content/storagelocation.py:162
 msgid "title_storagelocation_shelf_description"
-msgstr ""
+msgstr "توضیحات قفسه"
 
 #. Default: "Shelf Title"
 #: senaite/core/content/storagelocation.py:138
@@ -12633,7 +12633,7 @@ msgstr "کد سایت محل نگهداری"
 #. Default: "Site Description"
 #: senaite/core/content/storagelocation.py:78
 msgid "title_storagelocation_site_description"
-msgstr ""
+msgstr "توضیحات سایت"
 
 #. Default: "Site Title"
 #: senaite/core/content/storagelocation.py:54
@@ -12728,7 +12728,7 @@ msgstr "آنالیز"
 #. Default: "Analysis Type"
 #: senaite/core/content/worksheet.py:90
 msgid "title_worksheet_layout_analysis_type"
-msgstr ""
+msgstr "نوع آنالیز"
 
 #. Default: "Container"
 #: senaite/core/content/worksheet.py:100
@@ -12768,7 +12768,7 @@ msgstr "قالب برگه کار"
 #. Default: "Description"
 #: senaite/core/content/worksheettemplate.py:213
 msgid "title_worksheettemplate_description"
-msgstr ""
+msgstr "توضیحات قالب برگه کار"
 
 #. Default: "Number of Positions"
 #: senaite/core/content/worksheettemplate.py:290
@@ -12783,7 +12783,7 @@ msgstr "سرویس‌های قالب برگه کار"
 #. Default: "Worksheet Layout"
 #: senaite/core/content/worksheettemplate.py:311
 msgid "title_worksheettemplate_template_layout"
-msgstr ""
+msgstr "چیدمان قالب"
 
 #. Default: "Name"
 #: senaite/core/content/worksheettemplate.py:205
@@ -12813,12 +12813,12 @@ msgstr "LLOQ نمی‌تواند از ULOQ بزرگ‌تر باشد"
 #. associated with other objects, such as QC analyses."
 #: bika/lims/validators.py:1586
 msgid "validator_referencesample_id_children"
-msgstr ""
+msgstr "این شناسه دارای زیرمجموعه است"
 
 #. Default: "A Reference Sample with the ID '%s' already exists."
 #: bika/lims/validators.py:1601
 msgid "validator_referencesample_id_exists"
-msgstr ""
+msgstr "این شناسه نمونه مرجع قبلاً وجود دارد"
 
 #. letters, numbers, underscores ('_'), or hyphens ('-'), and verify that no
 #. other Reference Sample with the same ID already exists."
@@ -12827,7 +12827,7 @@ msgstr ""
 #. other Reference Sample with the same ID already exists."
 #: bika/lims/validators.py:1576
 msgid "validator_referencesample_id_invalid"
-msgstr ""
+msgstr "شناسه نمونه مرجع نامعتبر است"
 
 #. the Upper Limit of Detection (ULOD)."
 #. Default: "The Upper Limit of Quantification (LLOQ) cannot be greater than
