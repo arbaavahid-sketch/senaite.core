@@ -195,6 +195,11 @@
       <!-- SENAITE legacy CSS -->
       <metal:resources define-slot="senaite_legacy_css" />
 
+      <!-- RTL overrides (Tandis) — loaded last so it wins the cascade;
+           rules are scoped to [dir=rtl] so they are inert in LTR. -->
+      <link rel="stylesheet" type="text/css"
+            tal:attributes="href string:${portal_url}/++plone++senaite.core.static/css/senaite.rtl.css" />
+
     </body>
   </html>
 
