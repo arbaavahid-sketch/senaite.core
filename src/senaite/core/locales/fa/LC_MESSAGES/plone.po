@@ -1119,3 +1119,90 @@ msgstr "واگذارنشده"
 #: senaite/core/browser/usergroup/templates/usergroups_usersoverview.pt:52
 msgid "user_roles_note"
 msgstr "توجه نقش‌های کاربر"
+
+msgid "Manage portlets"
+msgstr "مدیریت پورتلت‌ها"
+
+msgid "All..."
+msgstr "همه…"
+
+msgid "Plone Footerportlets"
+msgstr "پورتلت‌های فوتر"
+
+msgid "Plone Leftcolumn"
+msgstr "ستون چپ"
+
+msgid "Plone Rightcolumn"
+msgstr "ستون راست"
+
+msgid "Plone Dashboard"
+msgstr "داشبورد"
+
+msgid "View"
+msgstr "مشاهده"
+
+msgid "Edit"
+msgstr "ویرایش"
+
+msgid "Contents"
+msgstr "محتواها"
+
+msgid "Sharing"
+msgstr "اشتراک‌گذاری"
+
+msgid "Rules"
+msgstr "قواعد"
+
+msgid "History"
+msgstr "تاریخچه"
+
+msgid "Add new…"
+msgstr "افزودن جدید…"
+
+msgid "State:"
+msgstr "وضعیت:"
+
+msgid "Actions"
+msgstr "عملیات"
+
+msgid "Display"
+msgstr "نمایش"
+
+msgid "Properties"
+msgstr "ویژگی‌ها"
+
+msgid "Rename"
+msgstr "تغییر نام"
+
+msgid "Cut"
+msgstr "برش"
+
+msgid "Copy"
+msgstr "کپی"
+
+msgid "Paste"
+msgstr "چسباندن"
+
+msgid "Delete"
+msgstr "حذف"
+
+msgid "Add to clipboard"
+msgstr "افزودن به کلیپ‌بورد"
+
+msgid "Personal Preferences"
+msgstr "تنظیمات شخصی"
+
+msgid "Preferences"
+msgstr "تنظیمات"
+
+msgid "Dashboard"
+msgstr "داشبورد"
+
+msgid "Search Site"
+msgstr "جستجوی سایت"
+
+msgid "Advanced Search…"
+msgstr "جستجوی پیشرفته…"
+
+msgid "You are here:"
+msgstr "شما اینجا هستید:"

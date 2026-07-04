@@ -172,9 +172,7 @@ msgstr "< Min"
 msgid ""
 "<i class=\"fas fa-link\" aria-hidden=\"true\" /> Go to worksheet template "
 "setup"
-msgstr ""
-"<i class=\"fas fa-link\" aria-hidden=\"true\" /> رفتن به تنظیمات قالب برگه "
-"کار"
+msgstr "<i class=\"fas fa-link\" aria-hidden=\"true\" /> رفتن به تنظیمات قالب کاربرگ"
 
 #: bika/lims/browser/templates/senaite-frontpage.pt:15
 msgid "<img src=\"${DYNAMIC_CONTENT}\" /> Welcome to SENAITE"
@@ -571,7 +569,7 @@ msgstr "کلید واژه آزمون"
 #: bika/lims/browser/analysisrequest/templates/invoice_content.pt:93
 #: bika/lims/profiles/default/types/Client.xml
 msgid "Analysis Profiles"
-msgstr "پروفایل‌های آزمون"
+msgstr "پروفایل‌های آنالیز"
 
 #: bika/lims/browser/templates/analysisreport_info.pt:22
 msgid "Analysis Report"
@@ -595,7 +593,7 @@ msgstr "خدمات آزمون"
 #: bika/lims/config.py:61 bika/lims/controlpanel/bika_analysisservices.py:149
 #: bika/lims/profiles/default/types/AnalysisServices.xml
 msgid "Analysis Services"
-msgstr "مجموعه خدمات آزمون"
+msgstr "سرویس‌های آنالیز"
 
 #: bika/lims/controlpanel/bika_analysisspecs.py:76
 #: bika/lims/profiles/default/types/AnalysisSpec.xml
@@ -606,7 +604,7 @@ msgstr "مشخصه آزمون"
 #: bika/lims/profiles/default/types/AnalysisSpecs.xml
 #: bika/lims/profiles/default/types/Client.xml
 msgid "Analysis Specifications"
-msgstr "مشخصات آزمون"
+msgstr "مشخصات آنالیز"
 
 #: bika/lims/content/worksheettemplate.py:56
 msgid "Analysis Type"
@@ -705,7 +703,7 @@ msgstr "پیوست به نمونه"
 
 #: senaite/core/exportimport/instruments/importer.py:815
 msgid "Attached file '{filename}' to worksheet {worksheet}"
-msgstr "فایل '{filename}' به برگه کار {worksheet} پیوست شد"
+msgstr "فایل '{filename}' به کاربرگ {worksheet} پیوست شد"
 
 #: senaite/core/extender/label.py:58
 msgid "Attached labels"
@@ -883,7 +881,7 @@ msgstr "برچسب‌های بچ"
 #: bika/lims/profiles/default/types/BatchFolder.xml
 #: bika/lims/profiles/default/types/Client.xml
 msgid "Batches"
-msgstr "دسته‌ها"
+msgstr "بچ‌ها"
 
 #: bika/lims/browser/viewlets/templates/dynamic_specs_viewlet.pt:19
 msgid ""
@@ -1333,7 +1331,7 @@ msgstr "قابل اشتراک با مشتری"
 
 #: senaite/core/behaviors/clientshareable.py:58
 msgid "Clients"
-msgstr "مشتری‌ها"
+msgstr "مشتریان"
 
 #: senaite/core/behaviors/clientshareable.py:59
 msgid ""
@@ -1521,7 +1519,7 @@ msgstr "نوع نگهدارنده"
 
 #: senaite/core/profiles/default/types/ContainerTypes.xml
 msgid "Container Types"
-msgstr "انواع نگهدارنده"
+msgstr "انواع ظرف"
 
 #: bika/lims/controlpanel/bika_containers.py:58
 msgid "Containers"
@@ -1632,7 +1630,7 @@ msgstr "ایجاد سایت جدید"
 
 #: senaite/core/browser/samples/view.py:716
 msgid "Create Worksheet"
-msgstr "ایجاد برگه کار"
+msgstr "ایجاد کاربرگ"
 
 #: senaite/core/browser/install/templates/senaite-overview.pt:134
 msgid "Create a new SENAITE site"
@@ -1644,11 +1642,11 @@ msgstr "ایجاد کاربر جدید"
 
 #: senaite/core/browser/samples/view.py:720
 msgid "Create a new worksheet for the selected samples"
-msgstr "ایجاد برگه کار جدید برای نمونه‌های انتخابی"
+msgstr "ایجاد کاربرگ جدید برای نمونه‌های انتخابی"
 
 #: senaite/core/browser/worksheets/templates/view.pt:26
 msgid "Create new worksheet"
-msgstr "ایجاد برگه کار جدید"
+msgstr "ایجاد کاربرگ جدید"
 
 #: senaite/core/profiles/default/workflows/senaite_sample_workflow/definition.xml
 msgid "Create partitions"
@@ -1907,7 +1905,7 @@ msgstr "برچسب بزرگ پیش‌فرض"
 
 #: bika/lims/content/bikasetup.py:573
 msgid "Default layout in worksheet view"
-msgstr "چیدمان پیش‌فرض نمای برگه کار"
+msgstr "چیدمان پیش‌فرض نمای کاربرگ"
 
 #: bika/lims/content/abstractbaseanalysis.py:431
 msgid "Default method used for analyses of this type"
@@ -1915,7 +1913,7 @@ msgstr "روش پیش‌فرض آنالیزهای این نوع"
 
 #: senaite/core/registry/schema.py:110
 msgid "Default printing templates order for worksheet"
-msgstr "ترتیب پیش‌فرض قالب‌های چاپ برگه کار"
+msgstr "ترتیب پیش‌فرض قالب‌های چاپ کاربرگ"
 
 #: bika/lims/content/analysisservice.py:195
 msgid "Default result"
@@ -2043,7 +2041,7 @@ msgstr "نام بخش"
 
 #: senaite/core/profiles/default/types/Departments.xml
 msgid "Departments"
-msgstr "بخش‌ها"
+msgstr "دپارتمان‌های آزمایشگاه"
 
 #: bika/lims/browser/templates/analysisservice_info.pt:201
 msgid "Dependent Analyses"
@@ -2379,7 +2377,7 @@ msgstr "کلید خالی پشتیبانی نمی‌شود"
 
 #: bika/lims/content/worksheettemplate.py:140
 msgid "Enable Multiple Use of Instrument in Worksheets."
-msgstr "امکان استفاده چندباره از دستگاه در برگه‌های کار."
+msgstr "امکان استفاده چندباره از دستگاه در کاربرگ‌ها."
 
 #: senaite/core/content/senaitesetup.py:1017
 msgid "Enable Sample Preservation"
@@ -2529,7 +2527,7 @@ msgstr "روند نمونه‌ها"
 
 #: senaite/core/browser/dashboard/dashboard.py:484
 msgid "Evolution of Worksheets"
-msgstr "روند برگه‌های کار"
+msgstr "روند کاربرگ‌ها"
 
 #: senaite/core/exportimport/import.pt:172
 msgid "Example Cronjob to execute the auto import every 10 minutes"
@@ -2977,8 +2975,8 @@ msgid ""
 "If unchecked, Lab Managers won't be able to assign the same Instrument more "
 "than one Analyses while creating a Worksheet."
 msgstr ""
-"اگر علامت نخورد، مدیران آزمایشگاه نمی‌توانند هنگام ساخت برگه کار یک دستگاه "
-"را به بیش از یک آنالیز اختصاص دهند."
+"اگر علامت نخورد، مدیران آزمایشگاه نمی‌توانند هنگام ساخت کاربرگ یک دستگاه را "
+"به بیش از یک آنالیز اختصاص دهند."
 
 #: bika/lims/content/calculation.py:112
 msgid ""
@@ -3414,7 +3412,7 @@ msgstr "محصول آزمایشگاهی"
 
 #: senaite/core/profiles/default/types/LabProducts.xml
 msgid "Lab Products"
-msgstr "محصولات آزمایشگاه"
+msgstr "محصولات آزمایشگاهی"
 
 #: bika/lims/content/laboratory.py:64
 msgid "Lab URL"
@@ -3835,7 +3833,7 @@ msgstr "شناسه روش"
 #: bika/lims/browser/templates/analysisservice_info.pt:119
 #: bika/lims/browser/widgets/analysisprofileanalyseswidget.py:80
 msgid "Methods"
-msgstr "روشها"
+msgstr "روش‌ها"
 
 #: bika/lims/content/person.py:59
 msgid "Middle initial"
@@ -4633,7 +4631,7 @@ msgid ""
 "layout displays the Samples in rows and the analyses in columns. Transposed "
 "layout displays the Samples in columns and the analyses in rows."
 msgstr ""
-"چیدمان ترجیحی جدول ثبت نتایج در نمای برگه کار. چیدمان کلاسیک نمونه‌ها را در "
+"چیدمان ترجیحی جدول ثبت نتایج در نمای کاربرگ. چیدمان کلاسیک نمونه‌ها را در "
 "ردیف و آنالیزها را در ستون نشان می‌دهد. چیدمان ترانهاده نمونه‌ها را در ستون "
 "و آنالیزها را در ردیف نمایش می‌دهد."
 
@@ -4748,7 +4746,7 @@ msgstr "چاپ فاکتور"
 
 #: senaite/core/browser/worksheets/worksheet/templates/manage_results.pt:135
 msgid "Print Worksheet"
-msgstr "چاپ برگه کار"
+msgstr "چاپ کاربرگ"
 
 #: bika/lims/browser/templates/batch_publish.pt:124
 msgid "Print date:"
@@ -5174,11 +5172,11 @@ msgstr "بازیابی"
 
 #: bika/lims/content/bikasetup.py:175
 msgid "Restrict worksheet access to assigned analysts"
-msgstr "محدودسازی دسترسی برگه کار به آزمایش‌گران منتسب"
+msgstr "محدودسازی دسترسی کاربرگ به آزمایش‌گران منتسب"
 
 #: bika/lims/content/bikasetup.py:206
 msgid "Restrict worksheet management to lab managers"
-msgstr "محدودسازی مدیریت برگه کار به مدیران آزمایشگاه"
+msgstr "محدودسازی مدیریت کاربرگ به مدیران آزمایشگاه"
 
 #: senaite/core/browser/modals/analysis/schema.py:53
 #: senaite/core/browser/worksheets/worksheet/analyses_listing.py:86
@@ -5431,7 +5429,7 @@ msgstr "محل نمونه برداری"
 
 #: senaite/core/profiles/default/types/SamplePoints.xml
 msgid "Sample Points"
-msgstr "محلهای نمونه برداری"
+msgstr "نقاط نمونه‌گیری"
 
 #: senaite/core/profiles/default/types/SamplePreservation.xml
 msgid "Sample Preservation"
@@ -5527,7 +5525,7 @@ msgstr "نمونه‌بردار برای نمونه %s الزامی است"
 #: senaite/core/browser/samples/view.py:100
 #: senaite/core/profiles/default/types/Samples.xml
 msgid "Samples"
-msgstr "نمونه ها"
+msgstr "نمونه‌ها"
 
 #: bika/lims/browser/analysisrequest/add2.py:2192
 msgid "Samples ${ARs} were successfully created."
@@ -5829,7 +5827,7 @@ msgstr ""
 
 #: bika/lims/content/worksheettemplate.py:82
 msgid "Select which Analyses should be included on the Worksheet"
-msgstr "آنالیزهای این برگه کار را انتخاب کنید"
+msgstr "آنالیزهای این کاربرگ را انتخاب کنید"
 
 #: senaite/core/config/vocabularies.py:57
 msgid "Selection list"
@@ -5931,7 +5929,7 @@ msgstr "تنظیمات مشتری‌ها"
 
 #: bika/lims/profiles/default/types/BikaSetup.xml
 msgid "Setup"
-msgstr "ستاپ"
+msgstr "تنظیمات"
 
 #: bika/lims/content/storagelocation.py:78
 msgid "Shelf Code"
@@ -6329,7 +6327,7 @@ msgid ""
 "e.g. the instrument or the method need to be set additionally."
 msgstr ""
 "دفتر بچ امکان واردکردن نتایج آنالیز همه نمونه‌های این بچ را می‌دهد. توجه "
-"کنید ثبت نتایج برای تأیید فقط در نمونه‌ها یا برگه‌های کار ممکن است، زیرا "
+"کنید ثبت نتایج برای تأیید فقط در نمونه‌ها یا کاربرگ‌ها ممکن است، زیرا "
 "اطلاعات اضافی مانند دستگاه یا روش باید جداگانه تنظیم شوند."
 
 #: bika/lims/content/analysisrequest.py:852
@@ -6734,12 +6732,12 @@ msgstr "این مقدار در پایین همه نتایج منتشرشده د�
 msgid ""
 "This worksheet has been created to replace the rejected worksheet at "
 "${ws_id}"
-msgstr "این برگه کار برای جایگزینی برگه کار ردشده ${ws_id} ایجاد شده"
+msgstr "این کاربرگ برای جایگزینی کاربرگ ردشده ${ws_id} ایجاد شده"
 
 #: bika/lims/browser/worksheet/tools.py:77
 msgid ""
 "This worksheet has been rejected.  The replacement worksheet is ${ws_id}"
-msgstr "این برگه کار رد شده است. برگه کار جایگزین ${ws_id} است"
+msgstr "این کاربرگ رد شده است. کاربرگ جایگزین ${ws_id} است"
 
 #: senaite/core/vocabularies/setup.py:159
 msgid "Thursday"
@@ -7413,8 +7411,8 @@ msgid ""
 "When enabled, analysts can only access worksheets to which they are "
 "assigned. When disabled, analysts have access to all worksheets."
 msgstr ""
-"در صورت فعال‌بودن، آزمایش‌گران فقط به برگه‌های کار واگذارشده به خودشان "
-"دسترسی دارند. در غیر این صورت، به همه دسترسی دارند."
+"در صورت فعال‌بودن، آزمایش‌گران فقط به کاربرگ‌ها واگذارشده به خودشان دسترسی "
+"دارند. در غیر این صورت، به همه دسترسی دارند."
 
 #: bika/lims/content/bikasetup.py:207
 msgid ""
@@ -7423,10 +7421,9 @@ msgid ""
 "setting is automatically enabled and locked when worksheet access is "
 "restricted to assigned analysts."
 msgstr ""
-"با فعال‌سازی، فقط مدیران آزمایشگاه می‌توانند برگه کار بسازند و مدیریت کنند. "
-"در غیر این صورت، آزمایش‌گران و مسئولان پذیرش نیز می‌توانند. توجه: وقتی "
-"دسترسی برگه کار به آزمایش‌گران منتسب محدود شود، این تنظیم خودکار فعال و قفل "
-"می‌شود."
+"با فعال‌سازی، فقط مدیران آزمایشگاه می‌توانند کاربرگ بسازند و مدیریت کنند. در"
+" غیر این صورت، آزمایش‌گران و مسئولان پذیرش نیز می‌توانند. توجه: وقتی دسترسی "
+"کاربرگ به آزمایش‌گران منتسب محدود شود، این تنظیم خودکار فعال و قفل می‌شود."
 
 #: bika/lims/content/bikasetup.py:476
 msgid ""
@@ -7499,16 +7496,16 @@ msgstr "قالب‌ کاربرگ"
 
 #: senaite/core/profiles/default/types/WorksheetTemplates.xml
 msgid "Worksheet Templates"
-msgstr "الگوهای کاربرگ"
+msgstr "قالب‌های کاربرگ"
 
 #: senaite/core/registry/schema.py:109
 msgid "Worksheet printing templates order"
-msgstr "ترتیب قالب‌های چاپ برگه کار"
+msgstr "ترتیب قالب‌های چاپ کاربرگ"
 
 #: senaite/core/browser/dashboard/dashboard.py:489
 #: senaite/core/profiles/default/types/Worksheets.xml
 msgid "Worksheets"
-msgstr "کاربرگ ها"
+msgstr "کاربرگ‌ها"
 
 #: senaite/core/content/supplier.py:166
 msgid "Wrong IBAN length by %s: %s"
@@ -7634,7 +7631,7 @@ msgstr "کلیدواژه فیلد میانی تکراری است"
 #. Default: "Changes saved."
 #: senaite/core/browser/worksheets/worksheet/manage_results.py:57
 msgid "change_worksheet_result_layout_message"
-msgstr "چیدمان نتایج برگه کار تغییر کرد"
+msgstr "چیدمان نتایج کاربرگ تغییر کرد"
 
 #. Default: "Changes saved."
 #: senaite/core/browser/worksheets/worksheet/add_analyses.py:168
@@ -8479,7 +8476,7 @@ msgstr "اجرای رویدادهای سیستمی هنگام ایجاد نمو�
 #. Default: "Worksheet view configuration"
 #: senaite/core/registry/schema.py:99
 msgid "description_registry_worksheet_settings"
-msgstr "تنظیمات مربوط به برگه‌های کار"
+msgstr "تنظیمات مربوط به کاربرگ‌ها"
 
 #. Default: "Contained samples in the PDF"
 #: senaite/core/content/resultsreport.py:186
@@ -8974,14 +8971,14 @@ msgstr "دلایل از پیش تعریف‌شده برای رد نمونه"
 #. restricted to assigned analysts."
 #: senaite/core/content/senaitesetup.py:471
 msgid "description_senaitesetup_restrict_worksheet_management"
-msgstr "فقط مدیران آزمایشگاه بتوانند برگه کار مدیریت کنند"
+msgstr "فقط مدیران آزمایشگاه بتوانند کاربرگ مدیریت کنند"
 
 #. are assigned. When disabled, analysts have access to all worksheets."
 #. Default: "When enabled, analysts can only access worksheets to which they
 #. are assigned. When disabled, analysts have access to all worksheets."
 #: senaite/core/content/senaitesetup.py:441
 msgid "description_senaitesetup_restrict_worksheet_users_access"
-msgstr "کاربران فقط برگه‌های کار خودشان را ببینند"
+msgstr "کاربران فقط کاربرگ‌های خودشان را ببینند"
 
 #. Default: "Preferred decimal mark for results"
 #: senaite/core/content/senaitesetup.py:718
@@ -9100,7 +9097,7 @@ msgstr "درصد مالیات پیش‌فرض"
 #. in rows."
 #: senaite/core/content/senaitesetup.py:845
 msgid "description_senaitesetup_worksheet_layout"
-msgstr "چیدمان پیش‌فرض برگه‌های کار"
+msgstr "چیدمان پیش‌فرض کاربرگ‌ها"
 
 #. The order of selection determines the display order. Unselected columns are
 #. hidden. Leave empty to show all columns in default order."
@@ -9109,7 +9106,7 @@ msgstr "چیدمان پیش‌فرض برگه‌های کار"
 #. hidden. Leave empty to show all columns in default order."
 #: senaite/core/content/senaitesetup.py:824
 msgid "description_senaitesetup_wsview_columns_order"
-msgstr "ترتیب ستون‌ها در نمای برگه کار"
+msgstr "ترتیب ستون‌ها در نمای کاربرگ"
 
 #. Dashboard is not selected as the default front page. If no landing page is
 #. selected, the default frontpage is displayed."
@@ -9211,7 +9208,7 @@ msgstr "محدودسازی این قالب به یک روش مشخص"
 #. Default: "Select which Analyses should be included on the Worksheet"
 #: senaite/core/content/worksheettemplate.py:350
 msgid "description_worksheettemplate_services"
-msgstr "سرویس‌های این قالب برگه کار"
+msgstr "سرویس‌های این قالب کاربرگ"
 
 #. specific instrument's tray size. Then select an Analysis 'type' per
 #. Worksheet position. Where QC samples are selected, also select which
@@ -9224,7 +9221,7 @@ msgstr "سرویس‌های این قالب برگه کار"
 #. indicate which sample position it should be a duplicate of"
 #: senaite/core/content/worksheettemplate.py:315
 msgid "description_worksheettemplate_template_layout"
-msgstr "چیدمان این قالب برگه کار"
+msgstr "چیدمان این قالب کاربرگ"
 
 #. Default: "Not found Analysis position for duplicate."
 #: senaite/core/browser/form/adapters/worksheettemplate.py:114
@@ -9303,7 +9300,7 @@ msgstr "تاریخ از حد مجاز کوچک‌تر است"
 #. Default: "Unable to load the template"
 #: senaite/core/browser/worksheets/worksheet/printview.py:155
 msgid "error_load_template_worksheet"
-msgstr "خطا در بارگذاری قالب برگه کار"
+msgstr "خطا در بارگذاری قالب کاربرگ"
 
 #. Default: "Location"
 #: senaite/core/content/samplepoint.py:48
@@ -10342,7 +10339,7 @@ msgstr "اجرای رویدادها هنگام ایجاد نمونه"
 #. Default: "Worksheet"
 #: senaite/core/registry/schema.py:95
 msgid "label_registry_worksheet_settings"
-msgstr "تنظیمات برگه کار"
+msgstr "تنظیمات کاربرگ"
 
 #. Default: "Contained Samples"
 #: senaite/core/content/resultsreport.py:183
@@ -11811,7 +11808,7 @@ msgstr "تأمین‌کنندگان"
 #. Default: "Add"
 #: senaite/core/browser/worksheets/view.py:63
 msgid "listing_worksheets_action_add"
-msgstr "افزودن برگه کار"
+msgstr "افزودن کاربرگ"
 
 #. Default: "Analyst"
 #: senaite/core/browser/worksheets/view.py:114
@@ -11891,12 +11888,12 @@ msgstr "تأییدشده"
 #. Default: "Worksheets"
 #: senaite/core/browser/worksheets/view.py:71
 msgid "listing_worksheets_title"
-msgstr "برگه‌های کار"
+msgstr "کاربرگ‌ها"
 
 #. Default: "Add"
 #: senaite/core/browser/controlpanel/worksheettemplates/view.py:54
 msgid "listing_worksheettemplates_action_add"
-msgstr "افزودن قالب برگه کار"
+msgstr "افزودن قالب کاربرگ"
 
 #. Default: "Description"
 #: senaite/core/browser/controlpanel/worksheettemplates/view.py:77
@@ -11936,7 +11933,7 @@ msgstr "غیرفعال"
 #. Default: "Worksheet Templates"
 #: senaite/core/browser/controlpanel/worksheettemplates/view.py:61
 msgid "listing_worksheettemplates_title"
-msgstr "قالب‌های برگه کار"
+msgstr "قالب‌های کاربرگ"
 
 #: bika/lims/controlpanel/bika_analysisservices.py:285
 msgid "minutes"
@@ -11949,7 +11946,7 @@ msgstr "ماهانه"
 #. Default: "No analyses added to this worksheet."
 #: senaite/core/browser/worksheets/worksheet/add_analyses.py:177
 msgid "no_analyses_added_to_this_worksheet"
-msgstr "آنالیزی به این برگه کار افزوده نشده"
+msgstr "آنالیزی به این کاربرگ افزوده نشده"
 
 #. Default: "No analyses were added"
 #: senaite/core/browser/worksheets/worksheet/view.py:39
@@ -11986,7 +11983,7 @@ msgstr "این فیلد نمی‌تواند خالی باشد"
 #. view."
 #: senaite/core/browser/worksheets/worksheet/manage_results.py:66
 msgid "not_found_worksheet_layout_message"
-msgstr "چیدمان برگه کار یافت نشد"
+msgstr "چیدمان کاربرگ یافت نشد"
 
 #. Default: "Set"
 #: senaite/core/browser/form/adapters/worksheettemplate.py:239
@@ -12775,12 +12772,12 @@ msgstr "دلایل رد"
 #. Default: "Restrict worksheet management to lab managers"
 #: senaite/core/content/senaitesetup.py:467
 msgid "title_senaitesetup_restrict_worksheet_management"
-msgstr "محدودسازی مدیریت برگه کار"
+msgstr "محدودسازی مدیریت کاربرگ"
 
 #. Default: "Restrict worksheet access to assigned analysts"
 #: senaite/core/content/senaitesetup.py:437
 msgid "title_senaitesetup_restrict_worksheet_users_access"
-msgstr "محدودسازی دسترسی کاربران به برگه کار"
+msgstr "محدودسازی دسترسی کاربران به کاربرگ"
 
 #. Default: "Default decimal mark"
 #: senaite/core/content/senaitesetup.py:714
@@ -12860,12 +12857,12 @@ msgstr "درصد مالیات"
 #. Default: "Default layout in worksheet view"
 #: senaite/core/content/senaitesetup.py:841
 msgid "title_senaitesetup_worksheet_layout"
-msgstr "چیدمان برگه کار"
+msgstr "چیدمان کاربرگ"
 
 #. Default: "Worksheet view analysis columns"
 #: senaite/core/content/senaitesetup.py:820
 msgid "title_senaitesetup_wsview_columns_order"
-msgstr "ترتیب ستون‌های نمای برگه کار"
+msgstr "ترتیب ستون‌های نمای کاربرگ"
 
 #. Default: "Service UID"
 #: senaite/core/content/worksheettemplate.py:86
@@ -12985,27 +12982,27 @@ msgstr "تأییدکننده"
 #. Default: "Analyses"
 #: senaite/core/content/worksheet.py:165
 msgid "title_worksheet_analyses"
-msgstr "آنالیزهای برگه کار"
+msgstr "آنالیزهای کاربرگ"
 
 #. Default: "Analyst"
 #: senaite/core/content/worksheet.py:187
 msgid "title_worksheet_analyst"
-msgstr "آزمایش‌گر برگه کار"
+msgstr "آزمایش‌گر کاربرگ"
 
 #. Default: "Description"
 #: senaite/core/content/worksheet.py:136
 msgid "title_worksheet_description"
-msgstr "توضیحات برگه کار"
+msgstr "توضیحات کاربرگ"
 
 #. Default: "Instrument"
 #: senaite/core/content/worksheet.py:197
 msgid "title_worksheet_instrument"
-msgstr "دستگاه برگه کار"
+msgstr "دستگاه کاربرگ"
 
 #. Default: "Layout"
 #: senaite/core/content/worksheet.py:154
 msgid "title_worksheet_layout"
-msgstr "چیدمان برگه کار"
+msgstr "چیدمان کاربرگ"
 
 #. Default: "Analysis"
 #: senaite/core/content/worksheet.py:110
@@ -13030,32 +13027,32 @@ msgstr "جایگاه"
 #. Default: "Method"
 #: senaite/core/content/worksheet.py:176
 msgid "title_worksheet_method"
-msgstr "روش برگه کار"
+msgstr "روش کاربرگ"
 
 #. Default: "Remarks"
 #: senaite/core/content/worksheet.py:209
 msgid "title_worksheet_remarks"
-msgstr "ملاحظات برگه کار"
+msgstr "ملاحظات کاربرگ"
 
 #. Default: "Results Layout"
 #: senaite/core/content/worksheet.py:217
 msgid "title_worksheet_results_layout"
-msgstr "چیدمان نتایج برگه کار"
+msgstr "چیدمان نتایج کاربرگ"
 
 #. Default: "Name"
 #: senaite/core/content/worksheet.py:127
 msgid "title_worksheet_title"
-msgstr "عنوان برگه کار"
+msgstr "عنوان کاربرگ"
 
 #. Default: "Worksheet Template"
 #: senaite/core/content/worksheet.py:144
 msgid "title_worksheet_worksheettemplate"
-msgstr "قالب برگه کار"
+msgstr "قالب کاربرگ"
 
 #. Default: "Description"
 #: senaite/core/content/worksheettemplate.py:213
 msgid "title_worksheettemplate_description"
-msgstr "توضیحات قالب برگه کار"
+msgstr "توضیحات قالب کاربرگ"
 
 #. Default: "Number of Positions"
 #: senaite/core/content/worksheettemplate.py:290
@@ -13065,7 +13062,7 @@ msgstr "تعداد جایگاه‌ها"
 #. Default: "Analysis Services"
 #: senaite/core/content/worksheettemplate.py:346
 msgid "title_worksheettemplate_services"
-msgstr "سرویس‌های قالب برگه کار"
+msgstr "سرویس‌های قالب کاربرگ"
 
 #. Default: "Worksheet Layout"
 #: senaite/core/content/worksheettemplate.py:311
@@ -13075,7 +13072,7 @@ msgstr "چیدمان قالب"
 #. Default: "Name"
 #: senaite/core/content/worksheettemplate.py:205
 msgid "title_worksheettemplate_title"
-msgstr "عنوان قالب برگه کار"
+msgstr "عنوان قالب کاربرگ"
 
 #: bika/lims/content/instrumentscheduledtask.py:140
 msgid "until"
@@ -13135,12 +13132,12 @@ msgstr "هفتگی"
 #: senaite/core/browser/modals/sample.py:67
 #: senaite/core/browser/worksheets/worksheet/add_worksheet.py:63
 msgid "worksheet_created"
-msgstr "برگه کار ایجاد شد"
+msgstr "کاربرگ ایجاد شد"
 
 #. Default: "Worksheet not created."
 #: senaite/core/browser/worksheets/worksheet/add_worksheet.py:56
 msgid "worksheet_not_created"
-msgstr "برگه کار ایجاد نشد"
+msgstr "کاربرگ ایجاد نشد"
 
 #: bika/lims/content/instrumentcertification.py:255
 msgid "yearly"
@@ -13177,3 +13174,24 @@ msgstr "{} (منقضی)"
 #: bika/lims/controlpanel/bika_instruments.py:173
 msgid "{} weeks and {} day(s)"
 msgstr "{} هفته و  {} روز"
+
+msgid "Sample Types"
+msgstr "انواع نمونه"
+
+msgid "Instrument Types"
+msgstr "انواع دستگاه"
+
+msgid "Analysis Categories"
+msgstr "دسته‌های آنالیز"
+
+msgid "Preservations"
+msgstr "انواع نگهدارنده"
+
+msgid "Sub-groups"
+msgstr "زیرگروه‌ها"
+
+msgid "Analysis Request"
+msgstr "درخواست آنالیز"
+
+msgid "Analysis Requests"
+msgstr "درخواست‌های آنالیز"
