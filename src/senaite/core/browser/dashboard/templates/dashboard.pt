@@ -25,6 +25,10 @@
     <!-- Configuration for dashboard.js -->
     <div id="dashboard-config"
          style="display:none"
+         data-label-status="Status"
+         data-label-quick-actions="Quick Actions"
+         data-label-timeline="Show/hide timeline"
+         i18n:attributes="data-label-status; data-label-quick-actions; data-label-timeline"
          tal:attributes="data-base-url string:${view/portal_url}/senaite-dashboard-data;
                          data-periodicity view/periodicity;
                          data-can-view-stats python:'true' if view.can_view_statistics() else 'false';

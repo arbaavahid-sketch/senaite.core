@@ -37,6 +37,7 @@ from DateTime import DateTime
 from plone.memoize import ram
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from zope.i18n import translate as zope_translate
 from senaite.core.catalog import ANALYSIS_CATALOG
 from senaite.core.catalog import SAMPLE_CATALOG
 from senaite.core.catalog import WORKSHEET_CATALOG
@@ -827,6 +828,29 @@ SECTION_HANDLERS = {
 }
 
 
+# Dict keys whose string values are labels that must be localised before the
+# JSON payload is sent to the (client-side rendered) dashboard. Other keys
+# (url, icon, link, data, datacolors, ...) are left untouched.
+_TRANSLATABLE_KEYS = {"title", "description", "tooltip", "name", "legend"}
+
+
+def _localise(data, request, translate=True):
+    """Recursively translate label strings in the dashboard data payload.
+
+    ``translate`` tracks whether the current position is under a translatable
+    key. Non-msgid strings (URLs, icons) are only translated when they sit
+    under a label key, so they pass through untouched everywhere else.
+    """
+    if isinstance(data, dict):
+        return {k: _localise(v, request, k in _TRANSLATABLE_KEYS)
+                for k, v in data.items()}
+    if isinstance(data, (list, tuple)):
+        return [_localise(v, request, translate) for v in data]
+    if translate and isinstance(data, basestring) and data:
+        return zope_translate(data, domain="senaite.core", context=request)
+    return data
+
+
 class DashboardDataView(BrowserView):
     """JSON endpoint for async dashboard data loading
 
@@ -855,4 +879,5 @@ class DashboardDataView(BrowserView):
         view._setup(mtool)
 
         data = getattr(view, handler_name)()
+        data = _localise(data, self.request)
         return json.dumps(data)

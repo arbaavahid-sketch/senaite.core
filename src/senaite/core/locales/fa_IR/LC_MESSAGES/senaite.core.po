@@ -542,7 +542,7 @@ msgstr "تحلیل شده توسط"
 #: senaite/core/browser/viewlets/sampleanalyses.py:33
 #: senaite/core/browser/worksheets/worksheet/templates/print/sample_by_column.pt:118
 msgid "Analyses"
-msgstr "آزمونها"
+msgstr "آنالیزها"
 
 #: senaite/core/browser/samples/rejection/templates/rejection_report.pt:132
 msgid "Analyses requested"
@@ -683,7 +683,7 @@ msgstr "تخصیص دادن"
 #: senaite/core/profiles/default/workflows/senaite_analysis_workflow/definition.xml
 #: senaite/core/profiles/default/workflows/senaite_duplicateanalysis_workflow/definition.xml
 msgid "Assigned"
-msgstr "تخصیص داده شده"
+msgstr "واگذارشده"
 
 #: bika/lims/browser/analyses/view.py:1665
 msgid "Assigned to: ${worksheet_id}"
@@ -3256,7 +3256,7 @@ msgstr "بازه"
 #: senaite/core/browser/samples/view.py:383
 #: senaite/core/profiles/default/workflows/senaite_sample_workflow/definition.xml
 msgid "Invalid"
-msgstr "نامعتبر"
+msgstr "باطل"
 
 #: senaite/core/content/senaitesetup.py:1417
 msgid "Invalid ID format on row ${i} ('${pt}'): ${err}"
@@ -4827,7 +4827,7 @@ msgstr "انتشار"
 #: senaite/core/browser/samples/view.py:351
 #: senaite/core/profiles/default/workflows/senaite_analysis_workflow/definition.xml
 msgid "Published"
-msgstr "منتشر شده"
+msgstr "منتشرشده"
 
 #: bika/lims/browser/publish/reports_listing.py:86
 msgid "Published By"
@@ -5005,7 +5005,7 @@ msgstr "رد نمونه‌ها"
 #: senaite/core/browser/samples/rejection/templates/rejection_report.pt:121
 #: senaite/core/browser/samples/view.py:402
 msgid "Rejected"
-msgstr "رد شد"
+msgstr "ردشده"
 
 #: bika/lims/browser/workflow/analysisrequest.py:98
 msgid "Rejected items: {}"
@@ -5281,7 +5281,7 @@ msgstr "پس‌گیری"
 #: senaite/core/profiles/default/workflows/senaite_analysis_workflow/definition.xml
 #: senaite/core/profiles/default/workflows/senaite_duplicateanalysis_workflow/definition.xml
 msgid "Retracted"
-msgstr "پس‌گرفته شد"
+msgstr "پس‌گرفته"
 
 #: bika/lims/browser/templates/analyses_retractedlist.pt:11
 msgid "Retracted analyses"
@@ -6812,7 +6812,7 @@ msgstr "در انتظار نمونه‌گیری"
 #: senaite/core/browser/samples/view.py:331
 #: senaite/core/profiles/default/workflows/senaite_analysis_workflow/definition.xml
 msgid "To be verified"
-msgstr "باید تایید شود"
+msgstr "در انتظار تأیید"
 
 #: bika/lims/content/calculation.py:157
 msgid ""
@@ -7335,7 +7335,7 @@ msgstr ""
 #: senaite/core/browser/samples/view.py:341
 #: senaite/core/profiles/default/workflows/senaite_analysis_workflow/definition.xml
 msgid "Verified"
-msgstr "تایید شده"
+msgstr "تأییدشده"
 
 #: bika/lims/browser/analysisrequest/templates/invoice_content.pt:133
 msgid "Verified By"
@@ -13195,3 +13195,60 @@ msgstr "درخواست آنالیز"
 
 msgid "Analysis Requests"
 msgstr "درخواست‌های آنالیز"
+
+msgid "Quick Actions"
+msgstr "اقدامات سریع"
+
+msgid "Show/hide timeline"
+msgstr "نمایش/پنهان‌کردن نمودار روند"
+
+msgid "Samples to Receive"
+msgstr "نمونه‌های در انتظار دریافت"
+
+msgid "Results Pending"
+msgstr "نتایج در انتظار"
+
+msgid "To be Verified"
+msgstr "در انتظار تأیید"
+
+msgid "To be Published"
+msgstr "در انتظار انتشار"
+
+msgid "Open Worksheets"
+msgstr "کاربرگ‌های باز"
+
+msgid "Register Samples"
+msgstr "ثبت نمونه‌ها"
+
+msgid "Verify Results"
+msgstr "تأیید نتایج"
+
+msgid "Publish Reports"
+msgstr "انتشار گزارش‌ها"
+
+msgid "Samples awaiting collection of the sample"
+msgstr "نمونه‌های در انتظار نمونه‌گیری"
+
+msgid "Samples awaiting preservation"
+msgstr "نمونه‌های در انتظار نگهداری"
+
+msgid "Samples with a scheduled sampling date"
+msgstr "نمونه‌های دارای تاریخ نمونه‌گیری زمان‌بندی‌شده"
+
+msgid "Samples awaiting reception at the laboratory"
+msgstr "نمونه‌های در انتظار دریافت در آزمایشگاه"
+
+msgid "Received samples with analyses awaiting results"
+msgstr "نمونه‌های دریافت‌شده با آنالیزهای در انتظار نتیجه"
+
+msgid "Samples whose results are awaiting verification"
+msgstr "نمونه‌هایی که نتایجشان در انتظار تأیید است"
+
+msgid "Verified samples ready to be published"
+msgstr "نمونه‌های تأییدشده آمادهٔ انتشار"
+
+msgid "Samples whose reports have been published"
+msgstr "نمونه‌هایی که گزارششان منتشر شده"
+
+msgid "Published samples whose reports have not been printed yet"
+msgstr "نمونه‌های منتشرشده‌ای که گزارششان هنوز چاپ نشده"

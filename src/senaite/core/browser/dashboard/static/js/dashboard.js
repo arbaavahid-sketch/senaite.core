@@ -17,6 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
   var dateFrom = config.getAttribute("data-date-from");
   var dateTo = config.getAttribute("data-date-to");
 
+  // Localised labels (translated server-side via i18n:attributes)
+  function label(name, fallback) {
+    return config.getAttribute("data-label-" + name) || fallback;
+  }
+
   // Load overview (cards + links) together
   Promise.all([
     fetchSection("status_cards"),
@@ -79,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var heading = document.createElement("h2");
       heading.className = "h6 text-uppercase text-muted "
         + "font-weight-bold mb-3";
-      heading.textContent = "Status";
+      heading.textContent = label("status", "Status");
       el.appendChild(heading);
 
       var wrap = document.createElement("div");
@@ -96,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var heading2 = document.createElement("h2");
       heading2.className = "h6 text-uppercase text-muted "
         + "font-weight-bold mb-3";
-      heading2.textContent = "Quick Actions";
+      heading2.textContent = label("quick-actions", "Quick Actions");
       el.appendChild(heading2);
 
       var linkWrap = document.createElement("div");
@@ -190,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
       btnIcon.className = "fas fa-chart-bar mr-1";
       btn.appendChild(btnIcon);
       btn.appendChild(
-        document.createTextNode("Show/hide timeline"));
+        document.createTextNode(label("timeline", "Show/hide timeline")));
       btnWrap.appendChild(btn);
       container.appendChild(btnWrap);
 
