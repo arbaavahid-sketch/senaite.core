@@ -114,7 +114,8 @@ class ToolbarViewletManager(OrderedViewletManager):
         try:
             styles = registry["senaite.toolbar_logo_styles"]
         except (AttributeError, KeyError):
-            return "height:15px;"
+            # ارتفاع بیشتر برای خوانایی متن فارسی لوگوی تندیس
+            return "height:28px;"
         css = map(lambda style: "{}:{};".format(*style), styles.items())
         return " ".join(css)
 
