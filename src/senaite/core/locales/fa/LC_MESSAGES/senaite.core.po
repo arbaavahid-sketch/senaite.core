@@ -97,7 +97,7 @@ msgstr ""
 #: senaite/core/browser/samples/rejection/templates/reject_samples.pt:30
 #: senaite/core/browser/samples/templates/invalidate_samples.pt:35
 msgid "&larr; Go back"
-msgstr ""
+msgstr "&larr; بازگشت"
 
 #: senaite/core/browser/samples/templates/multi_results.pt:46
 msgid "&larr; Go back to see all samples"
@@ -354,7 +354,7 @@ msgstr "بازیگر"
 
 #: senaite/core/content/resultsreport.py:56
 msgid "Actor Fullname"
-msgstr ""
+msgstr "نام کامل کاربر"
 
 #: senaite/core/browser/clients/client/contacts/view.py:53
 #: senaite/core/browser/controlpanel/departments/view.py:51
@@ -610,7 +610,7 @@ msgstr "نوع آزمون"
 
 #: bika/lims/content/analysisservice.py:266
 msgid "Analysis conditions"
-msgstr ""
+msgstr "شرایط آنالیز"
 
 #: senaite/core/browser/modals/conditions.py:165
 msgid "Analysis conditions updated: {}"
@@ -622,23 +622,23 @@ msgstr "مشخصات آزمون که مستقیماً بر روی نمونه ا�
 
 #: senaite/core/content/interpretationtemplate.py:59
 msgid "Analysis templates"
-msgstr ""
+msgstr "قالب‌های آنالیز"
 
 #: senaite/core/profiles/default/types/AnalysisCategories.xml
 msgid "AnalysisCategories"
-msgstr ""
+msgstr "دسته‌های آنالیز"
 
 #: senaite/core/profiles/default/types/AnalysisCategory.xml
 msgid "AnalysisCategory"
-msgstr ""
+msgstr "دسته آنالیز"
 
 #: senaite/core/profiles/default/types/AnalysisProfile.xml
 msgid "AnalysisProfile"
-msgstr ""
+msgstr "پروفایل آنالیز"
 
 #: senaite/core/profiles/default/types/AnalysisProfiles.xml
 msgid "AnalysisProfiles"
-msgstr ""
+msgstr "پروفایل‌های آنالیز"
 
 #: senaite/core/browser/modals/analysis/schema.py:87
 #: senaite/core/browser/worksheets/worksheet/templates/manage_results.pt:35
@@ -697,7 +697,7 @@ msgstr ""
 
 #: senaite/core/browser/viewlets/templates/attachments.pt:244
 msgid "Attach to Sample"
-msgstr ""
+msgstr "پیوست به نمونه"
 
 #: senaite/core/exportimport/instruments/importer.py:815
 msgid "Attached file '{filename}' to worksheet {worksheet}"
@@ -705,7 +705,7 @@ msgstr ""
 
 #: senaite/core/extender/label.py:58
 msgid "Attached labels"
-msgstr ""
+msgstr "برچسب‌های پیوست"
 
 #: senaite/core/exportimport/instruments/importer.py:854
 msgid "Attaching '{attachment}' to Analysis '{analysis}'"
@@ -772,7 +772,7 @@ msgstr "لاگ ممیزی"
 
 #: senaite/core/browser/samples/rejection/templates/rejection_report.pt:215
 msgid "Authorized by"
-msgstr ""
+msgstr "تأیید توسط"
 
 #: senaite/core/exportimport/import.pt:56
 msgid "Auto Import"
@@ -846,7 +846,7 @@ msgstr "نام بانک"
 
 #: senaite/core/browser/install/templates/senaite-addsite.pt:138
 msgid "Base configuration"
-msgstr ""
+msgstr "پیکربندی پایه"
 
 #: bika/lims/browser/templates/instrument_referenceanalyses.pt:44
 #: bika/lims/browser/templates/referencesample_analyses.pt:42
@@ -933,7 +933,7 @@ msgstr "تلفن محل کار"
 
 #: senaite/core/z3cform/widgets/address.py:123
 msgid "Business address"
-msgstr ""
+msgstr "نشانی کاری"
 
 #: bika/lims/content/abstractbaseanalysis.py:756
 msgid "By 'Display Value' ascending"
@@ -953,7 +953,7 @@ msgstr ""
 
 #: bika/lims/content/analysisrequest.py:348
 msgid "CBID"
-msgstr ""
+msgstr "CBID"
 
 #: bika/lims/content/client.py:129
 msgid "CC Contacts"
@@ -1109,7 +1109,7 @@ msgstr "شماره گواهی"
 
 #: bika/lims/content/instrumentcertification.py:209
 msgid "Certificate Code"
-msgstr ""
+msgstr "کد گواهی"
 
 #: bika/lims/browser/auditlog.py:96 bika/lims/controlpanel/auditlog.py:103
 msgid "Changes"
@@ -1117,12 +1117,12 @@ msgstr "تغییرات"
 
 #: senaite/core/browser/viewlets/resultsinterpretation.py:64
 msgid "Changes Saved"
-msgstr ""
+msgstr "تغییرات ذخیره شد"
 
 #: senaite/core/browser/samples/manage_sample_fields.py:104
 #: senaite/core/browser/viewlets/sampleheader.py:114
 msgid "Changes saved."
-msgstr ""
+msgstr "تغییرات ذخیره شد."
 
 #: senaite/core/browser/viewlets/templates/sampleheader.pt:99
 msgid "Changes will be propagated to partitions"
@@ -1235,7 +1235,7 @@ msgstr "کلاسیک"
 
 # senaite.app.listing: ButtonBar
 msgid "Clear selection"
-msgstr ""
+msgstr "پاک‌کردن انتخاب"
 
 #: bika/lims/browser/analysisrequest/templates/ar_add2.pt:533
 msgid "Click to expand this category"
@@ -1253,7 +1253,7 @@ msgstr "مشتری"
 
 #: bika/lims/browser/batchfolder.py:84 bika/lims/content/batch.py:101
 msgid "Client Batch ID"
-msgstr ""
+msgstr "شناسه بچ مشتری"
 
 #: senaite/core/behaviors/clientshareable.py:90
 #: senaite/core/browser/samples/rejection/templates/rejection_report.pt:83
@@ -1263,7 +1263,7 @@ msgstr "شناسه مشتری"
 
 #: bika/lims/profiles/default/registry.xml
 msgid "Client Landing Page"
-msgstr ""
+msgstr "صفحه ورود مشتری"
 
 #: senaite/core/behaviors/clientshareable.py:85
 msgid "Client Name"
@@ -1277,7 +1277,7 @@ msgstr "سفارش مشتری"
 #: bika/lims/browser/batch/batchbook.py:81
 #: bika/lims/content/analysisrequest.py:817
 msgid "Client Order Number"
-msgstr ""
+msgstr "شماره سفارش مشتری"
 
 #: senaite/core/browser/samples/view.py:189
 msgid "Client Ref"
@@ -1286,7 +1286,7 @@ msgstr "مرجع مشتری"
 #: bika/lims/browser/analysisrequest/templates/invoice_content.pt:66
 #: bika/lims/content/analysisrequest.py:834
 msgid "Client Reference"
-msgstr ""
+msgstr "مرجع مشتری"
 
 #: senaite/core/browser/samples/view.py:194
 msgid "Client SID"
@@ -1294,11 +1294,11 @@ msgstr "شناسه نمونه مشتری"
 
 #: bika/lims/content/analysisrequest.py:851
 msgid "Client Sample ID"
-msgstr ""
+msgstr "شناسه نمونه مشتری"
 
 #: senaite/core/registry/schema.py:39
 msgid "Client Settings"
-msgstr ""
+msgstr "تنظیمات مشتری"
 
 #: senaite/core/behaviors/configure.zcml:49
 msgid "ClientShareableBehavior"
@@ -1330,11 +1330,11 @@ msgstr ""
 
 #: bika/lims/content/storagelocation.py:44
 msgid "Code for the site"
-msgstr ""
+msgstr "کد سایت"
 
 #: bika/lims/content/storagelocation.py:79
 msgid "Code the the shelf"
-msgstr ""
+msgstr "کد قفسه"
 
 #: senaite/core/registry/schema.py:133
 msgid "Collapse field analysis table"
@@ -1389,7 +1389,7 @@ msgstr ""
 #: bika/lims/content/abstractbaseanalysis.py:853
 #: bika/lims/content/analysisprofile.py:91
 msgid "Commercial ID"
-msgstr ""
+msgstr "شناسه تجاری"
 
 #: bika/lims/content/analysisrequest.py:957
 #: bika/lims/content/samplepoint.py:121
@@ -1398,7 +1398,7 @@ msgstr "مختلط"
 
 #: bika/lims/content/artemplate.py:109
 msgid "Composite sample"
-msgstr ""
+msgstr "نمونه مرکب"
 
 #: bika/lims/content/analysisservice.py:267
 msgid ""
@@ -1411,11 +1411,11 @@ msgstr ""
 
 #: bika/lims/content/laboratory.py:99
 msgid "Confidence Level %"
-msgstr ""
+msgstr "سطح اطمینان ٪"
 
 # senaite.app.listing: Configuration
 msgid "Configuration"
-msgstr ""
+msgstr "پیکربندی"
 
 #: senaite/core/registry/schema.py:227
 msgid "Configuration for Generic Setup"
@@ -1441,13 +1441,13 @@ msgstr ""
 
 #: senaite/core/browser/clients/client/contacts/templates/login_details.pt:253
 msgid "Confirm password"
-msgstr ""
+msgstr "تکرار رمز عبور"
 
 #: bika/lims/content/instrumentcalibration.py:107
 #: bika/lims/content/instrumentmaintenancetask.py:93
 #: bika/lims/content/instrumentscheduledtask.py:86
 msgid "Considerations"
-msgstr ""
+msgstr "ملاحظات"
 
 #: senaite/core/browser/samples/view.py:197
 #: senaite/core/profiles/default/types/Contact.xml
@@ -1470,7 +1470,7 @@ msgstr "مخاطبین"
 
 #: bika/lims/browser/templates/analysisreport_info.pt:72
 msgid "Contained Samples"
-msgstr ""
+msgstr "نمونه‌های داخل"
 
 #: senaite/core/browser/samples/templates/partition_magic.pt:175
 msgid "Container"
@@ -1503,7 +1503,7 @@ msgstr "کنترل"
 
 #: bika/lims/config.py:89
 msgid "Control QC analyses"
-msgstr ""
+msgstr "آنالیزهای کنترل کیفیت"
 
 #: bika/lims/browser/fields/interimfieldsfield.py:56
 #: bika/lims/content/analysisservice.py:222
@@ -1584,15 +1584,15 @@ msgstr "ساخت PDF فاکتور"
 
 #: senaite/core/browser/samples/templates/partition_magic.pt:256
 msgid "Create Partitions"
-msgstr ""
+msgstr "ایجاد پارتیشن‌ها"
 
 #: senaite/core/browser/install/templates/senaite-addsite.pt:214
 msgid "Create SENAITE Site"
-msgstr ""
+msgstr "ایجاد سایت جدید"
 
 #: senaite/core/browser/samples/view.py:716
 msgid "Create Worksheet"
-msgstr ""
+msgstr "ایجاد برگه کار"
 
 #: senaite/core/browser/install/templates/senaite-overview.pt:134
 msgid "Create a new SENAITE site"
@@ -1600,7 +1600,7 @@ msgstr ""
 
 #: senaite/core/browser/clients/client/contacts/templates/login_details.pt:215
 msgid "Create a new User"
-msgstr ""
+msgstr "ایجاد کاربر جدید"
 
 #: senaite/core/browser/samples/view.py:720
 msgid "Create a new worksheet for the selected samples"
@@ -1612,7 +1612,7 @@ msgstr ""
 
 #: senaite/core/profiles/default/workflows/senaite_sample_workflow/definition.xml
 msgid "Create partitions"
-msgstr ""
+msgstr "ایجاد پارتیشن‌ها"
 
 #: senaite/core/browser/clients/client/attachments/view.py:71
 msgid "Created"
@@ -1651,15 +1651,15 @@ msgstr "جاری"
 
 #: bika/lims/content/client.py:237
 msgid "Custom decimal mark"
-msgstr ""
+msgstr "علامت اعشار سفارشی"
 
 #: senaite/core/browser/worksheets/worksheet/analyses_listing.py:80
 msgid "DL"
-msgstr ""
+msgstr "DL"
 
 #: bika/lims/content/instrument.py:222
 msgid "Data Interface"
-msgstr ""
+msgstr "رابط داده"
 
 #: bika/lims/content/instrument.py:291
 msgid "Data Interface Options"
@@ -1692,7 +1692,7 @@ msgstr "تاریخ بارگیری"
 
 #: bika/lims/browser/auditlog.py:82 bika/lims/controlpanel/auditlog.py:76
 msgid "Date Modified"
-msgstr ""
+msgstr "تاریخ ویرایش"
 
 #: bika/lims/browser/referencesample.py:364
 #: bika/lims/browser/templates/referencesample_sticker.pt:71
@@ -1702,7 +1702,7 @@ msgstr "تاریخ افتتاح"
 
 #: senaite/core/browser/samples/view.py:155
 msgid "Date Preserved"
-msgstr ""
+msgstr "تاریخ نگهداری"
 
 #: senaite/core/content/resultsreport.py:208
 msgid "Date Printed"
@@ -1718,7 +1718,7 @@ msgstr "تاریخ دریافت"
 
 #: senaite/core/browser/samples/view.py:141
 msgid "Date Registered"
-msgstr ""
+msgstr "تاریخ ثبت"
 
 #: bika/lims/browser/worksheet/views/add_duplicate.py:76
 msgid "Date Requested"
@@ -1734,7 +1734,7 @@ msgstr "تاریخ نمونه برداری"
 
 #: senaite/core/browser/samples/view.py:167
 msgid "Date Verified"
-msgstr ""
+msgstr "تاریخ تأیید"
 
 #: bika/lims/content/instrumentcalibration.py:79
 msgid "Date from which the instrument is under calibration"
@@ -1754,7 +1754,7 @@ msgstr "تاریخ اعطا"
 
 #: senaite/core/browser/worksheets/worksheet/templates/print/sample_by_column.pt:112
 msgid "Date received"
-msgstr ""
+msgstr "تاریخ دریافت"
 
 #: bika/lims/content/instrumentcertification.py:137
 msgid "Date until the certificate is valid"
@@ -1809,11 +1809,11 @@ msgstr ""
 
 #: bika/lims/content/analysisservice.py:165
 msgid "Default Container"
-msgstr ""
+msgstr "ظرف پیش‌فرض"
 
 #: bika/lims/controlpanel/bika_labcontacts.py:80
 msgid "Default Department"
-msgstr ""
+msgstr "بخش پیش‌فرض"
 
 #: bika/lims/content/client.py:163
 msgid "Default Emails to CC all published Samples for this client"
@@ -1821,11 +1821,11 @@ msgstr ""
 
 #: bika/lims/content/abstractbaseanalysis.py:414
 msgid "Default Instrument"
-msgstr ""
+msgstr "دستگاه پیش‌فرض"
 
 #: bika/lims/content/abstractbaseanalysis.py:430
 msgid "Default Method"
-msgstr ""
+msgstr "روش پیش‌فرض"
 
 #: senaite/core/content/senaitesetup.py:1162
 msgid "Default Number of Copies"
@@ -1875,7 +1875,7 @@ msgstr ""
 
 #: bika/lims/content/analysisservice.py:195
 msgid "Default result"
-msgstr ""
+msgstr "نتیجه پیش‌فرض"
 
 #: bika/lims/validators.py:1379
 msgid "Default result is not a valid date"
@@ -1911,7 +1911,7 @@ msgstr ""
 
 #: senaite/core/browser/install/templates/senaite-addsite.pt:97
 msgid "Default timezone"
-msgstr ""
+msgstr "منطقهٔ زمانی پیش‌فرض"
 
 #: senaite/core/content/senaitesetup.py:1037
 msgid "Default turnaround time for analyses."
@@ -1983,7 +1983,7 @@ msgstr "دپارتمان"
 
 #: senaite/core/browser/controlpanel/departments/view.py:68
 msgid "Department ID"
-msgstr ""
+msgstr "شناسه بخش"
 
 #: senaite/core/content/department.py:134
 msgid "Department ID must be unique"
@@ -1992,7 +1992,7 @@ msgstr ""
 #: bika/lims/content/abstractbaseanalysis.py:601
 #: bika/lims/content/analysiscategory.py:72
 msgid "Department Name"
-msgstr ""
+msgstr "نام بخش"
 
 #: senaite/core/profiles/default/types/Departments.xml
 msgid "Departments"
@@ -2041,7 +2041,7 @@ msgstr "جداسازی"
 
 #: senaite/core/browser/modals/analysis/schema.py:105
 msgid "Detection Limit"
-msgstr ""
+msgstr "حد تشخیص"
 
 # senaite.app.listing: Disable auto fetch transitions
 msgid "Disable auto fetch transitions"
@@ -2067,7 +2067,7 @@ msgstr "ارسال"
 
 #: senaite/core/browser/samples/templates/dispatch_samples.pt:15
 msgid "Dispatch samples"
-msgstr ""
+msgstr "ارسال نمونه‌ها"
 
 #: senaite/core/browser/samples/view.py:361
 #: senaite/core/profiles/default/workflows/senaite_sample_workflow/definition.xml
@@ -2076,7 +2076,7 @@ msgstr "ارسال شده"
 
 # bika.lims.bikalisting.js
 msgid "Display Columns"
-msgstr ""
+msgstr "ستون‌های نمایش"
 
 #: bika/lims/content/abstractbaseanalysis.py:727
 msgid "Display Value"
@@ -2121,15 +2121,15 @@ msgstr "شناسه سند"
 
 #: bika/lims/browser/instrument.py:812 bika/lims/content/multifile.py:63
 msgid "Document Location"
-msgstr ""
+msgstr "محل سند"
 
 #: bika/lims/browser/instrument.py:813 bika/lims/content/multifile.py:73
 msgid "Document Type"
-msgstr ""
+msgstr "نوع سند"
 
 #: bika/lims/browser/instrument.py:811 bika/lims/content/multifile.py:55
 msgid "Document Version"
-msgstr ""
+msgstr "نسخه سند"
 
 #: bika/lims/profiles/default/types/Instrument.xml
 msgid "Documents"
@@ -2204,7 +2204,7 @@ msgstr ""
 
 #: senaite/core/profiles/default/workflows/senaite_sample_workflow/definition.xml
 msgid "Duplicate Sample"
-msgstr ""
+msgstr "نمونه تکراری"
 
 #: bika/lims/content/abstractbaseanalysis.py:479
 msgid "Duplicate Variation %"
@@ -2266,7 +2266,7 @@ msgstr "آدرس پست الکترونیک"
 
 #: senaite/core/content/resultsreport.py:88
 msgid "Email Attachments"
-msgstr ""
+msgstr "پیوست‌های ایمیل"
 
 #: senaite/core/content/resultsreport.py:83
 msgid "Email Body"
@@ -2278,19 +2278,19 @@ msgstr "گزارش ایمیل"
 
 #: senaite/core/content/resultsreport.py:66
 msgid "Email Recipients"
-msgstr ""
+msgstr "گیرندگان ایمیل"
 
 #: senaite/core/content/resultsreport.py:72
 msgid "Email Responsibles"
-msgstr ""
+msgstr "ایمیل به مسئولین"
 
 #: senaite/core/content/resultsreport.py:61
 msgid "Email Send Date"
-msgstr ""
+msgstr "تاریخ ارسال ایمیل"
 
 #: senaite/core/content/resultsreport.py:78
 msgid "Email Subject"
-msgstr ""
+msgstr "موضوع ایمیل"
 
 #: senaite/core/content/senaitesetup.py:1088
 msgid "Email body for Sample Invalidation notifications"
@@ -2302,12 +2302,12 @@ msgstr ""
 
 #: bika/lims/browser/publish/emailview.py:158
 msgid "Email cancelled"
-msgstr ""
+msgstr "ایمیل لغو شد"
 
 #: senaite/core/browser/samples/rejection/templates/reject_samples.pt:126
 #: senaite/core/browser/samples/templates/invalidate_samples.pt:129
 msgid "Email notification"
-msgstr ""
+msgstr "اعلان ایمیلی"
 
 #: senaite/core/content/senaitesetup.py:1062
 msgid "Email notification on Sample rejection"
@@ -2315,11 +2315,11 @@ msgstr ""
 
 #: senaite/core/content/resultsreport.py:257
 msgid "Email send log"
-msgstr ""
+msgstr "گزارش ارسال ایمیل"
 
 #: bika/lims/browser/publish/reports_listing.py:88
 msgid "Email sent"
-msgstr ""
+msgstr "ایمیل ارسال شد"
 
 #: bika/lims/validators.py:456
 msgid "Empty keys are not supported"
@@ -2339,7 +2339,7 @@ msgstr ""
 
 #: senaite/core/content/senaitesetup.py:989
 msgid "Enable Sampling"
-msgstr ""
+msgstr "فعال‌سازی نمونه‌گیری"
 
 #: senaite/core/content/senaitesetup.py:997
 msgid "Enable Sampling Scheduling"
@@ -2469,7 +2469,7 @@ msgstr ""
 
 #: senaite/core/browser/install/templates/senaite-addsite.pt:125
 msgid "Example content"
-msgstr ""
+msgstr "محتوای نمونه"
 
 #: senaite/core/browser/samples/view.py:601
 msgid "Exclude from invoice"
@@ -2487,7 +2487,7 @@ msgstr ""
 
 #: bika/lims/content/referencesample.py:214
 msgid "Expected Values"
-msgstr ""
+msgstr "مقادیر مورد انتظار"
 
 #: senaite/core/profiles/default/workflows/senaite_referencesample_workflow/definition.xml
 msgid "Expire"
@@ -2543,7 +2543,7 @@ msgstr "زن"
 
 # senaite.app.listing: Fetch transitions
 msgid "Fetch Transitions"
-msgstr ""
+msgstr "دریافت گذارها"
 
 #: senaite/core/browser/worksheets/worksheet/templates/manage_results.pt:191
 msgid "Field"
@@ -2564,7 +2564,7 @@ msgstr "نام فیلد"
 
 #: bika/lims/config.py:56
 msgid "Field Preservation"
-msgstr ""
+msgstr "نگهداری در محل"
 
 #: bika/lims/browser/fields/interimfieldsfield.py:53
 msgid "Field Title"
@@ -2572,11 +2572,11 @@ msgstr "فیلد عنوان"
 
 #: bika/lims/browser/analysisrequest/add2.py:1460
 msgid "Field flushed"
-msgstr ""
+msgstr "فیلد پاک شد"
 
 #: senaite/core/registry/schema.py:212
 msgid "Field visibility"
-msgstr ""
+msgstr "قابلیت مشاهده فیلد"
 
 #: bika/lims/browser/instrument.py:814
 msgid "File"
@@ -2592,7 +2592,7 @@ msgstr "بارگذاری فایل"
 
 #: bika/lims/content/multifile.py:48
 msgid "File upload "
-msgstr ""
+msgstr "بارگذاری فایل "
 
 #: senaite/core/browser/clients/client/attachments/view.py:59
 msgid "Filename"
@@ -2677,7 +2677,7 @@ msgstr "تابع"
 
 #: senaite/core/browser/samples/view.py:598
 msgid "Future dated sample"
-msgstr ""
+msgstr "نمونه با تاریخ آینده"
 
 #: senaite/core/browser/dexterity/views.py:206
 #: senaite/core/browser/viewlets/templates/resultsinterpretation.pt:27
@@ -2690,7 +2690,7 @@ msgstr ""
 
 #: senaite/core/registry/schema.py:226
 msgid "Generic Setup"
-msgstr ""
+msgstr "راه‌اندازی عمومی"
 
 #: senaite/core/browser/viewlets/templates/auditlog_disabled.pt:11
 msgid "Global Audit Log is disabled"
@@ -2702,7 +2702,7 @@ msgstr ""
 
 #: senaite/core/browser/install/templates/senaite-overview.pt:44
 msgid "Go to your instance"
-msgstr ""
+msgstr "رفتن به سامانه"
 
 #: bika/lims/content/person.py:43
 msgid "Greeting title eg. Mr, Mrs, Dr"
@@ -2716,7 +2716,7 @@ msgstr ""
 
 #: bika/lims/content/arreport.py:134
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: bika/lims/content/referencesample.py:105
 #: bika/lims/content/sampletype.py:127
@@ -2735,7 +2735,7 @@ msgstr "فیلد پنهان"
 
 #: senaite/core/browser/modals/analysis/schema.py:114
 msgid "Hidden from report"
-msgstr ""
+msgstr "پنهان در گزارش"
 
 #: senaite/core/browser/viewlets/templates/sampleheader.pt:54
 msgid "Hide additional fields"
@@ -2755,7 +2755,7 @@ msgstr "ساعات"
 
 #: bika/lims/content/supplier.py:75
 msgid "IBN"
-msgstr ""
+msgstr "IBN"
 
 #: bika/lims/browser/referencesample.py:340
 #: bika/lims/browser/templates/referencesample_view.pt:43
@@ -2768,11 +2768,11 @@ msgstr "سرور شناسه"
 
 #: senaite/core/browser/idserver/templates/numbergenerator.pt:17
 msgid "ID Server Settings"
-msgstr ""
+msgstr "تنظیمات سرور شناسه"
 
 #: bika/lims/content/bikasetup.py:1188
 msgid "ID Server Values"
-msgstr ""
+msgstr "مقادیر سرور شناسه"
 
 #: senaite/core/browser/idserver/templates/numbergenerator.pt:113
 msgid "ID Template <span class=\"sort-indicator\" />"
@@ -2916,7 +2916,7 @@ msgstr ""
 
 #: bika/lims/browser/resultsimport/autoimportlogs.py:59
 msgid "Imported File"
-msgstr ""
+msgstr "فایل درون‌ریزی‌شده"
 
 #: bika/lims/content/instrument.py:200
 msgid "In-lab calibration procedure"
@@ -2970,7 +2970,7 @@ msgstr ""
 
 #: bika/lims/content/instrument.py:347
 msgid "InstallationDate"
-msgstr ""
+msgstr "تاریخ نصب"
 
 #: bika/lims/content/method.py:77
 msgid "Instructions"
@@ -3003,15 +3003,15 @@ msgstr ""
 
 #: bika/lims/browser/instrument.py:791
 msgid "Instrument Files"
-msgstr ""
+msgstr "فایل‌های دستگاه"
 
 #: senaite/core/exportimport/import.pt:37
 msgid "Instrument Import"
-msgstr ""
+msgstr "درون‌ریزی از دستگاه"
 
 #: senaite/core/profiles/default/types/InstrumentLocation.xml
 msgid "Instrument Location"
-msgstr ""
+msgstr "محل دستگاه"
 
 #: senaite/core/profiles/default/types/InstrumentLocations.xml
 msgid "Instrument Locations"
@@ -3075,11 +3075,11 @@ msgstr ""
 
 #: senaite/core/profiles/default/types/InstrumentType.xml
 msgid "InstrumentType"
-msgstr ""
+msgstr "نوع دستگاه"
 
 #: senaite/core/profiles/default/types/InstrumentTypes.xml
 msgid "InstrumentTypes"
-msgstr ""
+msgstr "انواع دستگاه"
 
 #: senaite/core/profiles/default/types/InstrumentLocation.xml
 #: senaite/core/profiles/default/types/InstrumentType.xml
@@ -3136,7 +3136,7 @@ msgstr "استفاده داخلی"
 #: bika/lims/browser/templates/instrument_referenceanalyses.pt:42
 #: bika/lims/browser/templates/referencesample_analyses.pt:40
 msgid "Interpolation"
-msgstr ""
+msgstr "درون‌یابی"
 
 #: senaite/core/profiles/default/types/InterpretationTemplate.xml
 msgid "Interpretation Template"
@@ -3189,7 +3189,7 @@ msgstr ""
 
 #: senaite/core/browser/samples/templates/invalidate_samples.pt:90
 msgid "Invalidation reason"
-msgstr ""
+msgstr "دلیل ابطال"
 
 #: bika/lims/browser/analysisrequest/templates/invoice_content.pt:18
 #: bika/lims/profiles/default/types/AnalysisRequest.xml
@@ -3219,7 +3219,7 @@ msgstr "فاکتور به"
 
 #: bika/lims/browser/analysisrequest/invoice.py:187
 msgid "Invoice {} created"
-msgstr ""
+msgstr "فاکتور {} ایجاد شد"
 
 #: senaite/core/exportimport/setupdata/__init__.py:2426
 msgid "InvoiceBatch has no End Date"
@@ -3243,7 +3243,7 @@ msgstr "عنوان شغلی"
 
 #: bika/lims/content/abstractbaseanalysis.py:753
 msgid "Keep order above"
-msgstr ""
+msgstr "حفظ ترتیب بالا"
 
 #: bika/lims/content/instrument.py:287
 msgid "Key"
@@ -3265,7 +3265,7 @@ msgstr ""
 
 #: senaite/core/browser/form/adapters/analysisservice.py:187
 msgid "Keyword required"
-msgstr ""
+msgstr "کلیدواژه الزامی است"
 
 #: senaite/core/browser/viewlets/templates/attachments.pt:67
 #: senaite/core/browser/viewlets/templates/worksheet_attachments.pt:42
@@ -3279,7 +3279,7 @@ msgstr "آزمایشگاه"
 
 #: bika/lims/content/supplier.py:98
 msgid "Lab Account Number"
-msgstr ""
+msgstr "شماره حساب آزمایشگاه"
 
 #: senaite/core/browser/samples/templates/multi_results.pt:134
 msgid "Lab Analyses"
@@ -3300,7 +3300,7 @@ msgstr "دپارتمانهای آزمایشگاه"
 
 #: bika/lims/config.py:57
 msgid "Lab Preservation"
-msgstr ""
+msgstr "نگهداری در آزمایشگاه"
 
 #: senaite/core/profiles/default/types/LabProduct.xml
 msgid "Lab Product"
@@ -3321,7 +3321,7 @@ msgstr "برچسب"
 
 #: senaite/core/registry/schema.py:69
 msgid "Label configuration"
-msgstr ""
+msgstr "پیکربندی برچسب"
 
 #: senaite/core/content/label.py:65
 msgid "Label names must be unique"
@@ -3333,7 +3333,7 @@ msgstr ""
 
 #: senaite/core/browser/label/labeled_objects.py:50
 msgid "Labeled Objects"
-msgstr ""
+msgstr "آیتم‌های برچسب‌دار"
 
 #: senaite/core/browser/controlpanel/labels/view.py:51
 #: senaite/core/browser/label/labeled_objects.py:65
@@ -3352,7 +3352,7 @@ msgstr "آزمایشگاه همکار"
 
 #: senaite/core/content/senaitesetup.py:1023
 msgid "Laboratory Workdays"
-msgstr ""
+msgstr "روزهای کاری آزمایشگاه"
 
 #: senaite/core/browser/install/templates/senaite-addsite.pt:74
 msgid "Language"
@@ -3372,7 +3372,7 @@ msgstr ""
 
 #: senaite/core/browser/clients/client/contacts/templates/login_details.pt:97
 msgid "Last Login Time"
-msgstr ""
+msgstr "آخرین زمان ورود"
 
 #: senaite/core/browser/samples/view.py:439
 msgid "Late"
@@ -3404,7 +3404,7 @@ msgstr ""
 
 #: senaite/core/browser/viewlets/setup_legacy_link.py:63
 msgid "Legacy LIMS Setup"
-msgstr ""
+msgstr "تنظیمات قدیمی سامانه"
 
 #: senaite/core/browser/worksheets/worksheet/templates/print/sample_by_column.pt:153
 #: senaite/core/browser/worksheets/worksheet/templates/print/sample_by_row.pt:120
@@ -3442,7 +3442,7 @@ msgstr ""
 
 #: senaite/core/exportimport/import.pt:47
 msgid "Load Setup Data"
-msgstr ""
+msgstr "بارگذاری داده‌های راه‌اندازی"
 
 #: bika/lims/content/method.py:89
 msgid "Load documents describing the method here"
@@ -3450,7 +3450,7 @@ msgstr ""
 
 #: senaite/core/exportimport/import.pt:121
 msgid "Load from file"
-msgstr ""
+msgstr "بارگذاری از فایل"
 
 #: bika/lims/content/instrumentcertification.py:195
 msgid "Load the certificate document here"
@@ -3471,7 +3471,7 @@ msgstr "مکان"
 
 #: bika/lims/content/storagelocation.py:58
 msgid "Location Code"
-msgstr ""
+msgstr "کد مکان"
 
 #: bika/lims/content/storagelocation.py:63
 msgid "Location Description"
@@ -3479,11 +3479,11 @@ msgstr ""
 
 #: bika/lims/content/storagelocation.py:53
 msgid "Location Title"
-msgstr ""
+msgstr "عنوان مکان"
 
 #: bika/lims/content/storagelocation.py:68
 msgid "Location Type"
-msgstr ""
+msgstr "نوع مکان"
 
 #: bika/lims/content/multifile.py:64
 msgid "Location where the document set is shelved"
@@ -3536,7 +3536,7 @@ msgstr "تعمیرات"
 #. Default: "Type"
 #: bika/lims/content/instrumentmaintenancetask.py:55
 msgid "Maintenance type"
-msgstr ""
+msgstr "نوع نگهداشت"
 
 #: bika/lims/content/abstractbaseanalysis.py:349
 msgid "Make attachments mandatory for verification"
@@ -3549,11 +3549,11 @@ msgstr "مرد"
 #: bika/lims/browser/analysisrequest/templates/analysisrequest_analyses.pt:14
 #: bika/lims/profiles/default/types/AnalysisRequest.xml
 msgid "Manage Analyses"
-msgstr ""
+msgstr "مدیریت آنالیزها"
 
 #: bika/lims/browser/analysisrequest/templates/ar_add2.pt:389
 msgid "Manage Form Fields"
-msgstr ""
+msgstr "مدیریت فیلدهای فرم"
 
 #: senaite/core/browser/idserver/templates/numbergenerator.pt:12
 msgid "Manage Number Generator"
@@ -3561,7 +3561,7 @@ msgstr ""
 
 #: senaite/core/browser/samples/templates/partition_magic.pt:21
 msgid "Manage Partitions"
-msgstr ""
+msgstr "مدیریت پارتیشن‌ها"
 
 #: senaite/core/profiles/default/types/Worksheet.xml
 msgid "Manage Results"
@@ -3573,7 +3573,7 @@ msgstr ""
 
 #: senaite/core/browser/clients/client/contacts/templates/login_details.pt:41
 msgid "Manage linked User"
-msgstr ""
+msgstr "مدیریت کاربر پیوندشده"
 
 #: senaite/core/browser/viewlets/templates/sampleheader.pt:40
 msgid "Manage sample fields"
@@ -3624,7 +3624,7 @@ msgstr "تولید کننده"
 
 #: senaite/core/profiles/default/types/Manufacturers.xml
 msgid "Manufacturers"
-msgstr ""
+msgstr "تولیدکنندگان"
 
 #: bika/lims/content/analysisrequest.py:1417
 msgid ""
@@ -3681,7 +3681,7 @@ msgstr ""
 
 #: bika/lims/browser/clientfolder.py:94
 msgid "Member Discount"
-msgstr ""
+msgstr "تخفیف اعضا"
 
 #: bika/lims/content/analysisrequest.py:1119
 #: bika/lims/content/bikasetup.py:281
@@ -3725,7 +3725,7 @@ msgstr "روشها"
 
 #: bika/lims/content/person.py:59
 msgid "Middle initial"
-msgstr ""
+msgstr "حرف اول نام میانی"
 
 #: bika/lims/content/person.py:67
 msgid "Middle name"
@@ -3758,7 +3758,7 @@ msgstr "حداقل ۵ کاراکتر"
 
 #: bika/lims/content/sampletype.py:165
 msgid "Minimum Volume"
-msgstr ""
+msgstr "حداقل حجم"
 
 #: bika/lims/content/bikasetup.py:339
 msgid "Minimum number of results for QC stats calculations"
@@ -3802,7 +3802,7 @@ msgstr ""
 #: senaite/core/browser/samples/multi_results_transposed.py:66
 #: senaite/core/profiles/default/workflows/senaite_sample_workflow/definition.xml
 msgid "Multi Results"
-msgstr ""
+msgstr "نتایج چندگانه"
 
 #: bika/lims/content/bikasetup.py:528
 msgid "Multi Verification type"
@@ -3818,11 +3818,11 @@ msgstr "چندفایلی"
 
 #: senaite/core/config/vocabularies.py:60
 msgid "Multiple choices"
-msgstr ""
+msgstr "چند انتخابی"
 
 #: senaite/core/config/vocabularies.py:58
 msgid "Multiple selection"
-msgstr ""
+msgstr "انتخاب چندگانه"
 
 #: senaite/core/config/vocabularies.py:59
 msgid "Multiple selection (with duplicates)"
@@ -3830,7 +3830,7 @@ msgstr ""
 
 #: bika/lims/browser/fields/interimfieldsfield.py:108
 msgid "Multiple values"
-msgstr ""
+msgstr "مقادیر چندگانه"
 
 #: bika/lims/validators.py:469
 msgid "Multiple values control type is not supported for choices"
@@ -3838,7 +3838,7 @@ msgstr ""
 
 #: senaite/core/profiles/default/actions.xml
 msgid "My Organization"
-msgstr ""
+msgstr "سازمان من"
 
 #: senaite/core/profiles/default/actions.xml
 msgid "My Profile"
@@ -3846,7 +3846,7 @@ msgstr "پروفایل من"
 
 #: bika/lims/content/supplier.py:63
 msgid "NIB"
-msgstr ""
+msgstr "NIB"
 
 #: senaite/core/browser/viewlets/templates/attachments.pt:63
 #: senaite/core/config/widgets.py:32 senaite/core/content/contact.py:114
@@ -3855,7 +3855,7 @@ msgstr "نام"
 
 #: senaite/core/browser/viewlets/setup_legacy_link.py:67
 msgid "New LIMS Setup"
-msgstr ""
+msgstr "راه‌اندازی سامانه جدید"
 
 #: bika/lims/browser/viewlets/templates/resultsranges_out_of_date_viewlet.pt:23
 msgid ""
@@ -3879,7 +3879,7 @@ msgstr ""
 
 #: bika/lims/browser/publish/templates/email.pt:70
 msgid "No Email Address"
-msgstr ""
+msgstr "بدون نشانی ایمیل"
 
 #: senaite/core/browser/form/adapters/analysisservice.py:43
 msgid "No Method selected for this Service"
@@ -3905,7 +3905,7 @@ msgstr "بدون زیرگروه"
 
 #: bika/lims/browser/workflow/__init__.py:124
 msgid "No action defined."
-msgstr ""
+msgstr "عملیاتی تعریف نشده."
 
 #: senaite/core/exportimport/instruments/importer.py:458
 msgid "No analyses found for {sid} and keyword '{keyword}'"
@@ -3946,12 +3946,12 @@ msgstr "بدون تغییر"
 
 #: senaite/core/browser/workflow/worksheet.py:50
 msgid "No changes made"
-msgstr ""
+msgstr "تغییری اعمال نشد"
 
 #: bika/lims/browser/workflow/__init__.py:166
 #: bika/lims/browser/workflow/analysisrequest.py:94
 msgid "No changes made."
-msgstr ""
+msgstr "تغییری اعمال نشد."
 
 #: bika/lims/controlpanel/bika_instruments.py:164
 msgid "No date set"
@@ -3974,7 +3974,7 @@ msgstr ""
 #: senaite/core/exportimport/instruments/abbott/m2000rt/m2000rt.py:59
 #: senaite/core/exportimport/instruments/alere/pima/beads.py:47
 msgid "No file selected"
-msgstr ""
+msgstr "فایلی انتخاب نشده"
 
 #: senaite/core/browser/form/adapters/data_import.py:81
 msgid "No importer not found for interface '{}'"
@@ -3986,16 +3986,16 @@ msgstr ""
 
 #: bika/lims/browser/workflow/client.py:120
 msgid "No items published"
-msgstr ""
+msgstr "موردی منتشر نشد"
 
 #: senaite/core/browser/samples/partition_magic.py:64
 #: senaite/core/browser/samples/rejection/reject_samples.py:78
 msgid "No items selected"
-msgstr ""
+msgstr "موردی انتخاب نشده"
 
 #: bika/lims/browser/workflow/__init__.py:129
 msgid "No items selected."
-msgstr ""
+msgstr "موردی انتخاب نشده."
 
 #: bika/lims/controlpanel/bika_analysisservices.py:114
 msgid "No new items were created."
@@ -4007,7 +4007,7 @@ msgstr ""
 
 #: bika/lims/browser/publish/emailview.py:176
 msgid "No reports found"
-msgstr ""
+msgstr "گزارشی یافت نشد"
 
 #: senaite/core/browser/samples/invalidate_samples.py:110
 msgid ""
@@ -4041,7 +4041,7 @@ msgstr ""
 
 #: bika/lims/browser/analysisrequest/add2.py:2057
 msgid "No valid contact"
-msgstr ""
+msgstr "مخاطب معتبری وجود ندارد"
 
 #: bika/lims/validators.py:448
 msgid ""
@@ -4084,7 +4084,7 @@ msgstr "تنظیم‌نشده"
 
 #: bika/lims/content/worksheet.py:291
 msgid "Not specified"
-msgstr ""
+msgstr "مشخص‌نشده"
 
 #: bika/lims/browser/analysisrequest/templates/ar_add_manage.pt:42
 msgid ""
@@ -4104,7 +4104,7 @@ msgstr ""
 
 #: senaite/core/content/senaitesetup.py:1354
 msgid "Notifications"
-msgstr ""
+msgstr "اعلان‌ها"
 
 #: senaite/core/browser/worksheets/worksheet/templates/print.pt:126
 msgid "Num columns"
@@ -4116,7 +4116,7 @@ msgstr "عدد"
 
 #: senaite/core/browser/samples/view.py:230
 msgid "Number of Analyses"
-msgstr ""
+msgstr "تعداد آنالیزها"
 
 #: senaite/core/browser/samples/templates/partition_magic.pt:82
 msgid "Number of Partitions to create"
@@ -4124,7 +4124,7 @@ msgstr ""
 
 #: senaite/core/browser/stickers/templates/stickers_preview.pt:39
 msgid "Number of copies"
-msgstr ""
+msgstr "تعداد نسخه‌ها"
 
 #: senaite/core/registry/schema.py:180
 msgid "Number of prominent columns"
@@ -4227,16 +4227,16 @@ msgstr "جهت صفحه"
 
 #: senaite/core/z3cform/widgets/address.py:124
 msgid "Other address"
-msgstr ""
+msgstr "نشانی دیگر"
 
 #: senaite/core/browser/samples/rejection/templates/reject_samples.pt:100
 #: senaite/core/skins/senaite_templates/senaite_widgets/rejectionwidget.pt:70
 msgid "Other reasons"
-msgstr ""
+msgstr "دلایل دیگر"
 
 #: bika/lims/browser/viewlets/templates/rejected_ar_viewlet.pt:22
 msgid "Other reasons:"
-msgstr ""
+msgstr "دلایل دیگر:"
 
 #: senaite/core/browser/dashboard/dashboard.py:157
 msgid "Other status"
@@ -4262,7 +4262,7 @@ msgstr ""
 
 #: senaite/core/content/resultsreport.py:197
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: senaite/core/content/resultsreport.py:198
 msgid "PDF file of the report"
@@ -4286,7 +4286,7 @@ msgstr "رمز عبور"
 
 #: senaite/core/browser/install/templates/senaite-addsite.pt:50
 msgid "Path identifier"
-msgstr ""
+msgstr "شناسه مسیر"
 
 #: bika/lims/browser/fields/referenceresultsfield.py:36
 #: bika/lims/browser/referencesample.py:228
@@ -4321,7 +4321,7 @@ msgstr "تلفن( همراه)"
 
 #: bika/lims/content/instrument.py:338
 msgid "Photo image file"
-msgstr ""
+msgstr "فایل تصویر"
 
 #: bika/lims/content/instrument.py:339
 msgid "Photo of the instrument"
@@ -4465,7 +4465,7 @@ msgstr ""
 
 #: bika/lims/content/abstractbaseanalysis.py:735
 msgid "Predefined results"
-msgstr ""
+msgstr "نتایج از پیش تعریف‌شده"
 
 #: bika/lims/content/bikasetup.py:312
 msgid "Preferred decimal mark for reports."
@@ -4574,12 +4574,12 @@ msgstr "لیست قیمت‌ها"
 
 #: bika/lims/content/client.py:94
 msgid "Primary Contact"
-msgstr ""
+msgstr "مخاطب اصلی"
 
 #: bika/lims/browser/publish/reports_listing.py:73
 #: bika/lims/browser/templates/analysisreport_info.pt:60
 msgid "Primary Sample"
-msgstr ""
+msgstr "نمونه اصلی"
 
 #: senaite/core/browser/samples/view.py:703
 #: senaite/core/browser/stickers/templates/stickers_preview.pt:51
@@ -4593,7 +4593,7 @@ msgstr "چاپ فاکتور"
 
 #: senaite/core/browser/worksheets/worksheet/templates/manage_results.pt:135
 msgid "Print Worksheet"
-msgstr ""
+msgstr "چاپ برگه کار"
 
 #: bika/lims/browser/templates/batch_publish.pt:124
 msgid "Print date:"
@@ -4605,7 +4605,7 @@ msgstr "چاپ لیست قیمت"
 
 #: senaite/core/browser/samples/view.py:254
 msgid "Print stickers"
-msgstr ""
+msgstr "چاپ برچسب‌ها"
 
 #: senaite/core/browser/samples/view.py:241
 msgid "Printed"
@@ -4651,7 +4651,7 @@ msgstr "پیشرفت"
 #: senaite/core/browser/samples/templates/manage_sample_fields.pt:103
 #: senaite/core/registry/schema.py:198
 msgid "Prominent fields"
-msgstr ""
+msgstr "فیلدهای برجسته"
 
 #: bika/lims/content/abstractbaseanalysis.py:865
 msgid "Protocol ID"
@@ -4663,7 +4663,7 @@ msgstr "استان"
 
 #: senaite/core/content/resultsreport.py:119
 msgid "Publication Modes"
-msgstr ""
+msgstr "حالت‌های انتشار"
 
 #: senaite/core/profiles/default/workflows/senaite_analysis_workflow/definition.xml
 #: senaite/core/profiles/default/workflows/senaite_sample_workflow/definition.xml
@@ -4682,7 +4682,7 @@ msgstr "انتشار توسط"
 
 #: bika/lims/browser/publish/reports_listing.py:84
 msgid "Published Date"
-msgstr ""
+msgstr "تاریخ انتشار"
 
 #: bika/lims/profiles/default/types/AnalysisRequest.xml
 msgid "Published results"
@@ -4690,7 +4690,7 @@ msgstr "انتشار نتایج"
 
 #: bika/lims/browser/workflow/client.py:122
 msgid "Published {}, "
-msgstr ""
+msgstr "منتشر شد {}، "
 
 #: senaite/core/browser/viewlets/sampleanalyses.py:76
 msgid "QC Analyses"
@@ -4698,7 +4698,7 @@ msgstr "آنالیزهای کنترل کیفیت"
 
 #: bika/lims/browser/referencesample.py:143
 msgid "QC Analysis ID"
-msgstr ""
+msgstr "شناسه آنالیز کنترل کیفیت"
 
 #: bika/lims/profiles/default/types/Instrument.xml
 msgid "QC Results"
@@ -4738,7 +4738,7 @@ msgstr "واگذاری مجدد"
 
 #: senaite/core/browser/worksheets/worksheet/analyses_listing.py:445
 msgid "Reassignable Slot"
-msgstr ""
+msgstr "جایگاه قابل واگذاری مجدد"
 
 #: senaite/core/profiles/default/workflows/senaite_sample_workflow/definition.xml
 msgid "Reattach"
@@ -4761,7 +4761,7 @@ msgstr "دریافت شده"
 
 #: senaite/core/browser/dashboard/dashboard.py:135
 msgid "Reception pending"
-msgstr ""
+msgstr "در انتظار دریافت"
 
 #: senaite/core/content/resultsreport.py:244
 msgid "Recipient"
@@ -4778,7 +4778,7 @@ msgstr "مرجع"
 
 #: bika/lims/browser/referencesample.py:83
 msgid "Reference Analyses"
-msgstr ""
+msgstr "آنالیزهای مرجع"
 
 #: bika/lims/profiles/default/types/ReferenceAnalysis.xml
 msgid "Reference Analysis"
@@ -4803,7 +4803,7 @@ msgstr "شناسه مرجع"
 #: bika/lims/browser/templates/instrument_referenceanalyses.pt:12
 #: bika/lims/browser/worksheet/views/referencesamples.py:72
 msgid "Reference Sample"
-msgstr ""
+msgstr "نمونه مرجع"
 
 #: senaite/core/profiles/default/types/Supplier.xml
 msgid "Reference Samples"
@@ -4812,7 +4812,7 @@ msgstr "نمونه های مرجع"
 #: bika/lims/browser/referencesample.py:202
 #: bika/lims/profiles/default/types/ReferenceSample.xml
 msgid "Reference Values"
-msgstr ""
+msgstr "مقادیر مرجع"
 
 #: bika/lims/content/referencesample.py:98
 msgid "Reference sample values are zero or 'blank'"
@@ -4846,7 +4846,7 @@ msgstr "رد کردن آزمایش"
 
 #: senaite/core/browser/samples/rejection/templates/reject_samples.pt:17
 msgid "Reject samples"
-msgstr ""
+msgstr "رد نمونه‌ها"
 
 #: senaite/core/browser/dashboard/dashboard.py:125
 #: senaite/core/browser/samples/rejection/templates/rejection_report.pt:121
@@ -4856,11 +4856,11 @@ msgstr "رد شد"
 
 #: bika/lims/browser/workflow/analysisrequest.py:98
 msgid "Rejected items: {}"
-msgstr ""
+msgstr "موارد ردشده: {}"
 
 #: bika/lims/browser/viewlets/templates/rejected_ar_viewlet.pt:13
 msgid "Rejected sample"
-msgstr ""
+msgstr "نمونه ردشده"
 
 #: senaite/core/browser/samples/rejection/reject_samples.py:114
 msgid "Rejected {} samples: {}"
@@ -4868,15 +4868,15 @@ msgstr ""
 
 #: bika/lims/content/bikasetup.py:1201
 msgid "Rejection Reasons"
-msgstr ""
+msgstr "دلایل رد"
 
 #: senaite/core/browser/samples/rejection/reject_samples.py:121
 msgid "Rejection cancelled"
-msgstr ""
+msgstr "رد لغو شد"
 
 #: senaite/core/browser/samples/rejection/templates/reject_samples.pt:84
 msgid "Rejection reasons"
-msgstr ""
+msgstr "دلایل رد"
 
 #: senaite/core/browser/samples/rejection/reject_samples.py:70
 msgid "Rejection workflow is not enabled"
@@ -4898,7 +4898,7 @@ msgstr ""
 
 #: senaite/core/browser/worksheets/worksheet/analyses_listing.py:672
 msgid "Remarks of {}"
-msgstr ""
+msgstr "ملاحظات {}"
 
 #: bika/lims/content/instrumentcalibration.py:108
 msgid "Remarks to take into account before calibration"
@@ -4936,7 +4936,7 @@ msgstr ""
 
 #: senaite/core/browser/viewlets/templates/attachments.pt:68
 msgid "Render in Report"
-msgstr ""
+msgstr "نمایش در گزارش"
 
 #: bika/lims/content/instrumentmaintenancetask.py:164
 #: bika/lims/content/instrumentscheduledtask.py:121
@@ -4965,15 +4965,15 @@ msgstr ""
 
 #: senaite/core/content/resultsreport.py:229
 msgid "Report metadata"
-msgstr ""
+msgstr "فراداده گزارش"
 
 #: senaite/core/content/resultsreport.py:242
 msgid "Report recipients"
-msgstr ""
+msgstr "گیرندگان گزارش"
 
 #: bika/lims/content/instrumentcertification.py:194
 msgid "Report upload"
-msgstr ""
+msgstr "بارگذاری گزارش"
 
 #: senaite/core/profiles/default/workflows/senaite_sample_workflow/definition.xml
 msgid "Republish"
@@ -5006,7 +5006,7 @@ msgstr "بازنشانی"
 
 # senaite.app.listing: Reset columns
 msgid "Reset columns"
-msgstr ""
+msgstr "بازنشانی ستون‌ها"
 
 #: bika/lims/browser/publish/templates/email.pt:83
 #: bika/lims/browser/templates/analysisreport_info.pt:154
@@ -5032,7 +5032,7 @@ msgstr "نتیجه"
 
 #: senaite/core/browser/modals/analysis/schema.py:130
 msgid "Result Capture Date"
-msgstr ""
+msgstr "تاریخ ثبت نتیجه"
 
 #: bika/lims/content/abstractbaseanalysis.py:726
 msgid "Result Value"
@@ -5071,7 +5071,7 @@ msgstr ""
 
 #: bika/lims/content/analysisservice.py:116
 msgid "Result variables"
-msgstr ""
+msgstr "متغیرهای نتیجه"
 
 #: bika/lims/browser/resultsimport/autoimportlogs.py:63
 msgid "Results"
@@ -5084,7 +5084,7 @@ msgstr ""
 #: senaite/core/content/resultsreport.py:132
 #: senaite/core/profiles/default/types/ResultsReport.xml
 msgid "Results Report"
-msgstr ""
+msgstr "گزارش نتایج"
 
 #: senaite/core/content/senaitesetup.py:1285
 msgid "Results Reports"
@@ -5100,12 +5100,12 @@ msgstr ""
 
 #: senaite/core/browser/dashboard/dashboard.py:123
 msgid "Results pending"
-msgstr ""
+msgstr "نتایج در انتظار"
 
 #: bika/lims/content/analysisrequest.py:660
 #: bika/lims/content/preservation.py:52 bika/lims/content/sampletype.py:116
 msgid "Retention Period"
-msgstr ""
+msgstr "دوره نگهداری"
 
 #: senaite/core/profiles/default/workflows/senaite_analysis_workflow/definition.xml
 msgid "Retest"
@@ -5129,7 +5129,7 @@ msgstr "پس‌گرفته شد"
 
 #: bika/lims/browser/templates/analyses_retractedlist.pt:11
 msgid "Retracted analyses"
-msgstr ""
+msgstr "آنالیزهای پس‌گرفته"
 
 #: bika/lims/browser/instrument.py:561
 msgid "Retractions"
@@ -5154,15 +5154,15 @@ msgstr "بازگردانی"
 
 #: bika/lims/browser/worksheet/views/folder.py:110
 msgid "Routine Analyses"
-msgstr ""
+msgstr "آنالیزهای روتین"
 
 #: senaite/core/configure.zcml:56
 msgid "SENAITE CORE"
-msgstr ""
+msgstr "هسته سامانه"
 
 #: senaite/core/configure.zcml:56
 msgid "SENAITE CORE Add-on"
-msgstr ""
+msgstr "افزونه هسته سامانه"
 
 #: bika/lims/profiles.zcml:15
 msgid "SENAITE Core 1.x (do not install)"
@@ -5170,7 +5170,7 @@ msgstr ""
 
 #: senaite/core/browser/frontpage/templates/frontpage.pt:6
 msgid "SENAITE LIMS"
-msgstr ""
+msgstr "آزمایشگاه تندیس"
 
 #: senaite/core/browser/frontpage/configure.zcml:23
 msgid "SENAITE LIMS front-page"
@@ -5179,16 +5179,16 @@ msgstr ""
 #: senaite/core/profiles/default/controlpanel.xml
 #: senaite/core/registry/controlpanel.py:81
 msgid "SENAITE Registry"
-msgstr ""
+msgstr "رجیستری سامانه"
 
 #: senaite/core/browser/setup/edit.py:38
 #: senaite/core/profiles/default/types/Setup.xml
 msgid "SENAITE Setup"
-msgstr ""
+msgstr "تنظیمات سامانه"
 
 #: senaite/core/browser/frontpage/configure.zcml:23
 msgid "SENAITE front-page"
-msgstr ""
+msgstr "صفحه نخست سامانه"
 
 #: senaite/core/browser/clients/client/contacts/login_details.py:315
 msgid "SMTP server disconnected. User creation aborted."
@@ -5224,23 +5224,23 @@ msgstr ""
 
 #: senaite/core/profiles/default/types/SampleCondition.xml
 msgid "Sample Condition"
-msgstr ""
+msgstr "وضعیت نمونه"
 
 #: senaite/core/profiles/default/types/SampleConditions.xml
 msgid "Sample Conditions"
-msgstr ""
+msgstr "وضعیت‌های نمونه"
 
 #: senaite/core/profiles/default/types/SampleContainer.xml
 msgid "Sample Container"
-msgstr ""
+msgstr "ظرف نمونه"
 
 #: senaite/core/profiles/default/types/SampleContainers.xml
 msgid "Sample Containers"
-msgstr ""
+msgstr "ظرف‌های نمونه"
 
 #: senaite/core/registry/schema.py:160
 msgid "Sample Header"
-msgstr ""
+msgstr "سربرگ نمونه"
 
 #: senaite/core/browser/samples/rejection/templates/rejection_report.pt:105
 #: senaite/core/browser/samples/view.py:127
@@ -5249,19 +5249,19 @@ msgstr "شناسه نمونه"
 
 #: senaite/core/browser/samples/templates/invalidate_samples.pt:17
 msgid "Sample Invalidation"
-msgstr ""
+msgstr "ابطال نمونه"
 
 #: senaite/core/profiles/default/types/SampleMatrices.xml
 msgid "Sample Matrices"
-msgstr ""
+msgstr "ماتریکس‌های نمونه"
 
 #: senaite/core/profiles/default/types/SampleMatrix.xml
 msgid "Sample Matrix"
-msgstr ""
+msgstr "ماتریکس نمونه"
 
 #: bika/lims/content/artemplate.py:172
 msgid "Sample Partitions"
-msgstr ""
+msgstr "پارتیشن‌های نمونه"
 
 #: senaite/core/browser/samples/view.py:205
 #: senaite/core/browser/worksheets/worksheet/analyses_listing.py:579
@@ -5275,7 +5275,7 @@ msgstr "محلهای نمونه برداری"
 
 #: senaite/core/profiles/default/types/SamplePreservation.xml
 msgid "Sample Preservation"
-msgstr ""
+msgstr "نگهداری نمونه"
 
 #: senaite/core/profiles/default/types/SamplePreservations.xml
 msgid "Sample Preservations"
@@ -5283,11 +5283,11 @@ msgstr ""
 
 #: bika/lims/content/analysisrequest.py:671
 msgid "Sample Rejection"
-msgstr ""
+msgstr "رد نمونه"
 
 #: bika/lims/profiles/default/types/Client.xml
 msgid "Sample Templates"
-msgstr ""
+msgstr "قالب‌های نمونه"
 
 #: senaite/core/browser/samples/templates/partition_magic.pt:155
 #: senaite/core/browser/samples/view.py:201
@@ -5325,7 +5325,7 @@ msgstr "نوع نمونه"
 
 #: senaite/core/content/interpretationtemplate.py:71
 msgid "Sample types"
-msgstr ""
+msgstr "انواع نمونه"
 
 #: senaite/core/registry/schema.py:125
 msgid "Sample view configuration"
@@ -5337,11 +5337,11 @@ msgstr ""
 
 #: senaite/core/profiles/default/types/SampleTemplate.xml
 msgid "SampleTemplate"
-msgstr ""
+msgstr "قالب نمونه"
 
 #: senaite/core/profiles/default/types/SampleTemplates.xml
 msgid "SampleTemplates"
-msgstr ""
+msgstr "قالب‌های نمونه"
 
 #: senaite/core/profiles/default/types/SampleType.xml
 msgid "SampleType"
@@ -5403,11 +5403,11 @@ msgstr "تاریخ نمونه برداری"
 #: senaite/core/browser/samples/view.py:214
 #: senaite/core/profiles/default/types/SamplingDeviation.xml
 msgid "Sampling Deviation"
-msgstr ""
+msgstr "انحراف نمونه‌گیری"
 
 #: senaite/core/profiles/default/types/SamplingDeviations.xml
 msgid "Sampling Deviations"
-msgstr ""
+msgstr "انحرافات نمونه‌گیری"
 
 #: bika/lims/content/samplepoint.py:83
 msgid "Sampling Frequency"
@@ -5415,7 +5415,7 @@ msgstr "تناوب نمونه برداری"
 
 #: senaite/core/browser/dashboard/dashboard.py:134
 msgid "Sampling scheduled"
-msgstr ""
+msgstr "نمونه‌گیری زمان‌بندی شد"
 
 #: senaite/core/vocabularies/setup.py:161
 msgid "Saturday"
@@ -5429,11 +5429,11 @@ msgstr "ذخیره کردن"
 
 #: bika/lims/browser/analysisrequest/templates/ar_add2.pt:728
 msgid "Save and Copy"
-msgstr ""
+msgstr "ذخیره و کپی"
 
 #: bika/lims/browser/workflow/__init__.py:206
 msgid "Saved items: {}"
-msgstr ""
+msgstr "موارد ذخیره‌شده: {}"
 
 #: bika/lims/profiles/default/types/Instrument.xml
 msgid "Schedule"
@@ -5441,20 +5441,20 @@ msgstr "برنامه"
 
 #: senaite/core/profiles/default/workflows/senaite_sample_workflow/definition.xml
 msgid "Schedule sampling"
-msgstr ""
+msgstr "زمان‌بندی نمونه‌گیری"
 
 #: senaite/core/browser/samples/view.py:299
 #: senaite/core/profiles/default/workflows/senaite_sample_workflow/definition.xml
 msgid "Scheduled sampling"
-msgstr ""
+msgstr "نمونه‌گیری زمان‌بندی‌شده"
 
 #: bika/lims/browser/instrument.py:400
 msgid "Scheduled task"
-msgstr ""
+msgstr "وظیفه زمان‌بندی‌شده"
 
 #: bika/lims/content/abstractbaseanalysis.py:95
 msgid "Scientific name"
-msgstr ""
+msgstr "نام علمی"
 
 #: senaite/core/browser/clients/client/contacts/templates/login_details.pt:154
 msgid "Search"
@@ -5561,7 +5561,7 @@ msgstr "انتخاب دستگاه"
 
 #: senaite/core/skins/senaite_templates/senaite_widgets/rejectionwidget.pt:50
 msgid "Select reasons"
-msgstr ""
+msgstr "انتخاب دلایل"
 
 #: senaite/core/browser/viewlets/templates/resultsinterpretation.pt:76
 #: senaite/core/browser/worksheets/templates/view.pt:51
@@ -5648,7 +5648,7 @@ msgstr ""
 
 #: senaite/core/config/vocabularies.py:57
 msgid "Selection list"
-msgstr ""
+msgstr "لیست انتخاب"
 
 #: bika/lims/content/abstractbaseanalysis.py:817
 msgid "Self-verification of results"
@@ -5668,7 +5668,7 @@ msgstr "گزارش ارسال"
 
 #: senaite/core/content/resultsreport.py:259
 msgid "Send Log Entry"
-msgstr ""
+msgstr "مورد گزارش ارسال"
 
 #: senaite/core/browser/samples/rejection/templates/reject_samples.pt:132
 #: senaite/core/browser/samples/templates/invalidate_samples.pt:135
@@ -5686,7 +5686,7 @@ msgstr "ارسال به"
 #: bika/lims/browser/fields/partitionsetupfield.py:115
 #: bika/lims/content/analysisservice.py:129
 msgid "Separate Container"
-msgstr ""
+msgstr "ظرف جداگانه"
 
 #: senaite/core/content/senaitesetup.py:216
 msgid "Seq Type"
@@ -5714,7 +5714,7 @@ msgstr ""
 
 #: senaite/core/browser/modals/templates/set_analysis_conditions.pt:119
 msgid "Set Conditions"
-msgstr ""
+msgstr "تنظیم شرایط"
 
 #: senaite/core/browser/worksheets/worksheet/analyses_listing.py:167
 msgid "Set remarks"
@@ -5754,7 +5754,7 @@ msgstr "کد قفسه"
 
 #: bika/lims/content/storagelocation.py:83
 msgid "Shelf Description"
-msgstr ""
+msgstr "توضیحات قفسه"
 
 #: bika/lims/content/storagelocation.py:73
 msgid "Shelf Title"
@@ -5823,7 +5823,7 @@ msgstr "فایل ساده"
 
 #: senaite/core/profiles/default/types/SimpleImage.xml
 msgid "Simple Image"
-msgstr ""
+msgstr "تصویر ساده"
 
 #: bika/lims/content/storagelocation.py:43
 msgid "Site Code"
@@ -5831,7 +5831,7 @@ msgstr "کد سایت"
 
 #: bika/lims/content/storagelocation.py:48
 msgid "Site Description"
-msgstr ""
+msgstr "توضیحات سایت"
 
 #: senaite/core/content/senaitesetup.py:313
 msgid "Site Logo"
@@ -5839,7 +5839,7 @@ msgstr "لوگوی سایت"
 
 #: senaite/core/content/senaitesetup.py:319
 msgid "Site Logo CSS"
-msgstr ""
+msgstr "CSS لوگوی سایت"
 
 #: bika/lims/content/storagelocation.py:38
 msgid "Site Title"
@@ -5885,15 +5885,15 @@ msgstr "منبع"
 
 #: senaite/core/browser/worksheets/worksheet/analyses_listing.py:93
 msgid "Specification"
-msgstr ""
+msgstr "مشخصات"
 
 #: senaite/core/content/dynamicanalysisspec.py:50
 msgid "Specification File"
-msgstr ""
+msgstr "فایل مشخصات"
 
 #: bika/lims/content/analysisrequest.py:707
 msgid "Specification Name"
-msgstr ""
+msgstr "نام مشخصات"
 
 #: bika/lims/browser/viewlets/templates/resultsranges_out_of_date_viewlet.pt:18
 msgid "Specification ranges have changed since they were assigned"
@@ -5901,7 +5901,7 @@ msgstr ""
 
 #: bika/lims/content/analysisspec.py:90
 msgid "Specifications"
-msgstr ""
+msgstr "مشخصات"
 
 #: senaite/core/content/senaitesetup.py:1163
 msgid "Specify how many copies of each sticker should be printed by default."
@@ -5918,12 +5918,12 @@ msgstr ""
 
 #: senaite/core/content/senaitesetup.py:245
 msgid "Split Length"
-msgstr ""
+msgstr "طول تقسیم"
 
 #: senaite/core/browser/samples/templates/manage_sample_fields.pt:149
 #: senaite/core/registry/schema.py:205
 msgid "Standard fields"
-msgstr ""
+msgstr "فیلدهای استاندارد"
 
 #: bika/lims/browser/pricelist.py:64
 msgid "Start Date"
@@ -5955,11 +5955,11 @@ msgstr "پیشنمایش استیکر"
 #: senaite/core/browser/samples/view.py:209
 #: senaite/core/profiles/default/types/StorageLocation.xml
 msgid "Storage Location"
-msgstr ""
+msgstr "محل نگهداری"
 
 #: senaite/core/profiles/default/types/StorageLocations.xml
 msgid "Storage Locations"
-msgstr ""
+msgstr "محل‌های نگهداری"
 
 #: senaite/core/config/vocabularies.py:55
 msgid "String"
@@ -6021,7 +6021,7 @@ msgstr "تأمین‌کنندگان"
 
 #: bika/lims/browser/worksheet/views/referencesamples.py:75
 msgid "Supported Services"
-msgstr ""
+msgstr "سرویس‌های پشتیبانی‌شده"
 
 #: bika/lims/content/method.py:116
 msgid "Supported calculations of this method"
@@ -6037,7 +6037,7 @@ msgstr ""
 
 #: bika/lims/browser/templates/senaite-frontpage.pt:6
 msgid "Switch to dashboard"
-msgstr ""
+msgstr "رفتن به داشبورد"
 
 #: senaite/core/browser/samples/templates/multi_results.pt:25
 msgid "Switch to transposed view"
@@ -6045,7 +6045,7 @@ msgstr ""
 
 #: bika/lims/content/abstractbaseanalysis.py:1086
 msgid "System default"
-msgstr ""
+msgstr "پیش‌فرض سیستم"
 
 #: bika/lims/browser/instrument.py:84
 msgid "Task"
@@ -6077,7 +6077,7 @@ msgstr "الگو"
 
 #: bika/lims/content/calculation.py:156
 msgid "Test Parameters"
-msgstr ""
+msgstr "پارامترهای آزمون"
 
 #: bika/lims/content/calculation.py:170
 msgid "Test Result"
@@ -6514,7 +6514,7 @@ msgstr "عنوان"
 
 #: bika/lims/content/storagelocation.py:54
 msgid "Title of location"
-msgstr ""
+msgstr "عنوان مکان"
 
 #: bika/lims/controlpanel/dynamic_analysisspecs.py:35
 msgid "Title of the Folder"
@@ -6522,11 +6522,11 @@ msgstr ""
 
 #: bika/lims/content/storagelocation.py:74
 msgid "Title of the shelf"
-msgstr ""
+msgstr "عنوان قفسه"
 
 #: bika/lims/content/storagelocation.py:39
 msgid "Title of the site"
-msgstr ""
+msgstr "عنوان سایت"
 
 #: bika/lims/content/instrumentcalibration.py:88
 #: bika/lims/content/instrumentmaintenancetask.py:75
@@ -6536,11 +6536,11 @@ msgstr "به"
 
 #: senaite/core/browser/samples/view.py:289
 msgid "To Be Preserved"
-msgstr ""
+msgstr "در انتظار نگهداری"
 
 #: senaite/core/browser/samples/view.py:280
 msgid "To Be Sampled"
-msgstr ""
+msgstr "در انتظار نمونه‌گیری"
 
 #: bika/lims/content/analysiscategory.py:48
 msgid ""
@@ -6550,16 +6550,16 @@ msgstr ""
 #: senaite/core/browser/dashboard/dashboard.py:133
 #: senaite/core/profiles/default/workflows/senaite_sample_workflow/definition.xml
 msgid "To be preserved"
-msgstr ""
+msgstr "در انتظار نگهداری"
 
 #: senaite/core/browser/dashboard/dashboard.py:398
 msgid "To be printed"
-msgstr ""
+msgstr "در انتظار چاپ"
 
 #: senaite/core/browser/dashboard/dashboard.py:132
 #: senaite/core/profiles/default/workflows/senaite_sample_workflow/definition.xml
 msgid "To be sampled"
-msgstr ""
+msgstr "در انتظار نمونه‌گیری"
 
 #: senaite/core/browser/dashboard/dashboard.py:124
 #: senaite/core/browser/samples/view.py:331
@@ -6615,7 +6615,7 @@ msgstr ""
 
 #: bika/lims/content/storagelocation.py:69
 msgid "Type of location"
-msgstr ""
+msgstr "نوع مکان"
 
 #: senaite/core/content/samplecontainer.py:73
 msgid "Type of the container"
@@ -6623,7 +6623,7 @@ msgstr ""
 
 #: senaite/core/browser/controlpanel/templates/setupview.pt:27
 msgid "Type to filter ..."
-msgstr ""
+msgstr "برای فیلتر تایپ کنید…"
 
 #: senaite/core/registry/schema.py:78
 msgid ""
@@ -6633,11 +6633,11 @@ msgstr ""
 
 #: senaite/core/registry/schema.py:77
 msgid "Types with labels"
-msgstr ""
+msgstr "انواع دارای برچسب"
 
 #: senaite/core/content/resultsreport.py:99
 msgid "UID"
-msgstr ""
+msgstr "UID"
 
 #: bika/lims/browser/worksheet/views/printview.py:151
 msgid "Unable to load the template"
@@ -6681,7 +6681,7 @@ msgstr "لغو پیوند کاربر"
 
 #: senaite/core/browser/clients/client/contacts/login_details.py:228
 msgid "Unlinked User"
-msgstr ""
+msgstr "کاربر بدون پیوند"
 
 #: senaite/core/exportimport/instruments/panalytical/omnia/axios_xrf.py:53
 msgid "Unrecognized file format ${file_format}"
@@ -6703,7 +6703,7 @@ msgstr "واگذارنشده"
 
 #: senaite/core/browser/viewlets/templates/attachments.pt:175
 msgid "Update Attachments"
-msgstr ""
+msgstr "به‌روزرسانی پیوست‌ها"
 
 #: senaite/core/browser/idserver/view.py:122
 msgid "Updated {} key(s): {}"
@@ -6731,7 +6731,7 @@ msgstr ""
 
 #: senaite/core/browser/viewlets/templates/resultsinterpretation.pt:84
 msgid "Use Template"
-msgstr ""
+msgstr "استفاده از قالب"
 
 #: bika/lims/content/analysisservice.py:87
 msgid "Use the Default Calculation of Method"
@@ -6818,7 +6818,7 @@ msgstr "اعتبارسنجی"
 
 #: senaite/core/z3cform/error.py:32
 msgid "Validation failed."
-msgstr ""
+msgstr "اعتبارسنجی ناموفق بود."
 
 #: bika/lims/validators.py:346
 msgid "Validation failed: '${keyword}': duplicate keyword"
@@ -7095,7 +7095,7 @@ msgstr ""
 
 #: senaite/core/registry/schema.py:213
 msgid "Visible fields"
-msgstr ""
+msgstr "فیلدهای قابل مشاهده"
 
 #: bika/lims/browser/viewlets/templates/dynamic_specs_viewlet.pt:24
 #: bika/lims/browser/viewlets/templates/sample_dynamic_specs_viewlet.pt:24
@@ -7136,7 +7136,7 @@ msgstr "خوش آمدید"
 
 #: senaite/core/browser/install/templates/senaite-overview.pt:14
 msgid "Welcome to SENAITE"
-msgstr ""
+msgstr "به آزمایشگاه تندیس خوش آمدید"
 
 #: bika/lims/content/bikasetup.py:176
 msgid ""
@@ -7352,7 +7352,7 @@ msgstr ""
 #. Default: "Changes saved."
 #: senaite/core/browser/worksheets/worksheet/add_analyses.py:168
 msgid "changes_saved"
-msgstr ""
+msgstr "تغییرات ذخیره شد"
 
 #. Results edition not allowed: ${inv}"
 #. Default: "Some analyses use out-of-date or uncalibrated instruments.
@@ -7436,7 +7436,7 @@ msgstr "غیرفعال"
 #. Default: "Attached labels"
 #: senaite/core/behaviors/label.py:118
 msgid "description_Labels"
-msgstr ""
+msgstr "مدیریت برچسب‌های آیتم‌ها"
 
 #. Default: "The accreditation standard that applies, e.g. ISO 17025"
 #: senaite/core/content/laboratory.py:174
@@ -9046,7 +9046,7 @@ msgstr ""
 #. Default: "Asphyxiating atmosphere"
 #: senaite/core/vocabularies/hazard_categories.py:165
 msgid "hazard_ASPH01_name"
-msgstr ""
+msgstr "خطر خفگی"
 
 #. Default: "infectious / biological"
 #: senaite/core/vocabularies/hazard_categories.py:104
@@ -9056,7 +9056,7 @@ msgstr ""
 #. Default: "Biohazard"
 #: senaite/core/vocabularies/hazard_categories.py:103
 msgid "hazard_BIO01_name"
-msgstr ""
+msgstr "خطر زیستی"
 
 #. Default: "freezing / cold storage"
 #: senaite/core/vocabularies/hazard_categories.py:158
@@ -9066,7 +9066,7 @@ msgstr ""
 #. Default: "Low temperature"
 #: senaite/core/vocabularies/hazard_categories.py:157
 msgid "hazard_COLD01_name"
-msgstr ""
+msgstr "سرمای شدید"
 
 #. Default: "electric shock"
 #: senaite/core/vocabularies/hazard_categories.py:132
@@ -9076,7 +9076,7 @@ msgstr ""
 #. Default: "Electricity"
 #: senaite/core/vocabularies/hazard_categories.py:131
 msgid "hazard_ELEC01_name"
-msgstr ""
+msgstr "خطر برق‌گرفتگی"
 
 #. Default: "explosive"
 #: senaite/core/vocabularies/hazard_categories.py:48
@@ -9086,7 +9086,7 @@ msgstr ""
 #. Default: "Explosive"
 #: senaite/core/vocabularies/hazard_categories.py:47
 msgid "hazard_GHS01_name"
-msgstr ""
+msgstr "مواد منفجره"
 
 #. Default: "flammable"
 #: senaite/core/vocabularies/hazard_categories.py:54
@@ -9096,7 +9096,7 @@ msgstr ""
 #. Default: "Flammable"
 #: senaite/core/vocabularies/hazard_categories.py:53
 msgid "hazard_GHS02_name"
-msgstr ""
+msgstr "مواد آتش‌گیر"
 
 #. Default: "oxidizing"
 #: senaite/core/vocabularies/hazard_categories.py:60
@@ -9106,7 +9106,7 @@ msgstr ""
 #. Default: "Oxidizing"
 #: senaite/core/vocabularies/hazard_categories.py:59
 msgid "hazard_GHS03_name"
-msgstr ""
+msgstr "مواد اکسیدکننده"
 
 #. Default: "pressurised gas"
 #: senaite/core/vocabularies/hazard_categories.py:66
@@ -9116,7 +9116,7 @@ msgstr ""
 #. Default: "Compressed gas"
 #: senaite/core/vocabularies/hazard_categories.py:65
 msgid "hazard_GHS04_name"
-msgstr ""
+msgstr "گاز تحت فشار"
 
 #. Default: "acid / caustic"
 #: senaite/core/vocabularies/hazard_categories.py:72
@@ -9126,7 +9126,7 @@ msgstr ""
 #. Default: "Corrosive"
 #: senaite/core/vocabularies/hazard_categories.py:71
 msgid "hazard_GHS05_name"
-msgstr ""
+msgstr "مواد خورنده"
 
 #. Default: "poisonous"
 #: senaite/core/vocabularies/hazard_categories.py:78
@@ -9136,7 +9136,7 @@ msgstr ""
 #. Default: "Acute toxicity"
 #: senaite/core/vocabularies/hazard_categories.py:77
 msgid "hazard_GHS06_name"
-msgstr ""
+msgstr "مواد سمی"
 
 #. Default: "harmful / irritant"
 #: senaite/core/vocabularies/hazard_categories.py:84
@@ -9146,7 +9146,7 @@ msgstr ""
 #. Default: "Health hazard"
 #: senaite/core/vocabularies/hazard_categories.py:83
 msgid "hazard_GHS07_name"
-msgstr ""
+msgstr "محرک / مضر"
 
 #. Default: "carcinogenic / mutagenic"
 #: senaite/core/vocabularies/hazard_categories.py:90
@@ -9156,7 +9156,7 @@ msgstr ""
 #. Default: "Serious health hazard"
 #: senaite/core/vocabularies/hazard_categories.py:89
 msgid "hazard_GHS08_name"
-msgstr ""
+msgstr "خطر برای سلامتی"
 
 #. Default: "environmentally hazardous"
 #: senaite/core/vocabularies/hazard_categories.py:97
@@ -9166,7 +9166,7 @@ msgstr ""
 #. Default: "Environmental hazard"
 #: senaite/core/vocabularies/hazard_categories.py:96
 msgid "hazard_GHS09_name"
-msgstr ""
+msgstr "خطر زیست‌محیطی"
 
 #. Default: "heated material"
 #: senaite/core/vocabularies/hazard_categories.py:145
@@ -9176,7 +9176,7 @@ msgstr ""
 #. Default: "Hot content"
 #: senaite/core/vocabularies/hazard_categories.py:144
 msgid "hazard_HOT01_name"
-msgstr ""
+msgstr "سطح داغ"
 
 #. Default: "hot to touch"
 #: senaite/core/vocabularies/hazard_categories.py:139
@@ -9196,7 +9196,7 @@ msgstr ""
 #. Default: "Magnetic field"
 #: senaite/core/vocabularies/hazard_categories.py:124
 msgid "hazard_MAG01_name"
-msgstr ""
+msgstr "میدان مغناطیسی"
 
 #. Default: "UV / laser / RF"
 #: senaite/core/vocabularies/hazard_categories.py:118
@@ -9206,7 +9206,7 @@ msgstr ""
 #. Default: "Non-ionising radiation"
 #: senaite/core/vocabularies/hazard_categories.py:117
 msgid "hazard_NIR01_name"
-msgstr ""
+msgstr "پرتو غیریونیزان"
 
 #. Default: "ionising radiation"
 #: senaite/core/vocabularies/hazard_categories.py:112
@@ -9216,7 +9216,7 @@ msgstr ""
 #. Default: "Radioactive"
 #: senaite/core/vocabularies/hazard_categories.py:111
 msgid "hazard_RAD01_name"
-msgstr ""
+msgstr "مواد پرتوزا"
 
 #. Default: "autoclave / sterilisation"
 #: senaite/core/vocabularies/hazard_categories.py:151
@@ -9251,12 +9251,12 @@ msgstr ""
 #. Default: "Enter your new password."
 #: senaite/core/browser/user/passwordpanel.py:37
 msgid "help_new_password"
-msgstr ""
+msgstr "رمز عبور جدید را وارد کنید"
 
 #. Default: "Your time zone"
 #: senaite/core/browser/user/personalpreferences.py:39
 msgid "help_timezone"
-msgstr ""
+msgstr "منطقهٔ زمانی پیش‌فرض سامانه"
 
 #: bika/lims/controlpanel/bika_analysisservices.py:285
 msgid "hours"
@@ -9309,7 +9309,7 @@ msgstr ""
 #. Default: "Labels"
 #: senaite/core/behaviors/label.py:117
 msgid "label_Labels"
-msgstr ""
+msgstr "برچسب‌ها"
 
 #. Default: "Add to the following groups:"
 #: senaite/core/browser/clients/client/contacts/templates/login_details.pt:276
@@ -9319,7 +9319,7 @@ msgstr ""
 #. Default: "Address"
 #: senaite/core/content/person.py:197
 msgid "label_address"
-msgstr ""
+msgstr "نشانی"
 
 #. Default: "Analysis Category"
 #: bika/lims/content/abstractbaseanalysis.py:530
@@ -9503,7 +9503,7 @@ msgstr ""
 #. Default: "Client"
 #: bika/lims/content/batch.py:78
 msgid "label_batch_client"
-msgstr ""
+msgstr "مشتری"
 
 #. Default: "Allow to set the result capture date"
 #: bika/lims/content/bikasetup.py:394
@@ -9790,7 +9790,7 @@ msgstr ""
 #. Default: "Unit"
 #: senaite/core/schema/interimfields.py:97
 msgid "label_interim_unit"
-msgstr ""
+msgstr "واحد"
 
 #. Default: "Default Department"
 #: bika/lims/content/labcontact.py:86
@@ -9835,7 +9835,7 @@ msgstr ""
 #. Default: "New password"
 #: senaite/core/browser/user/passwordpanel.py:36
 msgid "label_new_password"
-msgstr ""
+msgstr "رمز عبور جدید"
 
 #. Default: "Fax (business)"
 #: senaite/core/content/person.py:169
@@ -9915,7 +9915,7 @@ msgstr ""
 #. Default: "Title"
 #: senaite/core/content/person.py:51
 msgid "label_person_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Username"
 #: senaite/core/content/person.py:127
@@ -9925,7 +9925,7 @@ msgstr ""
 #. Default: "SENAITE is powered by"
 #: senaite/core/browser/viewlets/templates/colophon.pt:11
 msgid "label_powered_by"
-msgstr ""
+msgstr "قدرت‌گرفته از"
 
 #. Default: "Plone & Python"
 #: senaite/core/browser/viewlets/templates/colophon.pt:12
@@ -10070,7 +10070,7 @@ msgstr ""
 #. Default: "Batch"
 #: bika/lims/content/analysisrequest.py:328
 msgid "label_sample_batch"
-msgstr ""
+msgstr "بچ"
 
 #. Default: "CC Contact"
 #: bika/lims/content/analysisrequest.py:197
@@ -10280,7 +10280,7 @@ msgstr "ذخیره"
 #. Default: "SENAITE LIMS"
 #: senaite/core/browser/viewlets/templates/footer.pt:14
 msgid "label_senaite"
-msgstr ""
+msgstr "آزمایشگاه تندیس"
 
 #. Default: "Maximum value for 'Number of samples' field on registration"
 #: senaite/core/content/senaitesetup.py:368
@@ -10311,7 +10311,7 @@ msgstr ""
 #. Default: "Time zone"
 #: senaite/core/browser/user/personalpreferences.py:38
 msgid "label_timezone"
-msgstr ""
+msgstr "منطقهٔ زمانی"
 
 #. Default: "Title"
 #: senaite/core/browser/install/templates/senaite-addsite.pt:62
@@ -10326,12 +10326,12 @@ msgstr ""
 #. Default: "Contact"
 #: senaite/core/browser/user/userdatapanel.py:81
 msgid "label_user_contact"
-msgstr ""
+msgstr "مخاطب مرتبط"
 
 #. Default: "Email"
 #: senaite/core/browser/user/userdatapanel.py:70
 msgid "label_user_email"
-msgstr ""
+msgstr "ایمیل کاربر"
 
 #. Default: "Full Name"
 #: senaite/core/browser/user/userdatapanel.py:64
@@ -11729,12 +11729,12 @@ msgstr "دوره تکرار"
 #. Default: "Not detected"
 #: bika/lims/content/abstractanalysis.py:1120
 msgid "result_below_llod"
-msgstr ""
+msgstr "کمتر از حد تشخیص (LLOD)"
 
 #. Default: "Detected but < ${LLOQ}"
 #: bika/lims/content/abstractanalysis.py:1131
 msgid "result_below_lloq"
-msgstr ""
+msgstr "کمتر از حد کمی‌سازی (LLOQ)"
 
 #. Default: "Field Preservation"
 #: senaite/core/config/vocabularies.py:24
@@ -11906,7 +11906,7 @@ msgstr ""
 #. Default: "Analyst"
 #: senaite/core/permissions/localroles.py:30
 msgid "title_analyst_role"
-msgstr ""
+msgstr "آزمایش‌گر"
 
 #. Default: "Description"
 #: senaite/core/content/attachmenttype.py:44
@@ -11961,7 +11961,7 @@ msgstr ""
 #. Default: "Copyright"
 #: senaite/core/browser/viewlets/templates/footer.pt:11
 msgid "title_copyright"
-msgstr ""
+msgstr "کپی‌رایت"
 
 #. Default: "Description"
 #: senaite/core/content/department.py:60
@@ -12031,7 +12031,7 @@ msgstr ""
 #. Default: "Name"
 #: senaite/core/content/label.py:38
 msgid "title_label_title"
-msgstr ""
+msgstr "عنوان"
 
 #. Default: "Laboratory Accredited"
 #: senaite/core/content/laboratory.py:136
@@ -12121,7 +12121,7 @@ msgstr ""
 #. Default: "Manager"
 #: senaite/core/permissions/localroles.py:86
 msgid "title_manager_role"
-msgstr ""
+msgstr "مدیر آزمایشگاه"
 
 #. Default: "Description"
 #: senaite/core/content/manufacturer.py:44
@@ -12191,7 +12191,7 @@ msgstr ""
 #. Default: "Owner"
 #: senaite/core/permissions/localroles.py:37
 msgid "title_owner_role"
-msgstr ""
+msgstr "مالک"
 
 #. Default: "Preserver"
 #: senaite/core/permissions/localroles.py:51
@@ -12208,7 +12208,7 @@ msgstr ""
 #: senaite/core/browser/samples/templates/invalidate_samples.pt:91
 #: senaite/core/browser/samples/templates/manage_sample_fields.pt:137
 msgid "title_required"
-msgstr ""
+msgstr "الزامی"
 
 #. Default: "Description"
 #: senaite/core/content/samplecondition.py:44
@@ -12293,7 +12293,7 @@ msgstr ""
 #. Default: "Sampler"
 #: senaite/core/permissions/localroles.py:65
 msgid "title_sampler_role"
-msgstr ""
+msgstr "نمونه‌بردار"
 
 #. Default: "Auto-partition on sample reception"
 #: senaite/core/content/sampletemplate.py:256
@@ -12583,7 +12583,7 @@ msgstr ""
 #. Default: "Service UID"
 #: senaite/core/content/worksheettemplate.py:86
 msgid "title_service_uid"
-msgstr ""
+msgstr "شناسه سرویس"
 
 #. Default: "Description"
 #: senaite/core/content/storagelocation.py:46
@@ -12673,7 +12673,7 @@ msgstr ""
 #. Default: "NIB"
 #: senaite/core/content/supplier.py:84
 msgid "title_supplier_nib"
-msgstr ""
+msgstr "NIB تأمین‌کننده"
 
 #. Default: "Remarks"
 #: senaite/core/content/supplier.py:55
@@ -12848,7 +12848,7 @@ msgstr "هفتگی"
 #: senaite/core/browser/modals/sample.py:67
 #: senaite/core/browser/worksheets/worksheet/add_worksheet.py:63
 msgid "worksheet_created"
-msgstr ""
+msgstr "برگه کار ایجاد شد"
 
 #. Default: "Worksheet not created."
 #: senaite/core/browser/worksheets/worksheet/add_worksheet.py:56
@@ -12883,7 +12883,7 @@ msgstr ""
 
 #: bika/lims/browser/analyses/view.py:627
 msgid "{} (Out of date)"
-msgstr ""
+msgstr "{} (منقضی)"
 
 #: bika/lims/controlpanel/bika_instruments.py:173
 msgid "{} weeks and {} day(s)"
