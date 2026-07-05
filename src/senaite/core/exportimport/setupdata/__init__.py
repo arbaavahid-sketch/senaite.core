@@ -511,9 +511,15 @@ class Lab_Contacts(WorksheetImporter):
                 roles = row.get('Roles', '')
                 if roles:
                     role_ids = [r.strip() for r in roles.split(',')]
-                    # Add user to all specified roles
+                    # Assign global roles via the PAS role manager. MemberData
+                    # has no `_addRole`, so use assignRoleToPrincipal instead.
+                    role_manager = self.context.acl_users.portal_role_manager
                     for role_id in role_ids:
-                        member._addRole(role_id)
+                        try:
+                            role_manager.assignRoleToPrincipal(role_id, username)
+                        except KeyError:
+                            logger.warning(
+                                "Unknown role '%s' for user '%s'" % (role_id, username))
                 # If user is in LabManagers, add Owner local role on clients
                 # folder
                 if 'LabManager' in group_ids:
