@@ -28,6 +28,10 @@ class TextLineField(schema.TextLine, BaseField):
         the legacy behavior of auto-generated getters in AT content types.
         """
         value = super(TextLineField, self).get(object)
-        if isinstance(value, six.string_types):
+        # فقط unicode را به UTF-8 encode کن. اگر مقدار از قبل bytes باشد
+        # (مثلاً عنوان فارسی که هنگام import ذخیره شده)، همان bytesِ معتبر را
+        # برگردان؛ در غیر این صورت پایتون ۲ اول با ASCII decode می‌کند و روی
+        # کاراکترهای غیرلاتین UnicodeDecodeError می‌دهد.
+        if isinstance(value, six.text_type):
             value = value.encode("utf-8")
         return value
