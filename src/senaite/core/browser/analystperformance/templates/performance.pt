@@ -9,57 +9,58 @@
                   dc2 python:request.set('disable_plone.rightcolumn', 1);" />
 
   <div metal:fill-slot="content"
-       dir="rtl"
        tal:define="rows view/get_rows;
-                   totals python:view.get_totals(rows);">
+                   totals python:view.get_totals(rows);
+                   L view/labels;
+                   rtl view/is_rtl;
+                   align python:'right' if rtl else 'left'"
+       tal:attributes="dir python:'rtl' if rtl else 'ltr'">
 
-    <h1 style="text-align:right">عملکرد آزمونگرها</h1>
-    <p class="text-muted" style="text-align:right">
-      تعداد آزمون‌های انجام‌شده (نتیجهٔ ثبت‌شده) و درآمد هر آزمونگر.
-    </p>
+    <h1 tal:attributes="style string:text-align:${align}" tal:content="L/title">Analyst Performance</h1>
+    <p class="text-muted" tal:attributes="style string:text-align:${align}"
+       tal:content="L/intro">intro</p>
 
-    <form method="get" class="mb-3" style="text-align:right">
-      <label>از تاریخ:</label>
+    <form method="get" class="mb-3" tal:attributes="style string:text-align:${align}">
+      <label tal:content="L/from">From:</label>
       <input type="date" name="from" tal:attributes="value view/date_from" />
-      <label>تا تاریخ:</label>
+      <label tal:content="L/to">To:</label>
       <input type="date" name="to" tal:attributes="value view/date_to" />
-      <button type="submit" class="btn btn-sm btn-primary">اعمال فیلتر</button>
-      <a href="analyst-performance" class="btn btn-sm btn-outline-secondary">همه</a>
+      <button type="submit" class="btn btn-sm btn-primary" tal:content="L/apply">Apply</button>
+      <a href="analyst-performance" class="btn btn-sm btn-outline-secondary"
+         tal:content="L/all">All</a>
     </form>
 
-    <table class="table table-sm table-striped" style="text-align:right">
+    <table class="table table-sm table-striped" tal:attributes="style string:text-align:${align}">
       <thead class="thead-light">
         <tr>
-          <th style="text-align:right">آزمونگر</th>
-          <th style="text-align:center">تعداد آزمون انجام‌شده</th>
-          <th style="text-align:center">درآمد</th>
+          <th tal:attributes="style string:text-align:${align}" tal:content="L/col_analyst">Analyst</th>
+          <th style="text-align:center" tal:content="L/col_count">Analyses performed</th>
+          <th style="text-align:center" tal:content="L/col_revenue">Revenue</th>
         </tr>
       </thead>
       <tbody>
         <tr tal:repeat="row rows">
-          <td style="text-align:right" tal:content="row/analyst">نام</td>
+          <td tal:attributes="style string:text-align:${align}" tal:content="row/analyst">name</td>
           <td style="text-align:center" tal:content="row/count">0</td>
           <td style="text-align:center" tal:content="python:view.fmt(row['revenue'])">0</td>
         </tr>
         <tr tal:condition="not:rows">
-          <td colspan="3" class="text-muted" style="text-align:center">
-            داده‌ای برای این بازه موجود نیست
+          <td colspan="3" class="text-muted" style="text-align:center" tal:content="L/empty">
+            No data
           </td>
         </tr>
       </tbody>
       <tfoot tal:condition="rows">
         <tr style="font-weight:bold; border-top:2px solid #333">
-          <td style="text-align:right">جمع کل</td>
+          <td tal:attributes="style string:text-align:${align}" tal:content="L/total">Total</td>
           <td style="text-align:center" tal:content="totals/count">0</td>
           <td style="text-align:center" tal:content="python:view.fmt(totals['revenue'])">0</td>
         </tr>
       </tfoot>
     </table>
 
-    <p class="text-muted small" style="text-align:right">
-      «درآمد» جمع قیمت آزمون‌هاست؛ تا زمانی که قیمت آزمون‌ها وارد نشود، صفر نمایش داده می‌شود.
-      «تعداد آزمون» بر اساس تاریخ ثبت نتیجه محاسبه می‌شود.
-    </p>
+    <p class="text-muted small" tal:attributes="style string:text-align:${align}"
+       tal:content="L/note">note</p>
 
   </div>
 </body>

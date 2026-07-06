@@ -3,6 +3,8 @@
 # Analyst performance report (Tandis / TPPC).
 # Shows, per analyst, how many analyses were performed (result captured) and the
 # revenue generated (sum of analysis prices) within an optional date range.
+# Bilingual: labels switch between Persian (fa, RTL) and English (en, LTR)
+# according to the current site language.
 
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
@@ -13,13 +15,61 @@ from bika.lims import api
 from senaite.core.catalog import ANALYSIS_CATALOG
 
 
+LABELS = {
+    "fa": {
+        "title": u"عملکرد آزمونگرها",
+        "intro": u"تعداد آزمون‌های انجام‌شده (نتیجهٔ ثبت‌شده) و درآمد هر آزمونگر.",
+        "from": u"از تاریخ:",
+        "to": u"تا تاریخ:",
+        "apply": u"اعمال فیلتر",
+        "all": u"همه",
+        "col_analyst": u"آزمونگر",
+        "col_count": u"تعداد آزمون انجام‌شده",
+        "col_revenue": u"درآمد",
+        "total": u"جمع کل",
+        "empty": u"داده‌ای برای این بازه موجود نیست",
+        "note": (u"«درآمد» جمع قیمت آزمون‌هاست؛ تا زمانی که قیمت آزمون‌ها وارد نشود، "
+                 u"صفر نمایش داده می‌شود. «تعداد آزمون» بر اساس تاریخ ثبت نتیجه محاسبه می‌شود."),
+    },
+    "en": {
+        "title": u"Analyst Performance",
+        "intro": u"Number of analyses performed (results captured) and revenue generated per analyst.",
+        "from": u"From:",
+        "to": u"To:",
+        "apply": u"Apply filter",
+        "all": u"All",
+        "col_analyst": u"Analyst",
+        "col_count": u"Analyses performed",
+        "col_revenue": u"Revenue",
+        "total": u"Total",
+        "empty": u"No data for this period",
+        "note": (u'"Revenue" is the sum of analysis prices; it shows zero until prices '
+                 u'are entered. "Analyses performed" is based on the result capture date.'),
+    },
+}
+
+
 class AnalystPerformanceView(BrowserView):
     template = ViewPageTemplateFile("templates/performance.pt")
 
     def __call__(self):
         self.date_from = self.request.get("from", "")
         self.date_to = self.request.get("to", "")
+        self.lang = self._lang()
+        self.labels = LABELS.get(self.lang, LABELS["en"])
+        self.is_rtl = self.lang == "fa"
         return self.template()
+
+    def _lang(self):
+        try:
+            ltool = getToolByName(self.context, "portal_languages")
+            lang = ltool.getPreferredLanguage()
+        except Exception:
+            lang = "fa"
+        # Normalise things like "en-us" -> "en"; fall back to en for anything
+        # we do not have labels for.
+        lang = (lang or "fa").split("-")[0].lower()
+        return lang if lang in LABELS else "en"
 
     def _fullname(self, username):
         if not username or username == "-":
