@@ -25,6 +25,7 @@
   <include package=".documentstatus"/>
   <include package=".installdocuments"/>
   <include package=".customercare"/>
+  <include package=".customerfeedback"/>
   <include package=".installcustomercare"/>
   <include package=".dexterity"/>
   <include package=".fields"/>

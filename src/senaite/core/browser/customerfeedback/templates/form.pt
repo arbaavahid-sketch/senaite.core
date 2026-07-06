@@ -1,0 +1,123 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master">
+<body>
+
+  <metal:override fill-slot="top_slot"
+      tal:define="dc1 python:request.set('disable_plone.leftcolumn', 1);
+                  dc2 python:request.set('disable_plone.rightcolumn', 1);" />
+
+  <div metal:fill-slot="content"
+       tal:define="L view/labels; rtl view/is_rtl;
+                   align python:'right' if rtl else 'left'"
+       tal:attributes="dir python:'rtl' if rtl else 'ltr'"
+       style="max-width:720px">
+
+    <h1 tal:attributes="style string:text-align:${align}" tal:content="L/title">Feedback</h1>
+
+    <!-- Thank-you -->
+    <div tal:condition="view/tracking" class="alert alert-success"
+         tal:attributes="style string:text-align:${align}">
+      <h4 tal:content="L/thanks_title">Thank you</h4>
+      <p><strong tal:content="L/thanks">Tracking:</strong>
+         <code tal:content="view/tracking">id</code></p>
+      <p tal:content="L/thanks_more">We will follow up.</p>
+      <a href="customer-feedback" class="btn btn-sm btn-outline-primary"
+         tal:content="L/again">Submit another</a>
+    </div>
+
+    <tal:form tal:condition="not:view/tracking">
+      <p class="text-muted" tal:attributes="style string:text-align:${align}"
+         tal:content="L/intro">intro</p>
+
+      <div tal:condition="view/error" class="alert alert-danger"
+           tal:attributes="style string:text-align:${align}"
+           tal:content="view/error">error</div>
+
+      <form method="post" tal:attributes="style string:text-align:${align}">
+        <div class="form-group">
+          <label tal:content="L/kind">Type</label><br/>
+          <label class="mr-3"><input type="radio" name="kind" value="complaint" checked="checked"
+                 onclick="ccToggle()"/> <span tal:content="L/k_complaint">Complaint</span></label>
+          <label class="mr-3"><input type="radio" name="kind" value="support"
+                 onclick="ccToggle()"/> <span tal:content="L/k_support">Support</span></label>
+          <label class="mr-3"><input type="radio" name="kind" value="survey"
+                 onclick="ccToggle()"/> <span tal:content="L/k_survey">Survey</span></label>
+        </div>
+
+        <div class="form-group">
+          <label tal:content="L/client">Client</label>
+          <input type="text" class="form-control" name="client_name"/>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/contact">Contact</label>
+          <input type="text" class="form-control" name="contact_name"/>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/subject">Subject</label>
+          <input type="text" class="form-control" name="subject" required="required"/>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/sample">Related sample/report</label>
+          <input type="text" class="form-control" name="related_sample"/>
+        </div>
+
+        <!-- Complaint-only -->
+        <div id="cc-complaint">
+          <div class="form-group">
+            <label tal:content="L/category">Category</label>
+            <select class="form-control" name="category">
+              <option value="" tal:content="L/choose">- select -</option>
+              <option tal:repeat="c view/categories"
+                      tal:attributes="value python:c[0]"
+                      tal:content="python:c[1]">cat</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label tal:content="L/severity">Severity</label>
+            <select class="form-control" name="severity">
+              <option value="" tal:content="L/choose">- select -</option>
+              <option value="low" tal:content="L/sev_low">Low</option>
+              <option value="medium" tal:content="L/sev_medium">Medium</option>
+              <option value="high" tal:content="L/sev_high">High</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Survey-only -->
+        <div id="cc-survey" style="display:none">
+          <div class="form-group" tal:repeat="r python:[('rating_overall',L['rating_overall']),('rating_timeliness',L['rating_time']),('rating_quality',L['rating_quality']),('rating_communication',L['rating_comm'])]">
+            <label tal:content="python:r[1]">rating</label>
+            <select class="form-control" tal:attributes="name python:r[0]">
+              <option value="5">5</option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+              <option value="1">1</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label tal:content="L/description">Description</label>
+          <textarea class="form-control" name="description" rows="4"></textarea>
+        </div>
+
+        <button type="submit" name="submit" value="1"
+                class="btn btn-primary" tal:content="L/submit">Submit</button>
+      </form>
+
+      <script type="text/javascript">
+        function ccToggle() {
+          var k = document.querySelector('input[name=kind]:checked').value;
+          document.getElementById('cc-complaint').style.display = (k === 'complaint') ? '' : 'none';
+          document.getElementById('cc-survey').style.display = (k === 'survey') ? '' : 'none';
+        }
+        document.addEventListener('DOMContentLoaded', ccToggle);
+      </script>
+    </tal:form>
+
+  </div>
+</body>
+</html>
