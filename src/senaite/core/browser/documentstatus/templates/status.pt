@@ -1,0 +1,80 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master">
+<body>
+
+  <metal:override fill-slot="top_slot"
+      tal:define="dc1 python:request.set('disable_plone.leftcolumn', 1);
+                  dc2 python:request.set('disable_plone.rightcolumn', 1);" />
+
+  <div metal:fill-slot="content"
+       tal:define="rows view/get_rows;
+                   summary python:view.get_summary(rows);
+                   L view/labels;
+                   rtl view/is_rtl;
+                   align python:'right' if rtl else 'left'"
+       tal:attributes="dir python:'rtl' if rtl else 'ltr'">
+
+    <h1 tal:attributes="style string:text-align:${align}" tal:content="L/title">Controlled Document Review Status</h1>
+    <p class="text-muted" tal:attributes="style string:text-align:${align}"
+       tal:content="L/intro">intro</p>
+
+    <div class="mb-3" tal:attributes="style string:text-align:${align}">
+      <span class="badge badge-secondary" tal:content="string:${L/sum_total}: ${summary/total}">Total</span>
+      <span class="badge badge-success" tal:content="string:${L/st_ok}: ${summary/ok}">Ok</span>
+      <span class="badge badge-warning" tal:content="string:${L/st_due}: ${summary/due}">Due</span>
+      <span class="badge badge-danger" tal:content="string:${L/st_over}: ${summary/over}">Overdue</span>
+      <span class="badge badge-light" tal:content="string:${L/st_none}: ${summary/none}">None</span>
+    </div>
+
+    <form method="get" class="mb-3" tal:attributes="style string:text-align:${align}">
+      <label tal:content="L/window">Warning window (days):</label>
+      <input type="number" name="days" min="1" style="width:6em"
+             tal:attributes="value view/days" />
+      <button type="submit" class="btn btn-sm btn-primary" tal:content="L/apply">Apply</button>
+    </form>
+
+    <table class="table table-sm table-striped" tal:attributes="style string:text-align:${align}">
+      <thead class="thead-light">
+        <tr>
+          <th tal:attributes="style string:text-align:${align}" tal:content="L/col_code">Code</th>
+          <th tal:attributes="style string:text-align:${align}" tal:content="L/col_title">Title</th>
+          <th tal:attributes="style string:text-align:${align}" tal:content="L/col_type">Type</th>
+          <th style="text-align:center" tal:content="L/col_version">Version</th>
+          <th style="text-align:center" tal:content="L/col_state">State</th>
+          <th style="text-align:center" tal:content="L/col_review">Next review</th>
+          <th style="text-align:center" tal:content="L/col_days">Days left</th>
+          <th style="text-align:center" tal:content="L/col_status">Review status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr tal:repeat="row rows">
+          <td tal:attributes="style string:text-align:${align}" tal:content="row/code">code</td>
+          <td tal:attributes="style string:text-align:${align}">
+            <a tal:attributes="href row/url" tal:content="row/title">title</a>
+          </td>
+          <td tal:attributes="style string:text-align:${align}" tal:content="row/type">type</td>
+          <td style="text-align:center" tal:content="row/version">-</td>
+          <td style="text-align:center" tal:content="row/state">state</td>
+          <td style="text-align:center" tal:content="row/review">-</td>
+          <td style="text-align:center"
+              tal:content="python:row['days'] if row['days'] is not None else '-'">0</td>
+          <td style="text-align:center; font-weight:bold"
+              tal:attributes="class row/status_css"
+              tal:content="row/status_label">status</td>
+        </tr>
+        <tr tal:condition="not:rows">
+          <td colspan="8" class="text-muted" style="text-align:center" tal:content="L/empty">
+            No documents
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="text-muted small" tal:attributes="style string:text-align:${align}"
+       tal:content="L/note">note</p>
+
+  </div>
+</body>
+</html>

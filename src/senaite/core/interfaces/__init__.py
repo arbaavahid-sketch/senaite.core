@@ -231,6 +231,16 @@ class IMultifile(Interface):
     """
 
 
+class IControlledDocuments(Interface):
+    """Marker interface for the controlled documents setup folder
+    """
+
+
+class IControlledDocument(Interface):
+    """Marker interface for a controlled document (SOP, method, form, ...)
+    """
+
+
 class ISampleContainers(Interface):
     """Marker interface for sample container setup folder
     """

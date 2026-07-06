@@ -253,6 +253,7 @@ def add_senaite_setup_items(portal):
         ("instrumentlocations", "Instrument Locations", "InstrumentLocations"),
         ("samplecontainers", "Sample Containers", "SampleContainers"),
         ("attachmenttypes", "Attachment Types", "AttachmentTypes"),
+        ("controlleddocuments", "Controlled Documents", "ControlledDocuments"),
         ("contacts", "Contacts", "Contacts"),
         ("dynamicanalysisspecs", "Dynamic Analysis Specifications",
          "DynamicAnalysisSpecs"),

@@ -128,6 +128,9 @@ class SetupView(BrowserView):
         }, {
             "url": portal_url + "/@@instrument-status",
             "title": u"وضعیت کالیبراسیون دستگاه‌ها" if is_fa else u"Instrument Calibration Status",
+        }, {
+            "url": portal_url + "/@@document-review-status",
+            "title": u"وضعیت بازنگری اسناد" if is_fa else u"Document Review Status",
         }]
 
     def setupitems(self):

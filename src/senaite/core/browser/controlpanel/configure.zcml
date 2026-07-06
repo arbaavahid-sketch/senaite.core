@@ -23,6 +23,7 @@
   <include package=".analysiscategories" />
   <include package=".analysisprofiles" />
   <include package=".attachmenttypes" />
+  <include package=".controlleddocuments" />
   <include package=".batchlabels" />
   <include package=".calculations" />
   <include package=".containertypes" />

@@ -13,6 +13,10 @@
   <object name="AttachmentType" meta_type="Dexterity FTI" />
   <object name="AttachmentTypes" meta_type="Dexterity FTI" />
 
+  <!-- Controlled Documents (ISO 17025 clause 8.3) -->
+  <object name="ControlledDocument" meta_type="Dexterity FTI" />
+  <object name="ControlledDocuments" meta_type="Dexterity FTI" />
+
   <!-- Departments -->
   <object name="Department" meta_type="Dexterity FTI" />
   <object name="Departments" meta_type="Dexterity FTI" />

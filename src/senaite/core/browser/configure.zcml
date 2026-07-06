@@ -22,6 +22,8 @@
   <include package=".contentrules"/>
   <include package=".controlpanel"/>
   <include package=".dashboard"/>
+  <include package=".documentstatus"/>
+  <include package=".installdocuments"/>
   <include package=".dexterity"/>
   <include package=".fields"/>
   <include package=".form"/>
