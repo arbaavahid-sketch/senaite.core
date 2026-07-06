@@ -13252,3 +13252,137 @@ msgstr "نمونه‌هایی که گزارششان منتشر شده"
 
 msgid "Published samples whose reports have not been printed yet"
 msgstr "نمونه‌های منتشرشده‌ای که گزارششان هنوز چاپ نشده"
+
+msgid "title_controlleddocument_document_id"
+msgstr "کد سند"
+
+msgid "description_controlleddocument_document_id"
+msgstr "کد یکتای سند کنترل‌شده، مثلاً ST75 یا QP-01"
+
+msgid "title_controlleddocument_title"
+msgstr "عنوان"
+
+msgid "title_controlleddocument_type"
+msgstr "نوع سند"
+
+msgid "title_controlleddocument_version"
+msgstr "نسخه"
+
+msgid "title_controlleddocument_owner"
+msgstr "مالک / مسئول"
+
+msgid "title_controlleddocument_department"
+msgstr "دپارتمان"
+
+msgid "title_controlleddocument_effective_date"
+msgstr "تاریخ اجرا"
+
+msgid "title_controlleddocument_review_date"
+msgstr "تاریخ بازنگری بعدی"
+
+msgid "description_controlleddocument_review_date"
+msgstr "تاریخی که این سند باید دوباره بازنگری شود"
+
+msgid "title_controlleddocument_related_methods"
+msgstr "روش‌ها / خدمات آنالیز مرتبط"
+
+msgid "description_controlleddocument_related_methods"
+msgstr ""
+"کد روش‌ها یا کلیدواژهٔ خدمات آنالیز که این سند به آن‌ها مربوط است (هر کدام "
+"در یک خط)"
+
+msgid "title_controlleddocument_file"
+msgstr "فایل سند"
+
+msgid "title_controlleddocument_description"
+msgstr "یادداشت‌ها"
+
+msgid "controlleddocument_type_sop"
+msgstr "روش اجرایی (SOP)"
+
+msgid "controlleddocument_type_method"
+msgstr "روش آزمون"
+
+msgid "controlleddocument_type_form"
+msgstr "فرم"
+
+msgid "controlleddocument_type_checklist"
+msgstr "چک‌لیست"
+
+msgid "controlleddocument_type_template"
+msgstr "الگو"
+
+msgid "controlleddocument_type_certificate"
+msgstr "گواهی"
+
+msgid "controlleddocument_type_sds"
+msgstr "برگهٔ اطلاعات ایمنی (SDS)"
+
+msgid "controlleddocument_type_record"
+msgstr "رکورد کنترل‌شده"
+
+msgid "listing_controlleddocuments_title"
+msgstr "اسناد کنترل‌شده"
+
+msgid "listing_controlleddocuments_action_add"
+msgstr "افزودن"
+
+msgid "listing_controlleddocuments_column_code"
+msgstr "کد"
+
+msgid "listing_controlleddocuments_column_title"
+msgstr "عنوان"
+
+msgid "listing_controlleddocuments_column_type"
+msgstr "نوع"
+
+msgid "listing_controlleddocuments_column_version"
+msgstr "نسخه"
+
+msgid "listing_controlleddocuments_column_review"
+msgstr "بازنگری بعدی"
+
+msgid "listing_controlleddocuments_column_state"
+msgstr "وضعیت"
+
+msgid "listing_controlleddocuments_state_all"
+msgstr "همه"
+
+msgid "listing_controlleddocuments_state_effective"
+msgstr "مؤثر"
+
+msgid "listing_controlleddocuments_state_draft"
+msgstr "پیش‌نویس"
+
+msgid "listing_controlleddocuments_state_obsolete"
+msgstr "منسوخ"
+
+msgid "Controlled Documents"
+msgstr "اسناد کنترل‌شده"
+
+msgid "Controlled Document"
+msgstr "سند کنترل‌شده"
+
+msgid "A controlled document (SOP, method, form, ...)"
+msgstr "یک سند کنترل‌شده (روش اجرایی، روش آزمون، فرم، ...)"
+
+msgid "Controlled document register (ISO/IEC 17025)"
+msgstr "دفتر ثبت اسناد کنترل‌شده (ISO/IEC 17025)"
+
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgid "Effective"
+msgstr "مؤثر"
+
+msgid "Obsolete"
+msgstr "منسوخ"
+
+msgid "Approve"
+msgstr "تأیید"
+
+msgid "Retire"
+msgstr "منسوخ‌سازی"
+
+msgid "Revise"
+msgstr "بازنگری"

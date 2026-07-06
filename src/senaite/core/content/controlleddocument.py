@@ -19,14 +19,22 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 
 DOCUMENT_TYPES = SimpleVocabulary([
-    SimpleTerm(value=u"sop", token="sop", title=u"Procedure (SOP)"),
-    SimpleTerm(value=u"method", token="method", title=u"Test method"),
-    SimpleTerm(value=u"form", token="form", title=u"Form"),
-    SimpleTerm(value=u"checklist", token="checklist", title=u"Checklist"),
-    SimpleTerm(value=u"template", token="template", title=u"Template"),
-    SimpleTerm(value=u"certificate", token="certificate", title=u"Certificate"),
-    SimpleTerm(value=u"sds", token="sds", title=u"Safety data sheet (SDS)"),
-    SimpleTerm(value=u"record", token="record", title=u"Controlled record"),
+    SimpleTerm(value=u"sop", token="sop",
+               title=_(u"controlleddocument_type_sop", default=u"Procedure (SOP)")),
+    SimpleTerm(value=u"method", token="method",
+               title=_(u"controlleddocument_type_method", default=u"Test method")),
+    SimpleTerm(value=u"form", token="form",
+               title=_(u"controlleddocument_type_form", default=u"Form")),
+    SimpleTerm(value=u"checklist", token="checklist",
+               title=_(u"controlleddocument_type_checklist", default=u"Checklist")),
+    SimpleTerm(value=u"template", token="template",
+               title=_(u"controlleddocument_type_template", default=u"Template")),
+    SimpleTerm(value=u"certificate", token="certificate",
+               title=_(u"controlleddocument_type_certificate", default=u"Certificate")),
+    SimpleTerm(value=u"sds", token="sds",
+               title=_(u"controlleddocument_type_sds", default=u"Safety data sheet (SDS)")),
+    SimpleTerm(value=u"record", token="record",
+               title=_(u"controlleddocument_type_record", default=u"Controlled record")),
 ])
 
 
