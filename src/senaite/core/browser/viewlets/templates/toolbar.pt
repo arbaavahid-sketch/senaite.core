@@ -100,7 +100,8 @@
       </li>
 
       <!-- Login/Register -->
-      <li class="nav-item" tal:condition="not:personal_bar/user_name">
+      <li class="nav-item" id="portal-login-action"
+          tal:condition="not:personal_bar/user_name">
         <div tal:omit-tag="python:1" tal:repeat="action personal_bar/user_actions">
           <a href="" tal:attributes="href action/href; class string:nav-link">
             <tal:actionname tal:content="action/title">

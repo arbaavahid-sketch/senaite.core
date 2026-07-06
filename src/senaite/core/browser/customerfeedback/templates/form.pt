@@ -14,6 +14,9 @@
        tal:attributes="dir python:'rtl' if rtl else 'ltr'"
        style="max-width:720px">
 
+    <!-- Customers do not log in: hide the login/register action here -->
+    <style type="text/css">#portal-login-action{display:none !important;}</style>
+
     <h1 tal:attributes="style string:text-align:${align}" tal:content="L/title">Feedback</h1>
 
     <!-- Thank-you -->
