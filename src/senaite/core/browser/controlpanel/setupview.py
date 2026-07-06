@@ -131,6 +131,9 @@ class SetupView(BrowserView):
         }, {
             "url": portal_url + "/@@document-review-status",
             "title": u"وضعیت بازنگری اسناد" if is_fa else u"Document Review Status",
+        }, {
+            "url": portal_url + "/@@customer-care-status",
+            "title": u"داشبورد امور مشتریان" if is_fa else u"Customer Care Dashboard",
         }]
 
     def setupitems(self):

@@ -24,6 +24,8 @@
   <include package=".dashboard"/>
   <include package=".documentstatus"/>
   <include package=".installdocuments"/>
+  <include package=".customercare"/>
+  <include package=".installcustomercare"/>
   <include package=".dexterity"/>
   <include package=".fields"/>
   <include package=".form"/>

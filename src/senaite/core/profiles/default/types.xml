@@ -17,6 +17,12 @@
   <object name="ControlledDocument" meta_type="Dexterity FTI" />
   <object name="ControlledDocuments" meta_type="Dexterity FTI" />
 
+  <!-- Customer Care: complaints (ISO 17025 7.9), surveys, support -->
+  <object name="CustomerCare" meta_type="Dexterity FTI" />
+  <object name="Complaint" meta_type="Dexterity FTI" />
+  <object name="SupportRequest" meta_type="Dexterity FTI" />
+  <object name="Survey" meta_type="Dexterity FTI" />
+
   <!-- Departments -->
   <object name="Department" meta_type="Dexterity FTI" />
   <object name="Departments" meta_type="Dexterity FTI" />

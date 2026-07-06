@@ -1,0 +1,92 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master">
+<body>
+
+  <metal:override fill-slot="top_slot"
+      tal:define="dc1 python:request.set('disable_plone.leftcolumn', 1);
+                  dc2 python:request.set('disable_plone.rightcolumn', 1);" />
+
+  <div metal:fill-slot="content"
+       tal:define="L view/labels;
+                   rtl view/is_rtl;
+                   align python:'right' if rtl else 'left';
+                   comp view/complaints_summary;
+                   supp view/support_summary;
+                   surv view/surveys_summary;
+                   openc view/open_complaints"
+       tal:attributes="dir python:'rtl' if rtl else 'ltr'">
+
+    <h1 tal:attributes="style string:text-align:${align}" tal:content="L/title">Customer Care Dashboard</h1>
+    <p class="text-muted" tal:attributes="style string:text-align:${align}"
+       tal:content="L/intro">intro</p>
+
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body" tal:attributes="style string:text-align:${align}">
+            <h5 tal:content="L/complaints">Complaints</h5>
+            <span class="badge badge-secondary" tal:content="string:${L/total}: ${comp/total}">Total</span>
+            <span class="badge badge-danger" tal:content="string:${L/open}: ${comp/open}">Open</span>
+            <span class="badge badge-success" tal:content="string:${L/closed}: ${comp/closed}">Closed</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body" tal:attributes="style string:text-align:${align}">
+            <h5 tal:content="L/support">Support</h5>
+            <span class="badge badge-secondary" tal:content="string:${L/total}: ${supp/total}">Total</span>
+            <span class="badge badge-warning" tal:content="string:${L/open}: ${supp/open}">Open</span>
+            <span class="badge badge-success" tal:content="string:${L/closed}: ${supp/closed}">Closed</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body" tal:attributes="style string:text-align:${align}">
+            <h5 tal:content="L/surveys">Surveys</h5>
+            <div tal:content="string:${L/responses}: ${surv/responses}">Responses</div>
+            <div tal:condition="surv/overall">
+              <strong tal:content="L/avg_overall">Avg overall</strong>:
+              <span tal:content="surv/overall">0</span> <span tal:content="L/of5">of 5</span>
+            </div>
+            <div class="small text-muted" tal:condition="surv/timeliness"
+                 tal:content="string:${L/avg_time}: ${surv/timeliness} / ${L/avg_quality}: ${surv/quality} / ${L/avg_comm}: ${surv/communication}">details</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h4 tal:attributes="style string:text-align:${align}" tal:content="L/open_complaints">Open complaints</h4>
+    <table class="table table-sm table-striped" tal:attributes="style string:text-align:${align}">
+      <thead class="thead-light">
+        <tr>
+          <th tal:attributes="style string:text-align:${align}" tal:content="L/col_subject">Subject</th>
+          <th tal:attributes="style string:text-align:${align}" tal:content="L/col_client">Client</th>
+          <th style="text-align:center" tal:content="L/col_severity">Severity</th>
+          <th style="text-align:center" tal:content="L/col_state">State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr tal:repeat="row openc">
+          <td tal:attributes="style string:text-align:${align}">
+            <a tal:attributes="href row/url" tal:content="row/subject">subject</a>
+          </td>
+          <td tal:attributes="style string:text-align:${align}" tal:content="row/client">client</td>
+          <td style="text-align:center" tal:content="row/severity">-</td>
+          <td style="text-align:center" tal:content="row/state">state</td>
+        </tr>
+        <tr tal:condition="not:openc">
+          <td colspan="4" class="text-muted" style="text-align:center" tal:content="L/none">Nothing</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="text-muted small" tal:attributes="style string:text-align:${align}"
+       tal:content="L/note">note</p>
+
+  </div>
+</body>
+</html>

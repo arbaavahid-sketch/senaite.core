@@ -15,6 +15,7 @@
   <object name="senaite_clientcontact_workflow" meta_type="Workflow" />
   <object name="senaite_clients_workflow" meta_type="Workflow"/>
   <object name="senaite_controlleddocument_workflow" meta_type="Workflow"/>
+  <object name="senaite_customerrequest_workflow" meta_type="Workflow"/>
   <object name="senaite_duplicateanalysis_workflow" meta_type="Workflow"/>
   <object name="senaite_instruments_workflow" meta_type="Workflow" />
   <object name="senaite_labcontact_workflow" meta_type="Workflow" />
@@ -68,6 +69,18 @@
     </type>
     <type type_id="ControlledDocument">
       <bound-workflow workflow_id="senaite_controlleddocument_workflow"/>
+    </type>
+    <type type_id="CustomerCare">
+      <bound-workflow workflow_id="senaite_one_state_workflow"/>
+    </type>
+    <type type_id="Complaint">
+      <bound-workflow workflow_id="senaite_customerrequest_workflow"/>
+    </type>
+    <type type_id="SupportRequest">
+      <bound-workflow workflow_id="senaite_customerrequest_workflow"/>
+    </type>
+    <type type_id="Survey">
+      <bound-workflow workflow_id="senaite_one_state_workflow"/>
     </type>
     <type type_id="AuditLog">
       <bound-workflow workflow_id="senaite_one_state_workflow"/>

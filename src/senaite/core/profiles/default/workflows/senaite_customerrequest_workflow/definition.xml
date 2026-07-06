@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<dc-workflow xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+             workflow_id="senaite_customerrequest_workflow"
+             title="Senaite customer request Workflow"
+             description=""
+             state_variable="review_state"
+             initial_state="received"
+             manager_bypass="False"
+             i18n:domain="senaite.core">
+
+  <!--
+  Shared lifecycle for customer complaints (ISO 17025 clause 7.9) and support
+  requests:
+
+    received  [process] to in_progress
+    in_progress  [resolve] to resolved
+    resolved  [close] to closed
+    closed  [reopen] to in_progress
+
+  A customer submits the record (initial state received). Processing, resolving,
+  closing and reopening require "Review portal content" (lab staff).
+  -->
+
+  <permission>Access contents information</permission>
+  <permission>Delete objects</permission>
+  <permission>List folder contents</permission>
+  <permission>Modify portal content</permission>
+  <permission>Review portal content</permission>
+  <permission>View</permission>
+
+  <state state_id="received" title="Received" i18n:attributes="title">
+    <exit-transition transition_id="process" />
+    <permission-map name="Access contents information" acquired="True" />
+    <permission-map name="Delete objects" acquired="True" />
+    <permission-map name="List folder contents" acquired="True" />
+    <permission-map name="Modify portal content" acquired="True" />
+    <permission-map name="Review portal content" acquired="True" />
+    <permission-map name="View" acquired="True" />
+  </state>
+
+  <state state_id="in_progress" title="In progress" i18n:attributes="title">
+    <exit-transition transition_id="resolve" />
+    <permission-map name="Access contents information" acquired="True" />
+    <permission-map name="Delete objects" acquired="True" />
+    <permission-map name="List folder contents" acquired="True" />
+    <permission-map name="Modify portal content" acquired="True" />
+    <permission-map name="Review portal content" acquired="True" />
+    <permission-map name="View" acquired="True" />
+  </state>
+
+  <state state_id="resolved" title="Resolved" i18n:attributes="title">
+    <exit-transition transition_id="close" />
+    <permission-map name="Access contents information" acquired="True" />
+    <permission-map name="Delete objects" acquired="True" />
+    <permission-map name="List folder contents" acquired="True" />
+    <permission-map name="Modify portal content" acquired="True" />
+    <permission-map name="Review portal content" acquired="True" />
+    <permission-map name="View" acquired="True" />
+  </state>
+
+  <state state_id="closed" title="Closed" i18n:attributes="title">
+    <exit-transition transition_id="reopen" />
+    <permission-map name="Access contents information" acquired="True" />
+    <permission-map name="Delete objects" acquired="False" />
+    <permission-map name="Modify portal content" acquired="False" />
+    <permission-map name="List folder contents" acquired="True" />
+    <permission-map name="Review portal content" acquired="True" />
+    <permission-map name="View" acquired="True" />
+  </state>
+
+  <transition transition_id="process" title="Process" new_state="in_progress"
+              trigger="USER" before_script="" after_script=""
+              i18n:attributes="title">
+    <action url="" category="workflow" icon="">Process</action>
+    <guard>
+      <guard-permission>Review portal content</guard-permission>
+    </guard>
+  </transition>
+
+  <transition transition_id="resolve" title="Resolve" new_state="resolved"
+              trigger="USER" before_script="" after_script=""
+              i18n:attributes="title">
+    <action url="" category="workflow" icon="">Resolve</action>
+    <guard>
+      <guard-permission>Review portal content</guard-permission>
+    </guard>
+  </transition>
+
+  <transition transition_id="close" title="Close" new_state="closed"
+              trigger="USER" before_script="" after_script=""
+              i18n:attributes="title">
+    <action url="" category="workflow" icon="">Close</action>
+    <guard>
+      <guard-permission>Review portal content</guard-permission>
+    </guard>
+  </transition>
+
+  <transition transition_id="reopen" title="Reopen" new_state="in_progress"
+              trigger="USER" before_script="" after_script=""
+              i18n:attributes="title">
+    <action url="" category="workflow" icon="">Reopen</action>
+    <guard>
+      <guard-permission>Review portal content</guard-permission>
+    </guard>
+  </transition>
+
+  <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
+    <description>Previous transition</description>
+    <default><expression>transition/getId|nothing</expression></default>
+    <guard></guard>
+  </variable>
+
+  <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
+    <description>The ID of the user who performed the last transition</description>
+    <default><expression>user/getId</expression></default>
+    <guard></guard>
+  </variable>
+
+  <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
+    <description>Comment about the last transition</description>
+    <default><expression>python:state_change.kwargs.get('comment', '')</expression></default>
+    <guard></guard>
+  </variable>
+
+  <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
+    <description>Provides access to workflow history</description>
+    <default><expression>state_change/getHistory</expression></default>
+    <guard></guard>
+  </variable>
+
+  <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
+    <description>When the previous transition was performed</description>
+    <default><expression>state_change/getDateTime</expression></default>
+    <guard></guard>
+  </variable>
+
+</dc-workflow>

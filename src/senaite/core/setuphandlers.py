@@ -254,6 +254,7 @@ def add_senaite_setup_items(portal):
         ("samplecontainers", "Sample Containers", "SampleContainers"),
         ("attachmenttypes", "Attachment Types", "AttachmentTypes"),
         ("controlleddocuments", "Controlled Documents", "ControlledDocuments"),
+        ("customercare", "Customer Care", "CustomerCare"),
         ("contacts", "Contacts", "Contacts"),
         ("dynamicanalysisspecs", "Dynamic Analysis Specifications",
          "DynamicAnalysisSpecs"),

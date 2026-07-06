@@ -13386,3 +13386,222 @@ msgstr "منسوخ‌سازی"
 
 msgid "Revise"
 msgstr "بازنگری"
+
+msgid "title_complaint_title"
+msgstr "موضوع"
+
+msgid "title_complaint_client"
+msgstr "مشتری"
+
+msgid "title_complaint_contact"
+msgstr "شخص رابط"
+
+msgid "title_complaint_sample"
+msgstr "شناسهٔ نمونهٔ مرتبط"
+
+msgid "title_complaint_category"
+msgstr "دسته"
+
+msgid "title_complaint_severity"
+msgstr "شدت"
+
+msgid "title_complaint_received"
+msgstr "تاریخ دریافت"
+
+msgid "title_complaint_description"
+msgstr "شرح شکایت"
+
+msgid "title_complaint_investigation"
+msgstr "بررسی (داخلی)"
+
+msgid "title_complaint_resolution"
+msgstr "رفع / اقدام اصلاحی (داخلی)"
+
+msgid "complaint_category_result"
+msgstr "نتیجهٔ آنالیز"
+
+msgid "complaint_category_turnaround"
+msgstr "زمان‌بندی / تأخیر"
+
+msgid "complaint_category_report"
+msgstr "خطای گزارش"
+
+msgid "complaint_category_service"
+msgstr "خدمات / پرسنل"
+
+msgid "complaint_category_sampling"
+msgstr "نمونه‌برداری"
+
+msgid "complaint_category_other"
+msgstr "سایر"
+
+msgid "severity_low"
+msgstr "کم"
+
+msgid "severity_medium"
+msgstr "متوسط"
+
+msgid "severity_high"
+msgstr "زیاد"
+
+msgid "title_support_title"
+msgstr "موضوع"
+
+msgid "title_support_client"
+msgstr "مشتری"
+
+msgid "title_support_contact"
+msgstr "شخص رابط"
+
+msgid "title_support_category"
+msgstr "دسته"
+
+msgid "title_support_received"
+msgstr "تاریخ دریافت"
+
+msgid "title_support_description"
+msgstr "شرح درخواست"
+
+msgid "title_support_response"
+msgstr "پاسخ (داخلی)"
+
+msgid "support_category_technical"
+msgstr "فنی"
+
+msgid "support_category_billing"
+msgstr "صورتحساب / فاکتور"
+
+msgid "support_category_sampling"
+msgstr "نمونه‌برداری / لجستیک"
+
+msgid "support_category_general"
+msgstr "پرسش عمومی"
+
+msgid "title_survey_title"
+msgstr "موضوع"
+
+msgid "title_survey_client"
+msgstr "مشتری"
+
+msgid "title_survey_contact"
+msgstr "شخص رابط"
+
+msgid "title_survey_report"
+msgstr "گزارش/نمونهٔ مرتبط"
+
+msgid "title_survey_date"
+msgstr "تاریخ نظرسنجی"
+
+msgid "title_survey_overall"
+msgstr "رضایت کلی"
+
+msgid "title_survey_timeliness"
+msgstr "به‌موقع‌بودن"
+
+msgid "title_survey_quality"
+msgstr "کیفیت نتایج"
+
+msgid "title_survey_communication"
+msgstr "ارتباطات"
+
+msgid "title_survey_comments"
+msgstr "نظرات"
+
+msgid "rating_5"
+msgstr "۵ - عالی"
+
+msgid "rating_4"
+msgstr "۴ - خوب"
+
+msgid "rating_3"
+msgstr "۳ - متوسط"
+
+msgid "rating_2"
+msgstr "۲ - ضعیف"
+
+msgid "rating_1"
+msgstr "۱ - خیلی ضعیف"
+
+msgid "customercare_type_complaint"
+msgstr "شکایت"
+
+msgid "customercare_type_support"
+msgstr "درخواست پشتیبانی"
+
+msgid "customercare_type_survey"
+msgstr "نظرسنجی رضایت"
+
+msgid "customercare_action_add_complaint"
+msgstr "افزودن شکایت"
+
+msgid "customercare_action_add_support"
+msgstr "افزودن درخواست پشتیبانی"
+
+msgid "customercare_action_add_survey"
+msgstr "افزودن نظرسنجی"
+
+msgid "customercare_title"
+msgstr "امور مشتریان"
+
+msgid "customercare_column_type"
+msgstr "نوع"
+
+msgid "customercare_column_subject"
+msgstr "موضوع"
+
+msgid "customercare_column_client"
+msgstr "مشتری"
+
+msgid "customercare_column_created"
+msgstr "تاریخ ایجاد"
+
+msgid "customercare_column_state"
+msgstr "وضعیت"
+
+msgid "customercare_state_all"
+msgstr "همه"
+
+msgid "customercare_state_open"
+msgstr "باز"
+
+msgid "customercare_state_closed"
+msgstr "بسته"
+
+msgid "Customer Care"
+msgstr "امور مشتریان"
+
+msgid "Complaints, surveys and support requests"
+msgstr "شکایات، نظرسنجی‌ها و درخواست‌های پشتیبانی"
+
+msgid "Complaint"
+msgstr "شکایت"
+
+msgid "A customer complaint (ISO 17025 clause 7.9)"
+msgstr "شکایت مشتری (بند ۷.۹ ISO 17025)"
+
+msgid "Support Request"
+msgstr "درخواست پشتیبانی"
+
+msgid "A customer support request"
+msgstr "درخواست پشتیبانی مشتری"
+
+msgid "Satisfaction Survey"
+msgstr "نظرسنجی رضایت"
+
+msgid "A customer satisfaction survey response"
+msgstr "پاسخ نظرسنجی رضایت مشتری"
+
+msgid "In progress"
+msgstr "در حال بررسی"
+
+msgid "Resolved"
+msgstr "حل‌شده"
+
+msgid "Process"
+msgstr "بررسی"
+
+msgid "Resolve"
+msgstr "حل"
+
+msgid "Reopen"
+msgstr "بازگشایی"

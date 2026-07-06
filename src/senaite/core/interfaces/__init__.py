@@ -241,6 +241,27 @@ class IControlledDocument(Interface):
     """
 
 
+class ICustomerCare(Interface):
+    """Marker interface for the customer-care setup folder (complaints,
+    surveys and support requests)
+    """
+
+
+class IComplaint(Interface):
+    """Marker interface for a customer complaint (ISO/IEC 17025 clause 7.9)
+    """
+
+
+class ISupportRequest(Interface):
+    """Marker interface for a customer support request
+    """
+
+
+class ISurvey(Interface):
+    """Marker interface for a customer satisfaction survey response
+    """
+
+
 class ISampleContainers(Interface):
     """Marker interface for sample container setup folder
     """
