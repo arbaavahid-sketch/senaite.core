@@ -15,16 +15,19 @@
         </span>
       </div>
       <div class="float-right"
-           tal:define="portal_url context/@@plone_portal_state/portal_url">
+           tal:define="portal_state context/@@plone_portal_state;
+                       portal_url portal_state/portal_url">
         <ul class="nav nav-pills">
-          <li><a class="nav-link"
-                 tal:attributes="href string:${portal_url}/@@customer-feedback">
-              <i class="fas fa-comment-dots"></i>
-              <span i18n:translate="footer_submit_request">Submit a request</span></a></li>
-          <li><a class="nav-link"
-                 tal:attributes="href string:${portal_url}/@@track-request">
-              <i class="fas fa-search"></i>
-              <span i18n:translate="footer_track_request">Track a request</span></a></li>
+          <tal:customer tal:condition="portal_state/anonymous">
+            <li><a class="nav-link"
+                   tal:attributes="href string:${portal_url}/@@customer-feedback">
+                <i class="fas fa-comment-dots"></i>
+                <span i18n:translate="footer_submit_request">Submit a request</span></a></li>
+            <li><a class="nav-link"
+                   tal:attributes="href string:${portal_url}/@@track-request">
+                <i class="fas fa-search"></i>
+                <span i18n:translate="footer_track_request">Track a request</span></a></li>
+          </tal:customer>
           <li><a class="nav-link" href="https://tppc.ir" title="tppc.ir" target="_blank"><i class="fas fa-globe"></i></a></li>
         </ul>
       </div>
