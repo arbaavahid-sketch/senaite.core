@@ -14,8 +14,14 @@
        tal:attributes="dir python:'rtl' if rtl else 'ltr'"
        style="max-width:720px">
 
-    <!-- Customers do not log in: hide the login/register action here -->
-    <style type="text/css">#portal-login-action{display:none !important;}</style>
+    <!-- Public customer page: hide the whole staff toolbar (login, search
+         spotlight, menu) so customers get a clean form-only page. -->
+    <style type="text/css">#senaite-toolbar{display:none !important;}</style>
+
+    <div tal:attributes="style string:border-bottom:2px solid #0d6efd;; margin-bottom:1.5rem;; padding-bottom:.5rem;; text-align:${align}">
+      <strong style="font-size:1.1rem"
+              tal:content="context/@@plone_portal_state/navigation_root_title">Laboratory</strong>
+    </div>
 
     <h1 tal:attributes="style string:text-align:${align}" tal:content="L/title">Feedback</h1>
 

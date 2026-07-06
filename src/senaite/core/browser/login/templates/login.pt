@@ -115,7 +115,7 @@
                 <a tal:attributes="href string:${portal_url}/@@customer-feedback"
                    i18n:translate="footer_submit_request">Submit a request</a>
                 &nbsp;|&nbsp;
-                <i class="fas fa-search"></i>
+                <i class="fas fa-clipboard-list"></i>
                 <a tal:attributes="href string:${portal_url}/@@track-request"
                    i18n:translate="footer_track_request">Track a request</a>
               </p>

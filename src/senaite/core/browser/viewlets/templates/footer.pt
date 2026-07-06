@@ -25,7 +25,7 @@
                 <span i18n:translate="footer_submit_request">Submit a request</span></a></li>
             <li><a class="nav-link"
                    tal:attributes="href string:${portal_url}/@@track-request">
-                <i class="fas fa-search"></i>
+                <i class="fas fa-clipboard-list"></i>
                 <span i18n:translate="footer_track_request">Track a request</span></a></li>
           </tal:customer>
           <li><a class="nav-link" href="https://tppc.ir" title="tppc.ir" target="_blank"><i class="fas fa-globe"></i></a></li>
