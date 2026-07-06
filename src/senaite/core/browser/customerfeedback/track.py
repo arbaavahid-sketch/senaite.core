@@ -11,6 +11,7 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from bika.lims import api
+from bika.lims.api import safe_unicode
 
 TYPES = ("Complaint", "SupportRequest", "Survey")
 
@@ -94,10 +95,15 @@ class TrackRequestView(BrowserView):
                 if obj is None or api.get_portal_type(obj) not in TYPES:
                     self.not_found = True
                     return
-                stored_client = (getattr(obj, "client_name", "") or "").strip()
+                # Normalise both sides to unicode before comparing: request
+                # params come back as UTF-8 bytestrings under Py2 while the
+                # stored value is unicode, so a naive compare fails for Persian.
+                stored_client = safe_unicode(
+                    getattr(obj, "client_name", "") or "").strip()
+                input_client = safe_unicode(self.client_name or "").strip()
                 # Require the client name to match (case-insensitive) unless the
                 # stored record has no client name at all.
-                if stored_client and self.client_name.lower() != stored_client.lower():
+                if stored_client and input_client.lower() != stored_client.lower():
                     self.not_found = True
                     return
                 self.result = self._to_result(obj)
