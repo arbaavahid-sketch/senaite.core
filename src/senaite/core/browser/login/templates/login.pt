@@ -109,6 +109,16 @@
                 <span i18n:translate="need_an_account" tal:omit-tag="">Need an account?</span>
                 <a href="@@register" tal:attributes="href string:${portal_url}/@@register" class="emph" i18n:translate="footer_login_link_signup">Sign up here</a>.
               </p>
+              <hr class="dashed"/>
+              <p class="form-text text-muted" i18n:domain="senaite.core">
+                <i class="fas fa-comment-dots"></i>
+                <a tal:attributes="href string:${portal_url}/@@customer-feedback"
+                   i18n:translate="footer_submit_request">Submit a request</a>
+                &nbsp;|&nbsp;
+                <i class="fas fa-search"></i>
+                <a tal:attributes="href string:${portal_url}/@@track-request"
+                   i18n:translate="footer_track_request">Track a request</a>
+              </p>
             </div>
 
           </div>

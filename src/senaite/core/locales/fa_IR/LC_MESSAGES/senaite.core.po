@@ -13608,3 +13608,9 @@ msgstr "بازگشایی"
 
 msgid "title_complaint_customer_response"
 msgstr "پاسخ به مشتری (برای مشتری نمایش داده می‌شود)"
+
+msgid "footer_submit_request"
+msgstr "ثبت درخواست/شکایت"
+
+msgid "footer_track_request"
+msgstr "پیگیری درخواست"
