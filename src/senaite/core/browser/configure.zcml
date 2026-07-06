@@ -29,6 +29,7 @@
   <include package=".globals"/>
   <include package=".idserver"/>
   <include package=".install"/>
+  <include package=".instrumentstatus"/>
   <include package=".label"/>
   <include package=".listing"/>
   <include package=".login"/>

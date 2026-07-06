@@ -125,6 +125,9 @@ class SetupView(BrowserView):
         return [{
             "url": portal_url + "/@@analyst-performance",
             "title": u"عملکرد آزمونگرها" if is_fa else u"Analyst Performance",
+        }, {
+            "url": portal_url + "/@@instrument-status",
+            "title": u"وضعیت کالیبراسیون دستگاه‌ها" if is_fa else u"Instrument Calibration Status",
         }]
 
     def setupitems(self):
