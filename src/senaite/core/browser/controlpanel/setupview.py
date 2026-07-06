@@ -109,6 +109,24 @@ class SetupView(BrowserView):
         brains = api.search(query)
         return len(brains)
 
+    def extra_tiles(self):
+        """Custom (non-content) tiles to append to the setup overview.
+
+        Currently just the analyst performance report. Bilingual (fa/en)
+        according to the current site language.
+        """
+        try:
+            ltool = api.get_tool("portal_languages")
+            lang = (ltool.getPreferredLanguage() or "fa").split("-")[0].lower()
+        except Exception:
+            lang = "fa"
+        is_fa = lang == "fa"
+        portal_url = api.get_portal().absolute_url()
+        return [{
+            "url": portal_url + "/@@analyst-performance",
+            "title": u"عملکرد آزمونگرها" if is_fa else u"Analyst Performance",
+        }]
+
     def setupitems(self):
         """Lookup available setup items
 
