@@ -62,7 +62,8 @@ class ISupportRequestSchema(model.Schema):
     )
 
     response = schema.Text(
-        title=_(u"title_support_response", default=u"Response (internal)"),
+        title=_(u"title_support_response",
+                default=u"Response to customer (shown to the customer)"),
         required=False,
     )
 

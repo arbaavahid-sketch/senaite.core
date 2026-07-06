@@ -13463,7 +13463,7 @@ msgid "title_support_description"
 msgstr "شرح درخواست"
 
 msgid "title_support_response"
-msgstr "پاسخ (داخلی)"
+msgstr "پاسخ به مشتری (برای مشتری نمایش داده می‌شود)"
 
 msgid "support_category_technical"
 msgstr "فنی"
@@ -13605,3 +13605,6 @@ msgstr "حل"
 
 msgid "Reopen"
 msgstr "بازگشایی"
+
+msgid "title_complaint_customer_response"
+msgstr "پاسخ به مشتری (برای مشتری نمایش داده می‌شود)"

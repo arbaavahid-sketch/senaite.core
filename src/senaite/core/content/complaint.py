@@ -98,6 +98,12 @@ class IComplaintSchema(model.Schema):
         required=False,
     )
 
+    customer_response = schema.Text(
+        title=_(u"title_complaint_customer_response",
+                default=u"Response to customer (shown to the customer)"),
+        required=False,
+    )
+
 
 @implementer(IComplaint, IComplaintSchema)
 class Complaint(Container):
