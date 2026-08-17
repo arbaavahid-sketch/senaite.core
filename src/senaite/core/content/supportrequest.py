@@ -4,6 +4,7 @@
 # -> resolved -> closed) is handled by the senaite_customerrequest_workflow.
 
 from bika.lims import senaiteMessageFactory as _
+from plone.autoform import directives as form
 from plone.supermodel import model
 from senaite.core.catalog import SETUP_CATALOG
 from senaite.core.content.base import Container
@@ -64,6 +65,12 @@ class ISupportRequestSchema(model.Schema):
     response = schema.Text(
         title=_(u"title_support_response",
                 default=u"Response to customer (shown to the customer)"),
+        required=False,
+    )
+
+    form.omitted("access_token")
+    access_token = schema.TextLine(
+        title=_(u"title_access_token", default=u"Access token"),
         required=False,
     )
 

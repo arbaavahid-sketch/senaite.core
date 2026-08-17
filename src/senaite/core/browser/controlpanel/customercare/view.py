@@ -63,6 +63,8 @@ class CustomerCareView(ControlPanelListingView):
             ("Created", {
                 "title": _(u"customercare_column_created", default=u"Created")}),
             ("State", {"title": _(u"customercare_column_state", default=u"State")}),
+            ("CustomerLink", {
+                "title": _(u"customercare_column_link", default=u"Customer link")}),
         ))
 
         self.review_states = [
@@ -98,4 +100,14 @@ class CustomerCareView(ControlPanelListingView):
         except Exception:
             item["Created"] = ""
         item["State"] = translate(api.get_review_status(obj))
+        # Shareable customer link (unguessable token) to email to the customer.
+        token = getattr(obj, "access_token", None)
+        if token:
+            url = "%s/@@track-request?token=%s" % (
+                api.get_url(api.get_portal()), token)
+            item["CustomerLink"] = url
+            item["replace"]["CustomerLink"] = (
+                u'<a href="%s" target="_blank">%s</a>' % (url, url))
+        else:
+            item["CustomerLink"] = ""
         return item

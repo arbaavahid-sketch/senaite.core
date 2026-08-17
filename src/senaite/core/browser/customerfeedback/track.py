@@ -72,9 +72,31 @@ class TrackRequestView(BrowserView):
         self.not_found = False
         self.tracking_id = (self.request.get("tracking") or "").strip()
         self.client_name = (self.request.get("client_name") or "").strip()
-        if self.request.get("track"):
+        self.token = (self.request.get("token") or "").strip()
+        if self.token:
+            # Direct link: the unguessable token is the credential, no name
+            # needed. This is the link the lab emails to the customer.
+            self._lookup_by_token()
+        elif self.request.get("track"):
             self._lookup()
         return self.template()
+
+    def _lookup_by_token(self):
+        try:
+            with api.security.as_privileged_user():
+                setup = api.get_senaite_setup()
+                container = setup.customercare
+                for obj in container.objectValues():
+                    if api.get_portal_type(obj) not in TYPES:
+                        continue
+                    stored = safe_unicode(
+                        getattr(obj, "access_token", "") or "").strip()
+                    if stored and stored == safe_unicode(self.token):
+                        self.result = self._to_result(obj)
+                        return
+                self.not_found = True
+        except Exception:
+            self.not_found = True
 
     def _lang(self):
         try:

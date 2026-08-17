@@ -4,6 +4,7 @@
 # feedback after report delivery. Uses the one-state workflow (submitted).
 
 from bika.lims import senaiteMessageFactory as _
+from plone.autoform import directives as form
 from plone.supermodel import model
 from senaite.core.catalog import SETUP_CATALOG
 from senaite.core.content.base import Container
@@ -79,6 +80,12 @@ class ISurveySchema(model.Schema):
 
     comments = schema.Text(
         title=_(u"title_survey_comments", default=u"Comments"),
+        required=False,
+    )
+
+    form.omitted("access_token")
+    access_token = schema.TextLine(
+        title=_(u"title_access_token", default=u"Access token"),
         required=False,
     )
 

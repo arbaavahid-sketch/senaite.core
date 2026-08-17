@@ -52,6 +52,8 @@ LABELS = {
         "thanks_more": u"آزمایشگاه درخواست شما را بررسی و پیگیری خواهد کرد.",
         "again": u"ثبت درخواست دیگر",
         "track_link": u"پیگیری این درخواست",
+        "your_link": u"لینک پیگیری شما:",
+        "save_link": u"این لینک را ذخیره کنید تا هر زمان وضعیت را ببینید.",
         "err_subject": u"لطفاً موضوع را وارد کنید.",
         "sev_low": u"کم", "sev_medium": u"متوسط", "sev_high": u"زیاد",
         "choose": u"— انتخاب —",
@@ -80,6 +82,8 @@ LABELS = {
         "thanks_more": u"The laboratory will review and follow up on your request.",
         "again": u"Submit another request",
         "track_link": u"Track this request",
+        "your_link": u"Your tracking link:",
+        "save_link": u"Save this link to check the status anytime.",
         "err_subject": u"Please enter a subject.",
         "sev_low": u"Low", "sev_medium": u"Medium", "sev_high": u"High",
         "choose": u"— select —",
@@ -105,6 +109,7 @@ class CustomerFeedbackView(BrowserView):
         self.is_rtl = self.lang == "fa"
         self.error = ""
         self.tracking = ""
+        self.track_link = ""
         if self.request.get("REQUEST_METHOD", "GET") == "POST" \
                 and self.request.form.get("submit"):
             self._handle_submit()
@@ -176,6 +181,10 @@ class CustomerFeedbackView(BrowserView):
                 container = self._container()
                 obj = api.create(container, portal_type, **kwargs)
                 self.tracking = api.get_id(obj)
+                token = getattr(obj, "access_token", None)
+                if token:
+                    self.track_link = "%s/@@track-request?token=%s" % (
+                        api.get_url(api.get_portal()), token)
         except Exception as exc:  # noqa
             self.error = u"%s" % exc
 

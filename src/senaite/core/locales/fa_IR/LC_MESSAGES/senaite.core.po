@@ -13614,3 +13614,9 @@ msgstr "ثبت درخواست/شکایت"
 
 msgid "footer_track_request"
 msgstr "پیگیری درخواست"
+
+msgid "customercare_column_link"
+msgstr "لینک مشتری"
+
+msgid "title_access_token"
+msgstr "توکن دسترسی"

@@ -32,8 +32,13 @@
       <p><strong tal:content="L/thanks">Tracking:</strong>
          <code tal:content="view/tracking">id</code></p>
       <p tal:content="L/thanks_more">We will follow up.</p>
-      <a class="btn btn-sm btn-primary"
-         tal:attributes="href string:track-request?track=1&amp;tracking=${view/tracking}"
+      <div tal:condition="view/track_link" class="mb-2">
+        <p class="mb-1"><strong tal:content="L/your_link">Your tracking link:</strong></p>
+        <p><a tal:attributes="href view/track_link" tal:content="view/track_link">link</a></p>
+        <p class="text-muted small" tal:content="L/save_link">Save this link to check the status anytime.</p>
+      </div>
+      <a tal:condition="view/track_link" class="btn btn-sm btn-primary"
+         tal:attributes="href view/track_link"
          tal:content="L/track_link">Track this request</a>
       <a href="customer-feedback" class="btn btn-sm btn-outline-primary"
          tal:content="L/again">Submit another</a>

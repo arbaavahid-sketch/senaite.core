@@ -5,6 +5,7 @@
 # senaite_customerrequest_workflow, not by a schema field.
 
 from bika.lims import senaiteMessageFactory as _
+from plone.autoform import directives as form
 from plone.supermodel import model
 from senaite.core.catalog import SETUP_CATALOG
 from senaite.core.content.base import Container
@@ -101,6 +102,14 @@ class IComplaintSchema(model.Schema):
     customer_response = schema.Text(
         title=_(u"title_complaint_customer_response",
                 default=u"Response to customer (shown to the customer)"),
+        required=False,
+    )
+
+    # Unguessable token for the customer's direct tracking link. Auto-assigned
+    # on creation (see customer-care event subscriber); hidden from the form.
+    form.omitted("access_token")
+    access_token = schema.TextLine(
+        title=_(u"title_access_token", default=u"Access token"),
         required=False,
     )
 

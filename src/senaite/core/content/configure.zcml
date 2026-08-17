@@ -4,4 +4,18 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="senaite.core">
 
+  <!-- Assign a customer access token on creation of customer-care records -->
+  <subscriber
+      for="senaite.core.interfaces.IComplaint
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      handler=".customercare_events.assign_access_token" />
+  <subscriber
+      for="senaite.core.interfaces.ISupportRequest
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      handler=".customercare_events.assign_access_token" />
+  <subscriber
+      for="senaite.core.interfaces.ISurvey
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      handler=".customercare_events.assign_access_token" />
+
 </configure>
