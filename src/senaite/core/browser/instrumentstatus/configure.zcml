@@ -7,7 +7,7 @@
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       name="instrument-status"
       class=".view.InstrumentStatusView"
-      permission="zope2.View"
+      permission="senaite.core.permissions.ManageBika"
       layer="senaite.core.interfaces.ISenaiteCore"
       />
 

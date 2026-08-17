@@ -7,7 +7,7 @@
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       name="customer-care-status"
       class=".view.CustomerCareStatusView"
-      permission="zope2.View"
+      permission="senaite.core.permissions.ManageBika"
       layer="senaite.core.interfaces.ISenaiteCore"
       />
 

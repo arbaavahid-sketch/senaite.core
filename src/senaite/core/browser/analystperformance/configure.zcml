@@ -7,7 +7,7 @@
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       name="analyst-performance"
       class=".view.AnalystPerformanceView"
-      permission="zope2.View"
+      permission="senaite.core.permissions.ManageBika"
       layer="senaite.core.interfaces.ISenaiteCore"
       />
 
