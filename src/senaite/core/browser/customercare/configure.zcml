@@ -11,4 +11,12 @@
       layer="senaite.core.interfaces.ISenaiteCore"
       />
 
+  <browser:page
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="customer-care-delete"
+      class=".delete.CustomerCareDeleteView"
+      permission="senaite.core.permissions.ManageBika"
+      layer="senaite.core.interfaces.ISenaiteCore"
+      />
+
 </configure>
