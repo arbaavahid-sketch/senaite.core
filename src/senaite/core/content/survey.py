@@ -44,6 +44,16 @@ class ISurveySchema(model.Schema):
         required=False,
     )
 
+    contact_email = schema.TextLine(
+        title=_(u"title_contact_email", default=u"Contact email"),
+        required=False,
+    )
+
+    contact_phone = schema.TextLine(
+        title=_(u"title_contact_phone", default=u"Contact phone"),
+        required=False,
+    )
+
     related_report = schema.TextLine(
         title=_(u"title_survey_report", default=u"Related report / sample ID"),
         required=False,

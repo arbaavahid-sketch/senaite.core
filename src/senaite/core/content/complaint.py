@@ -60,6 +60,19 @@ class IComplaintSchema(model.Schema):
         required=False,
     )
 
+    contact_email = schema.TextLine(
+        title=_(u"title_contact_email", default=u"Contact email"),
+        description=_(u"desc_contact_email",
+                      default=u"The answer link is emailed here when the "
+                              u"request is closed."),
+        required=False,
+    )
+
+    contact_phone = schema.TextLine(
+        title=_(u"title_contact_phone", default=u"Contact phone"),
+        required=False,
+    )
+
     related_sample = schema.TextLine(
         title=_(u"title_complaint_sample", default=u"Related sample ID"),
         required=False,

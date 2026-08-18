@@ -1206,3 +1206,60 @@ msgstr "جستجوی پیشرفته…"
 
 msgid "You are here:"
 msgstr "شما اینجا هستید:"
+
+msgid "Manager"
+msgstr "مدیر سیستم"
+
+msgid "Site Administrator"
+msgstr "مدیر سایت"
+
+msgid "LabManager"
+msgstr "مدیر آزمایشگاه"
+
+msgid "LabClerk"
+msgstr "کارمند آزمایشگاه"
+
+msgid "Analyst"
+msgstr "کارشناس آزمون"
+
+msgid "Verifier"
+msgstr "تأییدکننده"
+
+msgid "Sampler"
+msgstr "نمونه‌بردار"
+
+msgid "SamplingCoordinator"
+msgstr "هماهنگ‌کنندهٔ نمونه‌برداری"
+
+msgid "Preserver"
+msgstr "مسئول نگهداری نمونه"
+
+msgid "Publisher"
+msgstr "صادرکنندهٔ گزارش"
+
+msgid "RegulatoryInspector"
+msgstr "بازرس نظارتی"
+
+msgid "Client"
+msgstr "مشتری"
+
+msgid "ClientGuest"
+msgstr "مهمان مشتری"
+
+msgid "Owner"
+msgstr "مالک"
+
+msgid "Member"
+msgstr "عضو"
+
+msgid "Reviewer"
+msgstr "بازبین"
+
+msgid "Editor"
+msgstr "ویرایشگر"
+
+msgid "Contributor"
+msgstr "مشارکت‌کننده"
+
+msgid "Reader"
+msgstr "خواننده"

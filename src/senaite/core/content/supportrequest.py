@@ -46,6 +46,19 @@ class ISupportRequestSchema(model.Schema):
         required=False,
     )
 
+    contact_email = schema.TextLine(
+        title=_(u"title_contact_email", default=u"Contact email"),
+        description=_(u"desc_contact_email",
+                      default=u"The answer link is emailed here when the "
+                              u"request is closed."),
+        required=False,
+    )
+
+    contact_phone = schema.TextLine(
+        title=_(u"title_contact_phone", default=u"Contact phone"),
+        required=False,
+    )
+
     category = schema.Choice(
         title=_(u"title_support_category", default=u"Category"),
         source=SUPPORT_CATEGORIES,

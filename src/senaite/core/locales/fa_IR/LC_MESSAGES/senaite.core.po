@@ -13620,3 +13620,12 @@ msgstr "لینک مشتری"
 
 msgid "title_access_token"
 msgstr "توکن دسترسی"
+
+msgid "title_contact_email"
+msgstr "ایمیل تماس"
+
+msgid "title_contact_phone"
+msgstr "تلفن تماس"
+
+msgid "desc_contact_email"
+msgstr "هنگام بستن درخواست، لینک پاسخ به این ایمیل ارسال می‌شود."

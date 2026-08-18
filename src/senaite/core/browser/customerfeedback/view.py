@@ -37,6 +37,9 @@ LABELS = {
         "k_survey": u"نظرسنجی رضایت",
         "client": u"نام مشتری / شرکت",
         "contact": u"نام تماس",
+        "email": u"ایمیل (برای دریافت پاسخ)",
+        "email_hint": u"پاسخ و لینک پیگیری به این ایمیل ارسال می‌شود.",
+        "phone": u"تلفن تماس (اختیاری)",
         "subject": u"موضوع",
         "sample": u"شناسهٔ نمونه/گزارش مرتبط (اختیاری)",
         "category": u"دسته",
@@ -67,6 +70,9 @@ LABELS = {
         "k_survey": u"Satisfaction survey",
         "client": u"Client / company name",
         "contact": u"Contact name",
+        "email": u"Email (to receive the answer)",
+        "email_hint": u"The answer and tracking link are sent to this email.",
+        "phone": u"Phone (optional)",
         "subject": u"Subject",
         "sample": u"Related sample/report ID (optional)",
         "category": u"Category",
@@ -141,6 +147,8 @@ class CustomerFeedbackView(BrowserView):
             "title": subject,
             "client_name": (form.get("client_name") or "").strip(),
             "contact_name": (form.get("contact_name") or "").strip(),
+            "contact_email": (form.get("contact_email") or "").strip(),
+            "contact_phone": (form.get("contact_phone") or "").strip(),
         }
 
         if portal_type == "Complaint":

@@ -72,6 +72,15 @@
           <input type="text" class="form-control" name="contact_name"/>
         </div>
         <div class="form-group">
+          <label tal:content="L/email">Email</label>
+          <input type="email" class="form-control" name="contact_email"/>
+          <small class="form-text text-muted" tal:content="L/email_hint">hint</small>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/phone">Phone</label>
+          <input type="text" class="form-control" name="contact_phone"/>
+        </div>
+        <div class="form-group">
           <label tal:content="L/subject">Subject</label>
           <input type="text" class="form-control" name="subject" required="required"/>
         </div>

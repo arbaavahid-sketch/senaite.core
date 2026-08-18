@@ -18,4 +18,16 @@
            zope.lifecycleevent.interfaces.IObjectAddedEvent"
       handler=".customercare_events.assign_access_token" />
 
+  <!-- Email the customer their answer + tracking link when a request is
+       closed (complaints and support requests use the customerrequest
+       workflow, which has a 'close' transition). -->
+  <subscriber
+      for="senaite.core.interfaces.IComplaint
+           Products.DCWorkflow.interfaces.IAfterTransitionEvent"
+      handler=".customercare_events.notify_customer_on_close" />
+  <subscriber
+      for="senaite.core.interfaces.ISupportRequest
+           Products.DCWorkflow.interfaces.IAfterTransitionEvent"
+      handler=".customercare_events.notify_customer_on_close" />
+
 </configure>
