@@ -111,11 +111,57 @@
         </div>
 
         <h5 class="mt-4" tal:content="L/sec_tests">Tests &amp; delivery</h5>
-        <div class="form-group">
+        <div class="form-group" tal:define="groups view/service_groups">
           <label tal:content="L/tests">Requested tests</label>
-          <textarea class="form-control" name="requested_tests" rows="3"></textarea>
+
+          <div tal:condition="not:groups" class="alert alert-warning"
+               tal:content="L/tests_none">No tests available.</div>
+
+          <tal:picker tal:condition="groups">
+            <input type="text" class="form-control mb-2" id="cc-test-search"
+                   tal:attributes="placeholder L/tests_search"
+                   onkeyup="ccFilterTests()"/>
+            <div id="cc-test-list"
+                 style="max-height:280px;overflow:auto;border:1px solid #ddd;padding:.5rem">
+              <div tal:repeat="grp groups" class="cc-cat">
+                <div style="font-weight:bold;margin:.4rem 0 .2rem"
+                     tal:content="grp/category">Category</div>
+                <div class="form-check cc-test-item" tal:repeat="s grp/services">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input"
+                           name="service_uids:list"
+                           tal:attributes="value s/uid"/>
+                    <span tal:content="s/title">service</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </tal:picker>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/other_tests">Other tests</label>
+          <textarea class="form-control" name="other_tests" rows="2"></textarea>
           <small class="form-text text-muted" tal:content="L/tests_hint">hint</small>
         </div>
+
+        <script type="text/javascript">
+          function ccFilterTests() {
+            var q = (document.getElementById('cc-test-search').value || '')
+                      .toLowerCase();
+            var items = document.querySelectorAll('#cc-test-list .cc-test-item');
+            items.forEach(function (it) {
+              var t = it.textContent.toLowerCase();
+              it.style.display = (t.indexOf(q) > -1) ? '' : 'none';
+            });
+            // hide category headers with no visible items
+            document.querySelectorAll('#cc-test-list .cc-cat').forEach(function (c) {
+              var any = Array.prototype.some.call(
+                c.querySelectorAll('.cc-test-item'),
+                function (it) { return it.style.display !== 'none'; });
+              c.style.display = any ? '' : 'none';
+            });
+          }
+        </script>
         <div class="form-group">
           <label tal:content="L/priority">Priority</label>
           <select class="form-control" name="priority">

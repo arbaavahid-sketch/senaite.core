@@ -70,20 +70,33 @@
         </select>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" tal:define="req view/requested_uids">
         <label tal:content="L/pick_services">Tests</label>
         <div tal:condition="not:services" class="alert alert-warning"
              tal:content="L/no_services">none</div>
-        <div tal:condition="services" style="max-height:220px;overflow:auto;border:1px solid #ddd;padding:.5rem">
-          <div class="form-check" tal:repeat="s services">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input"
-                     name="service_uids:list"
-                     tal:attributes="value s/uid"/>
-              <span tal:content="s/title">service</span>
-            </label>
+        <tal:svc tal:condition="services">
+          <input type="text" class="form-control mb-2" id="cv-search"
+                 placeholder="…" onkeyup="cvFilter()"/>
+          <div id="cv-list" style="max-height:260px;overflow:auto;border:1px solid #ddd;padding:.5rem">
+            <div class="form-check cv-item" tal:repeat="s services">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input"
+                       name="service_uids:list"
+                       tal:attributes="value s/uid;
+                                       checked python:s['uid'] in req"/>
+                <span tal:content="s/title">service</span>
+              </label>
+            </div>
           </div>
-        </div>
+          <script type="text/javascript">
+            function cvFilter() {
+              var q = (document.getElementById('cv-search').value||'').toLowerCase();
+              document.querySelectorAll('#cv-list .cv-item').forEach(function(it){
+                it.style.display = (it.textContent.toLowerCase().indexOf(q)>-1)?'':'none';
+              });
+            }
+          </script>
+        </tal:svc>
       </div>
 
       <div class="form-group">

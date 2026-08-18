@@ -15,6 +15,8 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.interface import alsoProvides
 
 from bika.lims import api
+from bika.lims.api import safe_unicode
+from senaite.core.catalog import SETUP_CATALOG
 
 try:
     from plone.protect.interfaces import IDisableCSRFProtection
@@ -42,9 +44,12 @@ LABELS = {
         "sampling_date": u"تاریخ نمونه‌برداری",
         "sampling_point": u"محل / منبع نمونه‌برداری",
         "condition": u"وضعیت نمونه هنگام تحویل",
-        "tests": u"آزمون‌های موردنظر",
-        "tests_hint": u"آزمون‌هایی که می‌خواهید انجام شود را بنویسید "
-                      u"(مثلاً گوگرد، دانسیته، نقطهٔ اشتعال).",
+        "tests": u"آزمون‌های موردنظر (انتخاب کنید)",
+        "tests_search": u"جستجوی آزمون…",
+        "tests_none": u"فعلاً آزمونی برای انتخاب تعریف نشده است.",
+        "other_tests": u"سایر آزمون‌ها / توضیحات (اگر در فهرست نبود)",
+        "tests_hint": u"می‌توانید از فهرست انتخاب کنید و/یا موارد دیگر را "
+                      u"اینجا بنویسید.",
         "quantity": u"تعداد / مقدار نمونه",
         "priority": u"اولویت",
         "prio_normal": u"عادی", "prio_urgent": u"فوری",
@@ -82,9 +87,12 @@ LABELS = {
         "sampling_date": u"Sampling date",
         "sampling_point": u"Sampling point / source",
         "condition": u"Sample condition on receipt",
-        "tests": u"Requested tests",
-        "tests_hint": u"List the tests you want (e.g. sulfur, density, "
-                      u"flash point).",
+        "tests": u"Requested tests (select)",
+        "tests_search": u"Search tests…",
+        "tests_none": u"No tests are available to select yet.",
+        "other_tests": u"Other tests / notes (if not in the list)",
+        "tests_hint": u"You can select from the list and/or write other items "
+                      u"here.",
         "quantity": u"Number / quantity of samples",
         "priority": u"Priority",
         "prio_normal": u"Normal", "prio_urgent": u"Urgent",
@@ -130,6 +138,45 @@ class SampleRequestView(BrowserView):
             lang = "fa"
         return lang if lang in LABELS else "en"
 
+    def _active_services(self):
+        """Brains of active analysis services, sorted by title. Read with
+        elevated privileges because the public form is served to Anonymous,
+        who cannot otherwise see setup objects through the catalog."""
+        with api.security.as_privileged_user():
+            return api.search({"portal_type": "AnalysisService",
+                               "is_active": True,
+                               "sort_on": "sortable_title"}, SETUP_CATALOG)
+
+    def service_groups(self):
+        """Active services grouped by analysis category, for the picker."""
+        cats = {}
+        try:
+            with api.security.as_privileged_user():
+                for brain in api.search({"portal_type": "AnalysisCategory"},
+                                        SETUP_CATALOG):
+                    cats[api.get_uid(brain)] = api.get_title(brain)
+        except Exception:
+            pass
+        groups = {}
+        for brain in self._active_services():
+            cuid = getattr(brain, "getCategoryUID", None)
+            ctitle = cats.get(cuid) or u"—"
+            groups.setdefault(ctitle, []).append(
+                {"uid": api.get_uid(brain), "title": api.get_title(brain)})
+        return [{"category": c, "services": s}
+                for c, s in sorted(groups.items(), key=lambda x: x[0])]
+
+    def _service_titles(self, uids):
+        """Map selected service UIDs back to their titles for a readable list."""
+        if not uids:
+            return []
+        wanted = set(uids)
+        out = []
+        for brain in self._active_services():
+            if api.get_uid(brain) in wanted:
+                out.append(safe_unicode(api.get_title(brain)))
+        return out
+
     def _handle_submit(self):
         form = self.request.form
         subject = (form.get("subject") or "").strip()
@@ -148,10 +195,25 @@ class SampleRequestView(BrowserView):
             "sample_type": (form.get("sample_type") or "").strip(),
             "sampling_point": (form.get("sampling_point") or "").strip(),
             "sample_condition": (form.get("sample_condition") or "").strip(),
-            "requested_tests": (form.get("requested_tests") or "").strip(),
             "sample_description": (form.get("sample_description") or "").strip(),
             "quantity": (form.get("quantity") or "").strip(),
         }
+
+        # Tests: selected from the active-services picker (UIDs) plus any
+        # free-text "other" entry. Store the UIDs for conversion and a
+        # human-readable list in requested_tests.
+        service_uids = form.get("service_uids") or []
+        if isinstance(service_uids, basestring):  # noqa: F821 (py2)
+            service_uids = [service_uids]
+        service_uids = [u for u in service_uids if u]
+        titles = self._service_titles(service_uids)
+        other = safe_unicode((form.get("other_tests") or "").strip())
+        readable = u"، ".join(titles) if self.lang == "fa" \
+            else u", ".join(titles)
+        if other:
+            readable = (readable + u"\n" + other) if readable else other
+        kwargs["requested_service_uids"] = service_uids
+        kwargs["requested_tests"] = readable
         if form.get("priority"):
             kwargs["priority"] = form.get("priority")
         if form.get("report_delivery"):

@@ -145,6 +145,10 @@ class ConvertToSampleView(BrowserView):
     def services(self):
         return self._search_setup("AnalysisService")
 
+    def requested_uids(self):
+        """UIDs the customer pre-selected, to pre-check in the picker."""
+        return set(getattr(self.context, "requested_service_uids", None) or [])
+
     def today(self):
         return date.today().strftime("%Y-%m-%d")
 

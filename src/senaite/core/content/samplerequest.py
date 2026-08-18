@@ -120,7 +120,19 @@ class ISampleRequestSchema(model.Schema):
 
     requested_tests = schema.Text(
         title=_(u"title_samplerequest_tests",
-                default=u"Requested tests (as described by the customer)"),
+                default=u"Requested tests"),
+        required=False,
+    )
+
+    # UIDs of the analysis services the customer selected from the active list.
+    # Used to pre-select the services when reception converts the request into
+    # a real Sample. Hidden from the staff edit form (see requested_tests for
+    # the human-readable list).
+    form.omitted("requested_service_uids")
+    requested_service_uids = schema.List(
+        title=_(u"title_samplerequest_service_uids",
+                default=u"Requested service UIDs"),
+        value_type=schema.TextLine(),
         required=False,
     )
 
