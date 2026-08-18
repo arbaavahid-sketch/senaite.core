@@ -27,6 +27,8 @@
   <include package=".customercare"/>
   <include package=".customerfeedback"/>
   <include package=".installcustomercare"/>
+  <include package=".samplerequest"/>
+  <include package=".installsampleintake"/>
   <include package=".dexterity"/>
   <include package=".fields"/>
   <include package=".form"/>

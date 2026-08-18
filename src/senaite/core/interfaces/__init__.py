@@ -262,6 +262,18 @@ class ISurvey(Interface):
     """
 
 
+class ISampleIntake(Interface):
+    """Marker interface for the sample-intake setup folder (online test
+    requests submitted by customers before sending their samples)
+    """
+
+
+class ISampleRequest(Interface):
+    """Marker interface for a customer online test request / sample submission
+    that reception converts into a real Sample (AnalysisRequest)
+    """
+
+
 class ISampleContainers(Interface):
     """Marker interface for sample container setup folder
     """

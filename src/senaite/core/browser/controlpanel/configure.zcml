@@ -25,6 +25,7 @@
   <include package=".attachmenttypes" />
   <include package=".controlleddocuments" />
   <include package=".customercare" />
+  <include package=".sampleintake" />
   <include package=".batchlabels" />
   <include package=".calculations" />
   <include package=".containertypes" />

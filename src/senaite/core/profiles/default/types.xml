@@ -23,6 +23,10 @@
   <object name="SupportRequest" meta_type="Dexterity FTI" />
   <object name="Survey" meta_type="Dexterity FTI" />
 
+  <!-- Sample Intake: online customer test requests (sample submissions) -->
+  <object name="SampleIntake" meta_type="Dexterity FTI" />
+  <object name="SampleRequest" meta_type="Dexterity FTI" />
+
   <!-- Departments -->
   <object name="Department" meta_type="Dexterity FTI" />
   <object name="Departments" meta_type="Dexterity FTI" />

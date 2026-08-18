@@ -1,0 +1,106 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master">
+<body>
+
+  <div metal:fill-slot="content"
+       tal:define="L view/labels; rtl view/is_rtl;
+                   info view/request_info;
+                   align python:'right' if rtl else 'left'"
+       tal:attributes="dir python:'rtl' if rtl else 'ltr'"
+       style="max-width:820px">
+
+    <h1 tal:attributes="style string:text-align:${align}" tal:content="L/title">Convert</h1>
+
+    <!-- Success -->
+    <div tal:condition="view/created" class="alert alert-success"
+         tal:attributes="style string:text-align:${align}">
+      <strong tal:content="L/ok">Created:</strong>
+      <a tal:attributes="href view/created_url" tal:content="view/created">sample</a>
+    </div>
+
+    <!-- Request details -->
+    <div class="card mb-3">
+      <div class="card-header" tal:content="L/request">Request details</div>
+      <div class="card-body">
+        <dl class="row mb-0">
+          <dt class="col-sm-3" tal:content="L/client">Client</dt>
+          <dd class="col-sm-9" tal:content="info/client_name">c</dd>
+          <dt class="col-sm-3" tal:content="L/contact">Contact</dt>
+          <dd class="col-sm-9" tal:content="info/contact_name">c</dd>
+          <dt class="col-sm-3" tal:content="L/email">Email</dt>
+          <dd class="col-sm-9" tal:content="info/contact_email">e</dd>
+          <dt class="col-sm-3" tal:content="L/phone">Phone</dt>
+          <dd class="col-sm-9" tal:content="info/contact_phone">p</dd>
+          <dt class="col-sm-3" tal:content="L/cust_sample_type">Sample type</dt>
+          <dd class="col-sm-9" tal:content="info/sample_type">st</dd>
+          <dt class="col-sm-3" tal:content="L/cust_tests">Requested tests</dt>
+          <dd class="col-sm-9" style="white-space:pre-wrap" tal:content="info/requested_tests">t</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div tal:condition="view/error" class="alert alert-danger"
+         tal:attributes="style string:text-align:${align}"
+         tal:content="view/error">error</div>
+
+    <tal:convert tal:condition="not:view/created"
+                 tal:define="sampletypes view/sample_types; services view/services;
+                             clients view/clients">
+    <form method="post" tal:attributes="style string:text-align:${align}">
+
+      <div class="form-group">
+        <label tal:content="L/pick_client">Client</label>
+        <select class="form-control" name="client_uid">
+          <option value="new" tal:content="L/new_client">new</option>
+          <option tal:repeat="c clients"
+                  tal:attributes="value c/uid" tal:content="c/title">client</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label tal:content="L/pick_sampletype">Sample type</label>
+        <div tal:condition="not:sampletypes" class="alert alert-warning"
+             tal:content="L/no_sampletypes">none</div>
+        <select tal:condition="sampletypes" class="form-control" name="sampletype_uid">
+          <option value="" tal:content="L/choose">- select -</option>
+          <option tal:repeat="st sampletypes"
+                  tal:attributes="value st/uid" tal:content="st/title">st</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label tal:content="L/pick_services">Tests</label>
+        <div tal:condition="not:services" class="alert alert-warning"
+             tal:content="L/no_services">none</div>
+        <div tal:condition="services" style="max-height:220px;overflow:auto;border:1px solid #ddd;padding:.5rem">
+          <div class="form-check" tal:repeat="s services">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input"
+                     name="service_uids:list"
+                     tal:attributes="value s/uid"/>
+              <span tal:content="s/title">service</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label tal:content="L/sampling_date">Sampling date</label>
+        <input type="date" class="form-control" name="sampling_date"
+               tal:attributes="value view/today"/>
+      </div>
+
+      <button type="submit" name="create" value="1" class="btn btn-primary"
+              tal:attributes="disabled python:not (sampletypes and services)"
+              tal:content="L/create">Create Sample</button>
+      <a class="btn btn-outline-secondary"
+         tal:attributes="href string:${context/absolute_url}/../view"
+         tal:content="L/cancel">Cancel</a>
+    </form>
+    </tal:convert>
+
+  </div>
+</body>
+</html>

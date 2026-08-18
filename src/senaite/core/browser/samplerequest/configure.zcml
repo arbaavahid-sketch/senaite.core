@@ -1,0 +1,24 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="senaite.core">
+
+  <!-- Public, no-login online test-request / sample-submission form. -->
+  <browser:page
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="sample-request"
+      class=".view.SampleRequestView"
+      permission="zope2.View"
+      layer="senaite.core.interfaces.ISenaiteCore"
+      />
+
+  <!-- Reception: convert a test request into a real Sample. Staff only. -->
+  <browser:page
+      for="senaite.core.interfaces.ISampleRequest"
+      name="convert-to-sample"
+      class=".convert.ConvertToSampleView"
+      permission="senaite.core.permissions.ManageBika"
+      layer="senaite.core.interfaces.ISenaiteCore"
+      />
+
+</configure>

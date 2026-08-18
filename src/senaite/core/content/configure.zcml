@@ -17,6 +17,10 @@
       for="senaite.core.interfaces.ISurvey
            zope.lifecycleevent.interfaces.IObjectAddedEvent"
       handler=".customercare_events.assign_access_token" />
+  <subscriber
+      for="senaite.core.interfaces.ISampleRequest
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      handler=".customercare_events.assign_access_token" />
 
   <!-- Email the customer their answer + tracking link when a request is
        closed (complaints and support requests use the customerrequest
@@ -27,6 +31,10 @@
       handler=".customercare_events.notify_customer_on_close" />
   <subscriber
       for="senaite.core.interfaces.ISupportRequest
+           Products.DCWorkflow.interfaces.IAfterTransitionEvent"
+      handler=".customercare_events.notify_customer_on_close" />
+  <subscriber
+      for="senaite.core.interfaces.ISampleRequest
            Products.DCWorkflow.interfaces.IAfterTransitionEvent"
       handler=".customercare_events.notify_customer_on_close" />
 

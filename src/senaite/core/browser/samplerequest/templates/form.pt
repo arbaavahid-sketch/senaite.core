@@ -1,0 +1,142 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master">
+<body>
+
+  <metal:override fill-slot="top_slot"
+      tal:define="dc1 python:request.set('disable_plone.leftcolumn', 1);
+                  dc2 python:request.set('disable_plone.rightcolumn', 1);" />
+
+  <div metal:fill-slot="content"
+       tal:define="L view/labels; rtl view/is_rtl;
+                   align python:'right' if rtl else 'left'"
+       tal:attributes="dir python:'rtl' if rtl else 'ltr'"
+       style="max-width:720px">
+
+    <!-- Public customer page: hide the whole staff toolbar. -->
+    <style type="text/css">#senaite-toolbar{display:none !important;}</style>
+
+    <div tal:attributes="style string:border-bottom:2px solid #0d6efd;; margin-bottom:1.5rem;; padding-bottom:.5rem;; text-align:${align}">
+      <strong style="font-size:1.1rem"
+              tal:content="context/@@plone_portal_state/navigation_root_title">Laboratory</strong>
+    </div>
+
+    <h1 tal:attributes="style string:text-align:${align}" tal:content="L/title">Request a test</h1>
+
+    <!-- Thank-you -->
+    <div tal:condition="view/tracking" class="alert alert-success"
+         tal:attributes="style string:text-align:${align}">
+      <h4 tal:content="L/thanks_title">Thank you</h4>
+      <p><strong tal:content="L/thanks">Tracking:</strong>
+         <code tal:content="view/tracking">id</code></p>
+      <p tal:content="L/thanks_more">Please send your sample.</p>
+      <div tal:condition="view/track_link" class="mb-2">
+        <p class="mb-1"><strong tal:content="L/your_link">Your tracking link:</strong></p>
+        <p><a tal:attributes="href view/track_link" tal:content="view/track_link">link</a></p>
+        <p class="text-muted small" tal:content="L/save_link">Save this link.</p>
+      </div>
+      <a tal:condition="view/track_link" class="btn btn-sm btn-primary"
+         tal:attributes="href view/track_link"
+         tal:content="L/track_link">Track this request</a>
+      <a href="sample-request" class="btn btn-sm btn-outline-primary"
+         tal:content="L/again">Submit another</a>
+    </div>
+
+    <tal:form tal:condition="not:view/tracking">
+      <p class="text-muted" tal:attributes="style string:text-align:${align}"
+         tal:content="L/intro">intro</p>
+
+      <div tal:condition="view/error" class="alert alert-danger"
+           tal:attributes="style string:text-align:${align}"
+           tal:content="view/error">error</div>
+
+      <form method="post" tal:attributes="style string:text-align:${align}">
+
+        <h5 class="mt-3" tal:content="L/sec_client">Client information</h5>
+        <div class="form-group">
+          <label tal:content="L/client">Client</label>
+          <input type="text" class="form-control" name="client_name"/>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/contact">Contact</label>
+          <input type="text" class="form-control" name="contact_name"/>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/email">Email</label>
+          <input type="email" class="form-control" name="contact_email"/>
+          <small class="form-text text-muted" tal:content="L/email_hint">hint</small>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/phone">Phone</label>
+          <input type="text" class="form-control" name="contact_phone"/>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/address">Address</label>
+          <textarea class="form-control" name="address" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/economic_code">Economic code</label>
+          <input type="text" class="form-control" name="economic_code"/>
+        </div>
+
+        <h5 class="mt-4" tal:content="L/sec_sample">Sample information</h5>
+        <div class="form-group">
+          <label tal:content="L/subject">Subject</label>
+          <input type="text" class="form-control" name="subject" required="required"/>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/sample_type">Sample type</label>
+          <input type="text" class="form-control" name="sample_type"/>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/quantity">Quantity</label>
+          <input type="text" class="form-control" name="quantity"/>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/sampling_date">Sampling date</label>
+          <input type="date" class="form-control" name="sampling_date"/>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/sampling_point">Sampling point</label>
+          <input type="text" class="form-control" name="sampling_point"/>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/condition">Condition</label>
+          <input type="text" class="form-control" name="sample_condition"/>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/description">Description</label>
+          <textarea class="form-control" name="sample_description" rows="2"></textarea>
+        </div>
+
+        <h5 class="mt-4" tal:content="L/sec_tests">Tests &amp; delivery</h5>
+        <div class="form-group">
+          <label tal:content="L/tests">Requested tests</label>
+          <textarea class="form-control" name="requested_tests" rows="3"></textarea>
+          <small class="form-text text-muted" tal:content="L/tests_hint">hint</small>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/priority">Priority</label>
+          <select class="form-control" name="priority">
+            <option value="normal" tal:content="L/prio_normal">Normal</option>
+            <option value="urgent" tal:content="L/prio_urgent">Urgent</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/delivery">Report delivery</label>
+          <select class="form-control" name="report_delivery">
+            <option value="email" tal:content="L/del_email">Email</option>
+            <option value="inperson" tal:content="L/del_inperson">In person</option>
+            <option value="post" tal:content="L/del_post">Post</option>
+          </select>
+        </div>
+
+        <button type="submit" name="submit" value="1"
+                class="btn btn-primary mt-2" tal:content="L/submit">Submit</button>
+      </form>
+    </tal:form>
+
+  </div>
+</body>
+</html>

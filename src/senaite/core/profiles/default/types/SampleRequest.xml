@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object name="SampleRequest" meta_type="Dexterity FTI"
+        i18n:domain="senaite.core"
+        xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+
+  <property name="title" i18n:translate="">Test request</property>
+  <property name="description" i18n:translate="">A customer online test request (sample submission)</property>
+
+  <property name="icon_expr">senaite_theme/icon/sample</property>
+
+  <property name="factory">SampleRequest</property>
+  <property name="add_view_expr">string:${folder_url}/++add++SampleRequest</property>
+
+  <property name="link_target"/>
+  <property name="immediate_view">view</property>
+
+  <property name="global_allow">False</property>
+
+  <property name="filter_content_types">True</property>
+  <property name="allowed_content_types">
+  </property>
+
+  <property name="allow_discussion">False</property>
+
+  <property name="default_view">view</property>
+  <property name="view_methods">
+    <element value="view"/>
+  </property>
+  <property name="default_view_fallback">False</property>
+
+  <property name="add_permission">cmf.AddPortalContent</property>
+
+  <property name="schema">senaite.core.content.samplerequest.ISampleRequestSchema</property>
+  <property name="klass">senaite.core.content.samplerequest.SampleRequest</property>
+
+  <property name="behaviors">
+    <element value="bika.lims.interfaces.IAutoGenerateID"/>
+    <element value="bika.lims.interfaces.IMultiCatalogBehavior"/>
+    <element value="plone.app.referenceablebehavior.referenceable.IReferenceable" />
+  </property>
+
+  <alias from="(Default)" to="(dynamic view)"/>
+  <alias from="edit" to="@@edit"/>
+  <alias from="sharing" to="@@sharing"/>
+  <alias from="view" to="(selected layout)"/>
+
+  <action title="View" action_id="view" category="object"
+          condition_expr="" description="" icon_expr="" link_target=""
+          url_expr="string:${object_url}" visible="True">
+    <permission value="View"/>
+  </action>
+  <action title="Edit" action_id="edit" category="object"
+          condition_expr="" description="" icon_expr="" link_target=""
+          url_expr="string:${object_url}/edit" visible="True">
+    <permission value="Modify portal content"/>
+  </action>
+
+</object>

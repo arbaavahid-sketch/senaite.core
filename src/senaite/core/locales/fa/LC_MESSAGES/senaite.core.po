@@ -13629,3 +13629,120 @@ msgstr "تلفن تماس"
 
 msgid "desc_contact_email"
 msgstr "هنگام بستن درخواست، لینک پاسخ به این ایمیل ارسال می‌شود."
+
+msgid "Sample Intake"
+msgstr "پذیرش نمونه (درخواست‌های آنلاین)"
+
+msgid "Test request"
+msgstr "درخواست آزمون"
+
+msgid "Online customer test requests (sample submissions)"
+msgstr "درخواست‌های آنلاین آزمون مشتریان (ارسال نمونه)"
+
+msgid "A customer online test request (sample submission)"
+msgstr "درخواست آنلاین آزمون مشتری (ارسال نمونه)"
+
+msgid "sampleintake_title"
+msgstr "پذیرش نمونه (درخواست‌های آنلاین آزمون)"
+
+msgid "sampleintake_column_subject"
+msgstr "موضوع"
+
+msgid "sampleintake_column_client"
+msgstr "مشتری"
+
+msgid "sampleintake_column_sampletype"
+msgstr "نوع نمونه"
+
+msgid "sampleintake_column_created"
+msgstr "تاریخ ثبت"
+
+msgid "sampleintake_column_state"
+msgstr "وضعیت"
+
+msgid "sampleintake_column_sample"
+msgstr "نمونهٔ ثبت‌شده"
+
+msgid "sampleintake_column_convert"
+msgstr "عملیات"
+
+msgid "sampleintake_column_link"
+msgstr "لینک مشتری"
+
+msgid "sampleintake_state_all"
+msgstr "همه"
+
+msgid "sampleintake_state_open"
+msgstr "باز"
+
+msgid "sampleintake_state_closed"
+msgstr "بسته"
+
+msgid "sampleintake_convert_action"
+msgstr "تبدیل به نمونه"
+
+msgid "title_samplerequest_title"
+msgstr "موضوع / هدف"
+
+msgid "title_samplerequest_client"
+msgstr "مشتری / شرکت"
+
+msgid "title_samplerequest_contact"
+msgstr "نام تماس"
+
+msgid "title_samplerequest_sampletype"
+msgstr "نوع نمونه (گفتهٔ مشتری)"
+
+msgid "title_samplerequest_tests"
+msgstr "آزمون‌های درخواستی (گفتهٔ مشتری)"
+
+msgid "title_samplerequest_description"
+msgstr "توضیحات نمونه"
+
+msgid "title_samplerequest_quantity"
+msgstr "تعداد / مقدار نمونه"
+
+msgid "title_samplerequest_labnote"
+msgstr "یادداشت داخلی (برای مشتری نمایش داده نمی‌شود)"
+
+msgid "title_samplerequest_response"
+msgstr "پاسخ به مشتری (برای مشتری نمایش داده می‌شود)"
+
+msgid "title_samplerequest_created_sample"
+msgstr "شناسهٔ نمونهٔ ثبت‌شده"
+
+msgid "title_samplerequest_address"
+msgstr "آدرس"
+
+msgid "title_samplerequest_economic_code"
+msgstr "شناسه ملی / کد اقتصادی (برای صورتحساب)"
+
+msgid "title_samplerequest_sampling_date"
+msgstr "تاریخ نمونه‌برداری"
+
+msgid "title_samplerequest_sampling_point"
+msgstr "محل / منبع نمونه‌برداری"
+
+msgid "title_samplerequest_condition"
+msgstr "وضعیت نمونه هنگام تحویل"
+
+msgid "title_samplerequest_priority"
+msgstr "اولویت"
+
+msgid "title_samplerequest_delivery"
+msgstr "نحوهٔ دریافت گزارش"
+
+msgid "samplerequest_priority_normal"
+msgstr "عادی"
+
+msgid "samplerequest_priority_urgent"
+msgstr "فوری"
+
+msgid "samplerequest_delivery_email"
+msgstr "ایمیل"
+
+msgid "samplerequest_delivery_inperson"
+msgstr "حضوری"
+
+msgid "samplerequest_delivery_post"
+msgstr "پست"

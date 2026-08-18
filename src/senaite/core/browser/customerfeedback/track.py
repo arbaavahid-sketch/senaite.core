@@ -13,7 +13,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bika.lims import api
 from bika.lims.api import safe_unicode
 
-TYPES = ("Complaint", "SupportRequest", "Survey")
+TYPES = ("Complaint", "SupportRequest", "Survey", "SampleRequest")
 
 STATE_LABELS = {
     "received": {"fa": u"دریافت‌شده", "en": u"Received"},
@@ -27,6 +27,7 @@ TYPE_LABELS = {
     "Complaint": {"fa": u"شکایت", "en": u"Complaint"},
     "SupportRequest": {"fa": u"درخواست پشتیبانی", "en": u"Support request"},
     "Survey": {"fa": u"نظرسنجی رضایت", "en": u"Satisfaction survey"},
+    "SampleRequest": {"fa": u"درخواست آزمون", "en": u"Test request"},
 }
 
 LABELS = {
@@ -81,19 +82,26 @@ class TrackRequestView(BrowserView):
             self._lookup()
         return self.template()
 
+    def _containers(self, setup):
+        """Customer-care and sample-intake registers (whichever exist)."""
+        for name in ("customercare", "sampleintake"):
+            container = setup.get(name)
+            if container is not None:
+                yield container
+
     def _lookup_by_token(self):
         try:
             with api.security.as_privileged_user():
                 setup = api.get_senaite_setup()
-                container = setup.customercare
-                for obj in container.objectValues():
-                    if api.get_portal_type(obj) not in TYPES:
-                        continue
-                    stored = safe_unicode(
-                        getattr(obj, "access_token", "") or "").strip()
-                    if stored and stored == safe_unicode(self.token):
-                        self.result = self._to_result(obj)
-                        return
+                for container in self._containers(setup):
+                    for obj in container.objectValues():
+                        if api.get_portal_type(obj) not in TYPES:
+                            continue
+                        stored = safe_unicode(
+                            getattr(obj, "access_token", "") or "").strip()
+                        if stored and stored == safe_unicode(self.token):
+                            self.result = self._to_result(obj)
+                            return
                 self.not_found = True
         except Exception:
             self.not_found = True
@@ -112,8 +120,12 @@ class TrackRequestView(BrowserView):
         try:
             with api.security.as_privileged_user():
                 setup = api.get_senaite_setup()
-                container = setup.customercare
-                obj = container.get(self.tracking_id)
+                obj = None
+                for container in self._containers(setup):
+                    candidate = container.get(self.tracking_id)
+                    if candidate is not None:
+                        obj = candidate
+                        break
                 if obj is None or api.get_portal_type(obj) not in TYPES:
                     self.not_found = True
                     return
@@ -137,7 +149,7 @@ class TrackRequestView(BrowserView):
         state = api.get_review_status(obj)
         if pt == "Complaint":
             response = getattr(obj, "customer_response", "") or ""
-        elif pt == "SupportRequest":
+        elif pt in ("SupportRequest", "SampleRequest"):
             response = getattr(obj, "response", "") or ""
         else:
             response = ""
