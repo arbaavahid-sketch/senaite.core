@@ -49,6 +49,16 @@ def _track_link(obj):
 
 
 def _lab_title():
+    # Prefer the configured Site title (registry 'plone.site_title'), which is
+    # what the Site control panel edits and what users expect as the lab name.
+    # The portal object's own Title() can still be the default "SENAITE LIMS".
+    try:
+        from plone import api as ploneapi
+        title = ploneapi.portal.get_registry_record("plone.site_title")
+        if title:
+            return title
+    except Exception:
+        pass
     try:
         return api.get_portal().Title()
     except Exception:
