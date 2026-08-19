@@ -75,17 +75,13 @@ def _lab_title():
 
 
 def _build_email(obj):
-    """Return (subject, html_body). HTML so Persian renders right-to-left."""
+    """Return (subject, html_body) — Persian-only, HTML so it renders RTL."""
     subject_line = _esc(getattr(obj, "title", None) or api.get_id(obj))
-    resp = _response_text(obj)
-    response_fa = _esc(resp) or u"(در سامانه قابل مشاهده است)"
-    response_en = _esc(resp) or u"(available in the portal)"
-    link = _track_link(obj)
-    link_e = _esc(link)
+    response_fa = _esc(_response_text(obj)) or u"(در سامانه قابل مشاهده است)"
+    link_e = _esc(_track_link(obj))
     lab = _esc(_lab_title())
 
-    subject = u"پاسخ درخواست شما — %s / Your request has been answered" % \
-        _lab_title()
+    subject = u"پاسخ درخواست شما — %s" % _lab_title()
 
     fa = (
         u'<div dir="rtl" style="text-align:right;'
@@ -100,27 +96,12 @@ def _build_email(obj):
         u'</div>'
     ) % (subject_line, response_fa, link_e, link_e, lab)
 
-    en = (
-        u'<div dir="ltr" style="text-align:left;'
-        u'font-family:Arial,sans-serif;font-size:13px;line-height:1.6;'
-        u'color:#1a2230">'
-        u'Hello,<br/>'
-        u'Your request &quot;%s&quot; has been reviewed and answered.<br/><br/>'
-        u'<b>Laboratory response:</b><br/>'
-        u'<span dir="auto">%s</span><br/><br/>'
-        u'To view the details and status, open the link below:<br/>'
-        u'<a href="%s">%s</a><br/><br/>'
-        u'Regards,<br/>%s'
-        u'</div>'
-    ) % (subject_line, response_en, link_e, link_e, lab)
-
     html = (
         u'<html><body style="margin:0;padding:16px;background:#f6f8fb">'
         u'<div style="max-width:640px;margin:0 auto;background:#fff;'
         u'border:1px solid #e3e7ee;border-radius:10px;padding:20px 24px">'
-        u'%s<hr style="border:none;border-top:1px solid #e3e7ee;margin:20px 0"/>'
         u'%s</div></body></html>'
-    ) % (fa, en)
+    ) % (fa,)
     return subject, html
 
 
