@@ -23,6 +23,7 @@ import Missing
 
 from bika.lims import api
 from bika.lims.api.security import check_permission
+from senaite.core.permissions import ManageBika
 from senaite.core.permissions import ViewNavigation
 from plone.app.viewletmanager.manager import OrderedViewletManager
 from plone.memoize.instance import memoize
@@ -212,7 +213,53 @@ class SidebarNavigationAPI(BrowserView):
         )
 
         # Process into JSON-friendly format
-        return self._process_navigation_tree(data, current_url)
+        tree = self._process_navigation_tree(data, current_url)
+
+        # Append custom setup registers (Sample Intake, Customer Care) so staff
+        # reach them from the sidebar with one click, without opening the Setup
+        # page. Only shown to users allowed to manage them.
+        tree.extend(self._custom_setup_links(current_url))
+        return tree
+
+    def _custom_setup_links(self, current_url=""):
+        """Fixed sidebar entries for the sample-intake and customer-care
+        registers, which live under Setup (not at the navigation root).
+        """
+        portal = api.get_portal()
+        if not check_permission(ManageBika, portal):
+            return []
+        setup = self.setup
+        cur = (current_url or "").rstrip("/")
+        out = []
+        for cid, ptype in (("sampleintake", "SampleIntake"),
+                           ("customercare", "CustomerCare")):
+            container = setup.get(cid)
+            if container is None:
+                continue
+            url = api.get_url(container).rstrip("/")
+            icon = ""
+            try:
+                fti = self.portal_types.getTypeInfo(ptype)
+                icon = fti.getIcon() or ""
+            except Exception:
+                pass
+            out.append({
+                "id": cid,
+                "title": translate(api.get_title(container), to_utf8=False),
+                "description": "",
+                "url": url,
+                "icon": icon,
+                "review_state": "",
+                "is_current": url == cur,
+                "is_parent": cur.startswith(url + "/"),
+                "is_folderish": False,
+                "portal_type": ptype,
+                "depth": 1,
+                "has_more": False,
+                "total_count": 0,
+                "children": [],
+            })
+        return out
 
     def _build_tree(self, navigation_root, navigation_depth, skip_types,
                     selected_folders=None, show_more=False):
