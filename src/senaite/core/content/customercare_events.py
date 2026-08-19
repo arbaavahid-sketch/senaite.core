@@ -16,8 +16,17 @@ import logging
 import uuid
 
 from bika.lims import api
+from bika.lims.api import safe_unicode
 
 logger = logging.getLogger("senaite.core.customercare")
+
+
+def _esc(value):
+    """Escape text for safe HTML embedding; turn newlines into <br/>."""
+    s = safe_unicode(value if value is not None else u"")
+    s = (s.replace(u"&", u"&amp;").replace(u"<", u"&lt;")
+          .replace(u">", u"&gt;"))
+    return s.replace(u"\r\n", u"\n").replace(u"\n", u"<br/>")
 
 
 def assign_access_token(obj, event):
@@ -66,37 +75,53 @@ def _lab_title():
 
 
 def _build_email(obj):
-    """Return (subject, body) as a bilingual (fa + en) plain-text message."""
-    subject_line = getattr(obj, "title", None) or api.get_id(obj)
-    response = _response_text(obj)
+    """Return (subject, html_body). HTML so Persian renders right-to-left."""
+    subject_line = _esc(getattr(obj, "title", None) or api.get_id(obj))
+    resp = _response_text(obj)
+    response_fa = _esc(resp) or u"(در سامانه قابل مشاهده است)"
+    response_en = _esc(resp) or u"(available in the portal)"
     link = _track_link(obj)
-    lab = _lab_title()
+    link_e = _esc(link)
+    lab = _esc(_lab_title())
 
-    subject = u"پاسخ درخواست شما — {lab} / Your request has been answered".format(
-        lab=lab)
+    subject = u"پاسخ درخواست شما — %s / Your request has been answered" % \
+        _lab_title()
 
     fa = (
-        u"با سلام،\n"
-        u"درخواست شما با موضوع «{subject}» بررسی و پاسخ داده شد.\n\n"
-        u"پاسخ آزمایشگاه:\n{response}\n\n"
-        u"برای مشاهدهٔ جزئیات و وضعیت درخواست روی لینک زیر کلیک کنید:\n{link}\n\n"
-        u"با احترام،\n{lab}"
-    ).format(subject=subject_line,
-             response=response or u"(در سامانه قابل مشاهده است)",
-             link=link, lab=lab)
+        u'<div dir="rtl" style="text-align:right;'
+        u'font-family:Tahoma,Arial,sans-serif;font-size:14px;line-height:1.9;'
+        u'color:#1a2230">'
+        u'با سلام،<br/>'
+        u'درخواست شما با موضوع «%s» بررسی و پاسخ داده شد.<br/><br/>'
+        u'<b>پاسخ آزمایشگاه:</b><br/>%s<br/><br/>'
+        u'برای مشاهدهٔ جزئیات و وضعیت درخواست، روی لینک زیر کلیک کنید:<br/>'
+        u'<a href="%s">%s</a><br/><br/>'
+        u'با احترام،<br/>%s'
+        u'</div>'
+    ) % (subject_line, response_fa, link_e, link_e, lab)
 
     en = (
-        u"Hello,\n"
-        u"Your request \"{subject}\" has been reviewed and answered.\n\n"
-        u"Laboratory response:\n{response}\n\n"
-        u"To view the details and status, open the link below:\n{link}\n\n"
-        u"Regards,\n{lab}"
-    ).format(subject=subject_line,
-             response=response or u"(available in the portal)",
-             link=link, lab=lab)
+        u'<div dir="ltr" style="text-align:left;'
+        u'font-family:Arial,sans-serif;font-size:13px;line-height:1.6;'
+        u'color:#1a2230">'
+        u'Hello,<br/>'
+        u'Your request &quot;%s&quot; has been reviewed and answered.<br/><br/>'
+        u'<b>Laboratory response:</b><br/>'
+        u'<span dir="auto">%s</span><br/><br/>'
+        u'To view the details and status, open the link below:<br/>'
+        u'<a href="%s">%s</a><br/><br/>'
+        u'Regards,<br/>%s'
+        u'</div>'
+    ) % (subject_line, response_en, link_e, link_e, lab)
 
-    sep = u"\n\n" + (u"-" * 56) + u"\n\n"
-    return subject, fa + sep + en
+    html = (
+        u'<html><body style="margin:0;padding:16px;background:#f6f8fb">'
+        u'<div style="max-width:640px;margin:0 auto;background:#fff;'
+        u'border:1px solid #e3e7ee;border-radius:10px;padding:20px 24px">'
+        u'%s<hr style="border:none;border-top:1px solid #e3e7ee;margin:20px 0"/>'
+        u'%s</div></body></html>'
+    ) % (fa, en)
+    return subject, html
 
 
 def notify_customer_on_close(obj, event):
@@ -113,9 +138,12 @@ def notify_customer_on_close(obj, event):
 
     try:
         from plone import api as ploneapi
-        subject, body = _build_email(obj)
+        from email.mime.text import MIMEText
+        subject, html = _build_email(obj)
+        # Send as HTML so the Persian text renders right-to-left.
+        msg = MIMEText(html.encode("utf-8"), "html", "utf-8")
         ploneapi.portal.send_email(
-            recipient=email, subject=subject, body=body)
+            recipient=email, subject=subject, body=msg)
         logger.info("Sent close notification for %s to %s",
                     api.get_id(obj), email)
     except Exception:
