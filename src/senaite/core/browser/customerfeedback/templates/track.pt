@@ -63,11 +63,18 @@
         <th tal:content="L/status">Status</th>
         <td><span class="badge badge-info" tal:content="r/status">status</span></td>
       </tr>
+      <tr tal:condition="r/sample_id">
+        <th tal:content="L/sample">Sample</th>
+        <td><code tal:content="r/sample_id">sample</code></td>
+      </tr>
       <tr>
         <th tal:content="L/response">Response</th>
         <td style="white-space:pre-line">
           <span tal:condition="r/response" tal:content="r/response">response</span>
-          <span tal:condition="not:r/response" class="text-muted" tal:content="L/no_response">none</span>
+          <span tal:condition="python:not r['response'] and r['sample_id']"
+                class="text-muted" tal:content="L/results_ready">ready</span>
+          <span tal:condition="python:not r['response'] and not r['sample_id']"
+                class="text-muted" tal:content="L/no_response">none</span>
         </td>
       </tr>
     </table>

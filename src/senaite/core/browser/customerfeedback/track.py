@@ -40,8 +40,11 @@ LABELS = {
         "type": u"نوع",
         "subject": u"موضوع",
         "status": u"وضعیت",
+        "sample": u"شناسهٔ نمونهٔ ثبت‌شده",
         "response": u"پاسخ آزمایشگاه",
         "no_response": u"هنوز پاسخی ثبت نشده است.",
+        "results_ready": u"نمونهٔ شما ثبت و در حال انجام است. گزارش نتایج پس از "
+                         u"تکمیل، از سوی آزمایشگاه ارسال می‌شود.",
         "not_found": u"درخواستی با این شمارهٔ پیگیری و نام مشتری یافت نشد.",
         "submit_link": u"ثبت درخواست جدید",
     },
@@ -54,8 +57,12 @@ LABELS = {
         "type": u"Type",
         "subject": u"Subject",
         "status": u"Status",
+        "sample": u"Registered sample ID",
         "response": u"Laboratory response",
         "no_response": u"No response has been recorded yet.",
+        "results_ready": u"Your sample has been registered and is being "
+                         u"processed. The results report will be sent by the "
+                         u"laboratory once complete.",
         "not_found": u"No request found for this tracking number and client name.",
         "submit_link": u"Submit a new request",
     },
@@ -120,6 +127,20 @@ class TrackRequestView(BrowserView):
         try:
             with api.security.as_privileged_user():
                 setup = api.get_senaite_setup()
+                # First treat the entered value as an access token: this works
+                # regardless of the object id (which may be non-ascii) and needs
+                # no client name, so a customer can paste the code from the link.
+                key = safe_unicode(self.tracking_id)
+                for container in self._containers(setup):
+                    for obj in container.objectValues():
+                        if api.get_portal_type(obj) not in TYPES:
+                            continue
+                        stored = safe_unicode(
+                            getattr(obj, "access_token", "") or "").strip()
+                        if stored and stored == key:
+                            self.result = self._to_result(obj)
+                            return
+                # Otherwise, look it up by object id (+ client-name check below).
                 obj = None
                 for container in self._containers(setup):
                     candidate = container.get(self.tracking_id)
@@ -153,9 +174,15 @@ class TrackRequestView(BrowserView):
             response = getattr(obj, "response", "") or ""
         else:
             response = ""
+        # For a test request that reception already converted, surface the
+        # registered sample id so the customer always sees something concrete
+        # (status + sample id), even when no free-text answer was typed.
+        sample_id = safe_unicode(getattr(obj, "created_sample_id", "") or "")
         return {
             "type": TYPE_LABELS.get(pt, {}).get(self.lang, pt),
-            "subject": getattr(obj, "title", "") or api.get_title(obj),
+            "subject": safe_unicode(getattr(obj, "title", "")
+                                    or api.get_title(obj)),
             "status": STATE_LABELS.get(state, {}).get(self.lang, state),
-            "response": response,
+            "response": safe_unicode(response),
+            "sample_id": sample_id,
         }

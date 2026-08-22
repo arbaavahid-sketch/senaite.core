@@ -320,6 +320,10 @@ class SampleRequestView(BrowserView):
             with api.security.as_privileged_user():
                 container = self._container()
                 obj = api.create(container, "SampleRequest", **kwargs)
+                # Replace the default id (derived from the Persian subject,
+                # which is ugly and not ascii-safe) with a clean, human
+                # tracking code like TR-0001.
+                obj = self._rename_clean(container, obj)
                 self.tracking = api.get_id(obj)
                 token = getattr(obj, "access_token", None)
                 if token:
@@ -331,3 +335,21 @@ class SampleRequestView(BrowserView):
     def _container(self):
         setup = api.get_senaite_setup()
         return setup.sampleintake
+
+    def _rename_clean(self, container, obj):
+        """Rename the request to a clean sequential id (TR-0001). Best effort:
+        if the rename fails the original object is returned unchanged (the
+        tokenised tracking link works regardless of the id)."""
+        try:
+            existing = set(container.objectIds())
+            n = 1
+            while ("TR-%04d" % n) in existing:
+                n += 1
+            new_id = "TR-%04d" % n
+            old_id = api.get_id(obj)
+            if old_id != new_id:
+                container.manage_renameObject(old_id, new_id)
+                return container[new_id]
+        except Exception:
+            pass
+        return obj
