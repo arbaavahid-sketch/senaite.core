@@ -7,6 +7,7 @@ import collections
 
 from bika.lims import api
 from bika.lims import senaiteMessageFactory as _
+from bika.lims.api import safe_unicode
 from bika.lims.utils import get_link_for
 from senaite.core.browser.controlpanel.listing import ControlPanelListingView
 from senaite.core.catalog import SETUP_CATALOG
@@ -83,8 +84,8 @@ class SampleIntakeView(ControlPanelListingView):
     def folderitem(self, obj, item, index):
         obj = api.get_object(obj)
         item["replace"]["Title"] = get_link_for(obj)
-        item["Client"] = getattr(obj, "client_name", "") or ""
-        item["SampleType"] = getattr(obj, "sample_type", "") or ""
+        item["Client"] = safe_unicode(getattr(obj, "client_name", "") or "")
+        item["SampleType"] = safe_unicode(getattr(obj, "sample_type", "") or "")
         created = api.get_creation_date(obj)
         try:
             item["Created"] = created.strftime("%Y-%m-%d")
@@ -93,15 +94,18 @@ class SampleIntakeView(ControlPanelListingView):
         item["State"] = translate(api.get_review_status(obj))
 
         # Link to the registered Sample, if this request was already converted.
-        sample_id = getattr(obj, "created_sample_id", "") or ""
+        sample_id = safe_unicode(getattr(obj, "created_sample_id", "") or "")
         item["Sample"] = sample_id
 
         # "Convert to Sample" action: opens the guided conversion form, unless
-        # a sample was already created from this request.
+        # a sample was already created from this request. The object URL can
+        # contain non-ascii (Persian) characters when the id was derived from a
+        # Persian subject, so keep everything unicode to avoid a decode error.
         if sample_id:
             item["Convert"] = ""
         else:
-            convert_url = "%s/@@convert-to-sample" % api.get_url(obj)
+            convert_url = safe_unicode(api.get_url(obj)) \
+                + u"/@@convert-to-sample"
             item["Convert"] = convert_url
             label = translate(_(u"sampleintake_convert_action",
                                 default=u"Convert to Sample"))
@@ -111,8 +115,8 @@ class SampleIntakeView(ControlPanelListingView):
 
         token = getattr(obj, "access_token", None)
         if token:
-            url = "%s/@@track-request?token=%s" % (
-                api.get_url(api.get_portal()), token)
+            url = u"%s/@@track-request?token=%s" % (
+                safe_unicode(api.get_url(api.get_portal())), token)
             item["CustomerLink"] = url
             item["replace"]["CustomerLink"] = (
                 u'<a href="%s" target="_blank">%s</a>' % (url, url))
