@@ -91,7 +91,7 @@ class SampleIntakeView(ControlPanelListingView):
             item["Created"] = created.strftime("%Y-%m-%d")
         except Exception:
             item["Created"] = ""
-        item["State"] = translate(api.get_review_status(obj))
+        item["State"] = safe_unicode(translate(api.get_review_status(obj)))
 
         # Link to the registered Sample, if this request was already converted.
         sample_id = safe_unicode(getattr(obj, "created_sample_id", "") or "")
@@ -107,8 +107,8 @@ class SampleIntakeView(ControlPanelListingView):
             convert_url = safe_unicode(api.get_url(obj)) \
                 + u"/@@convert-to-sample"
             item["Convert"] = convert_url
-            label = translate(_(u"sampleintake_convert_action",
-                                default=u"Convert to Sample"))
+            label = safe_unicode(translate(_(u"sampleintake_convert_action",
+                                             default=u"Convert to Sample")))
             item["replace"]["Convert"] = (
                 u'<a class="btn btn-sm btn-primary" href="%s">%s</a>'
                 % (convert_url, label))
