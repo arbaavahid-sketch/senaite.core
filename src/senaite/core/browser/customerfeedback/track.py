@@ -196,6 +196,19 @@ class TrackRequestView(BrowserView):
             pass
         return None
 
+    def _report_issued(self, sample):
+        """True if the lab has already published a report for this sample.
+        Uses the publication date (set on publish) so it stays true even after
+        the sample is later dispatched ("sent"), which changes the review
+        state away from 'published'."""
+        try:
+            getdp = getattr(sample, "getDatePublished", None)
+            if callable(getdp) and getdp():
+                return True
+        except Exception:
+            pass
+        return api.get_review_status(sample) in ("published", "dispatched")
+
     def _to_result(self, obj):
         pt = api.get_portal_type(obj)
         state = api.get_review_status(obj)
@@ -218,8 +231,7 @@ class TrackRequestView(BrowserView):
             message = self.labels["results_ready"]
             status_label = self.labels["st_testing"]
             sample = self._resolve_sample(obj)
-            if sample is not None \
-                    and api.get_review_status(sample) == "published":
+            if sample is not None and self._report_issued(sample):
                 message = self.labels["report_sent"]
                 status_label = self.labels["st_published"]
 
