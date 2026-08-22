@@ -35,6 +35,23 @@
           <dd class="col-sm-9" tal:content="info/contact_phone">p</dd>
           <dt class="col-sm-3" tal:content="L/cust_sample_type">Sample type</dt>
           <dd class="col-sm-9" tal:content="info/sample_type">st</dd>
+          <tal:nat tal:condition="python:info['sample_nature'] or info['sample_matrix']">
+            <dt class="col-sm-3" tal:content="L/cust_nature">Nature</dt>
+            <dd class="col-sm-9"
+                tal:content="python:' / '.join([x for x in (info['sample_nature'], info['sample_matrix']) if x])">n</dd>
+          </tal:nat>
+          <tal:sto tal:condition="info/storage_conditions">
+            <dt class="col-sm-3" tal:content="L/cust_storage">Storage</dt>
+            <dd class="col-sm-9" tal:content="info/storage_conditions">s</dd>
+          </tal:sto>
+          <tal:haz tal:condition="info/safety_hazards">
+            <dt class="col-sm-3 text-danger" tal:content="L/cust_hazards">Hazards</dt>
+            <dd class="col-sm-9 text-danger"><strong tal:content="info/safety_hazards">h</strong></dd>
+          </tal:haz>
+          <tal:sn tal:condition="info/safety_notes">
+            <dt class="col-sm-3" tal:content="L/cust_safety_notes">Safety notes</dt>
+            <dd class="col-sm-9" style="white-space:pre-wrap" tal:content="info/safety_notes">sn</dd>
+          </tal:sn>
           <dt class="col-sm-3" tal:content="L/cust_tests">Requested tests</dt>
           <dd class="col-sm-9" style="white-space:pre-wrap" tal:content="info/requested_tests">t</dd>
         </dl>

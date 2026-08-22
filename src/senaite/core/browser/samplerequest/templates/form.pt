@@ -79,6 +79,10 @@
           <label tal:content="L/economic_code">Economic code</label>
           <input type="text" class="form-control" name="economic_code"/>
         </div>
+        <div class="form-group">
+          <label tal:content="L/referral">How did you hear about us</label>
+          <input type="text" class="form-control" name="referral_source"/>
+        </div>
 
         <h5 class="mt-4" tal:content="L/sec_sample">Sample information</h5>
         <div class="form-group">
@@ -88,6 +92,14 @@
         <div class="form-group">
           <label tal:content="L/sample_type">Sample type</label>
           <input type="text" class="form-control" name="sample_type"/>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/nature">Nature</label>
+          <input type="text" class="form-control" name="sample_nature"/>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/matrix">Matrix</label>
+          <input type="text" class="form-control" name="sample_matrix"/>
         </div>
         <div class="form-group">
           <label tal:content="L/quantity">Quantity</label>
@@ -108,6 +120,41 @@
         <div class="form-group">
           <label tal:content="L/description">Description</label>
           <textarea class="form-control" name="sample_description" rows="2"></textarea>
+        </div>
+
+        <h5 class="mt-4" tal:content="L/sec_safety">Storage &amp; safety</h5>
+        <div class="form-group">
+          <label tal:content="L/storage">Storage conditions</label>
+          <div>
+            <div class="form-check" tal:repeat="opt L/opt_storage"
+                 tal:attributes="style string:display:inline-block;; margin-${align}:1.5rem;; margin-bottom:.3rem">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input"
+                       name="storage_conditions:list"
+                       tal:attributes="value opt"/>
+                <span tal:content="opt">option</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/hazards">Safety &amp; hazards</label>
+          <div>
+            <div class="form-check" tal:repeat="opt L/opt_safety"
+                 tal:attributes="style string:display:inline-block;; margin-${align}:1.5rem;; margin-bottom:.3rem">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input"
+                       name="safety_hazards:list"
+                       tal:attributes="value opt"/>
+                <span tal:content="opt">option</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label tal:content="L/safety_notes">Safety notes / MSDS</label>
+          <textarea class="form-control" name="safety_notes" rows="2"></textarea>
+          <small class="form-text text-muted" tal:content="L/safety_notes_hint">hint</small>
         </div>
 
         <h5 class="mt-4" tal:content="L/sec_tests">Tests &amp; delivery</h5>
@@ -176,6 +223,25 @@
             <option value="inperson" tal:content="L/del_inperson">In person</option>
             <option value="post" tal:content="L/del_post">Post</option>
           </select>
+        </div>
+
+        <h5 class="mt-4" tal:content="L/sec_terms">Declaration &amp; terms</h5>
+        <div class="form-group">
+          <div style="border:1px solid #e3e7ee;; border-radius:8px;; padding:.75rem 1rem;; background:#f8f9fb;; max-height:180px;; overflow:auto">
+            <strong tal:content="L/terms_title">Terms</strong>
+            <ul tal:attributes="style string:padding-${align}:1.2rem;; margin:.4rem 0 0">
+              <li tal:repeat="t L/terms_items" tal:content="t">term</li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input"
+                     name="declaration" value="1" required="required"/>
+              <span tal:content="L/declaration">I accept the terms.</span>
+            </label>
+          </div>
         </div>
 
         <button type="submit" name="submit" value="1"

@@ -81,9 +81,27 @@ class ISampleRequestSchema(model.Schema):
         required=False,
     )
 
+    referral_source = schema.TextLine(
+        title=_(u"title_samplerequest_referral",
+                default=u"How did you hear about the laboratory?"),
+        required=False,
+    )
+
     sample_type = schema.TextLine(
         title=_(u"title_samplerequest_sampletype",
                 default=u"Sample type (as described by the customer)"),
+        required=False,
+    )
+
+    sample_nature = schema.TextLine(
+        title=_(u"title_samplerequest_nature",
+                default=u"Sample nature (natural / synthetic)"),
+        required=False,
+    )
+
+    sample_matrix = schema.TextLine(
+        title=_(u"title_samplerequest_matrix",
+                default=u"Sample matrix (mineral / organic)"),
         required=False,
     )
 
@@ -139,6 +157,38 @@ class ISampleRequestSchema(model.Schema):
     sample_description = schema.Text(
         title=_(u"title_samplerequest_description",
                 default=u"Sample description / notes"),
+        required=False,
+    )
+
+    # Storage conditions the sample needs (light/moisture sensitive, special
+    # atmosphere, low temperature...). Stored as the human-readable labels the
+    # customer ticked, so reception can read them directly.
+    storage_conditions = schema.List(
+        title=_(u"title_samplerequest_storage",
+                default=u"Storage conditions"),
+        value_type=schema.TextLine(),
+        required=False,
+    )
+
+    # Safety hazards declared by the customer (toxic, flammable, nano-sized...).
+    safety_hazards = schema.List(
+        title=_(u"title_samplerequest_hazards",
+                default=u"Safety hazards"),
+        value_type=schema.TextLine(),
+        required=False,
+    )
+
+    safety_notes = schema.Text(
+        title=_(u"title_samplerequest_safety_notes",
+                default=u"Safety notes / MSDS"),
+        required=False,
+    )
+
+    # The customer's binding declaration (sample is not radioactive/explosive
+    # and the lab terms are accepted). Required on the public form.
+    hazard_declaration = schema.Bool(
+        title=_(u"title_samplerequest_declaration",
+                default=u"Terms accepted and hazard declaration signed"),
         required=False,
     )
 

@@ -27,12 +27,16 @@ LABELS = {
     "fa": {
         "title": u"تبدیل درخواست به نمونه",
         "request": u"مشخصات درخواست مشتری",
-        "client": u"مشتری",
+        "client": u"شرکت / دانشگاه",
         "new_client": u"— ساخت مشتری جدید از نام بالا —",
-        "contact": u"نام تماس",
+        "contact": u"نام و نام خانوادگی متقاضی",
         "email": u"ایمیل",
         "phone": u"تلفن",
         "cust_sample_type": u"نوع نمونه (گفتهٔ مشتری)",
+        "cust_nature": u"ماهیت / نوع نمونه",
+        "cust_storage": u"شرایط نگهداری",
+        "cust_hazards": u"⚠ موارد ایمنی و خطر",
+        "cust_safety_notes": u"توضیحات ایمنی / MSDS",
         "cust_tests": u"آزمون‌های درخواستی (گفتهٔ مشتری)",
         "pick_client": u"انتخاب مشتری",
         "pick_sampletype": u"نوع نمونه (تنظیم‌شده)",
@@ -52,12 +56,16 @@ LABELS = {
     "en": {
         "title": u"Convert request to Sample",
         "request": u"Customer request details",
-        "client": u"Client",
+        "client": u"Company / university",
         "new_client": u"— create a new client from the name above —",
-        "contact": u"Contact",
+        "contact": u"Applicant full name",
         "email": u"Email",
         "phone": u"Phone",
         "cust_sample_type": u"Sample type (customer)",
+        "cust_nature": u"Nature / matrix",
+        "cust_storage": u"Storage conditions",
+        "cust_hazards": u"⚠ Safety hazards",
+        "cust_safety_notes": u"Safety notes / MSDS",
         "cust_tests": u"Requested tests (customer)",
         "pick_client": u"Select client",
         "pick_sampletype": u"Sample type (configured)",
@@ -104,6 +112,7 @@ class ConvertToSampleView(BrowserView):
 
     def request_info(self):
         obj = self.context
+        sep = u"، " if self.lang == "fa" else u", "
         return {
             "subject": getattr(obj, "title", "") or api.get_id(obj),
             "client_name": getattr(obj, "client_name", "") or "",
@@ -111,6 +120,13 @@ class ConvertToSampleView(BrowserView):
             "contact_email": getattr(obj, "contact_email", "") or "",
             "contact_phone": getattr(obj, "contact_phone", "") or "",
             "sample_type": getattr(obj, "sample_type", "") or "",
+            "sample_nature": getattr(obj, "sample_nature", "") or "",
+            "sample_matrix": getattr(obj, "sample_matrix", "") or "",
+            "storage_conditions": sep.join(
+                getattr(obj, "storage_conditions", None) or []),
+            "safety_hazards": sep.join(
+                getattr(obj, "safety_hazards", None) or []),
+            "safety_notes": getattr(obj, "safety_notes", "") or "",
             "requested_tests": getattr(obj, "requested_tests", "") or "",
             "quantity": getattr(obj, "quantity", "") or "",
         }
