@@ -217,6 +217,15 @@ class ISampleRequestSchema(model.Schema):
         required=False,
     )
 
+    # UID of that Sample, so the tracking page can resolve it reliably and
+    # reflect its real state (e.g. "report issued") to the customer.
+    form.omitted("created_sample_uid")
+    created_sample_uid = schema.TextLine(
+        title=_(u"title_samplerequest_created_sample_uid",
+                default=u"Registered Sample UID"),
+        required=False,
+    )
+
     form.omitted("access_token")
     access_token = schema.TextLine(
         title=_(u"title_access_token", default=u"Access token"),

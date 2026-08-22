@@ -204,6 +204,7 @@ class ConvertToSampleView(BrowserView):
                 sample_id = api.get_id(ar)
                 # Link back and move the request forward (received -> in_progress).
                 self.context.created_sample_id = sample_id
+                self.context.created_sample_uid = api.get_uid(ar)
                 if api.get_review_status(self.context) == "received":
                     try:
                         api.do_transition_for(self.context, "process")

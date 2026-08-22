@@ -45,6 +45,10 @@ LABELS = {
         "no_response": u"هنوز پاسخی ثبت نشده است.",
         "results_ready": u"نمونهٔ شما ثبت و در حال انجام است. گزارش نتایج پس از "
                          u"تکمیل، از سوی آزمایشگاه ارسال می‌شود.",
+        "report_sent": u"گزارش نتایج صادر و برای شما ایمیل شد. اگر آن را "
+                       u"دریافت نکردید، با آزمایشگاه تماس بگیرید.",
+        "st_testing": u"در حال انجام آزمون",
+        "st_published": u"گزارش صادر شد",
         "not_found": u"درخواستی با این شمارهٔ پیگیری و نام مشتری یافت نشد.",
         "submit_link": u"ثبت درخواست جدید",
     },
@@ -63,6 +67,11 @@ LABELS = {
         "results_ready": u"Your sample has been registered and is being "
                          u"processed. The results report will be sent by the "
                          u"laboratory once complete.",
+        "report_sent": u"The results report has been issued and emailed to "
+                       u"you. If you didn't receive it, please contact the "
+                       u"laboratory.",
+        "st_testing": u"Testing in progress",
+        "st_published": u"Report issued",
         "not_found": u"No request found for this tracking number and client name.",
         "submit_link": u"Submit a new request",
     },
@@ -165,6 +174,28 @@ class TrackRequestView(BrowserView):
         except Exception:
             self.not_found = True
 
+    def _resolve_sample(self, obj):
+        """Return the Sample (AnalysisRequest) created from this request, or
+        None. Prefer the stored UID; fall back to a catalog lookup by id for
+        older records created before the UID was stored."""
+        uid = safe_unicode(getattr(obj, "created_sample_uid", "") or "").strip()
+        if uid:
+            sample = api.get_object_by_uid(uid, default=None)
+            if sample is not None:
+                return sample
+        sample_id = safe_unicode(getattr(obj, "created_sample_id", "") or "")
+        if not sample_id:
+            return None
+        try:
+            from senaite.core.catalog import SAMPLE_CATALOG
+            for brain in api.search({"portal_type": "AnalysisRequest"},
+                                    SAMPLE_CATALOG):
+                if safe_unicode(api.get_id(brain)) == sample_id:
+                    return api.get_object(brain)
+        except Exception:
+            pass
+        return None
+
     def _to_result(self, obj):
         pt = api.get_portal_type(obj)
         state = api.get_review_status(obj)
@@ -174,15 +205,30 @@ class TrackRequestView(BrowserView):
             response = getattr(obj, "response", "") or ""
         else:
             response = ""
+
+        status_label = STATE_LABELS.get(state, {}).get(self.lang, state)
+
         # For a test request that reception already converted, surface the
-        # registered sample id so the customer always sees something concrete
-        # (status + sample id), even when no free-text answer was typed.
+        # registered sample id and reflect the *sample's* real state, so the
+        # customer sees "report issued" once the lab publishes it (rather than
+        # the request's own workflow state, which does not track that).
         sample_id = safe_unicode(getattr(obj, "created_sample_id", "") or "")
+        message = u""
+        if sample_id:
+            message = self.labels["results_ready"]
+            status_label = self.labels["st_testing"]
+            sample = self._resolve_sample(obj)
+            if sample is not None \
+                    and api.get_review_status(sample) == "published":
+                message = self.labels["report_sent"]
+                status_label = self.labels["st_published"]
+
         return {
             "type": TYPE_LABELS.get(pt, {}).get(self.lang, pt),
             "subject": safe_unicode(getattr(obj, "title", "")
                                     or api.get_title(obj)),
-            "status": STATE_LABELS.get(state, {}).get(self.lang, state),
+            "status": status_label,
             "response": safe_unicode(response),
             "sample_id": sample_id,
+            "message": message,
         }

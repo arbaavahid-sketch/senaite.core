@@ -71,9 +71,9 @@
         <th tal:content="L/response">Response</th>
         <td style="white-space:pre-line">
           <span tal:condition="r/response" tal:content="r/response">response</span>
-          <span tal:condition="python:not r['response'] and r['sample_id']"
-                class="text-muted" tal:content="L/results_ready">ready</span>
-          <span tal:condition="python:not r['response'] and not r['sample_id']"
+          <span tal:condition="python:not r['response'] and r['message']"
+                class="text-muted" tal:content="r/message">ready</span>
+          <span tal:condition="python:not r['response'] and not r['message']"
                 class="text-muted" tal:content="L/no_response">none</span>
         </td>
       </tr>
