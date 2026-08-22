@@ -49,6 +49,10 @@ LABELS = {
         "sampling_date": u"تاریخ نمونه‌برداری",
         "sampling_point": u"محل / منبع نمونه‌برداری",
         "condition": u"وضعیت نمونه هنگام تحویل",
+        "condition_hint": u"وضعیت ظاهری و سلامت نمونه هنگام تحویل را بنویسید — "
+                          u"مثلاً: سالم و پلمب‌شده، درِ باز، نشتی، شکسته، "
+                          u"آلوده، یا ته‌نشین‌شده.",
+        "condition_ph": u"مثلاً: سالم و پلمب‌شده",
         "storage": u"شرایط نگهداری (در صورت وجود)",
         "opt_storage": [u"حساس به نور", u"حساس به رطوبت",
                         u"نگهداری در اتمسفر خاص", u"نگهداری در دمای پایین"],
@@ -126,6 +130,10 @@ LABELS = {
         "sampling_date": u"Sampling date",
         "sampling_point": u"Sampling point / source",
         "condition": u"Sample condition on receipt",
+        "condition_hint": u"Describe the visual state and integrity of the "
+                          u"sample on delivery — e.g. sealed and intact, "
+                          u"opened, leaking, broken, contaminated, or settled.",
+        "condition_ph": u"e.g. sealed and intact",
         "storage": u"Storage conditions (if any)",
         "opt_storage": [u"Light sensitive", u"Moisture sensitive",
                         u"Special atmosphere", u"Low temperature"],
