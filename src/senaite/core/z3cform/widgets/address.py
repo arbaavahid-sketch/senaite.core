@@ -238,7 +238,10 @@ class AddressWidget(HTMLFormElement, Widget):
                 label = _("State")
                 if subdivisions:
                     label = _(subdivisions[0].type)
-                labels[country]["subdivision1"] = translate(label)
+                # A stored country value (e.g. a plain "Iran") may not match
+                # the canonical geo country names used to seed `labels`, so use
+                # setdefault to avoid a KeyError that would break the edit form.
+                labels.setdefault(country, {})["subdivision1"] = translate(label)
 
             subdivision1 = item.get("subdivision1")
             if subdivision1 and subdivision1 not in sub2:
@@ -248,7 +251,7 @@ class AddressWidget(HTMLFormElement, Widget):
                 label = _("District")
                 if subdivisions:
                     label = _(subdivisions[0].type)
-                labels[country]["subdivision2"] = translate(label)
+                labels.setdefault(country, {})["subdivision2"] = translate(label)
 
         attributes = {
             "data-id": self.id,
