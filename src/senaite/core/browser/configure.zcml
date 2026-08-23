@@ -11,7 +11,7 @@
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       name="apply-method-standards"
       class=".tppc_methods.ApplyMethodStandardsView"
-      permission="bika.lims.ManageBika"
+      permission="senaite.core.permissions.ManageBika"
       layer="senaite.core.interfaces.ISenaiteCore"
       />
 
