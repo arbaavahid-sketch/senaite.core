@@ -21,7 +21,7 @@ from plone.namedfile.file import NamedBlobFile
 from bika.lims import api
 from bika.lims.api import safe_unicode
 
-CODE_RE = re.compile(u"^(TL[A-Z]{1,3}(?:-\\d+){0,3})")
+CODE_RE = re.compile(u"(TL[A-Z]{1,3}(?:-\\d+){0,3})")
 DOC_EXTS = (".pdf", ".docx", ".doc", ".pptx", ".xlsx")
 
 # Never import these (sensitive): password lists.
