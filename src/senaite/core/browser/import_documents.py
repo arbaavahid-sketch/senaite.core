@@ -40,13 +40,28 @@ def _type_for(code):
 
 def _parse(basename):
     basename = safe_unicode(basename)
-    name = os.path.splitext(basename)[0].strip()
-    m = CODE_RE.match(name)
-    code = m.group(1) if m else u""
-    title = name[m.end():].strip(u" -_.") if m else name
+    name = os.path.splitext(basename)[0]
+    # The code may appear anywhere in the name (start, end, or glued to text).
+    m = CODE_RE.search(name)
+    if m:
+        code = m.group(1)
+        title = name[:m.start()] + u" " + name[m.end():]
+    else:
+        code = u""
+        title = name
+    # If the code has no number (e.g. bare "TLP" or "TLM") but a trailing
+    # number was left in the name, treat it as the missing document number.
+    if code and not re.search(u"\\d", code):
+        tnum = re.search(u"(\\d{1,3})\\s*$", title)
+        if tnum:
+            code = u"%s-%s" % (code, tnum.group(1))
+            title = title[:tnum.start()]
+    # Clean the title: drop stray file extensions and collapse punctuation.
+    title = re.sub(u"(?i)\\b(docx|pptx|xlsx|pdf|doc)\\b", u" ", title)
+    title = re.sub(u"[\\s\\.\\-_]+", u" ", title).strip()
     if not title:
         title = code or name
-    return code, safe_unicode(title), _type_for(code or "")
+    return code, title, _type_for(code or u"")
 
 
 class ImportControlledDocumentsView(BrowserView):
@@ -112,6 +127,9 @@ class ImportControlledDocumentsView(BrowserView):
             if (code, title) in existing:
                 skipped += 1
                 continue
+            # Reserve this (code, title) so cross-folder duplicates are only
+            # counted/created once, in dry-run and apply alike.
+            existing.add((code, title))
             lines.append(u"%s\t%s\t%s\t%s" % (
                 u"CREATE" if apply else u"would create", code, dtype, title))
             if not apply:
@@ -127,7 +145,6 @@ class ImportControlledDocumentsView(BrowserView):
                     document_id=code, document_type=dtype, version=u"00",
                     file=blob)
                 obj = self._clean_id(container, obj, code)
-                existing.add((code, title))
                 created += 1
                 if make_effective:
                     try:
