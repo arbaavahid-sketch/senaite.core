@@ -21,7 +21,7 @@ from plone.namedfile.file import NamedBlobFile
 from bika.lims import api
 from bika.lims.api import safe_unicode
 
-CODE_RE = re.compile(r"^(TL[A-Z]{1,3}(?:-\d+){0,3})")
+CODE_RE = re.compile(u"^(TL[A-Z]{1,3}(?:-\\d+){0,3})")
 DOC_EXTS = (".pdf", ".docx", ".doc", ".pptx", ".xlsx")
 
 # Never import these (sensitive): password lists.
@@ -39,6 +39,7 @@ def _type_for(code):
 
 
 def _parse(basename):
+    basename = safe_unicode(basename)
     name = os.path.splitext(basename)[0].strip()
     m = CODE_RE.match(name)
     code = m.group(1) if m else u""
@@ -52,7 +53,11 @@ class ImportControlledDocumentsView(BrowserView):
     """Bulk-create ControlledDocument objects from files in a server folder."""
 
     def __call__(self):
+        # Keep the directory as a bytestring for filesystem calls so os.walk
+        # tolerates any non-UTF-8 (mojibake) filenames; decode per-name later.
         directory = self.request.get("dir") or "/data/iso_docs"
+        if isinstance(directory, unicode):  # noqa: F821 (py2)
+            directory = directory.encode("utf-8")
         apply = bool(self.request.get("apply"))
         make_effective = bool(self.request.get("effective"))
 
