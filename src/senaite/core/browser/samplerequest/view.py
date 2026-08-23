@@ -257,6 +257,10 @@ class SampleRequestView(BrowserView):
 
     def _handle_submit(self):
         form = self.request.form
+        # Honeypot: a hidden field humans never see but bots fill in. If it has
+        # any value, silently drop the submission (no record, no error).
+        if (form.get("website") or "").strip():
+            return
         subject = (form.get("subject") or "").strip()
         if not subject:
             self.error = self.labels["err_subject"]
