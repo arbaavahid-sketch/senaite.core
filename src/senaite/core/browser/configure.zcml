@@ -1,9 +1,19 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="senaite.core">
 
   <include package="plone.resource"/>
+
+  <!-- One-off admin tool: stamp AnalysisService method/standard strings. -->
+  <browser:page
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="apply-method-standards"
+      class=".tppc_methods.ApplyMethodStandardsView"
+      permission="bika.lims.ManageBika"
+      layer="senaite.core.interfaces.ISenaiteCore"
+      />
 
   <!-- Static directory for js, css and image resources -->
   <plone:static
