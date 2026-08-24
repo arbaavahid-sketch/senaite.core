@@ -33,6 +33,15 @@
       layer="senaite.core.interfaces.ISenaiteCore"
       />
 
+  <!-- One-off admin tool: ensure priority analyses exist (create + stamp). -->
+  <browser:page
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="ensure-priority-services"
+      class=".ensure_services.EnsurePriorityServicesView"
+      permission="senaite.core.permissions.ManageBika"
+      layer="senaite.core.interfaces.ISenaiteCore"
+      />
+
   <!-- Static directory for js, css and image resources -->
   <plone:static
       directory="static"
