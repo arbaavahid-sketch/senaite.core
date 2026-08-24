@@ -42,6 +42,15 @@
       layer="senaite.core.interfaces.ISenaiteCore"
       />
 
+  <!-- One-off admin tool: deactivate exact-duplicate analysis services. -->
+  <browser:page
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="dedupe-services"
+      class=".dedupe_services.DedupeServicesView"
+      permission="senaite.core.permissions.ManageBika"
+      layer="senaite.core.interfaces.ISenaiteCore"
+      />
+
   <!-- Static directory for js, css and image resources -->
   <plone:static
       directory="static"
