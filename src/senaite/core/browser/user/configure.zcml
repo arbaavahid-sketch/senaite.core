@@ -53,6 +53,16 @@
       factory=".passwordpanel.PasswordPanelAdapter"
       />
 
+  <!-- Data Manager for User Data. Without this, opening a user's
+       @@user-information raises "Could not adapt <PloneSite> to
+       IUserDataSchema" because z3c.form has no adapter to read/write the
+       fullname/email fields. -->
+  <adapter
+      provides=".userdatapanel.IUserDataSchema"
+      for="plone.app.layout.navigation.interfaces.INavigationRoot"
+      factory="plone.app.users.browser.userdatapanel.UserDataPanelAdapter"
+      />
+
   <!-- New user form -->
   <browser:page
       name="new-user"
