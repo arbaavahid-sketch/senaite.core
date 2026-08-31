@@ -131,3 +131,58 @@ def notify_customer_on_close(obj, event):
         # Mail must never break the workflow transition. Log and move on.
         logger.exception("Failed to email close notification for %s",
                          api.get_id(obj))
+
+
+_TYPE_LABEL_FA = {
+    "SampleRequest": u"درخواست آزمون",
+    "Complaint": u"شکایت",
+    "SupportRequest": u"درخواست پشتیبانی",
+    "Survey": u"نظرسنجی",
+}
+
+
+def notify_lab_on_new(obj, event):
+    """Email the laboratory when a customer submits a new online request, so
+    staff are alerted even when nobody is logged in. Recipient is the site's
+    configured 'from' address (plone.email_from_address). Never raises."""
+    try:
+        from plone import api as ploneapi
+        from email.mime.text import MIMEText
+        try:
+            lab_email = ploneapi.portal.get_registry_record(
+                "plone.email_from_address")
+        except Exception:
+            lab_email = None
+        if not lab_email:
+            logger.info("No lab email configured; skipping new-request alert")
+            return
+
+        pt = api.get_portal_type(obj)
+        kind = _TYPE_LABEL_FA.get(pt, pt)
+        subject = u"درخواست جدید در سامانه — %s" % kind
+        contact = _esc(getattr(obj, "contact_name", None)
+                       or getattr(obj, "client_name", None) or u"—")
+        c_email = _esc(getattr(obj, "contact_email", None) or u"—")
+        phone = _esc(getattr(obj, "contact_phone", None) or u"—")
+        subj = _esc(getattr(obj, "title", None) or api.get_id(obj))
+        link = _esc(api.get_url(obj))
+        html = (
+            u'<div dir="rtl" style="font-family:Tahoma,Arial,sans-serif;'
+            u'font-size:14px;line-height:1.9;color:#1a2230">'
+            u'یک <b>%s</b> جدید در سامانه ثبت شد:<br/><br/>'
+            u'<b>موضوع:</b> %s<br/>'
+            u'<b>نام تماس:</b> %s<br/>'
+            u'<b>ایمیل:</b> %s<br/>'
+            u'<b>تلفن:</b> %s<br/><br/>'
+            u'برای مشاهده و پاسخ، وارد پنل شوید:<br/>'
+            u'<a href="%s">%s</a>'
+            u'</div>'
+        ) % (kind, subj, contact, c_email, phone, link, link)
+        msg = MIMEText(html.encode("utf-8"), "html", "utf-8")
+        ploneapi.portal.send_email(
+            recipient=lab_email, subject=subject, body=msg)
+        logger.info("Sent new-request alert for %s to %s",
+                    api.get_id(obj), lab_email)
+    except Exception:
+        logger.exception("Failed to email new-request alert for %s",
+                         api.get_id(obj))

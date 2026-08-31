@@ -22,6 +22,25 @@
            zope.lifecycleevent.interfaces.IObjectAddedEvent"
       handler=".customercare_events.assign_access_token" />
 
+  <!-- Alert the lab (by email) when a new online request is submitted, so
+       staff know even when nobody is logged in. -->
+  <subscriber
+      for="senaite.core.interfaces.IComplaint
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      handler=".customercare_events.notify_lab_on_new" />
+  <subscriber
+      for="senaite.core.interfaces.ISupportRequest
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      handler=".customercare_events.notify_lab_on_new" />
+  <subscriber
+      for="senaite.core.interfaces.ISurvey
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      handler=".customercare_events.notify_lab_on_new" />
+  <subscriber
+      for="senaite.core.interfaces.ISampleRequest
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      handler=".customercare_events.notify_lab_on_new" />
+
   <!-- Email the customer their answer + tracking link when a request is
        closed (complaints and support requests use the customerrequest
        workflow, which has a 'close' transition). -->
