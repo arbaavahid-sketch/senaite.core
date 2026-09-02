@@ -42,6 +42,15 @@
       layer="senaite.core.interfaces.ISenaiteCore"
       />
 
+  <!-- One-off admin tool: add ASTM D86 distillation-curve interim fields. -->
+  <browser:page
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="add-distillation-interims"
+      class=".distillation_interims.AddDistillationInterimsView"
+      permission="senaite.core.permissions.ManageBika"
+      layer="senaite.core.interfaces.ISenaiteCore"
+      />
+
   <!-- One-off admin tool: deactivate exact-duplicate analysis services. -->
   <browser:page
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
