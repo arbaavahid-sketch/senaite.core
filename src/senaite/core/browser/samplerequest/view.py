@@ -105,6 +105,11 @@ LABELS = {
         "err_subject": u"لطفاً موضوع را وارد کنید.",
         "err_declaration": u"برای ثبت درخواست، باید شرایط و تعهدنامه را "
                            u"بپذیرید.",
+        "err_client_name": u"لطفاً نام شرکت/مشتری را وارد کنید.",
+        "err_contact_name": u"لطفاً نام تماس را وارد کنید.",
+        "err_contact_email": u"لطفاً ایمیل تماس را وارد کنید.",
+        "err_contact_email_bad": u"ایمیل واردشده معتبر نیست.",
+        "err_contact_phone": u"لطفاً تلفن تماس را وارد کنید.",
     },
     "en": {
         "title": u"Request a test / submit a sample",
@@ -189,6 +194,11 @@ LABELS = {
         "err_subject": u"Please enter a subject.",
         "err_declaration": u"You must accept the terms and declaration to "
                            u"submit the request.",
+        "err_client_name": u"Please enter the company / client name.",
+        "err_contact_name": u"Please enter the contact name.",
+        "err_contact_email": u"Please enter the contact email.",
+        "err_contact_email_bad": u"The email address is not valid.",
+        "err_contact_phone": u"Please enter the contact phone.",
     },
 }
 
@@ -264,6 +274,28 @@ class SampleRequestView(BrowserView):
         subject = (form.get("subject") or "").strip()
         if not subject:
             self.error = self.labels["err_subject"]
+            return
+
+        # Required contact information: name, phone, email and client name, so
+        # every request carries who submitted it and how to reach them.
+        client_name = (form.get("client_name") or "").strip()
+        contact_name = (form.get("contact_name") or "").strip()
+        contact_email = (form.get("contact_email") or "").strip()
+        contact_phone = (form.get("contact_phone") or "").strip()
+        if not client_name:
+            self.error = self.labels["err_client_name"]
+            return
+        if not contact_name:
+            self.error = self.labels["err_contact_name"]
+            return
+        if not contact_phone:
+            self.error = self.labels["err_contact_phone"]
+            return
+        if not contact_email:
+            self.error = self.labels["err_contact_email"]
+            return
+        if "@" not in contact_email or "." not in contact_email.split("@")[-1]:
+            self.error = self.labels["err_contact_email_bad"]
             return
 
         # The customer must accept the terms / hazard declaration.
