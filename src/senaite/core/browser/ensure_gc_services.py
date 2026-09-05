@@ -29,12 +29,15 @@ def _norm(text):
 # it), and groups = [(field_keyword, field_title), ...].
 _TESTS = [
     {
-        "keyword": u"PIONA_D6730",
-        "title": u"آنالیز کامل هیدروکربنی (PIONA) — ASTM D6730",
+        # Adopt the lab's real DHA service (AS_74429_116, «...هیدروکربنی...
+        # جزء به جزء») by title tokens rather than creating a parallel one.
+        # The placeholder keyword never matches, so lookup falls to tokens.
+        "keyword": u"__DHA_D6730__",
+        "title": u"آنالیز کامل هیدروکربنی (PIONA/DHA) — ASTM D6730",
         "method": u"ASTM D6730",
         "category": u"هیدروکربن",
         "unit": u"% wt",
-        "match_tokens": [u"PIONA"],
+        "match_tokens": [u"هیدروکرب", u"جزء"],
         "groups": [
             (u"PAR", u"پارافین‌ها (Paraffins)"),
             (u"ISOP", u"ایزوپارافین‌ها (Iso-paraffins)"),
@@ -80,6 +83,11 @@ _TESTS = [
         ],
     },
 ]
+
+
+# Duplicate services we created earlier that are now superseded by an adopted
+# lab service — deactivate (not delete) them so the picker stays clean.
+_DEACTIVATE = [u"PIONA_D6730"]
 
 
 class EnsureGCServicesView(BrowserView):
@@ -136,12 +144,27 @@ class EnsureGCServicesView(BrowserView):
 
             interims = self._interims(test)
             if svc is not None:
-                out.append(u"%s existing\t%s\t%s" % (
+                # MERGE, don't overwrite: keep whatever the existing service
+                # already has and only add our group fields that are missing,
+                # so we never destroy the lab's own configuration.
+                existing = svc.getInterimFields() or []
+                have = set()
+                for i in existing:
+                    have.add(_norm(i.get("keyword", "")))
+                merged = [dict(i) for i in existing]
+                added = [g for g in interims if _norm(g["keyword"]) not in have]
+                merged.extend(added)
+                out.append(u"%s existing\t%s\t%s\t(has %d, +%d new)" % (
                     u"UPDATE" if apply else u"would update",
                     safe_unicode(svc.getKeyword()),
-                    safe_unicode(api.get_title(svc))))
-                if apply:
-                    svc.setInterimFields(interims)
+                    safe_unicode(api.get_title(svc)),
+                    len(existing), len(added)))
+                if existing:
+                    out.append(u"    (existing fields kept: %s)" % (
+                        u", ".join(safe_unicode(i.get("keyword", ""))
+                                   for i in existing)))
+                if apply and added:
+                    svc.setInterimFields(merged)
                     if not getattr(svc, "tppc_method_text", None):
                         svc.tppc_method_text = test["method"]
                     svc.reindexObject()
@@ -170,6 +193,21 @@ class EnsureGCServicesView(BrowserView):
 
             for kw, title in test["groups"]:
                 out.append(u"    %s\t%s\t%s" % (kw, title, test["unit"]))
+
+        # Deactivate superseded duplicate services (kept, not deleted).
+        for kw in _DEACTIVATE:
+            svc = by_keyword.get(kw)
+            if svc is None or not api.is_active(svc):
+                continue
+            out.append(u"")
+            out.append(u"%s duplicate\t%s\t%s" % (
+                u"DEACTIVATE" if apply else u"would deactivate",
+                kw, safe_unicode(api.get_title(svc))))
+            if apply:
+                try:
+                    api.do_transition_for(svc, "deactivate")
+                except Exception as exc:  # noqa
+                    out.append(u"  ERROR\t%s" % safe_unicode(exc))
 
         out.append(u"")
         out.append(u"NOTE: attach the full GC PDF to each sample; the report "
