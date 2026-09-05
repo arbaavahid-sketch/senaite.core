@@ -32,7 +32,7 @@ _TESTS = [
         # Adopt the lab's real DHA service (AS_74429_116, «...هیدروکربنی...
         # جزء به جزء») by title tokens rather than creating a parallel one.
         # The placeholder keyword never matches, so lookup falls to tokens.
-        "keyword": u"__DHA_D6730__",
+        "keyword": u"AS_74429_116",  # the lab's real DHA service (exact id)
         "title": u"آنالیز کامل هیدروکربنی (PIONA/DHA) — ASTM D6730",
         "method": u"ASTM D6730",
         "category": u"هیدروکربن",
@@ -103,7 +103,8 @@ class EnsureGCServicesView(BrowserView):
     def __call__(self):
         apply = bool(self.request.get("apply"))
         out = [u"MODE: %s" % (u"APPLY" if apply else
-                              u"DRY-RUN (add ?apply=1 to write)")]
+                              u"DRY-RUN (add ?apply=1 to write)"),
+               u"TOOL: gc-services v3 (DHA via keyword AS_74429_116)"]
 
         services = [api.get_object(b) for b in api.search(
             {"portal_type": "AnalysisService"}, SETUP_CATALOG)]
