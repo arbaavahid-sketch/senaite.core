@@ -37,7 +37,7 @@ _TESTS = [
         "method": u"ASTM D6730",
         "category": u"هیدروکربن",
         "unit": u"% wt",
-        "match_tokens": [u"هیدروکرب", u"جزء"],
+        "match_tokens": [u"هیدروکرب", u"سوخت"],
         "groups": [
             (u"PAR", u"پارافین‌ها (Paraffins)"),
             (u"ISOP", u"ایزوپارافین‌ها (Iso-paraffins)"),
