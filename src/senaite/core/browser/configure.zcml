@@ -51,6 +51,15 @@
       layer="senaite.core.interfaces.ISenaiteCore"
       />
 
+  <!-- One-off admin tool: ensure the PIONA (ASTM D6730) GC service exists. -->
+  <browser:page
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="ensure-piona-service"
+      class=".ensure_piona_service.EnsurePionaServiceView"
+      permission="senaite.core.permissions.ManageBika"
+      layer="senaite.core.interfaces.ISenaiteCore"
+      />
+
   <!-- One-off admin tool: deactivate exact-duplicate analysis services. -->
   <browser:page
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
