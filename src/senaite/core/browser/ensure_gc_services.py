@@ -63,6 +63,22 @@ _TESTS = [
             (u"TAR", u"کل آروماتیک‌ها (Total Aromatics)"),
         ],
     },
+    {
+        "keyword": u"OXY_D4815",
+        "title": (u"تعیین ترکیبات اکسیژنه (متانول، اتانول، MTBE و…) در "
+                  u"بنزین به روش GC — ASTM D4815"),
+        "method": u"ASTM D4815",
+        "category": u"هیدروکربن",
+        "unit": u"% wt",
+        "match_tokens": [u"اکسیژن", u"بنزین"],
+        "groups": [
+            (u"MEOH", u"متانول (Methanol)"),
+            (u"ETOH", u"اتانول (Ethanol)"),
+            (u"MTBE", u"MTBE"),
+            (u"TOXY", u"کل ترکیبات اکسیژنه (Total oxygenates)"),
+            (u"OXYG", u"کل اکسیژن (Total oxygen)"),
+        ],
+    },
 ]
 
 
