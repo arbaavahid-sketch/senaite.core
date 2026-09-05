@@ -51,11 +51,12 @@
       layer="senaite.core.interfaces.ISenaiteCore"
       />
 
-  <!-- One-off admin tool: ensure the PIONA (ASTM D6730) GC service exists. -->
+  <!-- One-off admin tool: ensure GC composition services (D6730 PIONA,
+       D5580 aromatics) carry their per-component interim result fields. -->
   <browser:page
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      name="ensure-piona-service"
-      class=".ensure_piona_service.EnsurePionaServiceView"
+      name="ensure-gc-services"
+      class=".ensure_gc_services.EnsureGCServicesView"
       permission="senaite.core.permissions.ManageBika"
       layer="senaite.core.interfaces.ISenaiteCore"
       />
