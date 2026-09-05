@@ -47,7 +47,10 @@ from ZODB.POSException import POSKeyError
 from zope.interface import implements
 from zope.publisher.interfaces import IPublishTraverse
 
-DEFAULT_MAX_EMAIL_SIZE = 15
+# Max total email size in MB. Raised from 15 to fit large instrument PDFs
+# (e.g. a full GC/DHA report) alongside the LIMS report. Note the recipient's
+# mail provider still enforces its own cap (Gmail ~25 MB per message).
+DEFAULT_MAX_EMAIL_SIZE = 30
 
 
 class EmailView(BrowserView):
@@ -419,12 +422,12 @@ class EmailView(BrowserView):
         """Return the max. allowed email size in KB
         """
         # check first if a registry record exists
-        max_email_size = api.get_registry_record(
+        max_size = api.get_registry_record(
             "senaite.core.max_email_size")
-        if max_email_size is None:
+        if max_size is None:
             max_size = DEFAULT_MAX_EMAIL_SIZE
         if max_size < 0:
-            max_email_size = 0
+            max_size = 0
         return max_size * 1024
 
     def make_sendlog_record(self, **kw):
