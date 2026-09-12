@@ -25,6 +25,30 @@ _SPECIAL_UNIT = {
     u"AS_73057_107": u"g/cm³",   # specific gravity (was % mass)
 }
 
+# Hand-vetted duplicate groups (same test, same conditions). Within each the
+# best service (has limits / method / in use) is kept, the rest deactivated.
+# NOTE: same standard is NOT enough to be a duplicate — e.g. the 36 D5185
+# element tests, D1177 33%/50%, D128 acid/alkali are distinct and NOT listed.
+_DUP_GROUPS = [
+    [u"AS_09521_020", u"AS_39409_059", u"AS_36104_064", u"AS_49176_065"],  # D482 ash
+    [u"AS_79882_026", u"AS_21031_060", u"AS_30884_120"],                   # D1500 color
+    [u"AS_83735_037", u"AS_44049_038", u"AS_15785_050", u"SPX_010"],       # D2896 TBN
+    [u"AS_99825_033", u"AS_40113_034"],                                    # D664 acid no.
+    [u"AS_23337_008", u"AS_88113_055", u"AS_43069_092"],                   # D6304 water KF
+    [u"AS_24745_103", u"AS_48963_129", u"SPX_009"],                        # D97 pour
+    [u"AS_79390_068", u"AS_55943_127", u"AS_05147_149", u"AS_10878_150"],  # D93 flash closed
+    [u"OXY_D4815", u"AS_07259_140"],                                       # D4815 oxygenates
+    [u"AS_74429_116", u"PIONA_D6730"],                                     # D6730 DHA
+    [u"AS_79799_118", u"BIT_SOL"],                                         # D2042 bitumen solub.
+    [u"AS_62067_136", u"AS_13550_145"],                                    # D2270 VI
+    [u"AS_09994_053", u"AS_98807_089", u"AS_77015_090", u"AS_71182_091",
+     u"AS_68870_131", u"AS_92606_137"],                                   # D3227 mercaptan
+    [u"AS_99532_110", u"AS_07910_111", u"AS_80874_112"],                   # D130 Cu corrosion
+    [u"AS_94053_023", u"AS_50221_078"],                                    # D4052 density kg/m3
+    [u"AS_55958_156", u"AS_74579_161"],                                    # D445 @40°C
+    [u"AS_55967_083", u"AS_10471_160"],                                    # D445 @100°C
+]
+
 # Detected ASTM D-number -> expected unit. Only confident petroleum tests.
 _EXPECTED = {
     # flash point
@@ -182,23 +206,18 @@ class AuditServicesView(BrowserView):
                 r["kw"],
             )
 
-        buckets = {}
-        for r in rows:
-            if r["std"]:
-                buckets.setdefault((r["std"], _temp(r["title"])), []).append(r)
-
+        by_kw = {r["kw"]: r for r in rows}
         deact = 0
         out.append(u"")
-        out.append(u"=== DUPLICATE CLEANUP (keep best, deactivate rest) ===")
-        for key, g in sorted(buckets.items()):
-            if len(g) < 2:
+        out.append(u"=== DUPLICATE CLEANUP (curated; keep best, deactivate rest) ===")
+        for grp in _DUP_GROUPS:
+            members = [by_kw[k] for k in grp if k in by_kw]
+            if len(members) < 2:
                 continue
-            std, temp = key
-            g_sorted = sorted(g, key=_score)
-            keep = g_sorted[0]
-            out.append(u"* %s%s" % (std, (u" @%s°" % temp) if temp else u""))
-            out.append(u"    KEEP\t%s\t%s" % (keep["kw"], keep["title"]))
-            for r in g_sorted[1:]:
+            members.sort(key=_score)
+            keep = members[0]
+            out.append(u"* KEEP  %s\t%s" % (keep["kw"], keep["title"]))
+            for r in members[1:]:
                 out.append(u"    %s\t%s\t%s" % (
                     u"DEACTIVATE" if apply else u"would deactivate",
                     r["kw"], r["title"]))
@@ -214,15 +233,18 @@ class AuditServicesView(BrowserView):
         out.append(u"services audited: %d" % len(rows))
         out.append(u"unit fixes %s: %d" % (
             u"applied" if apply else u"proposed", fixed if apply else flagged))
+        n_deact = deact if apply else sum(
+            max(0, len([1 for k in grp if k in by_kw]) - 1)
+            for grp in _DUP_GROUPS)
         out.append(u"duplicates %s: %d" % (
-            u"deactivated" if apply else u"to deactivate",
-            deact if apply else sum(max(0, len(g) - 1)
-                                    for g in buckets.values() if len(g) > 1)))
+            u"deactivated" if apply else u"to deactivate", n_deact))
         out.append(u"")
-        out.append(u"NOTE: review this dry-run before ?apply=1. Kept service = "
-                   u"the one with limits / method / in-use; others deactivated "
-                   u"(reversible). Ambiguous units (e.g. sulfur mg/kg vs %) are "
-                   u"left as-is.")
+        out.append(u"NOTE: only hand-vetted duplicate groups are touched; "
+                   u"distinct same-standard tests (D5185 elements, D1177 "
+                   u"33/50%, D128 acid/alkali) are never merged. Deactivation "
+                   u"is reversible. LEFT FOR YOU TO DECIDE: sulfur D4294 "
+                   u"(mg/kg vs %), distillation D86, density D4052 API/kg-m3 "
+                   u"— units/reporting differ, pick per your practice.")
 
         self.request.response.setHeader(
             "Content-Type", "text/plain; charset=utf-8")
