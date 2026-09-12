@@ -13,9 +13,17 @@ import re
 from Products.Five.browser import BrowserView
 from bika.lims import api
 from bika.lims.api import safe_unicode
+from senaite.core.catalog import ANALYSIS_CATALOG
 from senaite.core.catalog import SETUP_CATALOG
 
 _STD_RE = re.compile(r"D\s?-?\s?(\d{1,4})")  # ASTM D-number
+_TEMP_RE = re.compile(u"(\\d{2,3})\\s*(?:°|درجه)")  # temperature in a title
+
+# Per-keyword unit fixes the standard alone can't resolve.
+_SPECIAL_UNIT = {
+    u"AS_99740_158": u"mPa·s",   # HTHS (high shear) = dynamic viscosity
+    u"AS_73057_107": u"g/cm³",   # specific gravity (was % mass)
+}
 
 # Detected ASTM D-number -> expected unit. Only confident petroleum tests.
 _EXPECTED = {
@@ -78,6 +86,11 @@ def _detect_std(text):
     return (u"D" + m.group(1)) if m else u""
 
 
+def _temp(title):
+    m = _TEMP_RE.search(safe_unicode(title or u""))
+    return m.group(1) if m else u""
+
+
 class AuditServicesView(BrowserView):
 
     def __call__(self):
@@ -107,52 +120,109 @@ class AuditServicesView(BrowserView):
         fixed = flagged = 0
         out.append(u"=== UNIT AUDIT (keyword | std | current -> expected) ===")
         for r in sorted(rows, key=lambda x: x["title"]):
+            if r["kw"] in _SPECIAL_UNIT:
+                continue  # handled in the special-unit pass below
             exp = _EXPECTED.get(r["std"])
             if not exp:
                 continue
             if _unit_norm(r["unit"]) == _unit_norm(exp):
                 continue
-            # high-shear-rate viscosity (HTHS) is dynamic (mPa·s), not the
-            # kinematic mm²/s of plain D445 — flag it but never auto-set.
-            manual = (r["std"] == u"D445" and u"برش زیاد" in r["title"])
             flagged += 1
-            tag = u"MANUAL" if manual else (u"FIX" if apply else u"UNIT?")
             out.append(u"%s  %s\t%s\t%s -> %s\t%s" % (
-                tag, r["kw"], r["std"], r["unit"] or u"(empty)",
-                u"mPa·s?" if manual else exp, r["title"]))
-            if apply and not manual:
+                u"FIX" if apply else u"UNIT?", r["kw"], r["std"],
+                r["unit"] or u"(empty)", exp, r["title"]))
+            if apply:
                 r["obj"].setUnit(exp)
                 r["obj"].reindexObject()
                 fixed += 1
 
-        # --- duplicate candidates: grouped by detected ASTM standard, so tests
-        #     written under different titles surface together. Members at
-        #     different conditions (e.g. viscosity at 40 vs 100 °C) are NOT
-        #     real duplicates — the title tells them apart. ---
-        groups = {}
+        # per-keyword special unit fixes
+        for r in rows:
+            target = _SPECIAL_UNIT.get(r["kw"])
+            if not target or _unit_norm(r["unit"]) == _unit_norm(target):
+                continue
+            flagged += 1
+            out.append(u"%s  %s\t(special)\t%s -> %s\t%s" % (
+                u"FIX" if apply else u"UNIT?", r["kw"],
+                r["unit"] or u"(empty)", target, r["title"]))
+            if apply:
+                r["obj"].setUnit(target)
+                r["obj"].reindexObject()
+                fixed += 1
+
+        # --- duplicate cleanup: bucket same-standard services by test
+        #     conditions (temperature in the title), keep the best in each
+        #     bucket and deactivate the rest. One-member buckets, or members
+        #     at different temperatures, are left untouched. Deactivation is
+        #     reversible (services go inactive, not deleted). ---
+        spec_uids = set()
+        try:
+            for b in api.search({"portal_type": "AnalysisSpec"}, SETUP_CATALOG):
+                sp = api.get_object(b)
+                for rr in (sp.getResultsRange() or []):
+                    if rr.get("uid"):
+                        spec_uids.add(rr.get("uid"))
+        except Exception:
+            pass
+        used_kw = set()
+        try:
+            for b in api.search({"portal_type": "Analysis"}, ANALYSIS_CATALOG):
+                k = getattr(b, "getKeyword", u"")
+                if k:
+                    used_kw.add(safe_unicode(k))
+        except Exception:
+            pass
+
+        def _score(r):
+            o = r["obj"]
+            return (
+                0 if api.get_uid(o) in spec_uids else 1,     # has limits
+                0 if getattr(o, "tppc_method_text", None) else 1,  # has method
+                0 if r["kw"] in used_kw else 1,              # used in samples
+                r["kw"],
+            )
+
+        buckets = {}
         for r in rows:
             if r["std"]:
-                groups.setdefault(r["std"], []).append(r)
-        dup_groups = [(k, g) for k, g in groups.items() if len(g) > 1]
+                buckets.setdefault((r["std"], _temp(r["title"])), []).append(r)
+
+        deact = 0
         out.append(u"")
-        out.append(u"=== SAME-STANDARD GROUPS (review for duplicates) ===")
-        for std, g in sorted(dup_groups):
-            out.append(u"* %s  (%d services)" % (std, len(g)))
-            for r in sorted(g, key=lambda x: x["title"]):
-                out.append(u"    %s\t[%s]\t%s\t%s" % (
-                    r["kw"], r["cat"], r["unit"] or u"(empty)", r["title"]))
+        out.append(u"=== DUPLICATE CLEANUP (keep best, deactivate rest) ===")
+        for key, g in sorted(buckets.items()):
+            if len(g) < 2:
+                continue
+            std, temp = key
+            g_sorted = sorted(g, key=_score)
+            keep = g_sorted[0]
+            out.append(u"* %s%s" % (std, (u" @%s°" % temp) if temp else u""))
+            out.append(u"    KEEP\t%s\t%s" % (keep["kw"], keep["title"]))
+            for r in g_sorted[1:]:
+                out.append(u"    %s\t%s\t%s" % (
+                    u"DEACTIVATE" if apply else u"would deactivate",
+                    r["kw"], r["title"]))
+                if apply:
+                    try:
+                        api.do_transition_for(r["obj"], "deactivate")
+                        deact += 1
+                    except Exception as exc:  # noqa
+                        out.append(u"      ERROR\t%s" % safe_unicode(exc))
 
         out.append(u"")
         out.append(u"--- summary ---")
         out.append(u"services audited: %d" % len(rows))
-        out.append(u"unit mismatches %s: %d" % (
-            u"fixed" if apply else u"flagged", fixed if apply else flagged))
-        out.append(u"duplicate groups: %d" % len(dup_groups))
+        out.append(u"unit fixes %s: %d" % (
+            u"applied" if apply else u"proposed", fixed if apply else flagged))
+        out.append(u"duplicates %s: %d" % (
+            u"deactivated" if apply else u"to deactivate",
+            deact if apply else sum(max(0, len(g) - 1)
+                                    for g in buckets.values() if len(g) > 1)))
         out.append(u"")
-        out.append(u"NOTE: only confident physical-unit mismatches are fixed; "
-                   u"ambiguous ones (e.g. sulfur mg/kg vs %) are left as-is. "
-                   u"Duplicates are only listed — deactivate the extras "
-                   u"manually or with @@dedupe-services.")
+        out.append(u"NOTE: review this dry-run before ?apply=1. Kept service = "
+                   u"the one with limits / method / in-use; others deactivated "
+                   u"(reversible). Ambiguous units (e.g. sulfur mg/kg vs %) are "
+                   u"left as-is.")
 
         self.request.response.setHeader(
             "Content-Type", "text/plain; charset=utf-8")
