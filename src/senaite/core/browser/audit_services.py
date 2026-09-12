@@ -48,6 +48,8 @@ _DUP_GROUPS = [
     [u"AS_50221_078", u"AS_94053_023"],                                    # D4052 density kg/m3
     [u"AS_55958_156", u"AS_74579_161"],                                    # D445 @40°C
     [u"AS_10471_160", u"AS_55967_083"],                                    # D445 @100°C
+    [u"AS_76235_123", u"AS_99314_088", u"AS_17625_134"],                   # D4294 sulfur (keep %)
+    [u"AS_68987_095", u"AS_69862_133"],                                    # D86 distillation (keep curve)
 ]
 
 # Multi-element/instrument tests to collapse into ONE service whose result is
