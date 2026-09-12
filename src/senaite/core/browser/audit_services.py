@@ -28,23 +28,19 @@ _EXPECTED = {
     "D611": u"°C",
     # kinematic viscosity
     "D445": u"mm²/s",
-    # distillation (temperatures)
-    "D86": u"°C", "D1160": u"°C", "D2892": u"°C",
-    # ash / carbon residue / sediment (mass %)
-    "D482": u"% wt", "D189": u"% wt", "D4530": u"% wt", "D524": u"% wt",
-    "D473": u"% wt",
     # acid / base number
     "D664": u"mg KOH/g", "D974": u"mg KOH/g", "D2896": u"mg KOH/g",
     # vapour pressure
     "D323": u"kPa", "D5191": u"kPa", "D6378": u"kPa",
     # water by distillation
     "D95": u"vol %",
-    # density
-    "D1298": u"kg/m³", "D4052": u"kg/m³",
     # elements (ICP / XRF trace)
     "D5185": u"mg/kg", "D4951": u"mg/kg",
     # heat of combustion
     "D240": u"MJ/kg", "D4809": u"MJ/kg",
+    # NB: density (D1298/D4052) intentionally NOT here — API gravity / SG /
+    # kg/m3 are all valid depending on what is reported. Distillation (D86)
+    # and ash/sediment/carbon-residue (% mass == % wt) are likewise left alone.
 }
 
 # Unit synonym canonicalisation: strings that MEAN the same thing must not be
@@ -116,28 +112,35 @@ class AuditServicesView(BrowserView):
                 continue
             if _unit_norm(r["unit"]) == _unit_norm(exp):
                 continue
+            # high-shear-rate viscosity (HTHS) is dynamic (mPa·s), not the
+            # kinematic mm²/s of plain D445 — flag it but never auto-set.
+            manual = (r["std"] == u"D445" and u"برش زیاد" in r["title"])
             flagged += 1
+            tag = u"MANUAL" if manual else (u"FIX" if apply else u"UNIT?")
             out.append(u"%s  %s\t%s\t%s -> %s\t%s" % (
-                u"FIX" if apply else u"UNIT?", r["kw"], r["std"],
-                r["unit"] or u"(empty)", exp, r["title"]))
-            if apply:
+                tag, r["kw"], r["std"], r["unit"] or u"(empty)",
+                u"mPa·s?" if manual else exp, r["title"]))
+            if apply and not manual:
                 r["obj"].setUnit(exp)
                 r["obj"].reindexObject()
                 fixed += 1
 
-        # --- duplicate groups (by normalised core title) ---
+        # --- duplicate candidates: grouped by detected ASTM standard, so tests
+        #     written under different titles surface together. Members at
+        #     different conditions (e.g. viscosity at 40 vs 100 °C) are NOT
+        #     real duplicates — the title tells them apart. ---
         groups = {}
         for r in rows:
-            key = _title_norm(r["title"])
-            groups.setdefault(key, []).append(r)
-        dup_groups = [g for g in groups.values() if len(g) > 1]
+            if r["std"]:
+                groups.setdefault(r["std"], []).append(r)
+        dup_groups = [(k, g) for k, g in groups.items() if len(g) > 1]
         out.append(u"")
-        out.append(u"=== POSSIBLE DUPLICATES (same core title) ===")
-        for g in sorted(dup_groups, key=lambda g: g[0]["title"]):
-            out.append(u"* %s" % g[0]["title"])
-            for r in g:
-                out.append(u"    %s\t[%s]\t%s" % (
-                    r["kw"], r["cat"], r["unit"] or u"(empty)"))
+        out.append(u"=== SAME-STANDARD GROUPS (review for duplicates) ===")
+        for std, g in sorted(dup_groups):
+            out.append(u"* %s  (%d services)" % (std, len(g)))
+            for r in sorted(g, key=lambda x: x["title"]):
+                out.append(u"    %s\t[%s]\t%s\t%s" % (
+                    r["kw"], r["cat"], r["unit"] or u"(empty)", r["title"]))
 
         out.append(u"")
         out.append(u"--- summary ---")
