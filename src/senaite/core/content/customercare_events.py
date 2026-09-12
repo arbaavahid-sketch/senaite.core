@@ -166,6 +166,43 @@ def notify_lab_on_new(obj, event):
         phone = _esc(getattr(obj, "contact_phone", None) or u"—")
         subj = _esc(getattr(obj, "title", None) or api.get_id(obj))
         link = _esc(api.get_url(obj))
+
+        # Extra sample details — present on SampleRequest; on the other
+        # customer-care types getattr returns None and the row is skipped.
+        # Only non-empty fields are shown.
+        def _val(attr):
+            v = getattr(obj, attr, None)
+            if v is None:
+                return u""
+            if isinstance(v, (list, tuple)):
+                v = u"، ".join([safe_unicode(x) for x in v if x])
+            elif hasattr(v, "strftime"):
+                try:
+                    v = v.strftime("%Y-%m-%d")
+                except Exception:
+                    v = safe_unicode(v)
+            return safe_unicode(v).strip()
+
+        detail_fields = [
+            (u"نوع نمونه", "sample_type"),
+            (u"ماهیت نمونه", "sample_nature"),
+            (u"شرح نمونه", "sample_description"),
+            (u"محل نمونه‌برداری", "sampling_point"),
+            (u"تاریخ نمونه‌برداری", "sampling_date"),
+            (u"مقدار/تعداد", "quantity"),
+            (u"وضعیت نمونه", "sample_condition"),
+            (u"آزمون‌های درخواستی", "requested_tests"),
+            (u"اولویت", "priority"),
+            (u"نحوه تحویل گزارش", "report_delivery"),
+            (u"آدرس", "address"),
+            (u"کد اقتصادی", "economic_code"),
+        ]
+        detail_rows = u""
+        for label, attr in detail_fields:
+            val = _val(attr)
+            if val:
+                detail_rows += u"<b>%s:</b> %s<br/>" % (label, _esc(val))
+
         html = (
             u'<div dir="rtl" style="font-family:Tahoma,Arial,sans-serif;'
             u'font-size:14px;line-height:1.9;color:#1a2230">'
@@ -173,11 +210,13 @@ def notify_lab_on_new(obj, event):
             u'<b>موضوع:</b> %s<br/>'
             u'<b>نام تماس:</b> %s<br/>'
             u'<b>ایمیل:</b> %s<br/>'
-            u'<b>تلفن:</b> %s<br/><br/>'
+            u'<b>تلفن:</b> %s<br/>'
+            u'%s'
+            u'<br/>'
             u'برای مشاهده و پاسخ، وارد پنل شوید:<br/>'
             u'<a href="%s">%s</a>'
             u'</div>'
-        ) % (kind, subj, contact, c_email, phone, link, link)
+        ) % (kind, subj, contact, c_email, phone, detail_rows, link, link)
         msg = MIMEText(html.encode("utf-8"), "html", "utf-8")
         ploneapi.portal.send_email(
             recipient=lab_email, subject=subject, body=msg)
