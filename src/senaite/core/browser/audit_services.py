@@ -29,24 +29,25 @@ _SPECIAL_UNIT = {
 # best service (has limits / method / in use) is kept, the rest deactivated.
 # NOTE: same standard is NOT enough to be a duplicate — e.g. the 36 D5185
 # element tests, D1177 33%/50%, D128 acid/alkali are distinct and NOT listed.
+# The FIRST keyword in each group is KEPT; the rest are deactivated.
 _DUP_GROUPS = [
-    [u"AS_09521_020", u"AS_39409_059", u"AS_36104_064", u"AS_49176_065"],  # D482 ash
+    [u"AS_49176_065", u"AS_09521_020", u"AS_36104_064", u"AS_39409_059"],  # D482 ash
     [u"AS_79882_026", u"AS_21031_060", u"AS_30884_120"],                   # D1500 color
-    [u"AS_83735_037", u"AS_44049_038", u"AS_15785_050", u"SPX_010"],       # D2896 TBN
+    [u"SPX_010", u"AS_83735_037", u"AS_44049_038", u"AS_15785_050"],       # D2896 TBN
     [u"AS_99825_033", u"AS_40113_034"],                                    # D664 acid no.
-    [u"AS_23337_008", u"AS_88113_055", u"AS_43069_092"],                   # D6304 water KF
+    [u"AS_43069_092", u"AS_23337_008", u"AS_88113_055"],                   # D6304 water KF
     [u"AS_24745_103", u"AS_48963_129", u"SPX_009"],                        # D97 pour
-    [u"AS_79390_068", u"AS_55943_127", u"AS_05147_149", u"AS_10878_150"],  # D93 flash closed
+    [u"AS_55943_127", u"AS_79390_068", u"AS_05147_149", u"AS_10878_150"],  # D93 flash closed
     [u"OXY_D4815", u"AS_07259_140"],                                       # D4815 oxygenates
     [u"AS_74429_116", u"PIONA_D6730"],                                     # D6730 DHA
-    [u"AS_79799_118", u"BIT_SOL"],                                         # D2042 bitumen solub.
+    [u"BIT_SOL", u"AS_79799_118"],                                         # D2042 bitumen solub.
     [u"AS_62067_136", u"AS_13550_145"],                                    # D2270 VI
     [u"AS_09994_053", u"AS_98807_089", u"AS_77015_090", u"AS_71182_091",
      u"AS_68870_131", u"AS_92606_137"],                                   # D3227 mercaptan
     [u"AS_99532_110", u"AS_07910_111", u"AS_80874_112"],                   # D130 Cu corrosion
-    [u"AS_94053_023", u"AS_50221_078"],                                    # D4052 density kg/m3
+    [u"AS_50221_078", u"AS_94053_023"],                                    # D4052 density kg/m3
     [u"AS_55958_156", u"AS_74579_161"],                                    # D445 @40°C
-    [u"AS_55967_083", u"AS_10471_160"],                                    # D445 @100°C
+    [u"AS_10471_160", u"AS_55967_083"],                                    # D445 @100°C
 ]
 
 # Multi-element/instrument tests to collapse into ONE service whose result is
@@ -236,13 +237,17 @@ class AuditServicesView(BrowserView):
         out.append(u"")
         out.append(u"=== DUPLICATE CLEANUP (curated; keep best, deactivate rest) ===")
         for grp in _DUP_GROUPS:
-            members = [by_kw[k] for k in grp if k in by_kw]
-            if len(members) < 2:
+            keep = by_kw.get(grp[0])
+            if keep is None:
+                # the service we intend to keep isn't active — skip the whole
+                # group rather than risk deactivating every member.
+                out.append(u"* SKIP (keep %s not active)" % grp[0])
                 continue
-            members.sort(key=_score)
-            keep = members[0]
+            members = [by_kw[k] for k in grp[1:] if k in by_kw]
+            if not members:
+                continue
             out.append(u"* KEEP  %s\t%s" % (keep["kw"], keep["title"]))
-            for r in members[1:]:
+            for r in members:
                 out.append(u"    %s\t%s\t%s" % (
                     u"DEACTIVATE" if apply else u"would deactivate",
                     r["kw"], r["title"]))
