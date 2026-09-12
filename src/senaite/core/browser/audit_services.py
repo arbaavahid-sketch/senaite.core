@@ -49,6 +49,31 @@ _DUP_GROUPS = [
     [u"AS_55967_083", u"AS_10471_160"],                                    # D445 @100°C
 ]
 
+# Multi-element/instrument tests to collapse into ONE service whose result is
+# just "see attachment" (the instrument PDF carries the detail), replacing many
+# element-specific services. Same idea as the GC services.
+_CONSOLIDATE = [
+    {
+        u"keyword": u"ICP_D5185",
+        u"title": (u"آنالیز عناصر فلزی به روش طیف‌سنجی نشری پلاسمای "
+                   u"جفت‌شده القایی (ICP-OES) — ASTM D5185"),
+        u"method": u"ASTM D5185",
+        u"category": u"روغن",
+        u"default_result": u"نتیجه تست به پیوست ارسال می‌گردد",
+        u"deactivate": [
+            u"AS_94572_012", u"AS_95874_014", u"AS_10149_016", u"AS_38791_017",
+            u"AS_35589_018", u"AS_59828_029", u"AS_47277_030", u"AS_45333_031",
+            u"AS_12987_032", u"AS_16863_039", u"AS_60313_040", u"AS_23576_041",
+            u"AS_08653_042", u"AS_11628_043", u"AS_93437_044", u"AS_20090_046",
+            u"AS_66814_048", u"AS_52503_051", u"AS_20669_054", u"AS_00064_062",
+            u"AS_96548_063", u"AS_62140_067", u"AS_68589_071", u"AS_42423_072",
+            u"AS_46877_075", u"AS_86150_076", u"AS_60972_081", u"AS_39580_082",
+            u"AS_23714_093", u"AS_63314_096", u"AS_30521_097", u"AS_13089_099",
+            u"AS_85823_100", u"AS_37357_101", u"AS_89910_104", u"AS_02696_105",
+        ],
+    },
+]
+
 # Detected ASTM D-number -> expected unit. Only confident petroleum tests.
 _EXPECTED = {
     # flash point
@@ -227,6 +252,62 @@ class AuditServicesView(BrowserView):
                         deact += 1
                     except Exception as exc:  # noqa
                         out.append(u"      ERROR\t%s" % safe_unicode(exc))
+
+        # --- consolidate multi-element/instrument tests into one text-result
+        #     service ("see attachment") and deactivate the many originals. ---
+        try:
+            container = api.get_bika_setup().bika_analysisservices
+        except Exception:
+            container = api.get_portal().bika_setup.bika_analysisservices
+        cats = [api.get_object(b) for b in api.search(
+            {"portal_type": "AnalysisCategory"}, SETUP_CATALOG)]
+
+        def _find_cat(name):
+            for c in cats:
+                t = safe_unicode(api.get_title(c))
+                if name in t or t in name:
+                    return c
+            return cats[0] if cats else None
+
+        out.append(u"")
+        out.append(u"=== CONSOLIDATE (one text-result service + deactivate rest) ===")
+        for spec in _CONSOLIDATE:
+            svc = by_kw.get(spec[u"keyword"])
+            if svc is not None:
+                out.append(u"* keep existing\t%s\t%s" % (
+                    spec[u"keyword"], safe_unicode(api.get_title(svc["obj"]))))
+            else:
+                cat = _find_cat(spec[u"category"])
+                out.append(u"* %s service\t%s\t%s\t[%s]" % (
+                    u"CREATE" if apply else u"would create",
+                    spec[u"keyword"], spec[u"title"],
+                    safe_unicode(api.get_title(cat)) if cat else u"?"))
+                if apply and cat is not None:
+                    try:
+                        o = api.create(
+                            container, "AnalysisService", title=spec[u"title"],
+                            Keyword=spec[u"keyword"],
+                            Category=api.get_uid(cat), Unit=u"")
+                        o.setResultType("string")
+                        o.setDefaultResult(spec[u"default_result"])
+                        o.tppc_method_text = spec[u"method"]
+                        o.reindexObject()
+                    except Exception as exc:  # noqa
+                        out.append(u"    ERROR\t%s" % safe_unicode(exc))
+            n = 0
+            for kw in spec[u"deactivate"]:
+                r = by_kw.get(kw)
+                if r is None or not api.is_active(r["obj"]):
+                    continue
+                n += 1
+                if apply:
+                    try:
+                        api.do_transition_for(r["obj"], "deactivate")
+                        deact += 1
+                    except Exception as exc:  # noqa
+                        out.append(u"    ERROR\t%s\t%s" % (kw, safe_unicode(exc)))
+            out.append(u"    %s %d element services"
+                       % (u"deactivated" if apply else u"would deactivate", n))
 
         out.append(u"")
         out.append(u"--- summary ---")
