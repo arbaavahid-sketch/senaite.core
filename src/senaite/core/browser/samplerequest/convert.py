@@ -189,6 +189,12 @@ class ConvertToSampleView(BrowserView):
             self.error = self.labels["err_services"]
             return
 
+        # The AR is built under the privileged user (needed to create the
+        # Client/Contact), which would otherwise be recorded as the creator.
+        # Capture the real logged-in staff member first so we can stamp them.
+        from AccessControl import getSecurityManager
+        creator_id = getSecurityManager().getUser().getId()
+
         try:
             with api.security.as_privileged_user():
                 client = self._resolve_client(form)
@@ -201,6 +207,7 @@ class ConvertToSampleView(BrowserView):
                 }
                 ar = create_analysisrequest(
                     client, self.request, values, service_uids)
+                self._set_creator(ar, creator_id)
                 sample_id = api.get_id(ar)
                 # Link back and move the request forward (received -> in_progress).
                 self.context.created_sample_id = sample_id
@@ -214,6 +221,24 @@ class ConvertToSampleView(BrowserView):
                 self.created_url = api.get_url(ar)
         except Exception as exc:  # noqa
             self.error = u"%s" % exc
+
+    def _set_creator(self, obj, userid):
+        """Record the logged-in staff member as the sample's creator/owner,
+        since the AR is built under the privileged user (which would otherwise
+        show as the creator). Best effort — never breaks the conversion."""
+        if not userid or userid in ("Anonymous User", "System Processes"):
+            return
+        try:
+            obj.setCreators([userid])
+            uf = api.get_tool("acl_users")
+            user = uf.getUserById(userid)
+            if user is not None:
+                if getattr(user, "aq_parent", None) is None:
+                    user = user.__of__(uf)
+                obj.changeOwnership(user)
+            obj.reindexObject()
+        except Exception:
+            pass
 
     def _resolve_client(self, form):
         client_uid = (form.get("client_uid") or "").strip()
