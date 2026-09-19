@@ -221,15 +221,18 @@ class ConvertToSampleView(BrowserView):
                     or api.get_id(self.context)
                 try:
                     ar.tracking_code = tracking_code
+                    # the object id must be a *bytestring* under Py2, else
+                    # manage_renameObject raises CopyError('Invalid Id').
+                    new_id = str(tracking_code)
                     ar_id = api.get_id(ar)
                     parent = api.get_parent(ar)
-                    if (tracking_code and ar_id != tracking_code
-                            and tracking_code not in parent.objectIds()):
+                    if (new_id and ar_id != new_id
+                            and new_id not in parent.objectIds()):
                         # a savepoint is required before renaming (same as the
                         # ID server's renameAfterCreation), else it fails.
                         transaction.savepoint(optimistic=True)
-                        parent.manage_renameObject(ar_id, tracking_code)
-                        ar = parent[tracking_code]
+                        parent.manage_renameObject(ar_id, new_id)
+                        ar = parent[new_id]
                 except Exception:
                     logger.exception(
                         "sample rename to %s failed", tracking_code)

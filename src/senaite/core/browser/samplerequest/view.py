@@ -372,12 +372,15 @@ class SampleRequestView(BrowserView):
                 tracking_id = self._next_tracking_id(container)
                 try:
                     obj.tracking_code = tracking_id
+                    # the object id must be a *bytestring* under Py2, else
+                    # manage_renameObject raises CopyError('Invalid Id').
+                    new_id = str(tracking_id)
                     transaction.savepoint(optimistic=True)
                     old_id = api.get_id(obj)
-                    if (old_id != tracking_id
-                            and tracking_id not in container.objectIds()):
-                        container.manage_renameObject(old_id, tracking_id)
-                        obj = container[tracking_id]
+                    if (old_id != new_id
+                            and new_id not in container.objectIds()):
+                        container.manage_renameObject(old_id, new_id)
+                        obj = container[new_id]
                     obj.reindexObject()
                 except Exception:
                     pass
