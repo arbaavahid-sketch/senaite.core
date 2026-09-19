@@ -363,11 +363,15 @@ class SampleRequestView(BrowserView):
         try:
             with api.security.as_privileged_user():
                 container = self._container()
-                obj = api.create(container, "SampleRequest", **kwargs)
-                # Replace the default id (derived from the Persian subject,
-                # which is ugly and not ascii-safe) with a clean, human
-                # tracking code like TR-0001.
-                obj = self._rename_clean(container, obj)
+                # Create the request with a clean year-based id from the
+                # start (TR-26-0001) instead of the ugly default derived from
+                # the Persian subject. Passing id= avoids a fragile rename.
+                tracking_id = self._next_tracking_id(container)
+                obj = api.create(
+                    container, "SampleRequest", id=tracking_id, **kwargs)
+                if api.get_id(obj) != tracking_id:
+                    # fallback if the id wasn't honoured
+                    obj = self._rename_clean(container, obj)
                 self.tracking = api.get_id(obj)
                 token = getattr(obj, "access_token", None)
                 if token:
@@ -380,19 +384,23 @@ class SampleRequestView(BrowserView):
         setup = api.get_senaite_setup()
         return setup.sampleintake
 
-    def _rename_clean(self, container, obj):
-        """Rename the request to a clean year-based id (TR-26-0001). This same
+    def _next_tracking_id(self, container):
+        """Return the next free year-based request id (TR-26-0001). The same
         id is reused as the sample id on conversion (see convert.py), so the
-        customer's tracking number and the final sample id match. Best effort:
-        if the rename fails the tokenised tracking link still works."""
+        customer's tracking number and the final sample id match."""
+        yy = date.today().year % 100
+        prefix = u"TR-%02d-" % yy
+        existing = set(container.objectIds())
+        n = 1
+        while (u"%s%04d" % (prefix, n)) in existing:
+            n += 1
+        return u"%s%04d" % (prefix, n)
+
+    def _rename_clean(self, container, obj):
+        """Fallback rename to a clean year-based id if creating with an
+        explicit id did not stick. Best effort."""
         try:
-            yy = date.today().year % 100
-            prefix = u"TR-%02d-" % yy
-            existing = set(container.objectIds())
-            n = 1
-            while (u"%s%04d" % (prefix, n)) in existing:
-                n += 1
-            new_id = u"%s%04d" % (prefix, n)
+            new_id = self._next_tracking_id(container)
             old_id = api.get_id(obj)
             if old_id != new_id:
                 container.manage_renameObject(old_id, new_id)
