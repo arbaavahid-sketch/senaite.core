@@ -8,6 +8,7 @@
 
 from datetime import date
 
+import transaction
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -220,6 +221,9 @@ class ConvertToSampleView(BrowserView):
                     parent = api.get_parent(ar)
                     if (tracking_code and ar_id != tracking_code
                             and tracking_code not in parent.objectIds()):
+                        # a savepoint is required before renaming (same as the
+                        # ID server's renameAfterCreation), else it fails.
+                        transaction.savepoint(optimistic=True)
                         parent.manage_renameObject(ar_id, tracking_code)
                         ar = parent[tracking_code]
                 except Exception:

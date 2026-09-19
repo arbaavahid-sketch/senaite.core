@@ -9,6 +9,7 @@
 
 from datetime import date
 
+import transaction
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -364,13 +365,19 @@ class SampleRequestView(BrowserView):
             with api.security.as_privileged_user():
                 container = self._container()
                 obj = api.create(container, "SampleRequest", **kwargs)
-                # Store a clean year-based tracking code as an attribute (the
-                # object id stays the internal default; renaming it proved
-                # unreliable). This code is what the customer sees and what the
-                # sample id is set to on conversion — so both match.
+                # Give the request a clean year-based id/code (TR-26-0001).
+                # Store it as an attribute AND rename the object id to match;
+                # the rename needs a savepoint first (same as the ID server's
+                # renameAfterCreation), otherwise it silently fails.
                 tracking_id = self._next_tracking_id(container)
                 try:
                     obj.tracking_code = tracking_id
+                    transaction.savepoint(optimistic=True)
+                    old_id = api.get_id(obj)
+                    if (old_id != tracking_id
+                            and tracking_id not in container.objectIds()):
+                        container.manage_renameObject(old_id, tracking_id)
+                        obj = container[tracking_id]
                     obj.reindexObject()
                 except Exception:
                     pass
