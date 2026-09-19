@@ -149,9 +149,20 @@ class TrackRequestView(BrowserView):
                         if stored and stored == key:
                             self.result = self._to_result(obj)
                             return
-                # Otherwise, look it up by object id (+ client-name check below).
+                # Otherwise, match the tracking code (attribute) or the object
+                # id (+ client-name check below).
                 obj = None
                 for container in self._containers(setup):
+                    for cand in container.objectValues():
+                        if api.get_portal_type(cand) not in TYPES:
+                            continue
+                        tc = safe_unicode(
+                            getattr(cand, "tracking_code", "") or "").strip()
+                        if tc and tc == key:
+                            obj = cand
+                            break
+                    if obj is not None:
+                        break
                     candidate = container.get(self.tracking_id)
                     if candidate is not None:
                         obj = candidate

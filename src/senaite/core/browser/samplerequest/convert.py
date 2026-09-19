@@ -210,9 +210,12 @@ class ConvertToSampleView(BrowserView):
                 self._set_creator(ar, creator_id)
                 # Make the sample id equal to the request's tracking code
                 # (TR-26-0030), so the customer's number and the sample id
-                # match. The AR lives in the client folder.
+                # match. The tracking code is stored on the request as an
+                # attribute; the AR lives in the client folder.
+                tracking_code = getattr(self.context, "tracking_code", None) \
+                    or api.get_id(self.context)
                 try:
-                    tracking_code = api.get_id(self.context)
+                    ar.tracking_code = tracking_code
                     ar_id = api.get_id(ar)
                     parent = api.get_parent(ar)
                     if (tracking_code and ar_id != tracking_code
