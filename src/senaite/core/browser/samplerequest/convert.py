@@ -8,6 +8,8 @@
 
 from datetime import date
 
+import logging
+
 import transaction
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
@@ -17,6 +19,8 @@ from zope.interface import alsoProvides
 from bika.lims import api
 from bika.lims.utils.analysisrequest import create_analysisrequest
 from senaite.core.catalog import SETUP_CATALOG
+
+logger = logging.getLogger("senaite.samplerequest.convert")
 
 try:
     from plone.protect.interfaces import IDisableCSRFProtection
@@ -227,7 +231,8 @@ class ConvertToSampleView(BrowserView):
                         parent.manage_renameObject(ar_id, tracking_code)
                         ar = parent[tracking_code]
                 except Exception:
-                    pass
+                    logger.exception(
+                        "sample rename to %s failed", tracking_code)
                 sample_id = api.get_id(ar)
                 # Link back and move the request forward (received -> in_progress).
                 self.context.created_sample_id = sample_id
