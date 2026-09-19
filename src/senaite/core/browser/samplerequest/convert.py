@@ -208,6 +208,19 @@ class ConvertToSampleView(BrowserView):
                 ar = create_analysisrequest(
                     client, self.request, values, service_uids)
                 self._set_creator(ar, creator_id)
+                # Make the sample id equal to the request's tracking code
+                # (TR-26-0030), so the customer's number and the sample id
+                # match. The AR lives in the client folder.
+                try:
+                    tracking_code = api.get_id(self.context)
+                    ar_id = api.get_id(ar)
+                    parent = api.get_parent(ar)
+                    if (tracking_code and ar_id != tracking_code
+                            and tracking_code not in parent.objectIds()):
+                        parent.manage_renameObject(ar_id, tracking_code)
+                        ar = parent[tracking_code]
+                except Exception:
+                    pass
                 sample_id = api.get_id(ar)
                 # Link back and move the request forward (received -> in_progress).
                 self.context.created_sample_id = sample_id

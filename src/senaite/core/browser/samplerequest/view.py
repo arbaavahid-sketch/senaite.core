@@ -381,15 +381,18 @@ class SampleRequestView(BrowserView):
         return setup.sampleintake
 
     def _rename_clean(self, container, obj):
-        """Rename the request to a clean sequential id (TR-0001). Best effort:
-        if the rename fails the original object is returned unchanged (the
-        tokenised tracking link works regardless of the id)."""
+        """Rename the request to a clean year-based id (TR-26-0001). This same
+        id is reused as the sample id on conversion (see convert.py), so the
+        customer's tracking number and the final sample id match. Best effort:
+        if the rename fails the tokenised tracking link still works."""
         try:
+            yy = date.today().year % 100
+            prefix = u"TR-%02d-" % yy
             existing = set(container.objectIds())
             n = 1
-            while ("TR-%04d" % n) in existing:
+            while (u"%s%04d" % (prefix, n)) in existing:
                 n += 1
-            new_id = "TR-%04d" % n
+            new_id = u"%s%04d" % (prefix, n)
             old_id = api.get_id(obj)
             if old_id != new_id:
                 container.manage_renameObject(old_id, new_id)
