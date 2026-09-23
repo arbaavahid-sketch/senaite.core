@@ -21,6 +21,15 @@
       layer="senaite.core.interfaces.ISenaiteCore"
       />
 
+  <!-- Reception: close a request (walks it to the closed state). Staff only. -->
+  <browser:page
+      for="senaite.core.interfaces.ISampleRequest"
+      name="close-request"
+      class=".close.CloseRequestView"
+      permission="senaite.core.permissions.AddAnalysisRequest"
+      layer="senaite.core.interfaces.ISenaiteCore"
+      />
+
   <!-- Staff: delete test/spam requests from the register. -->
   <browser:page
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
