@@ -61,6 +61,15 @@
       layer="senaite.core.interfaces.ISenaiteCore"
       />
 
+  <!-- One-off admin tool: let LabClerk drive the sample-request workflow. -->
+  <browser:page
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="grant-intake-workflow"
+      class=".grant_intake_workflow.GrantIntakeWorkflowView"
+      permission="senaite.core.permissions.ManageBika"
+      layer="senaite.core.interfaces.ISenaiteCore"
+      />
+
   <!-- One-off admin tool: audit services for wrong units + duplicates. -->
   <browser:page
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"

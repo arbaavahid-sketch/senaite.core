@@ -135,17 +135,11 @@ class SampleIntakeView(ControlPanelListingView):
             else:
                 pay_html = (u'<a class="btn btn-sm btn-outline-secondary" '
                             u'href="%s">تعیین مبلغ</a>' % pay_url)
-        # "Close" / "Reopen" action — staff (incl. LabClerk) can move the
-        # request all the way to closed, or reopen a closed one.
-        base = safe_unicode(api.get_url(obj)) + u"/@@close-request"
-        if api.get_review_status(obj) == "closed":
-            close_html = (u'<a class="btn btn-sm btn-outline-secondary" '
-                          u'href="%s?reopen=1">بازگشایی</a>' % base)
-        else:
-            close_html = (u'<a class="btn btn-sm btn-outline-danger" '
-                          u'href="%s">بستن</a>' % base)
-
-        parts = [p for p in (convert_html, close_html, pay_html) if p]
+        # NOTE: no custom state buttons here on purpose — staff change the
+        # request state through the standard workflow menu, which LabClerk
+        # gets via the "Review portal content" permission on the register
+        # (see @@grant-intake-workflow).
+        parts = [p for p in (convert_html, pay_html) if p]
         item["replace"]["Convert"] = u" ".join(parts)
 
         token = getattr(obj, "access_token", None)
