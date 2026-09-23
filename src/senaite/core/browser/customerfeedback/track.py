@@ -246,6 +246,15 @@ class TrackRequestView(BrowserView):
                 message = self.labels["report_sent"]
                 status_label = self.labels["st_published"]
 
+        # payment info (online Zarinpal payment for sample-requests)
+        pay_amount = int(getattr(obj, "payment_amount", 0) or 0)
+        pay_paid = bool(getattr(obj, "payment_paid", False))
+        token = safe_unicode(getattr(obj, "access_token", "") or "")
+        pay_url = u""
+        if pay_amount >= 1000 and not pay_paid and token:
+            pay_url = u"%s/@@pay?token=%s" % (
+                api.get_url(api.get_portal()), token)
+
         return {
             "type": TYPE_LABELS.get(pt, {}).get(self.lang, pt),
             "subject": safe_unicode(getattr(obj, "title", "")
@@ -254,4 +263,9 @@ class TrackRequestView(BrowserView):
             "response": safe_unicode(response),
             "sample_id": sample_id,
             "message": message,
+            "pay_amount": pay_amount,
+            "pay_amount_fmt": u"{:,}".format(pay_amount) if pay_amount else u"",
+            "pay_paid": pay_paid,
+            "pay_ref": safe_unicode(getattr(obj, "payment_ref", "") or ""),
+            "pay_url": pay_url,
         }

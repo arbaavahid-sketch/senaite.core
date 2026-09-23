@@ -102,6 +102,7 @@
   <include package=".customerfeedback"/>
   <include package=".installcustomercare"/>
   <include package=".samplerequest"/>
+  <include package=".payment"/>
   <include package=".installsampleintake"/>
   <include package=".dexterity"/>
   <include package=".fields"/>

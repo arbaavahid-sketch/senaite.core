@@ -79,6 +79,25 @@
       </tr>
     </table>
 
+    <!-- Online payment (Zarinpal) -->
+    <div tal:condition="view/result" tal:define="r view/result" class="mt-3">
+      <div tal:condition="r/pay_paid"
+           style="background:#e8f7ee;border:1px solid #b6e2c6;border-radius:8px;padding:12px 14px;color:#169b4c">
+        پرداخت انجام شده ✅
+        <span tal:condition="r/pay_ref">— کد رهگیری:
+          <code tal:content="r/pay_ref">ref</code></span>
+      </div>
+      <div tal:condition="r/pay_url"
+           style="background:#fff7ed;border:1px solid #f3d3ad;border-radius:8px;padding:14px">
+        <div style="margin-bottom:8px">
+          <b>مبلغ قابل پرداخت:</b>
+          <span tal:content="r/pay_amount_fmt">0</span> ریال
+        </div>
+        <a tal:attributes="href r/pay_url"
+           style="display:inline-block;background:#ef7d1a;color:#fff;text-decoration:none;padding:10px 22px;border-radius:8px;font-size:16px">پرداخت آنلاین</a>
+      </div>
+    </div>
+
   </div>
 </body>
 </html>
