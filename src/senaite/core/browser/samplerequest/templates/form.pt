@@ -31,6 +31,7 @@
       <p><strong tal:content="L/thanks">Tracking:</strong>
          <code tal:content="view/tracking">id</code></p>
       <p tal:content="L/thanks_more">Please send your sample.</p>
+      <p class="text-muted small" tal:content="L/payment_note">payment note</p>
       <div tal:condition="view/track_link" class="mb-2">
         <p class="mb-1"><strong tal:content="L/your_link">Your tracking link:</strong></p>
         <p><a tal:attributes="href view/track_link" tal:content="view/track_link">link</a></p>

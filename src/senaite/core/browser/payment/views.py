@@ -318,8 +318,6 @@ class PaymentsListView(BrowserView):
                 if api.get_portal_type(obj) not in _TYPES:
                     continue
                 amount = int(getattr(obj, "payment_amount", 0) or 0)
-                if amount <= 0:
-                    continue
                 paid = bool(getattr(obj, "payment_paid", False))
                 total_all += amount
                 if paid:
@@ -338,13 +336,19 @@ class PaymentsListView(BrowserView):
                                          or u"")[:10],
                     "url": safe_unicode(api.get_url(obj)) + u"/@@set-payment",
                 })
-        rows.sort(key=lambda r: (r["paid"], r["date"]), reverse=True)
+        # unpaid first (need action), then paid; newest first within each
+        rows.sort(key=lambda r: (r["paid"], r["date"]))
 
         tr = []
         for r in rows:
-            badge = (u'<span style="color:#169b4c">پرداخت‌شده ✅</span>'
-                     if r["paid"] else
-                     u'<span style="color:#c47f17">در انتظار</span>')
+            if r["paid"]:
+                badge = u'<span style="color:#169b4c">پرداخت‌شده ✅</span>'
+            elif r["amount"] > 0:
+                badge = u'<span style="color:#c47f17">در انتظار پرداخت</span>'
+            else:
+                badge = (u'<a href="%s" style="color:#1e2f5e">تعیین مبلغ</a>'
+                         % r["url"])
+            amount_txt = u"{:,}".format(r["amount"]) if r["amount"] else u"—"
             tr.append(
                 u'<tr>'
                 u'<td><a href="%s">%s</a></td>'
@@ -352,7 +356,7 @@ class PaymentsListView(BrowserView):
                 u'<td style="text-align:left;direction:ltr">%s</td>'
                 u'<td>%s</td><td><code>%s</code></td><td>%s</td></tr>'
                 % (r["url"], r["code"], r["who"],
-                   u"{:,}".format(r["amount"]), badge, r["ref"], r["date"]))
+                   amount_txt, badge, r["ref"], r["date"]))
 
         body = (
             u'<p style="color:#555">جمع کل: <b>%s</b> ریال — '

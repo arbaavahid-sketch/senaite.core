@@ -106,6 +106,8 @@ LABELS = {
         "err_subject": u"لطفاً موضوع را وارد کنید.",
         "err_declaration": u"برای ثبت درخواست، باید شرایط و تعهدنامه را "
                            u"بپذیرید.",
+        "payment_note": u"در صورت نیاز به پرداختِ هزینه، لینکِ پرداخت پس از "
+                        u"بررسی به ایمیل شما ارسال می‌شود.",
         "err_client_name": u"لطفاً نام شرکت/مشتری را وارد کنید.",
         "err_contact_name": u"لطفاً نام تماس را وارد کنید.",
         "err_contact_email": u"لطفاً ایمیل تماس را وارد کنید.",
@@ -195,6 +197,8 @@ LABELS = {
         "err_subject": u"Please enter a subject.",
         "err_declaration": u"You must accept the terms and declaration to "
                            u"submit the request.",
+        "payment_note": u"If a fee applies, a payment link will be emailed "
+                        u"to you after review.",
         "err_client_name": u"Please enter the company / client name.",
         "err_contact_name": u"Please enter the contact name.",
         "err_contact_email": u"Please enter the contact email.",
