@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master">
+<body>
+
+  <metal:override fill-slot="top_slot"
+      tal:define="dc1 python:request.set('disable_plone.leftcolumn', 1);
+                  dc2 python:request.set('disable_plone.rightcolumn', 1);" />
+
+  <div metal:fill-slot="content" dir="rtl" style="text-align:right"
+       tal:define="samples view/get_samples;
+                   requests view/get_requests">
+
+    <h1 class="documentFirstHeading">پاک‌سازی دادهٔ تستی</h1>
+
+    <div tal:condition="view/message" class="alert alert-info"
+         tal:content="view/message">msg</div>
+
+    <div class="alert alert-warning">
+      <b>هشدار:</b> حذف برگشت‌ناپذیر است و سابقه (audit trail) را از بین می‌برد.
+      فقط برای رکوردهای <b>تستی</b> استفاده کن. برای نمونه‌های واقعی از
+      «باطل کردن» یا «ابطال» استفاده کن.
+    </div>
+
+    <form method="post"
+          onsubmit="return confirm('حذف قطعی موارد انتخاب‌شده؟ این کار برگشت‌ناپذیر است.');">
+
+      <h3 class="mt-4">نمونه‌ها</h3>
+      <table class="table table-sm table-hover" style="text-align:right">
+        <thead class="thead-light">
+          <tr>
+            <th style="width:3rem"></th>
+            <th>شناسه</th><th>مشتری</th><th>وضعیت</th><th>تاریخ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr tal:repeat="s samples">
+            <td><input type="checkbox" name="sample_ids:list"
+                       tal:attributes="value s/id"/></td>
+            <td><a tal:attributes="href s/url" target="_blank"
+                   tal:content="s/id">id</a></td>
+            <td tal:content="s/client">client</td>
+            <td tal:content="s/state">state</td>
+            <td tal:content="s/created">date</td>
+          </tr>
+          <tr tal:condition="not:samples">
+            <td colspan="5" class="text-muted">نمونه‌ای نیست.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="mt-4">درخواست‌های آنلاین</h3>
+      <table class="table table-sm table-hover" style="text-align:right">
+        <thead class="thead-light">
+          <tr>
+            <th style="width:3rem"></th>
+            <th>شناسه</th><th>موضوع</th><th>مشتری</th>
+            <th>وضعیت</th><th>تاریخ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr tal:repeat="r requests">
+            <td><input type="checkbox" name="request_ids:list"
+                       tal:attributes="value r/id"/></td>
+            <td><a tal:attributes="href r/url" target="_blank"
+                   tal:content="r/id">id</a></td>
+            <td tal:content="r/subject">subject</td>
+            <td tal:content="r/client">client</td>
+            <td tal:content="r/state">state</td>
+            <td tal:content="r/created">date</td>
+          </tr>
+          <tr tal:condition="not:requests">
+            <td colspan="6" class="text-muted">درخواستی نیست.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button type="submit" name="do_delete" value="1"
+              class="btn btn-danger mt-3">
+        حذف موارد انتخاب‌شده
+      </button>
+    </form>
+
+  </div>
+</body>
+</html>

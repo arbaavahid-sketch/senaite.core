@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 #
-# One-off admin tool: permanently delete TEST samples (AnalysisRequests) by id.
+# Manager-only cleanup page for the TEST data created while setting the system
+# up: pick samples and/or online requests with checkboxes and delete them.
+#
 # SENAITE deliberately has no delete for samples (audit trail) — real samples
-# should be cancelled/invalidated instead. This exists only to clean up the
-# test data created while setting the system up.
+# must be Cancelled/Invalidated instead. Use this only for test records.
 #
-#   @@delete-samples?ids=TR-26-0014,ST36-26-0009          -> preview
-#   @@delete-samples?ids=TR-26-0014,ST36-26-0009&apply=1  -> delete
-#
-# ManageBika only. Deletion runs as the privileged user so it works whatever
-# the sample's workflow state is.
+# Deletion runs as the privileged user so it works whatever the workflow state
+# is. ManageBika only.
 
 from Products.Five.browser import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bika.lims import api
 from bika.lims.api import safe_unicode
 from senaite.core.catalog import SAMPLE_CATALOG
@@ -23,71 +22,116 @@ except Exception:  # pragma: no cover
     IDisableCSRFProtection = None
 
 
+def _as_list(value):
+    if not value:
+        return []
+    if isinstance(value, (list, tuple)):
+        return [safe_unicode(v) for v in value if v]
+    return [safe_unicode(value)]
+
+
 class DeleteSamplesView(BrowserView):
+    """Checkbox UI to delete test samples and test online requests."""
+
+    template = ViewPageTemplateFile("templates/cleanup.pt")
 
     def __call__(self):
         if IDisableCSRFProtection is not None:
             alsoProvides(self.request, IDisableCSRFProtection)
+        self.message = u""
+        self.error = u""
+        if self.request.get("REQUEST_METHOD") == "POST" \
+                and self.request.form.get("do_delete"):
+            self.message = self._delete()
+        return self.template()
 
-        apply = bool(self.request.get("apply"))
-        raw = self.request.get("ids", "")
-        if isinstance(raw, (list, tuple)):
-            raw = ",".join(raw)
-        wanted = set(i.strip() for i in raw.split(",") if i.strip())
+    # --- data -------------------------------------------------------------
 
-        out = [u"MODE: %s" % (u"APPLY (deleting)" if apply else
-                              u"DRY-RUN (add &apply=1 to delete)"), u""]
-        if not wanted:
-            out.append(u"No ids given. Use: "
-                       u"@@delete-samples?ids=TR-26-0014,TR-26-0015")
-            return self._plain(out)
-
-        found = {}
+    def get_samples(self):
+        rows = []
         for brain in api.search({"portal_type": "AnalysisRequest"},
                                 SAMPLE_CATALOG):
-            sid = safe_unicode(api.get_id(brain))
-            if sid in wanted:
-                found[sid] = brain
-
-        for sid in sorted(wanted):
-            brain = found.get(sid)
-            if brain is None:
-                out.append(u"NOT FOUND\t%s" % sid)
-                continue
             try:
                 client = safe_unicode(brain.getClientTitle or u"")
             except Exception:
                 client = u""
-            state = safe_unicode(api.get_review_status(brain))
-            out.append(u"%s\t%s\t[%s]\t%s"
-                       % (u"DELETE" if apply else u"would delete",
-                          sid, state, client))
+            created = u""
+            try:
+                created = brain.created.strftime("%Y-%m-%d")
+            except Exception:
+                pass
+            rows.append({
+                "id": safe_unicode(api.get_id(brain)),
+                "client": client,
+                "state": safe_unicode(api.get_review_status(brain)),
+                "created": created,
+                "url": safe_unicode(api.get_url(brain)),
+            })
+        rows.sort(key=lambda r: r["created"], reverse=True)
+        return rows
 
-        deleted = 0
-        if apply and found:
+    def get_requests(self):
+        rows = []
+        container = api.get_senaite_setup().get("sampleintake")
+        if container is None:
+            return rows
+        for obj in container.objectValues():
+            if api.get_portal_type(obj) != "SampleRequest":
+                continue
+            created = u""
+            try:
+                created = api.get_creation_date(obj).strftime("%Y-%m-%d")
+            except Exception:
+                pass
+            rows.append({
+                "id": safe_unicode(api.get_id(obj)),
+                "subject": safe_unicode(getattr(obj, "title", u"")
+                                        or api.get_id(obj)),
+                "client": safe_unicode(getattr(obj, "client_name", u"") or u""),
+                "state": safe_unicode(api.get_review_status(obj)),
+                "created": created,
+                "url": safe_unicode(api.get_url(obj)),
+            })
+        rows.sort(key=lambda r: r["created"], reverse=True)
+        return rows
+
+    # --- delete -----------------------------------------------------------
+
+    def _delete(self):
+        form = self.request.form
+        sids = set(_as_list(form.get("sample_ids")))
+        rids = set(_as_list(form.get("request_ids")))
+        if not sids and not rids:
+            return u"چیزی انتخاب نشده بود."
+
+        n_samples = n_requests = 0
+        try:
             with api.security.as_privileged_user():
-                for sid, brain in found.items():
-                    try:
-                        obj = api.get_object(brain)
-                        parent = api.get_parent(obj)
-                        parent.manage_delObjects([api.get_id(obj)])
-                        deleted += 1
-                    except Exception as exc:  # noqa
-                        out.append(u"  ERROR\t%s\t%s"
-                                   % (sid, safe_unicode(exc)))
+                if sids:
+                    for brain in api.search({"portal_type": "AnalysisRequest"},
+                                            SAMPLE_CATALOG):
+                        sid = safe_unicode(api.get_id(brain))
+                        if sid not in sids:
+                            continue
+                        try:
+                            obj = api.get_object(brain)
+                            parent = api.get_parent(obj)
+                            parent.manage_delObjects([api.get_id(obj)])
+                            n_samples += 1
+                        except Exception:
+                            pass
+                if rids:
+                    container = api.get_senaite_setup().get("sampleintake")
+                    if container is not None:
+                        present = [i for i in rids
+                                   if container.get(i) is not None]
+                        if present:
+                            container.manage_delObjects(present)
+                            n_requests = len(present)
             import transaction
             transaction.commit()
+        except Exception as exc:  # noqa
+            self.error = safe_unicode(exc)
+            return u"خطا در حذف: %s" % safe_unicode(exc)
 
-        out.append(u"")
-        out.append(u"matched: %d / requested: %d" % (len(found), len(wanted)))
-        if apply:
-            out.append(u"deleted: %d" % deleted)
-        out.append(u"")
-        out.append(u"NOTE: for real (non-test) samples use Cancel/Invalidate "
-                   u"instead — deleting destroys the audit trail.")
-        return self._plain(out)
-
-    def _plain(self, lines):
-        self.request.response.setHeader(
-            "Content-Type", "text/plain; charset=utf-8")
-        return u"\n".join(lines).encode("utf-8")
+        return u"حذف شد: %d نمونه و %d درخواست." % (n_samples, n_requests)
