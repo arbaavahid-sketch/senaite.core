@@ -61,6 +61,15 @@
       layer="senaite.core.interfaces.ISenaiteCore"
       />
 
+  <!-- One-off admin tool: delete TEST samples by id (cleanup only). -->
+  <browser:page
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="delete-samples"
+      class=".delete_samples.DeleteSamplesView"
+      permission="senaite.core.permissions.ManageBika"
+      layer="senaite.core.interfaces.ISenaiteCore"
+      />
+
   <!-- One-off admin tool: let LabClerk drive the sample-request workflow. -->
   <browser:page
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
