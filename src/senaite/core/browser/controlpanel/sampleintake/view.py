@@ -62,23 +62,38 @@ class SampleIntakeView(ControlPanelListingView):
                            default=u"Customer link")}),
         ))
 
+        # "Delete" button next to the workflow buttons for the selected rows.
+        # It posts the selected uids to our own view, which deletes as the
+        # privileged user (the closed state forbids "Delete objects", so the
+        # stock workflow_action delete cannot remove closed requests).
+        delete_action = {
+            "id": "delete",
+            "title": _(u"sampleintake_delete_action", default=u"Delete"),
+            # absolute: the view is registered on the portal root
+            "url": "%s/@@sample-intake-delete" % api.get_url(api.get_portal()),
+            "css_class": "btn btn-danger",
+        }
+
         self.review_states = [
             {
                 "id": "default",
                 "title": _(u"sampleintake_state_all", default=u"All"),
                 "contentFilter": {},
                 "columns": self.columns.keys(),
+                "custom_transitions": [delete_action],
             }, {
                 "id": "open",
                 "title": _(u"sampleintake_state_open", default=u"Open"),
                 "contentFilter": {
                     "review_state": ["received", "in_progress"]},
                 "columns": self.columns.keys(),
+                "custom_transitions": [delete_action],
             }, {
                 "id": "closed",
                 "title": _(u"sampleintake_state_closed", default=u"Closed"),
                 "contentFilter": {"review_state": ["resolved", "closed"]},
                 "columns": self.columns.keys(),
+                "custom_transitions": [delete_action],
             },
         ]
 

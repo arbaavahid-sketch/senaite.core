@@ -28,6 +28,16 @@ class SampleIntakeDeleteView(BrowserView):
             ids = ",".join(ids)
         wanted = [i.strip() for i in ids.split(",") if i.strip()]
 
+        # The listing posts the selected rows as "uids"; resolve them to ids
+        # so the same view serves both the listing button and manual ?ids=.
+        uids = self.request.get("uids", [])
+        if not isinstance(uids, (list, tuple)):
+            uids = [uids]
+        for uid in [u for u in uids if u]:
+            obj = api.get_object_by_uid(uid, default=None)
+            if obj is not None:
+                wanted.append(api.get_id(obj))
+
         deleted = []
         if wanted:
             with api.security.as_privileged_user():
