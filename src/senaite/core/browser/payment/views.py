@@ -34,6 +34,18 @@ def _digits(value):
     return u"".join(out)
 
 
+def is_price_manager(context):
+    """True only for real managers (LabManager/Manager). NOTE: the ManageBika
+    permission is ALSO granted to LabClerk, so we check the role explicitly to
+    keep price/payment away from reception clerks."""
+    from AccessControl import getSecurityManager
+    try:
+        roles = getSecurityManager().getUser().getRolesInContext(context)
+    except Exception:
+        roles = []
+    return bool(set(roles) & {"LabManager", "Manager"})
+
+
 def _find_by_token(token):
     token = safe_unicode(token or u"").strip()
     if not token:
@@ -73,6 +85,12 @@ class SetPaymentView(BrowserView):
 
     def __call__(self):
         obj = self.context
+        if not is_price_manager(obj):
+            self.request.response.setHeader(
+                "Content-Type", "text/html; charset=utf-8")
+            return _page(u"دسترسی ندارید",
+                         u"<p>این بخش فقط برای مدیر است.</p>",
+                         color="#d33").encode("utf-8")
         saved = False
         notified = False
         if self.request.get("REQUEST_METHOD") == "POST":
@@ -309,6 +327,12 @@ class PaymentsListView(BrowserView):
     """Staff dashboard: all requests with a payment amount, paid or not."""
 
     def __call__(self):
+        if not is_price_manager(api.get_portal()):
+            self.request.response.setHeader(
+                "Content-Type", "text/html; charset=utf-8")
+            return _page(u"دسترسی ندارید",
+                         u"<p>این بخش فقط برای مدیر است.</p>",
+                         color="#d33").encode("utf-8")
         setup = api.get_senaite_setup()
         container = getattr(setup, "sampleintake", None)
         rows = []

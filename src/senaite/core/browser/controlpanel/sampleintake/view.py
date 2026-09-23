@@ -5,7 +5,7 @@
 
 import collections
 
-from Products.CMFCore.utils import _checkPermission
+from AccessControl import getSecurityManager
 from bika.lims import api
 from bika.lims import senaiteMessageFactory as _
 from bika.lims.api import safe_unicode
@@ -13,7 +13,6 @@ from bika.lims.utils import get_link_for
 from senaite.core.browser.controlpanel.listing import ControlPanelListingView
 from senaite.core.catalog import SETUP_CATALOG
 from senaite.core.i18n import translate
-from senaite.core.permissions import ManageBika
 
 
 class SampleIntakeView(ControlPanelListingView):
@@ -119,8 +118,11 @@ class SampleIntakeView(ControlPanelListingView):
         # "Set payment amount" action + status — ONLY for managers (ManageBika).
         # Analysts/other staff who can see the intake list never see or set the
         # price (it is manager-only, like @@set-payment and @@payments).
+        # price is manager-only. NOTE: the ManageBika permission is also held
+        # by LabClerk, so check the role explicitly (LabManager/Manager).
+        roles = getSecurityManager().getUser().getRolesInContext(obj)
         pay_html = u""
-        if _checkPermission(ManageBika, obj):
+        if set(roles) & {"LabManager", "Manager"}:
             pay_url = safe_unicode(api.get_url(obj)) + u"/@@set-payment"
             pay_amount = int(getattr(obj, "payment_amount", 0) or 0)
             if bool(getattr(obj, "payment_paid", False)):

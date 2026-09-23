@@ -259,6 +259,29 @@ class SidebarNavigationAPI(BrowserView):
                 "total_count": 0,
                 "children": [],
             })
+
+        # Payments dashboard — real managers only (LabClerk also has
+        # ManageBika, so check the role explicitly).
+        from AccessControl import getSecurityManager
+        roles = getSecurityManager().getUser().getRolesInContext(portal)
+        if set(roles) & {"LabManager", "Manager"}:
+            purl = api.get_url(portal).rstrip("/") + "/@@payments"
+            out.append({
+                "id": "payments",
+                "title": u"پرداخت‌ها",
+                "description": "",
+                "url": purl,
+                "icon": "",
+                "review_state": "",
+                "is_current": purl == cur,
+                "is_parent": False,
+                "is_folderish": False,
+                "portal_type": "",
+                "depth": 1,
+                "has_more": False,
+                "total_count": 0,
+                "children": [],
+            })
         return out
 
     def _build_tree(self, navigation_root, navigation_depth, skip_types,
