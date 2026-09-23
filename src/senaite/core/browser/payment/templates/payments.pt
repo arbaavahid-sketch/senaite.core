@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="senaite.core">
+<body>
+
+  <metal:override fill-slot="top_slot"
+      tal:define="dc1 python:request.set('disable_plone.leftcolumn', 1);
+                  dc2 python:request.set('disable_plone.rightcolumn', 1);" />
+
+  <div metal:fill-slot="content" dir="rtl" style="text-align:right"
+       tal:define="rows view/get_rows;
+                   totals python:view.get_totals(rows)">
+
+    <h1 class="documentFirstHeading">پرداخت‌ها</h1>
+
+    <div class="d-flex flex-wrap mb-3" style="gap:12px">
+      <div class="card"><div class="card-body py-2 px-3">
+        جمع کل: <b tal:content="totals/all">0</b> ریال</div></div>
+      <div class="card border-success"><div class="card-body py-2 px-3 text-success">
+        پرداخت‌شده: <b tal:content="totals/paid">0</b> ریال</div></div>
+      <div class="card border-warning"><div class="card-body py-2 px-3"
+           style="color:#c47f17">در انتظار:
+        <b tal:content="totals/pending">0</b> ریال</div></div>
+    </div>
+
+    <table class="table table-sm table-hover" style="text-align:right">
+      <thead class="thead-light">
+        <tr>
+          <th>شماره</th>
+          <th>مشتری</th>
+          <th style="text-align:left">مبلغ (ریال)</th>
+          <th>وضعیت</th>
+          <th>کد رهگیری</th>
+          <th>تاریخ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr tal:repeat="r rows">
+          <td><a tal:attributes="href r/url"
+                 tal:content="r/code">code</a></td>
+          <td tal:content="r/who">who</td>
+          <td style="direction:ltr;text-align:left"
+              tal:content="r/amount_fmt">0</td>
+          <td>
+            <span tal:condition="r/paid"
+                  class="badge badge-success">پرداخت‌شده ✅</span>
+            <span tal:condition="python:not r['paid'] and r['amount']"
+                  class="badge badge-warning">در انتظار پرداخت</span>
+            <a tal:condition="python:not r['amount']"
+               class="btn btn-sm btn-outline-secondary"
+               tal:attributes="href r/url">تعیین مبلغ</a>
+          </td>
+          <td><code tal:content="r/ref">ref</code></td>
+          <td tal:content="r/date">date</td>
+        </tr>
+        <tr tal:condition="not:rows">
+          <td colspan="6" class="text-muted">موردی نیست.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</body>
+</html>
