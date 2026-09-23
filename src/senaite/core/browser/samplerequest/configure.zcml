@@ -17,7 +17,7 @@
       for="senaite.core.interfaces.ISampleRequest"
       name="convert-to-sample"
       class=".convert.ConvertToSampleView"
-      permission="senaite.core.permissions.ManageBika"
+      permission="senaite.core.permissions.AddAnalysisRequest"
       layer="senaite.core.interfaces.ISenaiteCore"
       />
 
