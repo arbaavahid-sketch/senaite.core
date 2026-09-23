@@ -5,6 +5,7 @@
 
 import collections
 
+from Products.CMFCore.utils import _checkPermission
 from bika.lims import api
 from bika.lims import senaiteMessageFactory as _
 from bika.lims.api import safe_unicode
@@ -12,6 +13,7 @@ from bika.lims.utils import get_link_for
 from senaite.core.browser.controlpanel.listing import ControlPanelListingView
 from senaite.core.catalog import SETUP_CATALOG
 from senaite.core.i18n import translate
+from senaite.core.permissions import ManageBika
 
 
 class SampleIntakeView(ControlPanelListingView):
@@ -114,22 +116,28 @@ class SampleIntakeView(ControlPanelListingView):
                 u'<a class="btn btn-sm btn-primary" href="%s">%s</a>'
                 % (convert_url, label))
 
-        # "Set payment amount" action + status, in the same actions column, so
-        # the amount can be set with one click (no manual URL editing).
-        pay_url = safe_unicode(api.get_url(obj)) + u"/@@set-payment"
-        pay_amount = int(getattr(obj, "payment_amount", 0) or 0)
-        if bool(getattr(obj, "payment_paid", False)):
-            pay_html = (u'<a class="btn btn-sm btn-success" href="%s">'
-                        u'پرداخت‌شده ✅</a>' % pay_url)
-        elif pay_amount:
-            pay_html = (u'<a class="btn btn-sm btn-warning" href="%s">'
-                        u'مبلغ: %s ریال</a>'
-                        % (pay_url, u"{:,}".format(pay_amount)))
+        # "Set payment amount" action + status — ONLY for managers (ManageBika).
+        # Analysts/other staff who can see the intake list never see or set the
+        # price (it is manager-only, like @@set-payment and @@payments).
+        pay_html = u""
+        if _checkPermission(ManageBika, obj):
+            pay_url = safe_unicode(api.get_url(obj)) + u"/@@set-payment"
+            pay_amount = int(getattr(obj, "payment_amount", 0) or 0)
+            if bool(getattr(obj, "payment_paid", False)):
+                pay_html = (u'<a class="btn btn-sm btn-success" href="%s">'
+                            u'پرداخت‌شده ✅</a>' % pay_url)
+            elif pay_amount:
+                pay_html = (u'<a class="btn btn-sm btn-warning" href="%s">'
+                            u'مبلغ: %s ریال</a>'
+                            % (pay_url, u"{:,}".format(pay_amount)))
+            else:
+                pay_html = (u'<a class="btn btn-sm btn-outline-secondary" '
+                            u'href="%s">تعیین مبلغ</a>' % pay_url)
+        if pay_html:
+            item["replace"]["Convert"] = (
+                (convert_html + u" " + pay_html) if convert_html else pay_html)
         else:
-            pay_html = (u'<a class="btn btn-sm btn-outline-secondary" '
-                        u'href="%s">تعیین مبلغ</a>' % pay_url)
-        item["replace"]["Convert"] = (
-            (convert_html + u" " + pay_html) if convert_html else pay_html)
+            item["replace"]["Convert"] = convert_html
 
         token = getattr(obj, "access_token", None)
         if token:
