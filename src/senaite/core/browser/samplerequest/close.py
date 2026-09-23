@@ -14,15 +14,25 @@ class CloseRequestView(BrowserView):
 
     def __call__(self):
         obj = self.context
+        reopen = bool(self.request.get("reopen"))
         try:
             with api.security.as_privileged_user():
-                for tid in ("process", "resolve", "close"):
+                if reopen:
+                    # closed -> reopen -> in_progress
                     if api.get_review_status(obj) == "closed":
-                        break
-                    try:
-                        api.do_transition_for(obj, tid)
-                    except Exception:
-                        pass
+                        try:
+                            api.do_transition_for(obj, "reopen")
+                        except Exception:
+                            pass
+                else:
+                    # walk forward to the closed state
+                    for tid in ("process", "resolve", "close"):
+                        if api.get_review_status(obj) == "closed":
+                            break
+                        try:
+                            api.do_transition_for(obj, tid)
+                        except Exception:
+                            pass
         except Exception:
             pass
         # back to the sample-intake register

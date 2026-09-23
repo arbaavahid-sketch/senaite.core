@@ -135,13 +135,15 @@ class SampleIntakeView(ControlPanelListingView):
             else:
                 pay_html = (u'<a class="btn btn-sm btn-outline-secondary" '
                             u'href="%s">تعیین مبلغ</a>' % pay_url)
-        # "Close" action — move the request to the closed state (staff, incl.
-        # LabClerk). Shown while the request is not already closed.
-        close_html = u""
-        if api.get_review_status(obj) != "closed":
-            close_url = safe_unicode(api.get_url(obj)) + u"/@@close-request"
+        # "Close" / "Reopen" action — staff (incl. LabClerk) can move the
+        # request all the way to closed, or reopen a closed one.
+        base = safe_unicode(api.get_url(obj)) + u"/@@close-request"
+        if api.get_review_status(obj) == "closed":
+            close_html = (u'<a class="btn btn-sm btn-outline-secondary" '
+                          u'href="%s?reopen=1">بازگشایی</a>' % base)
+        else:
             close_html = (u'<a class="btn btn-sm btn-outline-danger" '
-                          u'href="%s">بستن</a>' % close_url)
+                          u'href="%s">بستن</a>' % base)
 
         parts = [p for p in (convert_html, close_html, pay_html) if p]
         item["replace"]["Convert"] = u" ".join(parts)
