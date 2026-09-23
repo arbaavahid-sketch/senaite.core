@@ -103,15 +103,33 @@ class SampleIntakeView(ControlPanelListingView):
         # Persian subject, so keep everything unicode to avoid a decode error.
         if sample_id:
             item["Convert"] = ""
+            convert_html = u""
         else:
             convert_url = safe_unicode(api.get_url(obj)) \
                 + u"/@@convert-to-sample"
             item["Convert"] = convert_url
             label = safe_unicode(translate(_(u"sampleintake_convert_action",
                                              default=u"Convert to Sample")))
-            item["replace"]["Convert"] = (
+            convert_html = (
                 u'<a class="btn btn-sm btn-primary" href="%s">%s</a>'
                 % (convert_url, label))
+
+        # "Set payment amount" action + status, in the same actions column, so
+        # the amount can be set with one click (no manual URL editing).
+        pay_url = safe_unicode(api.get_url(obj)) + u"/@@set-payment"
+        pay_amount = int(getattr(obj, "payment_amount", 0) or 0)
+        if bool(getattr(obj, "payment_paid", False)):
+            pay_html = (u'<a class="btn btn-sm btn-success" href="%s">'
+                        u'پرداخت‌شده ✅</a>' % pay_url)
+        elif pay_amount:
+            pay_html = (u'<a class="btn btn-sm btn-warning" href="%s">'
+                        u'مبلغ: %s ریال</a>'
+                        % (pay_url, u"{:,}".format(pay_amount)))
+        else:
+            pay_html = (u'<a class="btn btn-sm btn-outline-secondary" '
+                        u'href="%s">تعیین مبلغ</a>' % pay_url)
+        item["replace"]["Convert"] = (
+            (convert_html + u" " + pay_html) if convert_html else pay_html)
 
         token = getattr(obj, "access_token", None)
         if token:
