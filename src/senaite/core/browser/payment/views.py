@@ -74,6 +74,7 @@ class SetPaymentView(BrowserView):
     def __call__(self):
         obj = self.context
         saved = False
+        notified = False
         if self.request.get("REQUEST_METHOD") == "POST":
             amount = _digits(self.request.form.get("payment_amount"))
             obj.payment_amount = int(amount) if amount else 0
@@ -85,11 +86,17 @@ class SetPaymentView(BrowserView):
             except Exception:
                 pass
             saved = True
+            if obj.payment_amount >= 1000:
+                notified = self._notify_customer(obj, obj.payment_amount)
         amount = int(getattr(obj, "payment_amount", 0) or 0)
         paid = bool(getattr(obj, "payment_paid", False))
         ref = safe_unicode(getattr(obj, "payment_ref", u"") or u"")
         toman = amount // 10 if amount else 0
-        msg = u'<p style="color:#169b4c">✔ ذخیره شد.</p>' if saved else u""
+        msg = u""
+        if saved:
+            msg = u'<p style="color:#169b4c">✔ ذخیره شد.%s</p>' % (
+                u" ایمیلِ پرداخت به مشتری ارسال شد." if notified else
+                u" (ایمیلی ارسال نشد — مشتری ایمیل نداشت یا خطا رخ داد.)")
         status = (
             u'<p><b>وضعیت:</b> پرداخت‌شده ✅ (کد رهگیری: %s)</p>' % ref
             if paid else u'<p><b>وضعیت:</b> پرداخت‌نشده</p>')
@@ -112,6 +119,51 @@ class SetPaymentView(BrowserView):
         self.request.response.setHeader("Content-Type",
                                         "text/html; charset=utf-8")
         return _page(u"تعیین مبلغ پرداخت", body).encode("utf-8")
+
+    def _notify_customer(self, obj, amount):
+        """Email the customer that a payable amount was set, with a pay link."""
+        email = safe_unicode(
+            getattr(obj, "contact_email", u"") or u"").strip()
+        if not email:
+            return False
+        try:
+            from plone import api as ploneapi
+            from email.mime.text import MIMEText
+            portal_url = api.get_url(api.get_portal())
+            token = safe_unicode(getattr(obj, "access_token", u"") or u"")
+            pay_url = u"%s/@@pay?token=%s" % (portal_url, token)
+            track_url = u"%s/@@track-request?token=%s" % (portal_url, token)
+            code = safe_unicode(getattr(obj, "tracking_code", u"")
+                                or api.get_id(obj))
+            try:
+                lab = ploneapi.portal.get_registry_record(
+                    "plone.site_title") or u"آزمایشگاه تندیس پارس"
+            except Exception:
+                lab = u"آزمایشگاه تندیس پارس"
+            html = (
+                u'<div dir="rtl" style="font-family:Tahoma,Arial,sans-serif;'
+                u'font-size:14px;line-height:1.9;color:#1a2230">'
+                u'با سلام،<br/>'
+                u'هزینهٔ آزمونِ درخواستِ شما با شمارهٔ <b>%s</b> مشخص شد:'
+                u'<br/><br/>'
+                u'<b>مبلغ قابل پرداخت:</b> %s ریال (%s تومان)<br/><br/>'
+                u'برای پرداختِ آنلاین روی دکمهٔ زیر کلیک کنید:<br/>'
+                u'<a href="%s" style="display:inline-block;background:#ef7d1a;'
+                u'color:#fff;text-decoration:none;padding:10px 22px;'
+                u'border-radius:8px;margin:8px 0">پرداخت آنلاین</a><br/><br/>'
+                u'یا وضعیت و پرداخت را از صفحهٔ پیگیری ببینید:<br/>'
+                u'<a href="%s">%s</a><br/><br/>'
+                u'با احترام،<br/>%s</div>'
+            ) % (code, u"{:,}".format(amount), u"{:,}".format(amount // 10),
+                 pay_url, track_url, track_url, safe_unicode(lab))
+            subject = u"هزینهٔ آزمون شما — %s" % code
+            m = MIMEText(html.encode("utf-8"), "html", "utf-8")
+            ploneapi.portal.send_email(
+                recipient=email, subject=subject, body=m)
+            return True
+        except Exception:
+            logger.exception("payment: could not email customer")
+            return False
 
 
 class PayView(BrowserView):
