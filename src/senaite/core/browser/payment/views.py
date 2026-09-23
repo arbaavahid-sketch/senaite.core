@@ -251,16 +251,124 @@ class PayCallbackView(BrowserView):
             with api.security.as_privileged_user():
                 obj.payment_paid = True
                 obj.payment_ref = safe_unicode(ref_id)
+                try:
+                    from DateTime import DateTime
+                    obj.payment_date = DateTime().ISO8601()
+                except Exception:
+                    pass
                 obj.reindexObject()
         except Exception:
             logger.exception("payment: could not store paid state")
+        self._notify_lab(obj, amount, ref_id)
         return self._html(_page(
             u"پرداخت موفق ✅",
             u"<p>پرداخت شما با موفقیت انجام شد.</p>"
             u"<p><b>کد رهگیری:</b> %s</p>%s"
             % (safe_unicode(ref_id), link), color="#169b4c"))
 
+    def _notify_lab(self, obj, amount, ref_id):
+        """Email the lab that a payment was received."""
+        try:
+            from plone import api as ploneapi
+            from email.mime.text import MIMEText
+            try:
+                lab_email = ploneapi.portal.get_registry_record(
+                    "plone.email_from_address")
+            except Exception:
+                lab_email = None
+            if not lab_email:
+                return
+            code = safe_unicode(getattr(obj, "tracking_code", u"")
+                                or api.get_id(obj))
+            who = safe_unicode(getattr(obj, "client_name", u"")
+                               or getattr(obj, "contact_name", u"") or u"—")
+            html = (
+                u'<div dir="rtl" style="font-family:Tahoma,Arial,sans-serif;'
+                u'font-size:14px;line-height:1.9;color:#1a2230">'
+                u'یک <b>پرداختِ جدید</b> در سامانه ثبت شد:<br/><br/>'
+                u'<b>درخواست:</b> %s<br/>'
+                u'<b>مشتری:</b> %s<br/>'
+                u'<b>مبلغ:</b> %s ریال<br/>'
+                u'<b>کد رهگیری:</b> %s</div>'
+            ) % (code, who, u"{:,}".format(int(amount or 0)),
+                 safe_unicode(ref_id))
+            m = MIMEText(html.encode("utf-8"), "html", "utf-8")
+            ploneapi.portal.send_email(
+                recipient=lab_email,
+                subject=u"پرداخت جدید — %s" % code, body=m)
+        except Exception:
+            logger.exception("payment: could not email lab on payment")
+
     def _html(self, html):
         self.request.response.setHeader("Content-Type",
                                         "text/html; charset=utf-8")
         return html.encode("utf-8")
+
+
+class PaymentsListView(BrowserView):
+    """Staff dashboard: all requests with a payment amount, paid or not."""
+
+    def __call__(self):
+        setup = api.get_senaite_setup()
+        container = getattr(setup, "sampleintake", None)
+        rows = []
+        total_all = total_paid = 0
+        if container is not None:
+            for obj in container.objectValues():
+                if api.get_portal_type(obj) not in _TYPES:
+                    continue
+                amount = int(getattr(obj, "payment_amount", 0) or 0)
+                if amount <= 0:
+                    continue
+                paid = bool(getattr(obj, "payment_paid", False))
+                total_all += amount
+                if paid:
+                    total_paid += amount
+                rows.append({
+                    "code": safe_unicode(getattr(obj, "tracking_code", u"")
+                                         or api.get_id(obj)),
+                    "who": safe_unicode(getattr(obj, "client_name", u"")
+                                        or getattr(obj, "contact_name", u"")
+                                        or u"—"),
+                    "amount": amount,
+                    "paid": paid,
+                    "ref": safe_unicode(getattr(obj, "payment_ref", u"")
+                                        or u""),
+                    "date": safe_unicode(getattr(obj, "payment_date", u"")
+                                         or u"")[:10],
+                    "url": safe_unicode(api.get_url(obj)) + u"/@@set-payment",
+                })
+        rows.sort(key=lambda r: (r["paid"], r["date"]), reverse=True)
+
+        tr = []
+        for r in rows:
+            badge = (u'<span style="color:#169b4c">پرداخت‌شده ✅</span>'
+                     if r["paid"] else
+                     u'<span style="color:#c47f17">در انتظار</span>')
+            tr.append(
+                u'<tr>'
+                u'<td><a href="%s">%s</a></td>'
+                u'<td>%s</td>'
+                u'<td style="text-align:left;direction:ltr">%s</td>'
+                u'<td>%s</td><td><code>%s</code></td><td>%s</td></tr>'
+                % (r["url"], r["code"], r["who"],
+                   u"{:,}".format(r["amount"]), badge, r["ref"], r["date"]))
+
+        body = (
+            u'<p style="color:#555">جمع کل: <b>%s</b> ریال — '
+            u'پرداخت‌شده: <b style="color:#169b4c">%s</b> ریال — '
+            u'در انتظار: <b style="color:#c47f17">%s</b> ریال</p>'
+            u'<table style="width:100%%;border-collapse:collapse" '
+            u'cellpadding="8">'
+            u'<thead><tr style="background:#f0f3f8;text-align:right">'
+            u'<th>شماره</th><th>مشتری</th><th>مبلغ (ریال)</th>'
+            u'<th>وضعیت</th><th>کد رهگیری</th><th>تاریخ</th></tr></thead>'
+            u'<tbody>%s</tbody></table>'
+        ) % (u"{:,}".format(total_all), u"{:,}".format(total_paid),
+             u"{:,}".format(total_all - total_paid),
+             (u"".join(tr) or
+              u'<tr><td colspan="6" style="color:#777">موردی نیست.</td>'
+              u'</tr>'))
+        self.request.response.setHeader("Content-Type",
+                                        "text/html; charset=utf-8")
+        return _page(u"پرداخت‌ها", body).encode("utf-8")

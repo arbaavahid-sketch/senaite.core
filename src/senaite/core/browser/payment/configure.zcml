@@ -30,4 +30,13 @@
       layer="senaite.core.interfaces.ISenaiteCore"
       />
 
+  <!-- Staff: payments dashboard -->
+  <browser:page
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="payments"
+      class=".views.PaymentsListView"
+      permission="senaite.core.permissions.ManageBika"
+      layer="senaite.core.interfaces.ISenaiteCore"
+      />
+
 </configure>
