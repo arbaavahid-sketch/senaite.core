@@ -84,34 +84,57 @@ class AddDistillationInterimsView(BrowserView):
                 obj.reindexObject()
             svc_updated += 1
 
-        # --- 2) in-progress analyses: set report=True, keep entered values ---
+        # --- 2) analyses: add missing curve points and/or set report=True,
+        #        always preserving any values already entered. This retrofits
+        #        older samples created before the interims existed. Frozen
+        #        analyses (verified/published/etc.) are left untouched. ---
         an_updated = 0
+        curve_kws = {p[0] for p in _POINTS}
+        frozen = {"verified", "published", "retracted", "rejected",
+                  "cancelled", "invalid"}
         if dist_keywords:
             query = {"portal_type": "Analysis",
                      "getKeyword": list(dist_keywords)}
             for brain in api.search(query, ANALYSIS_CATALOG):
-                obj = api.get_object(brain)
-                interims = obj.getInterimFields() or []
-                if not any(safe_unicode(i.get("keyword", "")) == u"IBP"
-                           for i in interims):
-                    continue
-                changed = False
-                new = []
-                for i in interims:
-                    d = dict(i)
-                    if not d.get("report", False):
-                        d["report"] = True
-                        changed = True
-                    new.append(d)
-                if not changed:
-                    continue
-                lines.append(u"%s analysis\t%s\t(keep values, report=True)"
-                             % (u"UPDATE" if apply else u"would update",
-                                safe_unicode(api.get_id(obj))))
-                if apply:
-                    obj.setInterimFields(new)
-                    obj.reindexObject()
-                an_updated += 1
+                try:
+                    obj = api.get_object(brain)
+                    if api.get_review_status(obj) in frozen:
+                        continue
+                    interims = obj.getInterimFields() or []
+                    existing = {safe_unicode(i.get("keyword", "")): dict(i)
+                                for i in interims}
+                    changed = False
+                    new = []
+                    # curve points, in order — keep values, ensure report=True
+                    for kw, title in _POINTS:
+                        if kw in existing:
+                            d = existing[kw]
+                            if not d.get("report", False):
+                                d["report"] = True
+                                changed = True
+                        else:
+                            d = {"keyword": kw, "title": title, "value": "",
+                                 "unit": u"°C", "hidden": False, "wide": False,
+                                 "result_type": "", "report": True}
+                            changed = True
+                        new.append(d)
+                    # preserve any unrelated interims already on the analysis
+                    for i in interims:
+                        if safe_unicode(i.get("keyword", "")) not in curve_kws:
+                            new.append(dict(i))
+                    if not changed:
+                        continue
+                    lines.append(
+                        u"%s analysis\t%s\t(add missing points, keep values)"
+                        % (u"UPDATE" if apply else u"would update",
+                           safe_unicode(api.get_id(obj))))
+                    if apply:
+                        obj.setInterimFields(new)
+                        obj.reindexObject()
+                    an_updated += 1
+                except Exception as exc:  # never let one object break the run
+                    lines.append(u"SKIP analysis (error)\t%s\t%s" % (
+                        safe_unicode(api.get_id(brain)), safe_unicode(exc)))
 
         summary = [
             u"", u"distillation (D86) services updated: %d" % svc_updated,
