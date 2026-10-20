@@ -11,6 +11,7 @@ from datetime import date
 import logging
 
 import transaction
+from ZODB.POSException import ConflictError
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -56,6 +57,9 @@ LABELS = {
         "choose": u"— انتخاب —",
         "err_sampletype": u"لطفاً نوع نمونه را انتخاب کنید.",
         "err_services": u"لطفاً حداقل یک آزمون را انتخاب کنید.",
+        "err_existing": u"برای این درخواست قبلاً نمونه ثبت شده است. نمونهٔ جدید ساخته نشد.",
+        "err_collision": u"شمارهٔ این درخواست قبلاً در پوشهٔ مشتری استفاده شده است. نمونهٔ جدید ساخته نشد؛ موضوع را به مسئول سامانه اطلاع دهید.",
+        "err_conversion": u"ثبت نمونه کامل نشد و تغییرات این عملیات برگشت داده شد. موضوع را به مسئول سامانه اطلاع دهید.",
         "ok": u"نمونه ساخته شد:",
     },
     "en": {
@@ -85,6 +89,9 @@ LABELS = {
         "choose": u"— select —",
         "err_sampletype": u"Please select a sample type.",
         "err_services": u"Please select at least one test.",
+        "err_existing": u"This request already has a sample. No new sample was created.",
+        "err_collision": u"This request number is already in use in the client folder. No new sample was created. Contact the system manager.",
+        "err_conversion": u"Sample creation failed and this operation was rolled back. Contact the system manager.",
         "ok": u"Sample created:",
     },
 }
@@ -179,6 +186,13 @@ class ConvertToSampleView(BrowserView):
         if IDisableCSRFProtection is not None:
             alsoProvides(self.request, IDisableCSRFProtection)
 
+        # Reject repeated submissions even if the linked sample was removed.
+        # Never replace an existing request/sample association implicitly.
+        if (getattr(self.context, "created_sample_uid", None)
+                or getattr(self.context, "created_sample_id", None)):
+            self.error = self.labels["err_existing"]
+            return
+
         form = self.request.form
         sampletype_uid = (form.get("sampletype_uid") or "").strip()
         service_uids = form.get("service_uids") or []
@@ -200,9 +214,27 @@ class ConvertToSampleView(BrowserView):
         from AccessControl import getSecurityManager
         creator_id = getSecurityManager().getUser().getId()
 
+        # Keep client/contact creation, sample creation, rename and linking
+        # atomic even when we catch an exception to render the form.
+        savepoint = transaction.savepoint(optimistic=True)
         try:
             with api.security.as_privileged_user():
                 client = self._resolve_client(form)
+                tracking_code = getattr(self.context, "tracking_code", None) \
+                    or api.get_id(self.context)
+                # Zope 2 object ids must be byte strings.
+                new_id = str(tracking_code)
+                if not new_id:
+                    raise ValueError("Empty request tracking code")
+                if new_id in client.objectIds():
+                    savepoint.rollback()
+                    self.error = self.labels["err_collision"]
+                    return
+
+                # Writing the request also makes concurrent conversions
+                # conflict in ZODB. Let ConflictError reach the publisher so
+                # its retry sees the committed created_sample_* association.
+                self.context.created_sample_id = new_id
                 contact = self._resolve_contact(client)
                 values = {
                     "Client": api.get_uid(client),
@@ -213,42 +245,32 @@ class ConvertToSampleView(BrowserView):
                 ar = create_analysisrequest(
                     client, self.request, values, service_uids)
                 self._set_creator(ar, creator_id)
-                # Make the sample id equal to the request's tracking code
-                # (TR-26-0030), so the customer's number and the sample id
-                # match. The tracking code is stored on the request as an
-                # attribute; the AR lives in the client folder.
-                tracking_code = getattr(self.context, "tracking_code", None) \
-                    or api.get_id(self.context)
-                try:
-                    ar.tracking_code = tracking_code
-                    # the object id must be a *bytestring* under Py2, else
-                    # manage_renameObject raises CopyError('Invalid Id').
-                    new_id = str(tracking_code)
-                    ar_id = api.get_id(ar)
-                    parent = api.get_parent(ar)
-                    if (new_id and ar_id != new_id
-                            and new_id not in parent.objectIds()):
-                        # a savepoint is required before renaming (same as the
-                        # ID server's renameAfterCreation), else it fails.
-                        transaction.savepoint(optimistic=True)
-                        parent.manage_renameObject(ar_id, new_id)
-                        ar = parent[new_id]
-                except Exception:
-                    logger.exception(
-                        "sample rename to %s failed", tracking_code)
+                ar.tracking_code = tracking_code
+                ar_id = api.get_id(ar)
+                parent = api.get_parent(ar)
+                if ar_id != new_id:
+                    transaction.savepoint(optimistic=True)
+                    parent.manage_renameObject(ar_id, new_id)
+                    ar = parent[new_id]
+                if api.get_id(ar) != new_id:
+                    raise ValueError("Sample ID does not match request")
+                ar.reindexObject()
                 sample_id = api.get_id(ar)
                 # Link back and move the request forward (received -> in_progress).
                 self.context.created_sample_id = sample_id
                 self.context.created_sample_uid = api.get_uid(ar)
                 if api.get_review_status(self.context) == "received":
-                    try:
-                        api.do_transition_for(self.context, "process")
-                    except Exception:
-                        pass
+                    api.do_transition_for(self.context, "process")
                 self.created = sample_id
                 self.created_url = api.get_url(ar)
-        except Exception as exc:  # noqa
-            self.error = u"%s" % exc
+        except ConflictError:
+            raise
+        except Exception:
+            savepoint.rollback()
+            logger.exception("Sample request conversion rolled back")
+            self.created = ""
+            self.created_url = ""
+            self.error = self.labels["err_conversion"]
 
     def _set_creator(self, obj, userid):
         """Record the logged-in staff member as the sample's creator/owner,
@@ -265,6 +287,8 @@ class ConvertToSampleView(BrowserView):
                     user = user.__of__(uf)
                 obj.changeOwnership(user)
             obj.reindexObject()
+        except ConflictError:
+            raise
         except Exception:
             pass
 
@@ -284,6 +308,8 @@ class ConvertToSampleView(BrowserView):
         # Reuse the first existing contact, else create one from the request.
         try:
             contacts = client.getContacts()
+        except ConflictError:
+            raise
         except Exception:
             contacts = []
         if contacts:
