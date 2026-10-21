@@ -61,7 +61,8 @@ class ConversionTests(unittest.TestCase):
         self.context = Record(
             id="TR-26-0048", tracking_code="TR-26-0048",
             created_sample_id="", created_sample_uid="", state="received")
-        self.state = {"objects": {}, "counter": 70, "contacts": 0}
+        self.state = {"objects": {}, "counter": 70, "contacts": 0,
+                      "catalog": {}, "queue": []}
         self.fail_at = None
         self.calls = 0
         self.rollbacks = 0
@@ -90,7 +91,10 @@ class ConversionTests(unittest.TestCase):
             get_parent=lambda obj: self.client,
             get_url=lambda obj: "/clients/client-8/" + obj.id,
             get_review_status=lambda obj: obj.state,
+            uncatalog_object=self.uncatalog,
+            catalog_object=self.catalog,
             do_transition_for=self.transition)
+        self.ns["processQueue"] = self.process_queue
         self.ns["transaction"] = Record(savepoint=self.savepoint)
         self.ns["create_analysisrequest"] = self.create
         self.previous_access = sys.modules.get("AccessControl")
@@ -121,14 +125,42 @@ class ConversionTests(unittest.TestCase):
         return Record(uid="contact-uid")
 
     def create(self, *args):
+        self.created_values = args[2]
         self.calls += 1
         self.state["counter"] += 1
         sample = Record(id="ST36-26-%04d" % self.state["counter"],
                         uid="sample-uid", reindexObject=lambda: None)
         self.state["objects"][sample.id] = sample
+        self.catalog(sample, recursive=True)
         if self.fail_at == "create":
             raise ValueError("Partial creation failed")
         return sample
+
+    def paths(self, sample, recursive):
+        paths = [sample.id]
+        if recursive:
+            paths.extend([sample.id + "/density", sample.id + "/distillation"])
+        return paths
+
+    def catalog(self, sample, recursive=False):
+        for path in self.paths(sample, recursive):
+            self.state["queue"].append(("add", path))
+
+    def uncatalog(self, sample, recursive=False):
+        for path in self.paths(sample, recursive):
+            self.state["queue"].append(("remove", path))
+
+    def process_queue(self):
+        while self.state["queue"]:
+            action, path = self.state["queue"].pop(0)
+            if action == "remove":
+                self.state["catalog"].pop(path, None)
+            else:
+                if path.split("/")[0] not in self.state["objects"]:
+                    raise AttributeError(path)
+                self.state["catalog"][path] = True
+                if path.startswith("TR-") and self.fail_at == "catalog":
+                    raise ValueError("Catalog update failed")
 
     def rename(self, old, new):
         if self.fail_at == "conflict":
@@ -153,6 +185,35 @@ class ConversionTests(unittest.TestCase):
         self.assertEqual(list(self.state["objects"]), ["TR-26-0048"])
         self.assertEqual(self.context.created_sample_uid, "sample-uid")
         self.assertEqual(self.context.state, "in_progress")
+
+    def test_catalog_paths_follow_renamed_sample_and_children(self):
+        self.view._convert()
+        self.assertEqual(self.view.error, "")
+        self.assertEqual(sorted(self.state["catalog"]), [
+            "TR-26-0048", "TR-26-0048/density", "TR-26-0048/distillation"])
+        self.assertEqual(self.state["queue"], [])
+
+    def test_sampling_date_is_the_actual_collection_date(self):
+        self.view._convert()
+        self.assertEqual(self.created_values["DateSampled"], "2026-10-20")
+        self.assertNotIn("SamplingDate", self.created_values)
+
+    def test_missing_services_do_not_create_sample(self):
+        self.view.request.form["service_uids"] = []
+        self.view._convert()
+        self.assertEqual(self.calls, 0)
+        self.assertEqual(self.view.error, self.view.labels["err_services"])
+
+    def test_missing_sample_type_does_not_create_sample(self):
+        self.view.request.form["sampletype_uid"] = ""
+        self.view._convert()
+        self.assertEqual(self.calls, 0)
+        self.assertEqual(self.view.error, self.view.labels["err_sampletype"])
+
+    def test_catalog_failure_rolls_back_sample_and_references(self):
+        self.assert_atomic_failure("catalog")
+        self.assertEqual(self.state["catalog"], {})
+        self.assertEqual(self.state["queue"], [])
 
     def test_repeat_submission_does_not_create_again(self):
         self.view._convert()

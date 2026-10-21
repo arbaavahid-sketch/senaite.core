@@ -13,6 +13,7 @@ import logging
 import transaction
 from ZODB.POSException import ConflictError
 from Products.CMFCore.utils import getToolByName
+from Products.CMFCore.indexing import processQueue
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.interface import alsoProvides
@@ -239,7 +240,7 @@ class ConvertToSampleView(BrowserView):
                 values = {
                     "Client": api.get_uid(client),
                     "Contact": api.get_uid(contact),
-                    "SamplingDate": sampling_date,
+                    "DateSampled": sampling_date,
                     "SampleType": sampletype_uid,
                 }
                 ar = create_analysisrequest(
@@ -250,11 +251,20 @@ class ConvertToSampleView(BrowserView):
                 parent = api.get_parent(ar)
                 if ar_id != new_id:
                     transaction.savepoint(optimistic=True)
+                    # Drain creation jobs while the old paths still exist.
+                    # Remove the entire subtree, including UID references,
+                    # before rename can invalidate queued object paths.
+                    processQueue()
+                    api.uncatalog_object(ar, recursive=True)
+                    processQueue()
                     parent.manage_renameObject(ar_id, new_id)
                     ar = parent[new_id]
                 if api.get_id(ar) != new_id:
                     raise ValueError("Sample ID does not match request")
-                ar.reindexObject()
+                # Walk contained objects, not getAnalyses() (catalog-backed).
+                # Finish indexing here so failures roll back conversion too.
+                api.catalog_object(ar, recursive=True)
+                processQueue()
                 sample_id = api.get_id(ar)
                 # Link back and move the request forward (received -> in_progress).
                 self.context.created_sample_id = sample_id
