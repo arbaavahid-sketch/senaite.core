@@ -233,6 +233,27 @@ class SampleRequestView(BrowserView):
             lang = "fa"
         return lang if lang in LABELS else "en"
 
+    def get_field_value(self, name):
+        """Redisplay scalar input safely after a validation error."""
+        if not self.error:
+            return u''
+        value = self.request.form.get(name, u'')
+        if not isinstance(value, basestring):
+            return u''
+        limit = 10000 if name in ('address', 'sample_description', 'safety_notes', 'other_tests') else 512
+        return safe_unicode(value)[:limit]
+
+    def get_selected_values(self, name):
+        if not self.error:
+            return []
+        values = self.request.form.get(name, [])
+        if isinstance(values, basestring):
+            values = [values]
+        if not isinstance(values, (list, tuple)):
+            return []
+        return [safe_unicode(value) for value in values[:200]
+                if isinstance(value, basestring) and len(value) <= 128]
+
     def _active_services(self):
         """Brains of active analysis services, sorted by title. Read with
         elevated privileges because the public form is served to Anonymous,

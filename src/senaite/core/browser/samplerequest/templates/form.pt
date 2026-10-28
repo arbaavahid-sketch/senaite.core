@@ -12,17 +12,50 @@
        tal:define="L view/labels; rtl view/is_rtl;
                    align python:'right' if rtl else 'left'"
        tal:attributes="dir python:'rtl' if rtl else 'ltr'"
-       style="max-width:720px">
+       class="tppc-request">
 
     <!-- Public customer page: hide the whole staff toolbar. -->
-    <style type="text/css">#senaite-toolbar{display:none !important;}</style>
+    <style type="text/css">
+#senaite-toolbar{display:none!important}
+body{background:#f3f7f8}
+.tppc-request .form-control[dir=ltr]{text-align:left}
+.tppc-request{--rq-ink:#183f46;--rq-accent:#167d85;--rq-line:#dde7e9;max-width:1120px;width:100%;margin:0 auto 40px;color:#233e43;text-align:start;font-size:15px;line-height:1.7}
+.tppc-request *{box-sizing:border-box}
+.tppc-request .rq-brand{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;color:var(--rq-ink)}
+.tppc-request .rq-brand strong{font-size:17px}.tppc-request .rq-brand>span{font-size:12px;color:#557078;border:1px solid var(--rq-line);border-radius:30px;padding:5px 12px}
+.tppc-request .rq-hero{background:#153f46;color:#fff;padding:34px 38px;border-radius:18px;margin-bottom:22px;position:relative;overflow:hidden;border-inline-start:5px solid #3eb0ad}
+.tppc-request .rq-eyebrow{font:11px/1.5 Arial,sans-serif;letter-spacing:2px;color:#9dd7d6;direction:ltr;text-align:start;margin-bottom:13px}
+.tppc-request h1{font-size:29px;line-height:1.6;font-weight:600;color:#fff;margin:0 0 10px}.tppc-request .rq-hero p{max-width:780px;color:#d5e6e8;margin:0;font-size:15px}
+.tppc-request .rq-flow{display:flex;gap:10px 25px;flex-wrap:wrap;margin-top:24px;padding-top:18px;border-top:1px solid #42646b;font-size:12px;color:#c7e6e6}
+.tppc-request .rq-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.tppc-request .rq-nav a{border:1px solid var(--rq-line);color:#416068;padding:7px 14px;border-radius:7px;background:#fff;text-decoration:none;font-size:13px}.tppc-request .rq-nav a:hover{border-color:var(--rq-accent);background:#edf7f7}
+.tppc-request .rq-required-note{font-size:12px;color:#637980;margin:0 0 18px}.tppc-request .rq-required{color:#b44345;margin-inline-start:5px}
+.tppc-request .rq-section{border:1px solid var(--rq-line);border-radius:14px;background:#fff;margin:0 0 20px;padding:26px 30px;box-shadow:0 4px 18px rgba(23,61,67,.035);scroll-margin-top:20px}
+.tppc-request .rq-section-heading{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding-bottom:17px;border-bottom:1px solid #edf1f2}.tppc-request .rq-number{background:#eaf5f4;color:#14777d;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;font:600 12px Arial,sans-serif;flex-shrink:0}.tppc-request h2{font-size:18px;font-weight:600;line-height:1.6;margin:0;color:var(--rq-ink)}
+.tppc-request .rq-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 26px}.tppc-request .rq-wide{grid-column:1/-1}.tppc-request .form-group{margin:0;min-width:0}.tppc-request label{font-size:13px;font-weight:500;margin-bottom:8px;display:block;color:#294b53}
+.tppc-request .form-control{background:#fbfcfd;border:1px solid #cfdde1;border-radius:7px;min-height:46px;font-size:14px;color:#233e43;padding:10px 12px;box-shadow:none;width:100%}.tppc-request textarea.form-control{min-height:94px;resize:vertical}.tppc-request .form-control:focus{border-color:#16828a;box-shadow:0 0 0 3px #dff0f0;outline:none;background:white}.tppc-request .form-text{font-size:12px!important;color:#6a7f86!important;line-height:1.8;margin-top:7px}
+.tppc-request input[type=checkbox]{accent-color:#167d85}.tppc-request .form-check{padding:0!important;margin:0}.tppc-request .form-check-input{position:static!important;float:none!important;margin:0!important;flex-shrink:0;width:16px;height:16px}.tppc-request .form-check-label{display:flex!important;align-items:baseline;gap:9px;cursor:pointer;line-height:1.9}
+.tppc-request #rq-safety .form-check{display:inline-flex!important;margin:0 0 8px 12px!important;padding:7px 12px!important;border:1px solid #e1e9eb;border-radius:7px;background:#fafcfc}.tppc-request #rq-safety .form-check-label{margin:0;font-size:12px}
+.tppc-request .rq-test-list{max-height:390px;overflow:auto;border:1px solid var(--rq-line);border-radius:9px;background:#fbfcfd;padding:12px 16px}.tppc-request .cc-cat>div:first-child{color:#16787f;font-size:13px;padding:8px 0;border-bottom:1px solid #e5edef;margin-bottom:8px!important}.tppc-request .cc-test-item{padding:9px 4px!important;border-bottom:1px solid #edf1f2}.tppc-request .cc-test-item:last-child{border:0}.tppc-request .cc-test-item label{margin:0;font-size:13px}.tppc-request .rq-test-count{font-size:12px;color:#14747a;margin:0 0 10px}.tppc-request #rq-selected-count{font-weight:700;font-size:15px}
+.tppc-request .rq-terms-box{background:#f4f8f9;border:1px solid #e3ebed;border-radius:9px;padding:18px 22px;font-size:13px;color:#526a71}.tppc-request .rq-terms-box li{margin:8px 0}.tppc-request .rq-declaration{background:#edf6f5;padding:15px;border-radius:8px}.tppc-request .rq-declaration label{margin:0}
+.tppc-request .rq-submit-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:6px 0 20px}.tppc-request .rq-submit-bar p{margin:0;color:#6a7f86;font-size:12px}.tppc-request .btn-primary{background:#167d85;border-color:#167d85;border-radius:8px;padding:12px 28px;font-size:14px;font-weight:600}.tppc-request .btn-primary:hover{background:#115f66;border-color:#115f66}.tppc-request a:focus-visible,.tppc-request button:focus-visible,.tppc-request input[type=checkbox]:focus-visible{outline:3px solid #82c7ca;outline-offset:3px}.tppc-request .alert{border-radius:10px;padding:22px}.tppc-request .alert a{overflow-wrap:anywhere}
+@media(max-width:760px){.tppc-request{padding:0 12px;font-size:14px}.tppc-request .rq-brand{padding:15px 0}.tppc-request .rq-brand strong{font-size:14px}.tppc-request .rq-brand>span{display:none}.tppc-request .rq-hero{padding:25px 22px;border-radius:12px}.tppc-request h1{font-size:23px}.tppc-request .rq-flow{gap:8px;flex-direction:column}.tppc-request .rq-section{padding:20px 18px}.tppc-request .rq-grid{grid-template-columns:minmax(0,1fr);gap:18px}.tppc-request .rq-nav a{font-size:12px;padding:6px 10px}.tppc-request .rq-submit-bar{flex-direction:column-reverse;align-items:stretch}.tppc-request .rq-submit-bar button{width:100%}.tppc-request .rq-submit-bar p{text-align:center}.tppc-request .rq-terms-box{padding:14px}.tppc-request h2{font-size:16px}}
 
-    <div tal:attributes="style string:border-bottom:2px solid #0d6efd;; margin-bottom:1.5rem;; padding-bottom:.5rem;; text-align:${align}">
-      <strong style="font-size:1.1rem"
-              tal:content="context/@@plone_portal_state/navigation_root_title">Laboratory</strong>
+</style>
+
+    <header class="rq-brand">
+      <strong tal:content="context/@@plone_portal_state/navigation_root_title">Laboratory</strong>
+      <span tal:content="python:u'پذیرش آنلاین نمونه' if rtl else 'Online sample intake'">Online sample intake</span>
+    </header>
+    <div class="rq-hero">
+      <div class="rq-eyebrow">TPPC / LABORATORY SERVICES</div>
+      <h1 tal:content="L/title">Request a test</h1>
+      <p tal:content="L/intro">Introduction</p>
+      <div class="rq-flow" tal:attributes="aria-label python:u'مراحل درخواست' if rtl else 'Request process'">
+        <span tal:content="python:u'۱. تکمیل اطلاعات' if rtl else '1. Complete the form'" />
+        <span tal:content="python:u'۲. دریافت شماره پیگیری' if rtl else '2. Receive tracking number'" />
+        <span tal:content="python:u'۳. ارسال نمونه فیزیکی' if rtl else '3. Send the physical sample'" />
+      </div>
     </div>
-
-    <h1 tal:attributes="style string:text-align:${align}" tal:content="L/title">Request a test</h1>
 
     <!-- Thank-you -->
     <div tal:condition="view/tracking" class="alert alert-success"
@@ -40,15 +73,21 @@
       <a tal:condition="view/track_link" class="btn btn-sm btn-primary"
          tal:attributes="href view/track_link"
          tal:content="L/track_link">Track this request</a>
-      <a href="sample-request" class="btn btn-sm btn-outline-primary"
+      <a href="@@sample-request" class="btn btn-sm btn-outline-primary"
          tal:content="L/again">Submit another</a>
     </div>
 
     <tal:form tal:condition="not:view/tracking">
-      <p class="text-muted" tal:attributes="style string:text-align:${align}"
-         tal:content="L/intro">intro</p>
+      <nav class="rq-nav" tal:attributes="aria-label python:u'بخش‌های فرم' if rtl else 'Form sections'">
+        <a href="#rq-client" tal:content="L/sec_client" />
+        <a href="#rq-sample" tal:content="L/sec_sample" />
+        <a href="#rq-safety" tal:content="L/sec_safety" />
+        <a href="#rq-tests" tal:content="L/sec_tests" />
+        <a href="#rq-terms" tal:content="L/sec_terms" />
+      </nav>
+      <p class="rq-required-note" tal:content="python:u'فیلدهای ستاره‌دار الزامی هستند.' if rtl else 'Fields marked with an asterisk are required.'" />
 
-      <div tal:condition="view/error" class="alert alert-danger"
+      <div tal:condition="view/error" class="alert alert-danger" role="alert"
            tal:attributes="style string:text-align:${align}"
            tal:content="view/error">error</div>
 
@@ -56,84 +95,92 @@
 
         <!-- Honeypot: hidden from humans (off-screen), bots tend to fill it. -->
         <div aria-hidden="true"
-             style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden">
+             style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); clip-path:inset(50%); white-space:nowrap">
           <label>Website</label>
           <input type="text" name="website" tabindex="-1" autocomplete="off"/>
         </div>
 
-        <h5 class="mt-3" tal:content="L/sec_client">Client information</h5>
+        <section class="rq-section" id="rq-client" aria-labelledby="rq-title-client">
+          <div class="rq-section-heading"><span class="rq-number">01</span><h2 id="rq-title-client" tal:content="L/sec_client">Section</h2></div>
+          <div class="rq-grid">
         <div class="form-group">
-          <label tal:content="L/client">Client</label>
-          <input type="text" class="form-control" name="client_name" required="required"/>
+          <label for="rq-client_name"><span tal:content="L/client">Client</span><span class="rq-required" aria-hidden="true">*</span></label>
+          <input type="text" class="form-control" maxlength="512" name="client_name" id="rq-client_name" autocomplete="organization" required="required" tal:attributes="value python:view.get_field_value('client_name')"/>
         </div>
         <div class="form-group">
-          <label tal:content="L/contact">Contact</label>
-          <input type="text" class="form-control" name="contact_name" required="required"/>
+          <label for="rq-contact_name"><span tal:content="L/contact">Contact</span><span class="rq-required" aria-hidden="true">*</span></label>
+          <input type="text" class="form-control" maxlength="512" name="contact_name" id="rq-contact_name" autocomplete="name" required="required" tal:attributes="value python:view.get_field_value('contact_name')"/>
         </div>
         <div class="form-group">
-          <label tal:content="L/email">Email</label>
-          <input type="email" class="form-control" name="contact_email" required="required"/>
+          <label for="rq-contact_email"><span tal:content="L/email">Email</span><span class="rq-required" aria-hidden="true">*</span></label>
+          <input type="email" class="form-control" maxlength="254" name="contact_email" id="rq-contact_email" autocomplete="email" dir="ltr" required="required" tal:attributes="value python:view.get_field_value('contact_email')"/>
           <small class="form-text text-muted" tal:content="L/email_hint">hint</small>
         </div>
         <div class="form-group">
-          <label tal:content="L/phone">Phone</label>
-          <input type="text" class="form-control" name="contact_phone" required="required"/>
+          <label for="rq-contact_phone"><span tal:content="L/phone">Phone</span><span class="rq-required" aria-hidden="true">*</span></label>
+          <input type="text" class="form-control" maxlength="512" name="contact_phone" inputmode="tel" id="rq-contact_phone" autocomplete="tel" dir="ltr" required="required" tal:attributes="value python:view.get_field_value('contact_phone')"/>
+        </div>
+        <div class="form-group rq-wide">
+          <label for="rq-address"><span tal:content="L/address">Address</span></label>
+          <textarea class="form-control" name="address" id="rq-address" autocomplete="street-address" rows="2" maxlength="10000" tal:content="python:view.get_field_value('address')"></textarea>
         </div>
         <div class="form-group">
-          <label tal:content="L/address">Address</label>
-          <textarea class="form-control" name="address" rows="2"></textarea>
+          <label for="rq-economic_code"><span tal:content="L/economic_code">Economic code</span></label>
+          <input type="text" class="form-control" maxlength="512" name="economic_code" id="rq-economic_code" dir="ltr" tal:attributes="value python:view.get_field_value('economic_code')"/>
         </div>
         <div class="form-group">
-          <label tal:content="L/economic_code">Economic code</label>
-          <input type="text" class="form-control" name="economic_code"/>
-        </div>
-        <div class="form-group">
-          <label tal:content="L/referral">How did you hear about us</label>
-          <input type="text" class="form-control" name="referral_source"/>
+          <label for="rq-referral_source"><span tal:content="L/referral">How did you hear about us</span></label>
+          <input type="text" class="form-control" maxlength="512" name="referral_source" id="rq-referral_source" tal:attributes="value python:view.get_field_value('referral_source')"/>
         </div>
 
-        <h5 class="mt-4" tal:content="L/sec_sample">Sample information</h5>
-        <div class="form-group">
-          <label tal:content="L/subject">Subject</label>
-          <input type="text" class="form-control" name="subject" required="required"/>
+        </div></section>
+        <section class="rq-section" id="rq-sample" aria-labelledby="rq-title-sample">
+          <div class="rq-section-heading"><span class="rq-number">02</span><h2 id="rq-title-sample" tal:content="L/sec_sample">Section</h2></div>
+          <div class="rq-grid">
+        <div class="form-group rq-wide">
+          <label for="rq-subject"><span tal:content="L/subject">Subject</span><span class="rq-required" aria-hidden="true">*</span></label>
+          <input type="text" class="form-control" maxlength="512" name="subject" id="rq-subject" required="required" tal:attributes="value python:view.get_field_value('subject')"/>
         </div>
         <div class="form-group">
-          <label tal:content="L/sample_type">Sample type</label>
-          <input type="text" class="form-control" name="sample_type"/>
+          <label for="rq-sample_type"><span tal:content="L/sample_type">Sample type</span></label>
+          <input type="text" class="form-control" maxlength="512" name="sample_type" id="rq-sample_type" tal:attributes="value python:view.get_field_value('sample_type')"/>
         </div>
         <div class="form-group">
-          <label tal:content="L/nature">Nature</label>
-          <input type="text" class="form-control" name="sample_nature"/>
+          <label for="rq-sample_nature"><span tal:content="L/nature">Nature</span></label>
+          <input type="text" class="form-control" maxlength="512" name="sample_nature" id="rq-sample_nature" tal:attributes="value python:view.get_field_value('sample_nature')"/>
         </div>
         <div class="form-group">
-          <label tal:content="L/matrix">Matrix</label>
-          <input type="text" class="form-control" name="sample_matrix"/>
+          <label for="rq-sample_matrix"><span tal:content="L/matrix">Matrix</span></label>
+          <input type="text" class="form-control" maxlength="512" name="sample_matrix" id="rq-sample_matrix" tal:attributes="value python:view.get_field_value('sample_matrix')"/>
         </div>
         <div class="form-group">
-          <label tal:content="L/quantity">Quantity</label>
-          <input type="text" class="form-control" name="quantity"/>
+          <label for="rq-quantity"><span tal:content="L/quantity">Quantity</span></label>
+          <input type="text" class="form-control" maxlength="512" name="quantity" id="rq-quantity" dir="ltr" tal:attributes="value python:view.get_field_value('quantity')"/>
         </div>
         <div class="form-group">
-          <label tal:content="L/sampling_date">Sampling date</label>
-          <input type="date" class="form-control" name="sampling_date"/>
+          <label for="rq-sampling_date"><span tal:content="L/sampling_date">Sampling date</span></label>
+          <input type="date" class="form-control" maxlength="512" name="sampling_date" id="rq-sampling_date" dir="ltr" tal:attributes="value python:view.get_field_value('sampling_date')"/>
         </div>
         <div class="form-group">
-          <label tal:content="L/sampling_point">Sampling point</label>
-          <input type="text" class="form-control" name="sampling_point"/>
+          <label for="rq-sampling_point"><span tal:content="L/sampling_point">Sampling point</span></label>
+          <input type="text" class="form-control" maxlength="512" name="sampling_point" id="rq-sampling_point" tal:attributes="value python:view.get_field_value('sampling_point')"/>
         </div>
         <div class="form-group">
-          <label tal:content="L/condition">Condition</label>
-          <input type="text" class="form-control" name="sample_condition"
-                 tal:attributes="placeholder L/condition_ph"/>
+          <label for="rq-sample_condition"><span tal:content="L/condition">Condition</span></label>
+          <input type="text" class="form-control" maxlength="512" name="sample_condition" id="rq-sample_condition"
+                 tal:attributes="value python:view.get_field_value('sample_condition'); placeholder L/condition_ph"/>
           <small class="form-text text-muted" tal:content="L/condition_hint">hint</small>
         </div>
-        <div class="form-group">
-          <label tal:content="L/description">Description</label>
-          <textarea class="form-control" name="sample_description" rows="2"></textarea>
+        <div class="form-group rq-wide">
+          <label for="rq-sample_description"><span tal:content="L/description">Description</span></label>
+          <textarea class="form-control" name="sample_description" id="rq-sample_description" rows="2" maxlength="10000" tal:content="python:view.get_field_value('sample_description')"></textarea>
         </div>
 
-        <h5 class="mt-4" tal:content="L/sec_safety">Storage &amp; safety</h5>
-        <div class="form-group">
+        </div></section>
+        <section class="rq-section" id="rq-safety" aria-labelledby="rq-title-safety">
+          <div class="rq-section-heading"><span class="rq-number">03</span><h2 id="rq-title-safety" tal:content="L/sec_safety">Section</h2></div>
+          <div class="rq-grid">
+        <div class="form-group rq-wide">
           <label tal:content="L/storage">Storage conditions</label>
           <div>
             <div class="form-check" tal:repeat="opt L/opt_storage"
@@ -141,13 +188,13 @@
               <label class="form-check-label">
                 <input type="checkbox" class="form-check-input"
                        name="storage_conditions:list"
-                       tal:attributes="value opt"/>
+                       tal:attributes="checked python:opt in view.get_selected_values('storage_conditions'); value opt"/>
                 <span tal:content="opt">option</span>
               </label>
             </div>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group rq-wide">
           <label tal:content="L/hazards">Safety &amp; hazards</label>
           <div>
             <div class="form-check" tal:repeat="opt L/opt_safety"
@@ -155,31 +202,35 @@
               <label class="form-check-label">
                 <input type="checkbox" class="form-check-input"
                        name="safety_hazards:list"
-                       tal:attributes="value opt"/>
+                       tal:attributes="checked python:opt in view.get_selected_values('safety_hazards'); value opt"/>
                 <span tal:content="opt">option</span>
               </label>
             </div>
           </div>
         </div>
-        <div class="form-group">
-          <label tal:content="L/safety_notes">Safety notes / MSDS</label>
-          <textarea class="form-control" name="safety_notes" rows="2"></textarea>
+        <div class="form-group rq-wide">
+          <label for="rq-safety_notes"><span tal:content="L/safety_notes">Safety notes / MSDS</span></label>
+          <textarea class="form-control" name="safety_notes" id="rq-safety_notes" rows="2" maxlength="10000" tal:content="python:view.get_field_value('safety_notes')"></textarea>
           <small class="form-text text-muted" tal:content="L/safety_notes_hint">hint</small>
         </div>
 
-        <h5 class="mt-4" tal:content="L/sec_tests">Tests &amp; delivery</h5>
-        <div class="form-group" tal:define="groups view/service_groups">
-          <label tal:content="L/tests">Requested tests</label>
+        </div></section>
+        <section class="rq-section" id="rq-tests" aria-labelledby="rq-title-tests">
+          <div class="rq-section-heading"><span class="rq-number">04</span><h2 id="rq-title-tests" tal:content="L/sec_tests">Section</h2></div>
+          <div class="rq-grid">
+        <div class="form-group rq-wide" tal:define="groups view/service_groups">
+          <label for="cc-test-search" tal:content="L/tests">Requested tests</label>
+          <div class="rq-test-count" aria-live="polite"><span id="rq-selected-count">0</span> <span tal:content="python:u'آزمون انتخاب شده' if rtl else 'tests selected'" /></div>
 
           <div tal:condition="not:groups" class="alert alert-warning"
                tal:content="L/tests_none">No tests available.</div>
 
           <tal:picker tal:condition="groups">
-            <input type="text" class="form-control mb-2" id="cc-test-search"
+            <input type="text" class="form-control mb-2" id="cc-test-search" autocomplete="off"
                    tal:attributes="placeholder L/tests_search"
-                   onkeyup="ccFilterTests()"/>
+                   oninput="ccFilterTests()"/>
             <div id="cc-test-list"
-                 style="max-height:280px;overflow:auto;border:1px solid #ddd;padding:.5rem">
+                 class="rq-test-list">
               <div tal:repeat="grp groups" class="cc-cat">
                 <div style="font-weight:bold;margin:.4rem 0 .2rem"
                      tal:content="grp/category">Category</div>
@@ -187,27 +238,29 @@
                   <label class="form-check-label">
                     <input type="checkbox" class="form-check-input"
                            name="service_uids:list"
-                           tal:attributes="value s/uid"/>
+                           tal:attributes="checked python:s['uid'] in view.get_selected_values('service_uids'); value s/uid"/>
                     <span tal:content="s/title">service</span>
                   </label>
                 </div>
               </div>
             </div>
+            <p id="rq-test-empty" hidden="hidden" class="form-text text-muted"
+               tal:content="python:u'آزمونی با این عبارت پیدا نشد؛ نام یا شمارهٔ روش دیگری را جستجو کنید.' if rtl else 'No tests match. Try another name or method number.'" />
           </tal:picker>
         </div>
-        <div class="form-group">
-          <label tal:content="L/other_tests">Other tests</label>
-          <textarea class="form-control" name="other_tests" rows="2"></textarea>
+        <div class="form-group rq-wide">
+          <label for="rq-other_tests"><span tal:content="L/other_tests">Other tests</span></label>
+          <textarea class="form-control" name="other_tests" id="rq-other_tests" rows="2" maxlength="10000" tal:content="python:view.get_field_value('other_tests')"></textarea>
           <small class="form-text text-muted" tal:content="L/tests_hint">hint</small>
         </div>
 
         <script type="text/javascript">
           function ccFilterTests() {
             var q = (document.getElementById('cc-test-search').value || '')
-                      .toLowerCase();
+                      .toLowerCase().replace(/ي/g, 'ی').replace(/ك/g, 'ک');
             var items = document.querySelectorAll('#cc-test-list .cc-test-item');
             items.forEach(function (it) {
-              var t = it.textContent.toLowerCase();
+              var t = it.textContent.toLowerCase().replace(/ي/g, 'ی').replace(/ك/g, 'ک');
               it.style.display = (t.indexOf(q) > -1) ? '' : 'none';
             });
             // hide category headers with no visible items
@@ -217,45 +270,64 @@
                 function (it) { return it.style.display !== 'none'; });
               c.style.display = any ? '' : 'none';
             });
+            var found = Array.prototype.some.call(items, function (it) { return it.style.display !== 'none'; });
+            document.getElementById('rq-test-empty').hidden = found;
           }
         </script>
         <div class="form-group">
-          <label tal:content="L/priority">Priority</label>
-          <select class="form-control" name="priority">
-            <option value="normal" tal:content="L/prio_normal">Normal</option>
-            <option value="urgent" tal:content="L/prio_urgent">Urgent</option>
+          <label for="rq-priority"><span tal:content="L/priority">Priority</span></label>
+          <select class="form-control" name="priority" id="rq-priority">
+            <option value="normal" tal:attributes="selected python:(view.get_field_value('priority') or 'normal') == 'normal'" tal:content="L/prio_normal">Normal</option>
+            <option value="urgent" tal:attributes="selected python:(view.get_field_value('priority') or 'normal') == 'urgent'" tal:content="L/prio_urgent">Urgent</option>
           </select>
         </div>
         <div class="form-group">
-          <label tal:content="L/delivery">Report delivery</label>
-          <select class="form-control" name="report_delivery">
-            <option value="email" tal:content="L/del_email">Email</option>
-            <option value="inperson" tal:content="L/del_inperson">In person</option>
-            <option value="post" tal:content="L/del_post">Post</option>
+          <label for="rq-report_delivery"><span tal:content="L/delivery">Report delivery</span></label>
+          <select class="form-control" name="report_delivery" id="rq-report_delivery">
+            <option value="email" tal:attributes="selected python:(view.get_field_value('report_delivery') or 'email') == 'email'" tal:content="L/del_email">Email</option>
+            <option value="inperson" tal:attributes="selected python:(view.get_field_value('report_delivery') or 'email') == 'inperson'" tal:content="L/del_inperson">In person</option>
+            <option value="post" tal:attributes="selected python:(view.get_field_value('report_delivery') or 'email') == 'post'" tal:content="L/del_post">Post</option>
           </select>
         </div>
 
-        <h5 class="mt-4" tal:content="L/sec_terms">Declaration &amp; terms</h5>
-        <div class="form-group">
-          <div style="border:1px solid #e3e7ee;; border-radius:8px;; padding:.75rem 1rem;; background:#f8f9fb;; max-height:180px;; overflow:auto">
+        </div></section>
+        <section class="rq-section" id="rq-terms" aria-labelledby="rq-title-terms">
+          <div class="rq-section-heading"><span class="rq-number">05</span><h2 id="rq-title-terms" tal:content="L/sec_terms">Section</h2></div>
+          <div class="rq-grid">
+        <div class="form-group rq-wide">
+          <div class="rq-terms-box">
             <strong tal:content="L/terms_title">Terms</strong>
             <ul tal:attributes="style string:padding-${align}:1.2rem;; margin:.4rem 0 0">
               <li tal:repeat="t L/terms_items" tal:content="t">term</li>
             </ul>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group rq-wide rq-declaration">
           <div class="form-check">
             <label class="form-check-label">
               <input type="checkbox" class="form-check-input"
-                     name="declaration" value="1" required="required"/>
+                     name="declaration" value="1" required="required" tal:attributes="checked python:view.get_field_value('declaration') == '1'"/>
               <span tal:content="L/declaration">I accept the terms.</span>
             </label>
           </div>
         </div>
 
+        </div></section>
+        <div class="rq-submit-bar"><p tal:content="python:u'پس از ثبت، شماره و لینک پیگیری را ذخیره کنید.' if rtl else 'Save your tracking number and link after submitting.'" />
         <button type="submit" name="submit" value="1"
-                class="btn btn-primary mt-2" tal:content="L/submit">Submit</button>
+                class="btn btn-primary mt-2" tal:content="L/submit">Submit</button></div>
+
+        <script type="text/javascript">
+          (function () {
+            var root = document.querySelector('.tppc-request');
+            var list = root.querySelector('#cc-test-list');
+            if (!list) return;
+            var count = root.querySelector('#rq-selected-count');
+            function update() { count.textContent = list.querySelectorAll('input[type="checkbox"]:checked').length; }
+            list.addEventListener('change', update);
+            update();
+          }());
+        </script>
       </form>
     </tal:form>
 
