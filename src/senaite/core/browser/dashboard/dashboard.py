@@ -21,6 +21,7 @@
 import collections
 import datetime
 import json
+import pytz
 from calendar import monthrange
 from time import time
 
@@ -35,6 +36,7 @@ from bika.lims.browser import BrowserView
 from bika.lims.utils import get_strings
 from DateTime import DateTime
 from plone.memoize import ram
+from plone.app.event.base import default_timezone
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.i18n import translate as zope_translate
@@ -296,11 +298,21 @@ class DashboardView(BrowserView):
         return api.get_user_fullname(user)
 
     def get_current_date(self):
-        return datetime.datetime.now().strftime(
+        return self.get_current_datetime().strftime(
             "%A, %d %B %Y")
 
     def get_current_time(self):
-        return datetime.datetime.now().strftime("%H:%M")
+        return self.get_current_datetime().strftime("%H:%M")
+
+    def get_current_datetime(self):
+        """Use one instant per page and the existing user/portal timezone."""
+        if not hasattr(self, '_current_datetime'):
+            timezone = pytz.timezone(default_timezone(self.context))
+            self._current_datetime = datetime.datetime.now(timezone)
+        return self._current_datetime
+
+    def get_current_timezone(self):
+        return self.get_current_datetime().tzinfo.zone
 
     # --- Status cards ---
 
