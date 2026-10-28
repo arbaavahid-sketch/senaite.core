@@ -8,6 +8,9 @@
 import json
 import os
 import ssl
+import hashlib
+import re
+from six import integer_types, string_types, text_type
 
 try:  # Py2 runtime
     import urllib2 as _urllib
@@ -36,6 +39,16 @@ def is_configured():
     return bool(merchant_id())
 
 
+def payment_scope():
+    """Bind attempts to their merchant and environment without storing the key."""
+    fingerprint = hashlib.sha256(merchant_id().encode('utf-8')).hexdigest()
+    return ('sandbox:' if _sandbox() else 'live:') + fingerprint
+
+
+def valid_authority(value):
+    return isinstance(value, string_types) and bool(re.match(r'^[A-Za-z0-9]{1,128}\Z', value))
+
+
 def start_pay_url(authority):
     return "%s/StartPay/%s" % (_base(), authority)
 
@@ -52,7 +65,10 @@ def _post(path, payload):
         resp = _urllib.urlopen(req, timeout=20, context=ctx)
     except TypeError:  # older urlopen without context kwarg
         resp = _urllib.urlopen(req, timeout=20)
-    body = resp.read()
+    try:
+        body = resp.read()
+    finally:
+        resp.close()
     if isinstance(body, bytes):
         body = body.decode("utf-8")
     return json.loads(body)
@@ -61,6 +77,8 @@ def _post(path, payload):
 def request_payment(amount_rial, callback_url, description=u"", mobile=u"",
                     email=u""):
     """Create a payment request. Returns (authority, error_message)."""
+    if not is_configured() or int(amount_rial) < 1000:
+        return None, u'gateway_not_configured_or_invalid_amount'
     payload = {
         "merchant_id": merchant_id(),
         "amount": int(amount_rial),
@@ -78,15 +96,19 @@ def request_payment(amount_rial, callback_url, description=u"", mobile=u"",
     try:
         res = _post("/v4/payment/request.json", payload)
     except Exception as exc:  # noqa
-        return None, u"connection error: %s" % exc
-    data = (res or {}).get("data") or {}
-    if data.get("code") == 100 and data.get("authority"):
+        return None, u"connection_error:%s" % type(exc).__name__
+    data = res.get('data') if isinstance(res, dict) else None
+    if not isinstance(data, dict):
+        return None, u'invalid_gateway_response'
+    if data.get("code") == 100 and valid_authority(data.get("authority")):
         return data["authority"], None
-    return None, u"zarinpal error: %s" % ((res or {}).get("errors") or data)
+    return None, u"request_failed code=%s" % data.get('code')
 
 
 def verify_payment(amount_rial, authority):
     """Verify a returned payment. Returns (ok, ref_id, error_message)."""
+    if not is_configured() or int(amount_rial) < 1000 or not valid_authority(authority):
+        return False, None, u'gateway_not_configured_or_invalid_attempt'
     payload = {
         "merchant_id": merchant_id(),
         "amount": int(amount_rial),
@@ -95,9 +117,13 @@ def verify_payment(amount_rial, authority):
     try:
         res = _post("/v4/payment/verify.json", payload)
     except Exception as exc:  # noqa
-        return False, None, u"connection error: %s" % exc
-    data = (res or {}).get("data") or {}
+        return False, None, u"connection_error:%s" % type(exc).__name__
+    data = res.get('data') if isinstance(res, dict) else None
+    if not isinstance(data, dict):
+        return False, None, u'invalid_gateway_response'
     # 100 = verified now, 101 = already verified before
-    if data.get("code") in (100, 101):
-        return True, data.get("ref_id"), None
-    return False, None, u"verify failed: %s" % ((res or {}).get("errors") or data)
+    ref = data.get('ref_id')
+    ref = text_type(ref) if isinstance(ref, integer_types + string_types) and not isinstance(ref, bool) else u''
+    if data.get("code") in (100, 101) and re.match(r'^[0-9]+\Z', ref) and int(ref) > 0:
+        return True, ref, None
+    return False, None, u"verify_failed code=%s" % data.get('code')
