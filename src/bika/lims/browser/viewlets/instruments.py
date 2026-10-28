@@ -21,6 +21,9 @@
 from bika.lims import api
 from plone.app.layout.viewlets import ViewletBase
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.CMFCore.utils import getToolByName
+from senaite.core.api.instrumentcertification import get_certificate_status
+from xml.sax.saxutils import escape
 
 
 class InstrumentQCFailuresViewlet(ViewletBase):
@@ -38,6 +41,9 @@ class InstrumentQCFailuresViewlet(ViewletBase):
             "next-test": [],
             "validation": [],
             "calibration": [],
+            "no-certificate": [],
+            "certificate-unknown": [],
+            "certificate-future": [],
         }
 
     def get_failed_instruments(self):
@@ -49,6 +55,9 @@ class InstrumentQCFailuresViewlet(ViewletBase):
 
         Return a dictionary with all info about expired/invalid instruments
         """
+        self.nr_failed = 0
+        for key in self.failed:
+            self.failed[key] = []
         bsc = api.get_tool("senaite_catalog_setup")
         insts = bsc(portal_type="Instrument", is_active=True)
         for i in insts:
@@ -57,36 +66,48 @@ class InstrumentQCFailuresViewlet(ViewletBase):
                 'uid': i.UID(),
                 'title': i.Title(),
             }
+            certificate_status = get_certificate_status(i)['status']
             if i.isValidationInProgress():
-                instr['link'] = '<a href="%s/validations">%s</a>' % (
-                    i.absolute_url(), i.Title()
-                )
+                instr['link'] = self._instrument_link(i, 'validations')
                 self.nr_failed += 1
                 self.failed['validation'].append(instr)
             elif i.isCalibrationInProgress():
-                instr['link'] = '<a href="%s/calibrations">%s</a>' % (
-                    i.absolute_url(), i.Title()
-                )
+                instr['link'] = self._instrument_link(i, 'calibrations')
                 self.nr_failed += 1
                 self.failed['calibration'].append(instr)
-            elif i.isOutOfDate():
-                instr['link'] = '<a href="%s/certifications">%s</a>' % (
-                    i.absolute_url(), i.Title()
-                )
+            elif certificate_status in ('expired', 'none', 'unknown', 'future'):
+                instr['link'] = self._instrument_link(i, 'certifications')
                 self.nr_failed += 1
-                self.failed['out-of-date'].append(instr)
+                category = {'expired': 'out-of-date', 'none': 'no-certificate',
+                            'unknown': 'certificate-unknown', 'future': 'certificate-future'}[certificate_status]
+                self.failed[category].append(instr)
             elif not i.isQCValid():
-                instr['link'] = '<a href="%s/referenceanalyses">%s</a>' % (
-                    i.absolute_url(), i.Title()
-                )
+                instr['link'] = self._instrument_link(i, 'referenceanalyses')
                 self.nr_failed += 1
                 self.failed['qc-fail'].append(instr)
             elif i.getDisposeUntilNextCalibrationTest():
-                instr['link'] = '<a href="%s/referenceanalyses">%s</a>' % (
-                    i.absolute_url(), i.Title()
-                )
+                instr['link'] = self._instrument_link(i, 'referenceanalyses')
                 self.nr_failed += 1
                 self.failed['next-test'].append(instr)
+
+    def _instrument_link(self, instrument, tab):
+        url = escape(api.safe_unicode(instrument.absolute_url()), {'"': '&quot;'})
+        title = escape(api.safe_unicode(instrument.Title()))
+        return u'<a href="%s/%s">%s</a>' % (url, tab, title)
+
+    def get_certificate_warnings(self):
+        try:
+            language = getToolByName(self.context, 'portal_languages').getPreferredLanguage() or 'fa'
+        except Exception:
+            language = 'fa'
+        persian = language.lower().split('-')[0] == 'fa'
+        labels = (
+            ('no-certificate', u'دستگاه با گواهی ثبت‌نشده:' if persian else u'Instruments with no registered certificate:'),
+            ('certificate-unknown', u'دستگاه با اطلاعات گواهی ناقص یا نامشخص:' if persian else u'Instruments with incomplete or unknown certificate information:'),
+            ('certificate-future', u'دستگاه با گواهی‌ای که اعتبارش هنوز شروع نشده:' if persian else u'Instruments whose certificate validity has not started:'),
+        )
+        return [{'label': label, 'items': self.failed[key]}
+                for key, label in labels if self.failed[key]]
 
     def available(self):
         """Control availability of the viewlet

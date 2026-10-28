@@ -26,6 +26,8 @@
       <span class="badge badge-warning" tal:content="string:${L/st_due}: ${summary/due}">Due</span>
       <span class="badge badge-danger" tal:content="string:${L/st_expired}: ${summary/expired}">Expired</span>
       <span class="badge badge-light" tal:content="string:${L/st_none}: ${summary/none}">None</span>
+      <span class="badge badge-warning" tal:content="string:${L/st_unknown}: ${summary/unknown}">Unknown</span>
+      <span class="badge badge-info" tal:content="string:${L/st_future}: ${summary/future}">Future</span>
     </div>
 
     <form method="get" class="mb-3" tal:attributes="style string:text-align:${align}">
