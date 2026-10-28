@@ -6,6 +6,13 @@
 
   <include package="plone.resource"/>
 
+  <!-- Explicit per-report laboratory stamp selection in IMPRESS. -->
+  <plone:static
+      directory="report_stamp_js"
+      type="senaite.impress.js"
+      name="tppc-report-stamps"
+      />
+
   <!-- One-off admin tool: stamp AnalysisService method/standard strings. -->
   <browser:page
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
