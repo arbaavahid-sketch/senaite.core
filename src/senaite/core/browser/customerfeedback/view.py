@@ -7,6 +7,9 @@
 # a tracking number. Bilingual: Persian (fa, RTL) / English (en, LTR).
 
 from datetime import date
+import transaction
+from ZODB.POSException import ConflictError
+from senaite.core.browser.publicforms import guard, reject
 
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
@@ -133,7 +136,9 @@ class CustomerFeedbackView(BrowserView):
         return [(val, txt[self.lang]) for val, txt in COMPLAINT_CATEGORIES]
 
     def _handle_submit(self):
-        form = self.request.form
+        form = guard(self)
+        if form is None:
+            return
         # Honeypot: a hidden field humans never see but bots fill in. If it has
         # any value, silently drop the submission (no record, no error).
         if (form.get("website") or "").strip():
@@ -188,6 +193,7 @@ class CustomerFeedbackView(BrowserView):
         # Allow the (possibly low-privilege / anonymous) submitter to write.
         if IDisableCSRFProtection is not None:
             alsoProvides(self.request, IDisableCSRFProtection)
+        savepoint = transaction.savepoint(optimistic=True)
         try:
             with api.security.as_privileged_user():
                 container = self._container()
@@ -197,8 +203,12 @@ class CustomerFeedbackView(BrowserView):
                 if token:
                     self.track_link = "%s/@@track-request?token=%s" % (
                         api.get_url(api.get_portal()), token)
-        except Exception as exc:  # noqa
-            self.error = u"%s" % exc
+        except ConflictError:
+            raise
+        except Exception:
+            savepoint.rollback()
+            self.tracking = self.track_link = ''
+            reject(self, 'save')
 
     def _container(self):
         setup = api.get_senaite_setup()
