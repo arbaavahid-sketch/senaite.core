@@ -13,6 +13,7 @@
   <head>
     <div tal:replace="structure provider:plone.htmlhead" />
 
+    <link rel="stylesheet" tal:attributes="href string:${portal_url}/++plone++senaite.core.static/css/tppc-vazirmatn.css" />
     <style>
      html {
        background-color:#cdcdcd;

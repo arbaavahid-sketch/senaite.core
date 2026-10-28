@@ -201,7 +201,7 @@
             tal:attributes="href string:${portal_url}/++plone++senaite.core.static/css/senaite.rtl.css" />
 
       <link rel="stylesheet" type="text/css"
-            tal:attributes="href string:${portal_url}/++plone++senaite.core.static/css/tppc-on-fonts.css" />
+            tal:attributes="href string:${portal_url}/++plone++senaite.core.static/css/tppc-vazirmatn.css" />
     </body>
   </html>
 
