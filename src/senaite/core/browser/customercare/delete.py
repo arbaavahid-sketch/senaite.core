@@ -4,24 +4,23 @@
 # support requests) by id. Because the submission form is public, the register
 # will accumulate spam/test entries; this gives staff a reliable way to remove
 # them. Deletion runs as the privileged system user so it works regardless of
-# the record's workflow state (e.g. closed) and bypasses CSRF for the POST.
+# the record's workflow state, after permission and POST validation.
 
 from Products.Five.browser import BrowserView
-from zope.interface import alsoProvides
+from AccessControl import Unauthorized
+from plone.protect import CheckAuthenticator, PostOnly
 
 from bika.lims import api
-
-try:
-    from plone.protect.interfaces import IDisableCSRFProtection
-except Exception:  # pragma: no cover
-    IDisableCSRFProtection = None
+from senaite.core.permissions import ManageBika
 
 
 class CustomerCareDeleteView(BrowserView):
 
     def __call__(self):
-        if IDisableCSRFProtection is not None:
-            alsoProvides(self.request, IDisableCSRFProtection)
+        PostOnly(self.request)
+        CheckAuthenticator(self.request)
+        if not api.security.check_permission(ManageBika, self.context):
+            raise Unauthorized("Managing customer care is not permitted")
 
         ids = self.request.get("ids", "")
         if isinstance(ids, (list, tuple)):
@@ -37,8 +36,6 @@ class CustomerCareDeleteView(BrowserView):
                     if present:
                         container.manage_delObjects(present)
                         deleted = present
-            import transaction
-            transaction.commit()
 
         # Redirect back to the register.
         setup_url = api.get_url(api.get_senaite_setup())

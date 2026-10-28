@@ -43,7 +43,9 @@ def load_view(source):
     namespace = {
         "BrowserView": object,
         "ViewPageTemplateFile": lambda path: None,
-        "IDisableCSRFProtection": None,
+        "PostOnly": lambda request: None,
+        "CheckAuthenticator": lambda request: None,
+        "AddAnalysisRequest": "AddAnalysisRequest",
         "ConflictError": ConflictError,
         "basestring": str,
         "logger": logging.getLogger("conversion-test"),
@@ -85,7 +87,8 @@ class ConversionTests(unittest.TestCase):
                 return self.state["objects"][key]
         self.client = Client(**self.client.__dict__)
         self.ns["api"] = Record(
-            security=Record(as_privileged_user=privileged),
+            security=Record(as_privileged_user=privileged,
+                            check_permission=lambda permission, context: True),
             get_id=lambda obj: obj.id,
             get_uid=lambda obj: getattr(obj, "uid", "client-uid"),
             get_parent=lambda obj: self.client,

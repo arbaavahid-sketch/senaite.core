@@ -66,6 +66,7 @@
                  tal:define="sampletypes view/sample_types; services view/services;
                              clients view/clients">
     <form method="post" tal:attributes="style string:text-align:${align}">
+      <input tal:replace="structure context/@@authenticator/authenticator"/>
 
       <div class="form-group">
         <label tal:content="L/pick_client">Client</label>

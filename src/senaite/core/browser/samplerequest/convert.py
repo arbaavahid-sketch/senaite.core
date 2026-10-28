@@ -16,19 +16,15 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.indexing import processQueue
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from zope.interface import alsoProvides
+from AccessControl import Unauthorized
+from plone.protect import CheckAuthenticator, PostOnly
 
 from bika.lims import api
 from bika.lims.utils.analysisrequest import create_analysisrequest
 from senaite.core.catalog import SETUP_CATALOG
+from senaite.core.permissions import AddAnalysisRequest
 
 logger = logging.getLogger("senaite.samplerequest.convert")
-
-try:
-    from plone.protect.interfaces import IDisableCSRFProtection
-except Exception:  # pragma: no cover
-    IDisableCSRFProtection = None
-
 
 LABELS = {
     "fa": {
@@ -184,8 +180,10 @@ class ConvertToSampleView(BrowserView):
     # --- conversion --------------------------------------------------------
 
     def _convert(self):
-        if IDisableCSRFProtection is not None:
-            alsoProvides(self.request, IDisableCSRFProtection)
+        PostOnly(self.request)
+        CheckAuthenticator(self.request)
+        if not api.security.check_permission(AddAnalysisRequest, self.context):
+            raise Unauthorized("Creating samples is not permitted")
 
         # Reject repeated submissions even if the linked sample was removed.
         # Never replace an existing request/sample association implicitly.

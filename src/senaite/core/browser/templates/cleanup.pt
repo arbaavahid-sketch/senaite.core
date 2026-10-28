@@ -25,6 +25,7 @@
 
     <form method="post"
           onsubmit="return confirm('حذف قطعی موارد انتخاب‌شده؟ این کار برگشت‌ناپذیر است.');">
+      <input tal:replace="structure context/@@authenticator/authenticator"/>
 
       <h3 class="mt-4">نمونه‌ها</h3>
       <table class="table table-sm table-hover" style="text-align:right">

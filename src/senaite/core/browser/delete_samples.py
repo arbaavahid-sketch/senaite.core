@@ -14,12 +14,11 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bika.lims import api
 from bika.lims.api import safe_unicode
 from senaite.core.catalog import SAMPLE_CATALOG
-from zope.interface import alsoProvides
-
-try:
-    from plone.protect.interfaces import IDisableCSRFProtection
-except Exception:  # pragma: no cover
-    IDisableCSRFProtection = None
+from senaite.core.permissions import ManageBika
+from AccessControl import Unauthorized
+from plone.protect import CheckAuthenticator, PostOnly
+from ZODB.POSException import ConflictError
+import transaction
 
 
 def _as_list(value):
@@ -36,8 +35,6 @@ class DeleteSamplesView(BrowserView):
     template = ViewPageTemplateFile("templates/cleanup.pt")
 
     def __call__(self):
-        if IDisableCSRFProtection is not None:
-            alsoProvides(self.request, IDisableCSRFProtection)
         self.message = u""
         self.error = u""
         if self.request.get("REQUEST_METHOD") == "POST" \
@@ -98,6 +95,10 @@ class DeleteSamplesView(BrowserView):
     # --- delete -----------------------------------------------------------
 
     def _delete(self):
+        PostOnly(self.request)
+        CheckAuthenticator(self.request)
+        if not api.security.check_permission(ManageBika, self.context):
+            raise Unauthorized("Deleting test data is not permitted")
         form = self.request.form
         sids = set(_as_list(form.get("sample_ids")))
         rids = set(_as_list(form.get("request_ids")))
@@ -105,6 +106,7 @@ class DeleteSamplesView(BrowserView):
             return u"چیزی انتخاب نشده بود."
 
         n_samples = n_requests = 0
+        savepoint = transaction.savepoint(optimistic=True)
         try:
             with api.security.as_privileged_user():
                 if sids:
@@ -113,13 +115,10 @@ class DeleteSamplesView(BrowserView):
                         sid = safe_unicode(api.get_id(brain))
                         if sid not in sids:
                             continue
-                        try:
-                            obj = api.get_object(brain)
-                            parent = api.get_parent(obj)
-                            parent.manage_delObjects([api.get_id(obj)])
-                            n_samples += 1
-                        except Exception:
-                            pass
+                        obj = api.get_object(brain)
+                        parent = api.get_parent(obj)
+                        parent.manage_delObjects([api.get_id(obj)])
+                        n_samples += 1
                 if rids:
                     container = api.get_senaite_setup().get("sampleintake")
                     if container is not None:
@@ -128,9 +127,10 @@ class DeleteSamplesView(BrowserView):
                         if present:
                             container.manage_delObjects(present)
                             n_requests = len(present)
-            import transaction
-            transaction.commit()
+        except ConflictError:
+            raise
         except Exception as exc:  # noqa
+            savepoint.rollback()
             self.error = safe_unicode(exc)
             return u"خطا در حذف: %s" % safe_unicode(exc)
 
