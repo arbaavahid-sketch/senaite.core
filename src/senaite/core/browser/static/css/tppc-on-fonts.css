@@ -1,0 +1,9 @@
+/* User-supplied On webfonts. Font binaries are stored in the private parent repository. */
+@font-face{font-family:"TPPC On";src:url("../fonts/on/OnLight.woff2") format("woff2");font-style:normal;font-weight:300;font-display:swap}
+@font-face{font-family:"TPPC On";src:url("../fonts/on/OnNormal.woff2") format("woff2");font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:"TPPC On";src:url("../fonts/on/OnMedium.woff2") format("woff2");font-style:normal;font-weight:500;font-display:swap}
+@font-face{font-family:"TPPC On";src:url("../fonts/on/OnSemiBold.woff2") format("woff2");font-style:normal;font-weight:600;font-display:swap}
+@font-face{font-family:"TPPC On";src:url("../fonts/on/OnBold.woff2") format("woff2");font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:"TPPC On";src:url("../fonts/on/OnBlack.woff2") format("woff2");font-style:normal;font-weight:900;font-display:swap}
+body,body *:not(i):not(.fa):not(.fas):not(.far):not(.fab):not(.fal):not(.fad):not(.icon):not(.mce-ico):not(.material-icons):not([class*="fa-"]):not([class*="icon-"]):not([class*="glyphicon"]){font-family:"TPPC On",Tahoma,Arial,sans-serif!important}
+/* Do not rewrite content or numerals, and preserve icon font families. */

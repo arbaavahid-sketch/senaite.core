@@ -17,6 +17,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.interface import alsoProvides
 
 from bika.lims import api
+from .common import PublicCustomerMixin
 
 try:
     from plone.protect.interfaces import IDisableCSRFProtection
@@ -109,7 +110,7 @@ COMPLAINT_CATEGORIES = [
 ]
 
 
-class CustomerFeedbackView(BrowserView):
+class CustomerFeedbackView(PublicCustomerMixin, BrowserView):
     template = ViewPageTemplateFile("templates/form.pt")
 
     def __call__(self):
@@ -150,6 +151,10 @@ class CustomerFeedbackView(BrowserView):
 
         kind = form.get("kind", "complaint")
         portal_type = KINDS.get(kind, "Complaint")
+        if portal_type == 'Survey' and not form.get('rating_overall'):
+            self.request.response.setStatus(400)
+            self.error = u'لطفاً امتیاز رضایت کلی را انتخاب کنید.' if self.lang == 'fa' else u'Please select an overall satisfaction rating.'
+            return
         today = date.today()
 
         common = {
@@ -188,7 +193,6 @@ class CustomerFeedbackView(BrowserView):
                         kwargs[f] = int(val)
                     except (TypeError, ValueError):
                         pass
-            kwargs.setdefault("rating_overall", 5)
 
         # Allow the (possibly low-privilege / anonymous) submitter to write.
         if IDisableCSRFProtection is not None:

@@ -1,103 +1,19 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="here/main_template/macros/master">
-<body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:metal="http://xml.zope.org/namespaces/metal" metal:use-macro="here/main_template/macros/master"><body>
+<metal:override fill-slot="top_slot" tal:define="dc1 python:request.set('disable_plone.leftcolumn',1); dc2 python:request.set('disable_plone.rightcolumn',1)" />
+<div metal:fill-slot="content" class="cc-page" tal:define="L view/labels; rtl view/is_rtl" tal:attributes="dir python:'rtl' if rtl else 'ltr'">
+<style tal:content="structure view/get_customer_styles"></style>
+<header class="cc-brand"><span class="cc-logo"><img tal:attributes="src view/get_request_logo; alt context/@@plone_portal_state/navigation_root_title" /></span><strong tal:content="context/@@plone_portal_state/navigation_root_title" /><nav class="cc-links"><a href="@@sample-request" tal:content="python:u'درخواست آزمون' if rtl else 'Request a test'" /><a href="@@customer-feedback" tal:content="python:u'شکایت و نظرسنجی' if rtl else 'Feedback'" /><a href="@@track-request" tal:content="python:u'پیگیری درخواست' if rtl else 'Track request'" /></nav></header>
+<div class="cc-hero"><div class="cc-kicker">TPPC / CUSTOMER SERVICES</div><h1 tal:content="L/title"/><p tal:content="L/intro"/></div>
 
-  <metal:override fill-slot="top_slot"
-      tal:define="dc1 python:request.set('disable_plone.leftcolumn', 1);
-                  dc2 python:request.set('disable_plone.rightcolumn', 1);" />
-
-  <div metal:fill-slot="content"
-       tal:define="L view/labels; rtl view/is_rtl;
-                   align python:'right' if rtl else 'left'"
-       tal:attributes="dir python:'rtl' if rtl else 'ltr'"
-       style="max-width:640px">
-
-    <!-- Public customer page: hide the whole staff toolbar (login, search
-         spotlight, menu) so customers get a clean form-only page. -->
-    <style type="text/css">#senaite-toolbar{display:none !important;}</style>
-
-    <div tal:attributes="style string:border-bottom:2px solid #0d6efd;; margin-bottom:1.5rem;; padding-bottom:.5rem;; text-align:${align}">
-      <strong style="font-size:1.1rem"
-              tal:content="context/@@plone_portal_state/navigation_root_title">Laboratory</strong>
-    </div>
-
-    <h1 tal:attributes="style string:text-align:${align}" tal:content="L/title">Track</h1>
-    <p class="text-muted" tal:attributes="style string:text-align:${align}"
-       tal:content="L/intro">intro</p>
-
-    <form method="get" tal:attributes="style string:text-align:${align}">
-      <div class="form-group">
-        <label tal:content="L/tracking">Tracking</label>
-        <input type="text" class="form-control" name="tracking"
-               tal:attributes="value view/tracking_id"/>
-      </div>
-      <div class="form-group">
-        <label tal:content="L/client">Client</label>
-        <input type="text" class="form-control" name="client_name"
-               tal:attributes="value view/client_name"/>
-      </div>
-      <button type="submit" name="track" value="1"
-              class="btn btn-primary" tal:content="L/track">Track</button>
-      <a href="customer-feedback" class="btn btn-link"
-         tal:content="L/submit_link">Submit new</a>
-    </form>
-
-    <div tal:condition="view/not_found" class="alert alert-warning mt-3"
-         tal:attributes="style string:text-align:${align}"
-         tal:content="L/not_found">Not found</div>
-
-    <table tal:condition="view/result"
-           class="table mt-3" tal:attributes="style string:text-align:${align}"
-           tal:define="r view/result">
-      <tr>
-        <th tal:content="L/type">Type</th>
-        <td tal:content="r/type">type</td>
-      </tr>
-      <tr>
-        <th tal:content="L/subject">Subject</th>
-        <td tal:content="r/subject">subject</td>
-      </tr>
-      <tr>
-        <th tal:content="L/status">Status</th>
-        <td><span class="badge badge-info" tal:content="r/status">status</span></td>
-      </tr>
-      <tr tal:condition="r/sample_id">
-        <th tal:content="L/sample">Sample</th>
-        <td><code tal:content="r/sample_id">sample</code></td>
-      </tr>
-      <tr>
-        <th tal:content="L/response">Response</th>
-        <td style="white-space:pre-line">
-          <span tal:condition="r/response" tal:content="r/response">response</span>
-          <span tal:condition="python:not r['response'] and r['message']"
-                class="text-muted" tal:content="r/message">ready</span>
-          <span tal:condition="python:not r['response'] and not r['message']"
-                class="text-muted" tal:content="L/no_response">none</span>
-        </td>
-      </tr>
-    </table>
-
-    <!-- Online payment (Zarinpal) -->
-    <div tal:condition="view/result" tal:define="r view/result" class="mt-3">
-      <div tal:condition="r/pay_paid"
-           style="background:#e8f7ee;border:1px solid #b6e2c6;border-radius:8px;padding:12px 14px;color:#169b4c">
-        پرداخت انجام شده ✅
-        <span tal:condition="r/pay_ref">— کد رهگیری:
-          <code tal:content="r/pay_ref">ref</code></span>
-      </div>
-      <div tal:condition="r/pay_url"
-           style="background:#fff7ed;border:1px solid #f3d3ad;border-radius:8px;padding:14px">
-        <div style="margin-bottom:8px">
-          <b>مبلغ قابل پرداخت:</b>
-          <span tal:content="r/pay_amount_fmt">0</span> ریال
-        </div>
-        <a tal:attributes="href r/pay_url"
-           style="display:inline-block;background:#ef7d1a;color:#fff;text-decoration:none;padding:10px 22px;border-radius:8px;font-size:16px">پرداخت آنلاین</a>
-      </div>
-    </div>
-
-  </div>
-</body>
-</html>
+<div tal:condition="view/error" class="cc-error" role="alert" tal:content="view/error"></div>
+<div class="cc-layout"><section class="cc-card"><h2 tal:content="python:u'اطلاعات پیگیری' if rtl else 'Tracking details'"/>
+<form method="get"><div class="cc-grid"><div class="form-group cc-wide"><label for="cc-tracking" tal:content="L/tracking"/><input type="text" class="form-control" name="tracking" id="cc-tracking" maxlength="128" dir="ltr" autocomplete="off" tal:attributes="value view/tracking_id"/></div><div class="form-group cc-wide"><label for="cc-client" tal:content="L/client"/><input type="text" class="form-control" name="client_name" id="cc-client" maxlength="512" autocomplete="organization" tal:attributes="value view/client_name"/></div></div><div class="cc-actions"><button type="submit" name="track" value="1" class="btn btn-primary" tal:content="L/track"/></div></form></section>
+<aside class="cc-side"><h2 tal:content="python:u'راهنمای پیگیری' if rtl else 'Tracking help'"/><p tal:content="python:u'شماره و نام مشتری را دقیقاً مطابق ثبت اولیه وارد کنید، یا از لینک خصوصی پیگیری استفاده کنید.' if rtl else 'Use your tracking number and registered client name, or open the private tracking link.'"/><p tal:content="python:u'اگر نام مشتری ثبت نکرده‌اید، لینک خصوصی یا کد داخل همان لینک برای پیگیری لازم است. لینک خصوصی را با دیگران به اشتراک نگذارید.' if rtl else 'If no client name was registered, use the private link or its access code. Do not share that link.'"/><a href="@@customer-feedback" tal:content="L/submit_link"/></aside></div>
+<div tal:condition="view/not_found" class="cc-notice" role="status" tal:content="L/not_found"></div>
+<section tal:condition="view/result" tal:define="r view/result" class="cc-card cc-result"><div class="cc-result-title"><h2 tal:content="python:u'وضعیت درخواست شما' if rtl else 'Your request status'"/><span class="cc-badge" tal:content="r/status"></span></div>
+<table class="cc-result-table"><tr><th scope="row" tal:content="L/type"/><td tal:content="r/type"/></tr><tr><th scope="row" tal:content="L/subject"/><td tal:content="r/subject"/></tr><tr tal:condition="r/sample_id"><th scope="row" tal:content="L/sample"/><td><code tal:content="r/sample_id"/></td></tr></table>
+<div class="cc-response"><h3 tal:content="L/response"/><span tal:condition="r/response" tal:content="r/response"></span><span tal:condition="python:not r['response'] and r['message']" tal:content="r/message"></span><span tal:condition="python:not r['response'] and not r['message']" tal:content="L/no_response"></span></div>
+<div tal:condition="r/pay_paid" class="cc-payment"><strong tal:content="python:u'پرداخت ثبت شده است' if rtl else 'Payment recorded'"/><p tal:condition="r/pay_ref"><span tal:content="python:u'کد رهگیری: ' if rtl else 'Reference: '"></span><code tal:content="r/pay_ref"/></p></div>
+<div tal:condition="r/pay_url" class="cc-payment"><p><strong tal:content="python:u'مبلغ قابل پرداخت: ' if rtl else 'Amount due: '"/><span dir="ltr" tal:content="r/pay_amount_fmt"></span> <span tal:content="python:u'ریال' if rtl else 'IRR'"></span></p><a class="btn btn-primary" tal:attributes="href r/pay_url" tal:content="python:u'پرداخت آنلاین' if rtl else 'Pay online'"/></div>
+<div tal:condition="python:r['pay_amount'] &gt;= 1000 and not r['pay_paid'] and not r['pay_url']" class="cc-notice" tal:content="python:u'برای هماهنگی پرداخت هزینه با آزمایشگاه تماس بگیرید.' if rtl else 'Please contact the laboratory to arrange payment.'"></div>
+</section></div></body></html>

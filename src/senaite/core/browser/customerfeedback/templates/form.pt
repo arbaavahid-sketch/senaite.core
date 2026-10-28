@@ -1,155 +1,70 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="here/main_template/macros/master">
-<body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:metal="http://xml.zope.org/namespaces/metal" metal:use-macro="here/main_template/macros/master"><body>
+<metal:override fill-slot="top_slot" tal:define="dc1 python:request.set('disable_plone.leftcolumn',1); dc2 python:request.set('disable_plone.rightcolumn',1)" />
+<div metal:fill-slot="content" class="cc-page" tal:define="L view/labels; rtl view/is_rtl" tal:attributes="dir python:'rtl' if rtl else 'ltr'">
+<style tal:content="structure view/get_customer_styles"></style>
+<header class="cc-brand"><span class="cc-logo"><img tal:attributes="src view/get_request_logo; alt context/@@plone_portal_state/navigation_root_title" /></span><strong tal:content="context/@@plone_portal_state/navigation_root_title" /><nav class="cc-links"><a href="@@sample-request" tal:content="python:u'درخواست آزمون' if rtl else 'Request a test'" /><a href="@@customer-feedback" tal:content="python:u'شکایت و نظرسنجی' if rtl else 'Feedback'" /><a href="@@track-request" tal:content="python:u'پیگیری درخواست' if rtl else 'Track request'" /></nav></header>
+<div class="cc-hero"><div class="cc-kicker">TPPC / CUSTOMER SERVICES</div><h1 tal:content="L/title"/><p tal:content="L/intro"/></div>
 
-  <metal:override fill-slot="top_slot"
-      tal:define="dc1 python:request.set('disable_plone.leftcolumn', 1);
-                  dc2 python:request.set('disable_plone.rightcolumn', 1);" />
-
-  <div metal:fill-slot="content"
-       tal:define="L view/labels; rtl view/is_rtl;
-                   align python:'right' if rtl else 'left'"
-       tal:attributes="dir python:'rtl' if rtl else 'ltr'"
-       style="max-width:720px">
-
-    <!-- Public customer page: hide the whole staff toolbar (login, search
-         spotlight, menu) so customers get a clean form-only page. -->
-    <style type="text/css">#senaite-toolbar{display:none !important;}</style>
-
-    <div tal:attributes="style string:border-bottom:2px solid #0d6efd;; margin-bottom:1.5rem;; padding-bottom:.5rem;; text-align:${align}">
-      <strong style="font-size:1.1rem"
-              tal:content="context/@@plone_portal_state/navigation_root_title">Laboratory</strong>
-    </div>
-
-    <h1 tal:attributes="style string:text-align:${align}" tal:content="L/title">Feedback</h1>
-
-    <!-- Thank-you -->
-    <div tal:condition="view/tracking" class="alert alert-success"
-         tal:attributes="style string:text-align:${align}">
-      <h4 tal:content="L/thanks_title">Thank you</h4>
-      <p><strong tal:content="L/thanks">Tracking:</strong>
-         <code tal:content="view/tracking">id</code></p>
-      <p tal:content="L/thanks_more">We will follow up.</p>
-      <div tal:condition="view/track_link" class="mb-2">
-        <p class="mb-1"><strong tal:content="L/your_link">Your tracking link:</strong></p>
-        <p><a tal:attributes="href view/track_link" tal:content="view/track_link">link</a></p>
-        <p class="text-muted small" tal:content="L/save_link">Save this link to check the status anytime.</p>
-      </div>
-      <a tal:condition="view/track_link" class="btn btn-sm btn-primary"
-         tal:attributes="href view/track_link"
-         tal:content="L/track_link">Track this request</a>
-      <a href="customer-feedback" class="btn btn-sm btn-outline-primary"
-         tal:content="L/again">Submit another</a>
-    </div>
-
-    <tal:form tal:condition="not:view/tracking">
-      <p class="text-muted" tal:attributes="style string:text-align:${align}"
-         tal:content="L/intro">intro</p>
-
-      <div tal:condition="view/error" class="alert alert-danger"
-           tal:attributes="style string:text-align:${align}"
-           tal:content="view/error">error</div>
-
-      <form method="post" tal:attributes="style string:text-align:${align}">
-        <!-- Honeypot: hidden from humans (off-screen), bots tend to fill it. -->
-        <div aria-hidden="true"
-             style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden">
-          <label>Website</label>
-          <input type="text" name="website" tabindex="-1" autocomplete="off"/>
-        </div>
-        <div class="form-group">
-          <label tal:content="L/kind">Type</label><br/>
-          <label class="mr-3"><input type="radio" name="kind" value="complaint" checked="checked"
-                 onclick="ccToggle()"/> <span tal:content="L/k_complaint">Complaint</span></label>
-          <label class="mr-3"><input type="radio" name="kind" value="support"
-                 onclick="ccToggle()"/> <span tal:content="L/k_support">Support</span></label>
-          <label class="mr-3"><input type="radio" name="kind" value="survey"
-                 onclick="ccToggle()"/> <span tal:content="L/k_survey">Survey</span></label>
-        </div>
-
-        <div class="form-group">
-          <label tal:content="L/client">Client</label>
-          <input type="text" class="form-control" name="client_name"/>
-        </div>
-        <div class="form-group">
-          <label tal:content="L/contact">Contact</label>
-          <input type="text" class="form-control" name="contact_name"/>
-        </div>
-        <div class="form-group">
-          <label tal:content="L/email">Email</label>
-          <input type="email" class="form-control" name="contact_email"/>
-          <small class="form-text text-muted" tal:content="L/email_hint">hint</small>
-        </div>
-        <div class="form-group">
-          <label tal:content="L/phone">Phone</label>
-          <input type="text" class="form-control" name="contact_phone"/>
-        </div>
-        <div class="form-group">
-          <label tal:content="L/subject">Subject</label>
-          <input type="text" class="form-control" name="subject" required="required"/>
-        </div>
-        <div class="form-group">
-          <label tal:content="L/sample">Related sample/report</label>
-          <input type="text" class="form-control" name="related_sample"/>
-        </div>
-
-        <!-- Complaint-only -->
-        <div id="cc-complaint">
-          <div class="form-group">
-            <label tal:content="L/category">Category</label>
-            <select class="form-control" name="category">
-              <option value="" tal:content="L/choose">- select -</option>
-              <option tal:repeat="c view/categories"
-                      tal:attributes="value python:c[0]"
-                      tal:content="python:c[1]">cat</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label tal:content="L/severity">Severity</label>
-            <select class="form-control" name="severity">
-              <option value="" tal:content="L/choose">- select -</option>
-              <option value="low" tal:content="L/sev_low">Low</option>
-              <option value="medium" tal:content="L/sev_medium">Medium</option>
-              <option value="high" tal:content="L/sev_high">High</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Survey-only -->
-        <div id="cc-survey" style="display:none">
-          <div class="form-group" tal:repeat="r python:[('rating_overall',L['rating_overall']),('rating_timeliness',L['rating_time']),('rating_quality',L['rating_quality']),('rating_communication',L['rating_comm'])]">
-            <label tal:content="python:r[1]">rating</label>
-            <select class="form-control" tal:attributes="name python:r[0]">
-              <option value="5">5</option>
-              <option value="4">4</option>
-              <option value="3">3</option>
-              <option value="2">2</option>
-              <option value="1">1</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label tal:content="L/description">Description</label>
-          <textarea class="form-control" name="description" rows="4"></textarea>
-        </div>
-
-        <button type="submit" name="submit" value="1"
-                class="btn btn-primary" tal:content="L/submit">Submit</button>
-      </form>
-
-      <script type="text/javascript">
-        function ccToggle() {
-          var k = document.querySelector('input[name=kind]:checked').value;
-          document.getElementById('cc-complaint').style.display = (k === 'complaint') ? '' : 'none';
-          document.getElementById('cc-survey').style.display = (k === 'survey') ? '' : 'none';
-        }
-        document.addEventListener('DOMContentLoaded', ccToggle);
-      </script>
-    </tal:form>
-
-  </div>
-</body>
-</html>
+<div tal:condition="view/tracking" class="cc-success" role="status"><h2 tal:content="L/thanks_title"/><p><strong tal:content="L/thanks"/> <code tal:content="view/tracking"/></p><p tal:content="L/thanks_more"/><p tal:content="L/save_link"/><p tal:condition="view/track_link"><a tal:attributes="href view/track_link" tal:content="L/track_link" class="btn btn-primary"/></p><a href="@@customer-feedback" tal:content="L/again"/></div>
+<tal:form tal:condition="not:view/tracking">
+<div tal:condition="view/error" class="cc-error" role="alert" tal:content="view/error"></div>
+<div class="cc-step-nav" hidden="hidden" id="cc-steps"><span tal:content="python:u'۱. نوع و اطلاعات تماس' if rtl else '1. Type and contact'"></span><span tal:content="python:u'۲. جزئیات' if rtl else '2. Details'"></span><span tal:content="python:u'۳. مرور و ثبت' if rtl else '3. Review'"></span></div>
+<div class="cc-layout"><form method="post" id="cc-feedback-form">
+<div aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%)"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"/></label></div>
+<section class="cc-card" id="cc-contact"><h2 tal:content="python:u'نوع درخواست و اطلاعات تماس' if rtl else 'Request type and contact'"/>
+<fieldset><legend tal:content="L/kind"/><div class="cc-kind">
+<label><input type="radio" name="kind" value="complaint" tal:attributes="checked python:view.get_kind() == 'complaint'"/><span tal:content="L/k_complaint"></span></label>
+<label><input type="radio" name="kind" value="support" tal:attributes="checked python:view.get_kind() == 'support'"/><span tal:content="L/k_support"></span></label>
+<label><input type="radio" name="kind" value="survey" tal:attributes="checked python:view.get_kind() == 'survey'"/><span tal:content="L/k_survey"></span></label>
+</div></fieldset><div class="cc-grid">
+<div class="form-group"><label for="cc-client_name" tal:content="L/client"/><input class="form-control" name="client_name" id="cc-client_name" type="text" autocomplete="organization" maxlength="512"  tal:attributes="value python:view.get_field_value('client_name')"/></div><div class="form-group"><label for="cc-contact_name" tal:content="L/contact"/><input class="form-control" name="contact_name" id="cc-contact_name" type="text" autocomplete="name" maxlength="512"  tal:attributes="value python:view.get_field_value('contact_name')"/></div><div class="form-group"><label for="cc-contact_email" tal:content="L/email"/><input class="form-control" name="contact_email" id="cc-contact_email" type="email" autocomplete="email" maxlength="254" dir="ltr" tal:attributes="value python:view.get_field_value('contact_email')"/><small class="form-text" tal:content="L/email_hint"/></div><div class="form-group"><label for="cc-contact_phone" tal:content="L/phone"/><input class="form-control" name="contact_phone" id="cc-contact_phone" type="tel" autocomplete="tel" maxlength="512" dir="ltr" tal:attributes="value python:view.get_field_value('contact_phone')"/></div></div></section><section class="cc-card" id="cc-details"><h2 tal:content="python:u'جزئیات درخواست' if rtl else 'Request details'"/><div class="cc-grid">
+<div class="form-group cc-wide"><label for="cc-subject"><span tal:content="L/subject"></span><span class="cc-required" aria-hidden="true">*</span></label><input class="form-control" type="text" name="subject" id="cc-subject" required="required" maxlength="512" tal:attributes="value python:view.get_field_value('subject')"/></div>
+<div class="form-group cc-wide"><label for="cc-related" tal:content="L/sample"/><input class="form-control" type="text" name="related_sample" id="cc-related" maxlength="512" dir="ltr" tal:attributes="value python:view.get_field_value('related_sample')"/></div>
+<fieldset class="cc-wide" id="cc-complaint"><legend tal:content="L/k_complaint"/><div class="cc-grid"><div class="form-group"><label for="cc-category" tal:content="L/category"/><select class="form-control" name="category" id="cc-category"><option value="" tal:content="L/choose"/><option tal:repeat="c view/categories" tal:attributes="value python:c[0]; selected python:view.get_field_value('category') == c[0]" tal:content="python:c[1]"/></select></div><div class="form-group"><label for="cc-severity" tal:content="L/severity"/><select class="form-control" name="severity" id="cc-severity"><option value="" tal:content="L/choose"/><option tal:repeat="key python:['low','medium','high']" tal:attributes="value key; selected python:view.get_field_value('severity') == key" tal:content="python:L['sev_'+key]"/></select></div></div></fieldset>
+<fieldset class="cc-wide" id="cc-survey"><legend tal:content="L/k_survey"/><p class="cc-score-note" tal:content="python:u'۱ کمترین و ۵ بیشترین رضایت است. امتیاز رضایت کلی را خودتان انتخاب کنید؛ سایر امتیازها اختیاری‌اند.' if rtl else '1 is the lowest and 5 the highest satisfaction. Choose your overall rating; the other ratings are optional.'"/><div class="cc-grid">
+<div class="form-group" tal:repeat="r python:[('rating_overall',L['rating_overall']),('rating_timeliness',L['rating_time']),('rating_quality',L['rating_quality']),('rating_communication',L['rating_comm'])]">
+<label tal:attributes="for python:'cc-'+r[0]"><span tal:content="python:r[1]"></span><span tal:condition="python:r[0]=='rating_overall'" class="cc-required" aria-hidden="true">*</span></label><select class="form-control" tal:attributes="id python:'cc-'+r[0]; name python:r[0]"><option value="" tal:content="L/choose"/><option tal:repeat="score python:['1','2','3','4','5']" tal:attributes="value score; selected python:view.get_field_value(r[0]) == score" tal:content="score"/></select></div>
+</div></fieldset><div class="form-group cc-wide"><label for="cc-description" tal:content="L/description"/><textarea name="description" id="cc-description" class="form-control" rows="5" maxlength="10000" tal:content="python:view.get_field_value('description')"/></div>
+</div></section>
+<section class="cc-card" id="cc-review-panel" hidden="hidden"><h2 tal:content="python:u'مرور و ثبت نهایی' if rtl else 'Review and submit'"/><div id="cc-review"></div></section>
+<div class="cc-actions"><span id="cc-progress" class="cc-progress" aria-live="polite"></span><div><button id="cc-back" type="button" class="cc-back" hidden="hidden" tal:content="python:u'مرحلهٔ قبل' if rtl else 'Back'"/> <button id="cc-next" type="button" class="btn btn-primary" hidden="hidden" tal:content="python:u'ادامه' if rtl else 'Continue'"/> <button name="submit" value="1" type="submit" class="btn btn-primary" tal:content="L/submit"/></div></div>
+</form><aside class="cc-side"><h2 tal:content="python:u'صدای شما برای آزمایشگاه' if rtl else 'Your feedback matters'"/><p tal:content="python:u'نوع درخواست را انتخاب کنید تا بخش مرتبط با شکایت، پشتیبانی یا نظرسنجی نمایش داده شود.' if rtl else 'Choose a request type to see the relevant complaint, support or survey fields.'"/><p tal:content="python:u'پس از ثبت، لینک خصوصی پیگیری را نگه دارید. برای پیگیری با شماره، نام مشتری باید با نام ثبت‌شده یکسان باشد.' if rtl else 'Keep the private tracking link. Tracking by number requires the matching registered client name.'"/><a href="@@track-request" tal:content="L/track_link"/></aside></div>
+<script>(function(){
+  'use strict';
+  var form=document.querySelector('#cc-feedback-form'); if(!form)return;
+  var fa=form.closest('.cc-page').dir==='rtl'; var step=0;
+  var panels=[document.querySelector('#cc-contact'),document.querySelector('#cc-details'),document.querySelector('#cc-review-panel')];
+  var nav=document.querySelector('#cc-steps'),next=document.querySelector('#cc-next'),back=document.querySelector('#cc-back'),submit=form.querySelector('[name=submit]');
+  function kind(){return form.querySelector('[name=kind]:checked').value;}
+  function toggle(){
+    ['complaint','survey'].forEach(function(type){
+      var group=document.querySelector('#cc-'+type),active=kind()===type;
+      group.hidden=!active;
+      group.querySelectorAll('input,select').forEach(function(control){control.disabled=!active;});
+    });
+    form.elements.rating_overall.required=kind()==='survey';
+  }
+  function review(){
+    var root=document.querySelector('#cc-review'); root.textContent='';
+    form.querySelectorAll('input,select,textarea').forEach(function(control){
+      if(!control.name || control.name==='website' || control.disabled || (control.type==='radio' && !control.checked) || !control.value.trim())return;
+      var label=control.labels && control.labels[0];
+      var row=document.createElement('div'); row.className='cc-review-row';
+      var title=document.createElement('span');title.textContent=control.name==='kind' ? (fa?'نوع درخواست':'Request type') : label ? label.textContent.replace(/\*/g,'').trim() : control.name;
+      var value=document.createElement('strong');value.dir='auto';value.textContent=control.type==='radio' ? label.textContent.trim() : control.tagName==='SELECT' ? control.options[control.selectedIndex].textContent : control.value;
+      row.appendChild(title);row.appendChild(value);root.appendChild(row);
+    });
+  }
+  function show(index,focus){step=index;panels.forEach(function(panel,i){panel.hidden=i!==step;});nav.querySelectorAll('span').forEach(function(item,i){item.classList.toggle('active',i===step);});back.hidden=step===0;next.hidden=step===2;submit.hidden=step!==2;document.querySelector('#cc-progress').textContent=(fa?'مرحلهٔ ':'Step ')+(step+1)+(fa?' از ۳':' of 3');review();if(focus){var heading=panels[step].querySelector('h2');heading.tabIndex=-1;heading.focus();nav.scrollIntoView({block:'start'});}}
+  function valid(index,report){
+    var bad=[].filter.call(panels[index].querySelectorAll('input,select,textarea'),function(control){return control.willValidate&&!control.checkValidity();});
+    if(bad.length&&report){bad.forEach(function(control){control.setAttribute('aria-invalid','true');var group=control.closest('.form-group'),error=group.querySelector('.cc-field-error');if(!error){error=document.createElement('p');error.className='cc-field-error';error.setAttribute('role','alert');group.appendChild(error);}error.textContent=fa?(control.validity.typeMismatch?'آدرس ایمیل معتبر وارد کنید.':'تکمیل این فیلد الزامی است.'):control.validationMessage;});bad[0].focus();bad[0].reportValidity();}
+    return bad.length===0;
+  }
+  next.addEventListener('click',function(){if(valid(step,true))show(step+1,true);});back.addEventListener('click',function(){show(step-1,true);});
+  form.addEventListener('change',function(){toggle();review();});
+  form.addEventListener('input',function(e){var c=e.target;if(c.checkValidity&&c.checkValidity()){c.removeAttribute('aria-invalid');var group=c.closest('.form-group'),error=group&&group.querySelector('.cc-field-error');if(error)error.remove();}});
+  form.addEventListener('submit',function(e){if(step<2){e.preventDefault();if(valid(step,true))show(step+1,true);return;}for(var i=0;i<2;i++){if(!valid(i,false)){e.preventDefault();show(i,true);valid(i,true);return;}}});
+  form.noValidate=true;nav.hidden=false;next.hidden=false;toggle();show(0,false);
+}());
+</script></tal:form></div></body></html>

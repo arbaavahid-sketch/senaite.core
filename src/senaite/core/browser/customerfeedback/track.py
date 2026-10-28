@@ -12,6 +12,12 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from bika.lims import api
 from bika.lims.api import safe_unicode
+from .common import PublicCustomerMixin
+from senaite.core.browser.publicforms import text, InvalidInput, RateLimiter
+from ZODB.POSException import ConflictError
+from senaite.core.browser.payment import zarinpal
+
+TRACK_LIMITER = RateLimiter()
 
 TYPES = ("Complaint", "SupportRequest", "Survey", "SampleRequest")
 
@@ -45,8 +51,7 @@ LABELS = {
         "no_response": u"هنوز پاسخی ثبت نشده است.",
         "results_ready": u"نمونهٔ شما ثبت و در حال انجام است. گزارش نتایج پس از "
                          u"تکمیل، از سوی آزمایشگاه ارسال می‌شود.",
-        "report_sent": u"گزارش نتایج صادر و برای شما ایمیل شد. اگر آن را "
-                       u"دریافت نکردید، با آزمایشگاه تماس بگیرید.",
+        "report_sent": u"گزارش نتایج صادر شده است. برای دریافت نسخهٔ گزارش با آزمایشگاه هماهنگ کنید.",
         "st_testing": u"در حال انجام آزمون",
         "st_published": u"گزارش صادر شد",
         "not_found": u"درخواستی با این شمارهٔ پیگیری و نام مشتری یافت نشد.",
@@ -67,9 +72,7 @@ LABELS = {
         "results_ready": u"Your sample has been registered and is being "
                          u"processed. The results report will be sent by the "
                          u"laboratory once complete.",
-        "report_sent": u"The results report has been issued and emailed to "
-                       u"you. If you didn't receive it, please contact the "
-                       u"laboratory.",
+        "report_sent": u"The results report has been issued. Please contact the laboratory to receive your copy.",
         "st_testing": u"Testing in progress",
         "st_published": u"Report issued",
         "not_found": u"No request found for this tracking number and client name.",
@@ -78,7 +81,7 @@ LABELS = {
 }
 
 
-class TrackRequestView(BrowserView):
+class TrackRequestView(PublicCustomerMixin, BrowserView):
     template = ViewPageTemplateFile("templates/track.pt")
 
     def __call__(self):
@@ -87,9 +90,27 @@ class TrackRequestView(BrowserView):
         self.is_rtl = self.lang == "fa"
         self.result = None
         self.not_found = False
-        self.tracking_id = (self.request.get("tracking") or "").strip()
-        self.client_name = (self.request.get("client_name") or "").strip()
-        self.token = (self.request.get("token") or "").strip()
+        self.error = u''
+        self.tracking_id = self.client_name = self.token = u''
+        self.request.response.setHeader('Cache-Control', 'no-store, private')
+        self.request.response.setHeader('Pragma', 'no-cache')
+        try:
+            self.tracking_id = text(self.request.get('tracking'), 128)
+            self.client_name = text(self.request.get('client_name'), 512)
+            self.token = text(self.request.get('token'), 128)
+            text(self.request.get('track'), 8)
+        except InvalidInput:
+            self.request.response.setStatus(400)
+            self.error = u'شمارهٔ پیگیری یا اطلاعات واردشده معتبر نیست.' if self.lang == 'fa' else u'Invalid tracking input.'
+            return self.template()
+        if self.token or self.request.get('track'):
+            client = self.request.environ.get('HTTP_X_TPPC_CLIENT_IP') or self.request.environ.get('REMOTE_ADDR') or 'unknown'
+            if not isinstance(client, basestring) or len(client) > 128: client = 'unknown'
+            if not TRACK_LIMITER.allow(client):
+                self.request.response.setStatus(429)
+                self.request.response.setHeader('Retry-After', '600')
+                self.error = u'تعداد پیگیری‌ها زیاد است؛ ده دقیقه بعد دوباره تلاش کنید.' if self.lang == 'fa' else u'Too many lookups. Please try again in ten minutes.'
+                return self.template()
         if self.token:
             # Direct link: the unguessable token is the credential, no name
             # needed. This is the link the lab emails to the customer.
@@ -119,6 +140,8 @@ class TrackRequestView(BrowserView):
                             self.result = self._to_result(obj)
                             return
                 self.not_found = True
+        except ConflictError:
+            raise
         except Exception:
             self.not_found = True
 
@@ -132,6 +155,7 @@ class TrackRequestView(BrowserView):
 
     def _lookup(self):
         if not self.tracking_id:
+            self.not_found = True
             return
         try:
             with api.security.as_privileged_user():
@@ -178,10 +202,12 @@ class TrackRequestView(BrowserView):
                 input_client = safe_unicode(self.client_name or "").strip()
                 # Require the client name to match (case-insensitive) unless the
                 # stored record has no client name at all.
-                if stored_client and input_client.lower() != stored_client.lower():
+                if not stored_client or not input_client or input_client.lower() != stored_client.lower():
                     self.not_found = True
                     return
                 self.result = self._to_result(obj)
+        except ConflictError:
+            raise
         except Exception:
             self.not_found = True
 
@@ -247,11 +273,14 @@ class TrackRequestView(BrowserView):
                 status_label = self.labels["st_published"]
 
         # payment info (online Zarinpal payment for sample-requests)
-        pay_amount = int(getattr(obj, "payment_amount", 0) or 0)
+        try:
+            pay_amount = int(getattr(obj, "payment_amount", 0) or 0)
+        except (ValueError, TypeError, OverflowError):
+            pay_amount = 0
         pay_paid = bool(getattr(obj, "payment_paid", False))
         token = safe_unicode(getattr(obj, "access_token", "") or "")
         pay_url = u""
-        if pay_amount >= 1000 and not pay_paid and token:
+        if pay_amount >= 1000 and not pay_paid and token and zarinpal.is_configured():
             pay_url = u"%s/@@pay?token=%s" % (
                 api.get_url(api.get_portal()), token)
 
