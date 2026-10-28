@@ -243,6 +243,16 @@ class SampleRequestView(BrowserView):
         limit = 10000 if name in ('address', 'sample_description', 'safety_notes', 'other_tests') else 512
         return safe_unicode(value)[:limit]
 
+    def get_request_logo(self):
+        from plone.registry.interfaces import IRegistry
+        from Products.CMFPlone.interfaces import ISiteSchema
+        from Products.CMFPlone.utils import getSiteLogo
+        from zope.component import getUtility
+        settings = getUtility(IRegistry).forInterface(ISiteSchema, prefix='plone', check=False)
+        if getattr(settings, 'site_logo', False):
+            return getSiteLogo()
+        return api.get_url(api.get_portal()) + '/++plone++senaite.core.static/images/senaite-site-logo.png'
+
     def get_selected_values(self, name):
         if not self.error:
             return []

@@ -40,9 +40,21 @@ body{background:#f3f7f8}
 .tppc-request .rq-submit-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:6px 0 20px}.tppc-request .rq-submit-bar p{margin:0;color:#6a7f86;font-size:12px}.tppc-request .btn-primary{background:#167d85;border-color:#167d85;border-radius:8px;padding:12px 28px;font-size:14px;font-weight:600}.tppc-request .btn-primary:hover{background:#115f66;border-color:#115f66}.tppc-request a:focus-visible,.tppc-request button:focus-visible,.tppc-request input[type=checkbox]:focus-visible{outline:3px solid #82c7ca;outline-offset:3px}.tppc-request .alert{border-radius:10px;padding:22px}.tppc-request .alert a{overflow-wrap:anywhere}
 @media(max-width:760px){.tppc-request{padding:0 12px;font-size:14px}.tppc-request .rq-brand{padding:15px 0}.tppc-request .rq-brand strong{font-size:14px}.tppc-request .rq-brand>span{display:none}.tppc-request .rq-hero{padding:25px 22px;border-radius:12px}.tppc-request h1{font-size:23px}.tppc-request .rq-flow{gap:8px;flex-direction:column}.tppc-request .rq-section{padding:20px 18px}.tppc-request .rq-grid{grid-template-columns:minmax(0,1fr);gap:18px}.tppc-request .rq-nav a{font-size:12px;padding:6px 10px}.tppc-request .rq-submit-bar{flex-direction:column-reverse;align-items:stretch}.tppc-request .rq-submit-bar button{width:100%}.tppc-request .rq-submit-bar p{text-align:center}.tppc-request .rq-terms-box{padding:14px}.tppc-request h2{font-size:16px}}
 
+.tppc-request{max-width:1180px;--rq-accent:#147970;font-family:Tahoma,Arial,sans-serif}
+.tppc-request .rq-brand>.rq-logo{display:flex;margin-inline-start:0;border:1px solid #dce7e3;border-radius:9px;padding:7px 10px;background:#fff;width:200px;height:86px}
+.tppc-request #rq-selected-chips{max-height:300px;overflow:auto}
+.tppc-request .rq-brand{padding:18px 0;justify-content:flex-start;gap:15px}.tppc-request .rq-brand>span{margin-inline-start:auto}.tppc-request .rq-logo{display:flex;align-items:center;justify-content:center;width:154px;height:65px;background:#173d42;border-radius:9px;padding:9px 12px;flex-shrink:0}.tppc-request .rq-logo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.tppc-request .rq-hero{padding:24px 30px;margin-bottom:22px;background:linear-gradient(110deg,#153b40,#205753);border-inline-start:0;border-radius:13px}.tppc-request h1{font-size:26px;margin-bottom:6px}.tppc-request .rq-hero p{font-size:13px;max-width:850px}.tppc-request .rq-flow{display:none}.tppc-request .rq-eyebrow{font-size:10px;letter-spacing:1.8px;margin-bottom:9px}
+.tppc-request .rq-wizard-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid #dce7e5;background:white;border-radius:11px;overflow:hidden;margin-bottom:22px;scroll-margin-top:15px}.tppc-request .rq-wizard-nav button{background:transparent;border:0;border-inline-end:1px solid #e5eeec;padding:15px 10px;display:flex;align-items:center;justify-content:center;gap:9px;font:inherit;font-size:12px;color:#647c7c;cursor:pointer}.tppc-request .rq-wizard-nav button:last-child{border:0}.tppc-request .rq-step-number{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#edf3f2;font:600 12px Arial,sans-serif;flex-shrink:0}.tppc-request .rq-wizard-nav button.active{background:#edf7f4;color:#145c55;box-shadow:inset 0 -3px #248e7f;font-weight:bold}.tppc-request .rq-wizard-nav button.active .rq-step-number{background:#167b6e;color:white}.tppc-request .rq-wizard-nav button.complete{color:#1b766a}
+.tppc-request.rq-enhanced [hidden]{display:none!important}.tppc-request.rq-enhanced .rq-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:22px;align-items:start}.tppc-request .rq-main{min-width:0}.tppc-request .rq-summary{position:sticky;top:20px;background:white;border:1px solid #dce7e5;border-radius:12px;padding:18px;overflow:hidden}.tppc-request .rq-summary summary{cursor:pointer;font-weight:bold;color:#234d48;font-size:14px;list-style-position:inside}.tppc-request .rq-summary-content{margin-top:16px}.tppc-request .rq-summary-line{display:flex;flex-direction:column;gap:4px;padding:10px 0;border-bottom:1px solid #edf2f1;overflow-wrap:anywhere}.tppc-request .rq-summary-line>span{font-size:11px;color:#607875}.tppc-request .rq-summary-line>strong{font-size:12px;font-weight:500;color:#254944;white-space:pre-wrap}.tppc-request .rq-summary-note{font-size:11px;color:#607875;line-height:1.9;margin:14px 0 0}.tppc-request .rq-summary-empty{font-size:12px;color:#607875;margin:16px 0 0}.tppc-request .rq-chip{background:#f0f7f4;border:1px solid #dcece5;display:flex;align-items:flex-start;gap:6px;padding:8px;margin-top:8px;border-radius:6px;font-size:11px;line-height:1.9}.tppc-request .rq-chip span{flex:1;min-width:0;overflow-wrap:anywhere}.tppc-request .rq-chip button{flex-shrink:0;border:0;background:transparent;color:#57756d;font:20px/1 Arial,sans-serif;cursor:pointer;padding:1px 3px}
+.tppc-request .rq-section{padding:23px 26px;border-radius:12px;box-shadow:none}.tppc-request .rq-section-heading{margin-bottom:20px}.tppc-request h2{font-size:17px}.tppc-request .form-control{background:#fcfdfd;min-height:45px}.tppc-request .form-text{color:#526b65!important}.tppc-request .rq-field-error{color:#a53434;font-size:12px;margin:7px 0 0}.tppc-request [aria-invalid=true]{border-color:#b94747;background:#fffafa}.tppc-request .rq-actions{display:flex;gap:10px;align-items:center;justify-content:space-between}.tppc-request .rq-actions-group{display:flex;gap:10px}.tppc-request .rq-back{background:white;border:1px solid #cdded8;color:#35594f;border-radius:8px;padding:11px 20px;cursor:pointer}.tppc-request #rq-progress{font-size:12px;color:#607875}.tppc-request .rq-submit-bar{padding:0;margin-top:12px;justify-content:flex-end}.tppc-request.rq-enhanced .rq-submit-bar>p{display:none}.tppc-request .rq-review-group{position:relative;border:1px solid #e1eae6;border-radius:8px;padding:16px;margin-bottom:15px}.tppc-request .rq-review-group h3{font-size:14px;font-weight:bold;margin:0 0 10px;padding-inline-end:55px;color:#214c43}.tppc-request .rq-edit{position:absolute;top:14px;inset-inline-end:14px;border:0;background:#edf5f1;color:#1a7161;padding:3px 10px;border-radius:5px;font-size:11px;cursor:pointer}.tppc-request .rq-terms-box{font-size:12px;background:#f6f9f7}.tppc-request .rq-review-heading{font-size:14px;font-weight:bold;color:#34574b;margin:0 0 16px}.tppc-request .rq-mobile-hint{display:none}
+@media(max-width:900px){.tppc-request.rq-enhanced .rq-layout{grid-template-columns:minmax(0,1fr) 240px;gap:16px}.tppc-request .rq-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:760px){.tppc-request{padding:0 8px}.tppc-request .rq-brand{gap:10px;padding:13px 0}.tppc-request .rq-brand strong{font-size:12px}.tppc-request .rq-brand>.rq-logo{width:175px;height:76px;flex-shrink:1}.tppc-request .rq-hero{padding:20px;border-radius:10px;margin-bottom:16px}.tppc-request h1{font-size:21px}.tppc-request .rq-hero p{font-size:12px}.tppc-request .rq-wizard-nav{gap:0;margin-bottom:14px}.tppc-request .rq-wizard-nav button{flex-direction:column;gap:7px;font-size:10px;padding:12px 5px;line-height:1.8}.tppc-request .rq-step-number{width:24px;height:24px}.tppc-request.rq-enhanced .rq-layout{display:flex;flex-direction:column;gap:14px}.tppc-request .rq-main{width:100%;order:2}.tppc-request .rq-summary{order:1;position:static;width:100%;padding:13px 16px}.tppc-request .rq-summary summary{font-size:12px}.tppc-request .rq-section{padding:20px 17px}.tppc-request .rq-actions{flex-wrap:wrap}.tppc-request .rq-actions-group{margin-inline-start:auto}.tppc-request .rq-submit-bar{flex-direction:row;align-items:center}.tppc-request .rq-submit-bar button{width:auto}.tppc-request .rq-actions button{font-size:12px;padding:11px 17px}.tppc-request .rq-hero .rq-eyebrow{font-size:9px}.tppc-request .rq-mobile-hint{display:inline;color:#607875;font-size:10px;font-weight:normal;margin-inline-start:8px}}
+
 </style>
 
     <header class="rq-brand">
+      <span class="rq-logo"><img tal:attributes="src view/get_request_logo; alt context/@@plone_portal_state/navigation_root_title" /></span>
       <strong tal:content="context/@@plone_portal_state/navigation_root_title">Laboratory</strong>
       <span tal:content="python:u'پذیرش آنلاین نمونه' if rtl else 'Online sample intake'">Online sample intake</span>
     </header>
@@ -78,12 +90,11 @@ body{background:#f3f7f8}
     </div>
 
     <tal:form tal:condition="not:view/tracking">
-      <nav class="rq-nav" tal:attributes="aria-label python:u'بخش‌های فرم' if rtl else 'Form sections'">
-        <a href="#rq-client" tal:content="L/sec_client" />
-        <a href="#rq-sample" tal:content="L/sec_sample" />
-        <a href="#rq-safety" tal:content="L/sec_safety" />
-        <a href="#rq-tests" tal:content="L/sec_tests" />
-        <a href="#rq-terms" tal:content="L/sec_terms" />
+      <nav class="rq-wizard-nav" hidden="hidden" tal:attributes="aria-label python:u'مراحل فرم' if rtl else 'Form steps'">
+        <button type="button" data-step="0"><span class="rq-step-number">1</span><span tal:content="python:u'اطلاعات متقاضی' if rtl else 'Applicant'" /></button>
+        <button type="button" data-step="1"><span class="rq-step-number">2</span><span tal:content="python:u'نمونه و ایمنی' if rtl else 'Sample &amp; safety'" /></button>
+        <button type="button" data-step="2"><span class="rq-step-number">3</span><span tal:content="python:u'انتخاب آزمون' if rtl else 'Tests'" /></button>
+        <button type="button" data-step="3"><span class="rq-step-number">4</span><span tal:content="python:u'مرور و ثبت' if rtl else 'Review'" /></button>
       </nav>
       <p class="rq-required-note" tal:content="python:u'فیلدهای ستاره‌دار الزامی هستند.' if rtl else 'Fields marked with an asterisk are required.'" />
 
@@ -100,6 +111,7 @@ body{background:#f3f7f8}
           <input type="text" name="website" tabindex="-1" autocomplete="off"/>
         </div>
 
+        <div class="rq-layout"><div class="rq-main">
         <section class="rq-section" id="rq-client" aria-labelledby="rq-title-client">
           <div class="rq-section-heading"><span class="rq-number">01</span><h2 id="rq-title-client" tal:content="L/sec_client">Section</h2></div>
           <div class="rq-grid">
@@ -178,7 +190,7 @@ body{background:#f3f7f8}
 
         </div></section>
         <section class="rq-section" id="rq-safety" aria-labelledby="rq-title-safety">
-          <div class="rq-section-heading"><span class="rq-number">03</span><h2 id="rq-title-safety" tal:content="L/sec_safety">Section</h2></div>
+          <div class="rq-section-heading"><span class="rq-number">02</span><h2 id="rq-title-safety" tal:content="L/sec_safety">Section</h2></div>
           <div class="rq-grid">
         <div class="form-group rq-wide">
           <label tal:content="L/storage">Storage conditions</label>
@@ -216,7 +228,7 @@ body{background:#f3f7f8}
 
         </div></section>
         <section class="rq-section" id="rq-tests" aria-labelledby="rq-title-tests">
-          <div class="rq-section-heading"><span class="rq-number">04</span><h2 id="rq-title-tests" tal:content="L/sec_tests">Section</h2></div>
+          <div class="rq-section-heading"><span class="rq-number">03</span><h2 id="rq-title-tests" tal:content="L/sec_tests">Section</h2></div>
           <div class="rq-grid">
         <div class="form-group rq-wide" tal:define="groups view/service_groups">
           <label for="cc-test-search" tal:content="L/tests">Requested tests</label>
@@ -292,7 +304,8 @@ body{background:#f3f7f8}
 
         </div></section>
         <section class="rq-section" id="rq-terms" aria-labelledby="rq-title-terms">
-          <div class="rq-section-heading"><span class="rq-number">05</span><h2 id="rq-title-terms" tal:content="L/sec_terms">Section</h2></div>
+          <div class="rq-section-heading"><span class="rq-number">04</span><h2 id="rq-title-terms" tal:content="python:u'مرور و ثبت نهایی' if rtl else 'Review and submit'">Review</h2></div>
+          <div class="rq-review" id="rq-review"></div>
           <div class="rq-grid">
         <div class="form-group rq-wide">
           <div class="rq-terms-box">
@@ -313,6 +326,13 @@ body{background:#f3f7f8}
         </div>
 
         </div></section>
+        <div class="rq-actions">
+          <span id="rq-progress" aria-live="polite"></span>
+          <div class="rq-actions-group">
+            <button id="rq-back" type="button" class="rq-back" hidden="hidden" tal:content="python:u'مرحلهٔ قبل' if rtl else 'Back'" />
+            <button id="rq-next" type="button" class="btn btn-primary" hidden="hidden" tal:content="python:u'ادامه' if rtl else 'Continue'" />
+          </div>
+        </div>
         <div class="rq-submit-bar"><p tal:content="python:u'پس از ثبت، شماره و لینک پیگیری را ذخیره کنید.' if rtl else 'Save your tracking number and link after submitting.'" />
         <button type="submit" name="submit" value="1"
                 class="btn btn-primary mt-2" tal:content="L/submit">Submit</button></div>
@@ -328,6 +348,171 @@ body{background:#f3f7f8}
             update();
           }());
         </script>
+
+        </div><details class="rq-summary" hidden="hidden">
+          <summary><span tal:content="python:u'خلاصهٔ درخواست' if rtl else 'Request summary'" /><span class="rq-mobile-hint" tal:content="python:u'مشاهده / بستن' if rtl else 'Show / hide'" /></summary>
+          <div class="rq-summary-content">
+            <div id="rq-summary-fields"></div>
+            <p id="rq-summary-empty" class="rq-summary-empty" tal:content="python:u'آزمون‌های انتخابی اینجا نمایش داده می‌شوند.' if rtl else 'Selected tests will appear here.'" />
+            <div id="rq-selected-chips"></div>
+            <p class="rq-summary-note" tal:content="python:u'این فرم برای ثبت درخواست است؛ پس از ثبت، نمونهٔ فیزیکی را با شمارهٔ پیگیری ارسال کنید.' if rtl else 'This form registers a request. Send your physical sample with the tracking number after submitting.'" />
+          </div>
+        </details></div>
+
+<script type="text/javascript">
+(function () {
+  'use strict';
+  var root = document.querySelector('.tppc-request');
+  if (!root) return;
+  var form = root.querySelector('form');
+  if (!form) return;
+  var fa = root.dir === 'rtl';
+  function tr(a, b) { return fa ? a : b; }
+  var panels = [root.querySelector('#rq-client'), root.querySelector('#rq-sample'), root.querySelector('#rq-tests'), root.querySelector('#rq-terms')];
+  var safety = root.querySelector('#rq-safety');
+  var nav = root.querySelector('.rq-wizard-nav');
+  var next = root.querySelector('#rq-next');
+  var back = root.querySelector('#rq-back');
+  var submit = form.querySelector('button[name="submit"]');
+  var details = root.querySelector('.rq-summary');
+  var chips = root.querySelector('#rq-selected-chips');
+  var review = root.querySelector('#rq-review');
+  var current = 0;
+  var submitting = false;
+  function stepControls(index) {
+    var found = Array.prototype.slice.call(panels[index].querySelectorAll('input,select,textarea'));
+    if (index === 1) found = found.concat(Array.prototype.slice.call(safety.querySelectorAll('input,select,textarea')));
+    return found;
+  }
+  function fieldTitle(control) {
+    var label = control.labels && control.labels[0];
+    return label ? label.textContent.replace(/\*/g, '').trim() : control.name;
+  }
+  function showError(control) {
+    control.setAttribute('aria-invalid', 'true');
+    var group = control.closest('.form-group');
+    if (group) {
+      var error = group.querySelector('.rq-field-error');
+      if (!error) { error = document.createElement('p'); error.className = 'rq-field-error'; error.setAttribute('role', 'alert'); group.appendChild(error); }
+      error.textContent = fa ? (control.validity.valueMissing ? 'تکمیل این فیلد الزامی است.' :
+        control.validity.typeMismatch ? 'آدرس ایمیل را با قالب درست وارد کنید.' : 'مقدار این فیلد را بررسی کنید.') : control.validationMessage;
+      if (control.id) { error.id = control.id + '-error'; control.setAttribute('aria-describedby', error.id); }
+    }
+  }
+  function validate(index, report) {
+    var invalid = stepControls(index).filter(function (c) { return c.willValidate && !c.checkValidity(); });
+    if (report) invalid.forEach(showError);
+    if (invalid.length && report) { invalid[0].focus(); invalid[0].reportValidity(); }
+    return invalid.length === 0;
+  }
+  function value(name) { var c = form.elements.namedItem(name); return c && typeof c.value === 'string' ? c.value.trim() : ''; }
+  function selected() { return Array.prototype.slice.call(form.querySelectorAll('input[name="service_uids:list"]:checked')); }
+  function line(container, label, text) {
+    var item = document.createElement('div'); item.className = 'rq-summary-line';
+    var key = document.createElement('span'); key.textContent = label;
+    var val = document.createElement('strong'); val.textContent = text || tr('هنوز وارد نشده', 'Not entered yet');
+    item.appendChild(key); item.appendChild(val); container.appendChild(item);
+  }
+  function update() {
+    var summary = root.querySelector('#rq-summary-fields'); summary.textContent = '';
+    line(summary, tr('متقاضی', 'Applicant'), value('contact_name'));
+    line(summary, tr('نوع نمونه', 'Sample type'), value('sample_type'));
+    line(summary, tr('تعداد آزمون‌ها', 'Selected tests'), String(selected().length));
+    chips.textContent = '';
+    selected().forEach(function (checkbox) {
+      var chip = document.createElement('div'); chip.className = 'rq-chip';
+      var text = document.createElement('span'); text.textContent = checkbox.parentElement.querySelector('span').textContent;
+      var remove = document.createElement('button'); remove.type = 'button'; remove.textContent = '×';
+      remove.setAttribute('aria-label', tr('حذف آزمون: ', 'Remove test: ') + text.textContent);
+      remove.addEventListener('click', function () { checkbox.checked = false; checkbox.dispatchEvent(new Event('change', {bubbles:true})); });
+      chip.appendChild(text); chip.appendChild(remove); chips.appendChild(chip);
+    });
+    root.querySelector('#rq-summary-empty').hidden = selected().length > 0;
+    review.textContent = '';
+    [0,1,2].forEach(function (index) {
+      var group = document.createElement('div'); group.className = 'rq-review-group';
+      var title = document.createElement('h3'); title.textContent = nav.children[index].querySelector('span:last-child').textContent;
+      var edit = document.createElement('button'); edit.type = 'button'; edit.className = 'rq-edit'; edit.textContent = tr('ویرایش', 'Edit');
+      edit.addEventListener('click', function () { go(index, true); });
+      group.appendChild(title); group.appendChild(edit);
+      stepControls(index).forEach(function (control) {
+        if (!control.name || control.name === 'service_uids:list' || control.type === 'checkbox' || !control.value.trim()) return;
+        var display = control.tagName === 'SELECT' ? control.options[control.selectedIndex].textContent : control.value;
+        line(group, fieldTitle(control), display);
+      });
+      if (index === 1) {
+        ['storage_conditions:list','safety_hazards:list'].forEach(function (name) {
+          var values = Array.prototype.slice.call(form.querySelectorAll('input[name="'+name+'"]:checked')).map(function(c) { return c.value; });
+          if (values.length) line(group, name === 'storage_conditions:list' ? tr('نگهداری', 'Storage') : tr('ایمنی', 'Safety'), values.join('، '));
+        });
+      }
+      if (index === 2) selected().forEach(function(c) { line(group, tr('آزمون', 'Test'), c.parentElement.querySelector('span').textContent); });
+      review.appendChild(group);
+    });
+  }
+  function go(index, focus) {
+    current = index;
+    panels.forEach(function (panel, i) { panel.hidden = i !== index; });
+    safety.hidden = index !== 1;
+    Array.prototype.forEach.call(nav.children, function(button, i) {
+      button.classList.toggle('active', i === index);
+      button.classList.toggle('complete', i < index);
+      if (i === index) button.setAttribute('aria-current', 'step'); else button.removeAttribute('aria-current');
+    });
+    back.hidden = index === 0; next.hidden = index === 3; submit.hidden = index !== 3;
+    root.querySelector('#rq-progress').textContent = tr('مرحلهٔ ', 'Step ') + (index+1) + tr(' از ۴', ' of 4');
+    update();
+    if (focus) {
+      var heading = panels[index].querySelector('h2'); heading.tabIndex = -1; heading.focus();
+      nav.scrollIntoView({block:'start', behavior:'auto'});
+    }
+  }
+  function advanceTo(index) {
+    if (index > current) {
+      for (var i=0;i<index;i++) {
+        if (!validate(i, false)) { go(i, true); validate(i, true); return; }
+      }
+    }
+    go(index, true);
+  }
+  nav.addEventListener('click', function(e) { var button=e.target.closest('button[data-step]'); if(button) advanceTo(Number(button.dataset.step)); });
+  next.addEventListener('click', function() { advanceTo(Math.min(3,current+1)); });
+  back.addEventListener('click', function() { go(Math.max(0,current-1),true); });
+  form.addEventListener('input', function(e) {
+    var control=e.target;
+    if (control.checkValidity && control.checkValidity()) {
+      control.removeAttribute('aria-invalid');
+      var group=control.closest('.form-group'); var error=group && group.querySelector('.rq-field-error');
+      if(error) error.remove(); control.removeAttribute('aria-describedby');
+    }
+    update();
+  });
+  form.addEventListener('change', update);
+  form.addEventListener('submit', function(e) {
+    if(submitting) { e.preventDefault(); return; }
+    if(current<3) { e.preventDefault(); advanceTo(current+1); return; }
+    for(var i=0;i<4;i++) {
+      if(!validate(i,false)) { e.preventDefault(); go(i,true); validate(i,true); return; }
+    }
+    // The server remains authoritative for input validation and record creation.
+    submitting = true;
+    submit.disabled = true;
+    // Keep the named submit field: disabled buttons are omitted from POST.
+    var marker=document.createElement('input'); marker.type='hidden'; marker.name='submit'; marker.value='1'; form.appendChild(marker);
+    marker.dataset.rqSubmitMarker='1';
+  });
+  window.addEventListener('pageshow',function() {
+    submitting=false; submit.disabled=false;
+    Array.prototype.forEach.call(form.querySelectorAll('[data-rq-submit-marker]'),function(node) { node.remove(); });
+  });
+  // Enhance only after all handlers exist; without JavaScript the full form works.
+  root.classList.add('rq-enhanced'); form.noValidate=true;
+  nav.hidden=false; details.hidden=false; next.hidden=false;
+  details.open = !window.matchMedia('(max-width: 760px)').matches;
+  go(0,false);
+}());
+
+</script>
       </form>
     </tal:form>
 

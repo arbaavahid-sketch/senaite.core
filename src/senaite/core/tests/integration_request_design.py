@@ -36,7 +36,7 @@ try:
         for link in tree.xpath('//link[@rel="stylesheet"]/@href'):
             link=link.replace('http://nohost/senaite','https://lims.tppc.ir').replace('http://nohost','https://lims.tppc.ir')
             styles.append('<link rel="stylesheet" href="%s" />'%link)
-        body=html.tostring(root,encoding='unicode')
+        body=html.tostring(root,encoding='unicode').replace('http://nohost/senaite','https://lims.tppc.ir').replace('http://nohost','https://lims.tppc.ir')
         page=u'<!doctype html><html lang="%s" dir="%s"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">%s<title>TPPC request preview</title></head><body style="margin:0;padding:0 20px">%s</body></html>'%(language,'rtl' if language=='fa' else 'ltr',''.join(styles),body)
         with io.open('/out/request-%s.html'%language,'w',encoding='utf-8') as output: output.write(page)
         view.error='Synthetic validation error'
