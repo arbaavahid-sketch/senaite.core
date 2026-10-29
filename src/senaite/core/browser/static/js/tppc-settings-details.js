@@ -31,13 +31,14 @@
   var heading=root.querySelector('h1');if(!heading)return;
   var fa=/^fa(?:-|$)/i.test(document.documentElement.lang||'');
   root.classList.add('cp-detail-page');root.setAttribute('data-cp-panel',key);root.dir=fa?'rtl':'ltr';
-  heading.textContent=pages[key][fa?0:1];
+  if(!(key==='portal_registry' && /\/(?:edit|@@delete-record)(?:\/|$)/.test(path)))heading.textContent=pages[key][fa?0:1];
   var nav=document.createElement('nav');nav.className='cp-detail-breadcrumb';nav.setAttribute('aria-label',fa?'مسیر تنظیمات':'Settings navigation');
   var back=document.createElement('a');back.href=base+'/@@overview-controlpanel';back.textContent=fa?'تنظیمات سایت':'Site settings';nav.appendChild(back);
   var separator=document.createElement('span');separator.textContent='/';separator.setAttribute('aria-hidden','true');nav.appendChild(separator);
   var current=document.createElement('span');current.textContent=heading.textContent;nav.appendChild(current);
   heading.parentNode.insertBefore(nav,heading);
   if(fa){
+   var localization=document.createElement('script');localization.src=base+'/++plone++senaite.core.static/js/tppc-settings-i18n.js?v=20261029-fa2';document.head.appendChild(localization);
    var labels={
     "Site 'From' name":"نام فرستندهٔ ایمیل",
     "Site 'From' address":"آدرس ایمیل فرستنده",

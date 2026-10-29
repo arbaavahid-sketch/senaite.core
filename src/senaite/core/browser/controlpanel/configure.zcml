@@ -51,4 +51,11 @@
   <include package=".suppliers" />
   <include package=".worksheettemplates" />
 
+  <browser:page name="configuration_registry"
+      for="plone.registry.interfaces.IRegistry" class=".registry.LocalizedRegistry"
+      permission="cmf.ManagePortal" layer="senaite.core.interfaces.ISenaiteCore" />
+  <browser:page name="edit" for="plone.registry.interfaces.IRegistry"
+      class="plone.app.registry.browser.edit.RecordEditView"
+      template="templates/registry_edit.pt" permission="cmf.ManagePortal"
+      layer="senaite.core.interfaces.ISenaiteCore" />
 </configure>

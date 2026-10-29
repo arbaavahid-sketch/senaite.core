@@ -12,12 +12,12 @@ msgstr ""
 "Language-Team: Persian (https://app.transifex.com/senaite/teams/87045/fa/)\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Domain: DOMAIN\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Domain: senaite.core\n"
+"Language-Code: fa\n"
+"Language-Name: Persian\n"
 "Preferred-Encodings: utf-8 latin1\n"
 
 #: bika/lims/content/bikasetup.py:1134
@@ -13746,3 +13746,5303 @@ msgstr "حضوری"
 
 msgid "samplerequest_delivery_post"
 msgstr "پست"
+
+#. TPPC settings interface translation
+msgid "Activated add-ons"
+msgstr "افزونه‌های فعال‌شده"
+
+#. TPPC settings interface translation
+msgid "Alternative formats"
+msgstr "قالب‌های جایگزین"
+
+#. TPPC settings interface translation
+msgid "Apply rule on the whole site"
+msgstr "اعمال قاعده بر کل سایت"
+
+#. TPPC settings interface translation
+msgid "Available add-ons"
+msgstr "افزونه‌های موجود"
+
+#. TPPC settings interface translation
+msgid "Broken add-ons"
+msgstr "افزونه‌های خراب"
+
+#. TPPC settings interface translation
+msgid "Configure rule"
+msgstr "پیکربندی قاعده"
+
+#. TPPC settings interface translation
+msgid "Content rule settings updated."
+msgstr "تنظیمات قاعده محتوا به‌روزرسانی شد."
+
+#. TPPC settings interface translation
+msgid "Disable globally"
+msgstr "غیرفعال‌سازی سراسری"
+
+#. TPPC settings interface translation
+msgid "Enabled"
+msgstr "فعال"
+
+#. TPPC settings interface translation
+msgid "Error"
+msgstr "خطا"
+
+#. TPPC settings interface translation
+msgid "Filter:"
+msgstr "فیلتر:"
+
+#. TPPC settings interface translation
+msgid "Go to parent folder"
+msgstr "رفتن به پوشه والد"
+
+#. TPPC settings interface translation
+msgid ""
+"Go to the folder where you want the rule to apply, or at the site root, "
+"click on 'rule' tab, and then locally setup the rules."
+msgstr ""
+"به پوشه‌ای که می‌خواهید قاعده در آن اعمال شود (یا ریشه سایت) بروید، روی "
+"زبانه «قاعده» کلیک کنید و قواعد را به‌صورت محلی تنظیم کنید."
+
+#. TPPC settings interface translation
+msgid "Go to the upgrade page"
+msgstr "رفتن به صفحه ارتقا"
+
+#. TPPC settings interface translation
+msgid "Home"
+msgstr "خانه"
+
+#. TPPC settings interface translation
+msgid "Install"
+msgstr "نصب"
+
+#. TPPC settings interface translation
+msgid "Log in"
+msgstr "ورود"
+
+#. TPPC settings interface translation
+msgid "Log out"
+msgstr "خروج"
+
+#. TPPC settings interface translation
+msgid "More"
+msgstr "بیشتر"
+
+#. TPPC settings interface translation
+msgid "Move down"
+msgstr "انتقال به پایین"
+
+#. TPPC settings interface translation
+msgid "Move up"
+msgstr "انتقال به بالا"
+
+#. TPPC settings interface translation
+msgid "No upgrades in this corner"
+msgstr "ارتقایی در این بخش نیست"
+
+#. TPPC settings interface translation
+msgid "Note"
+msgstr "توجه"
+
+#. TPPC settings interface translation
+msgid "Off"
+msgstr "خاموش"
+
+#. TPPC settings interface translation
+msgid "On"
+msgstr "روشن"
+
+#. TPPC settings interface translation
+msgid "Relative URL for the SENAITE toolbar logo"
+msgstr "آدرس نسبی لوگوی نوار ابزار"
+
+#. TPPC settings interface translation
+msgid "Search for user or group"
+msgstr "جستجوی کاربر یا گروه"
+
+#. TPPC settings interface translation
+msgid ""
+"Select which formats are available for users as alternative to the default "
+"format. Note that if new formats are installed, they will be enabled for "
+"text fields by default unless explicitly turned off here or by the relevant "
+"installer."
+msgstr ""
+"انتخاب کنید کدام قالب‌ها به‌عنوان جایگزین قالب پیش‌فرض در دسترس کاربران "
+"باشند. توجه کنید اگر قالب‌های جدیدی نصب شوند، به‌صورت پیش‌فرض برای فیلدهای "
+"متنی فعال می‌شوند مگر اینکه اینجا یا توسط نصب‌کننده مربوطه صراحتاً خاموش "
+"شوند."
+
+#. TPPC settings interface translation
+msgid "Server:"
+msgstr "سرور:"
+
+#. TPPC settings interface translation
+msgid "Site Setup"
+msgstr "تنظیمات سایت"
+
+#. TPPC settings interface translation
+msgid "Site title"
+msgstr "عنوان سایت"
+
+#. TPPC settings interface translation
+msgid ""
+"The rule is enabled but will perform nothing since it is not assigned "
+"anywhere."
+msgstr "قاعده فعال است اما چون به جایی واگذار نشده، عملی انجام نمی‌دهد."
+
+#. TPPC settings interface translation
+msgid ""
+"The site configuration is outdated and needs to be upgraded. Please "
+"${link_continue_with_the_upgrade}."
+msgstr ""
+"پیکربندی سایت قدیمی است و باید ارتقا یابد. لطفاً "
+"${link_continue_with_the_upgrade}."
+
+#. TPPC settings interface translation
+msgid ""
+"There is no upgrade procedure defined for this addon. Please consult the "
+"addon documentation for upgrade information, or contact the addon author."
+msgstr ""
+"برای این افزونه روال ارتقایی تعریف نشده است. برای اطلاعات ارتقا به مستندات "
+"افزونه مراجعه یا با سازنده آن تماس بگیرید."
+
+#. TPPC settings interface translation
+msgid ""
+"There is not any action performed by this rule. Click on Add button to setup"
+" an action."
+msgstr ""
+"این قاعده هیچ عملی انجام نمی‌دهد. برای تنظیم عملیات، دکمه افزودن را بزنید."
+
+#. TPPC settings interface translation
+msgid "There is not any additional condition checked on this rule."
+msgstr "شرط اضافی دیگری برای این قاعده بررسی نشده است."
+
+#. TPPC settings interface translation
+msgid "There was an error saving content rules."
+msgstr "هنگام ذخیره قواعد محتوا خطایی رخ داد."
+
+#. TPPC settings interface translation
+msgid "This addon has been upgraded."
+msgstr "این افزونه ارتقا یافت."
+
+#. TPPC settings interface translation
+msgid ""
+"This is the Add-on configuration section, you can activate and deactivate "
+"add-ons in the lists below."
+msgstr ""
+"این بخش پیکربندی افزونه‌هاست؛ می‌توانید افزونه‌ها را در فهرست‌های زیر فعال "
+"یا غیرفعال کنید."
+
+#. TPPC settings interface translation
+msgid "This must be a URL relative to the site root."
+msgstr "باید یک آدرس نسبی به ریشه سایت باشد."
+
+#. TPPC settings interface translation
+msgid "This product cannot be uninstalled!"
+msgstr "این محصول قابل حذف نصب نیست!"
+
+#. TPPC settings interface translation
+msgid "This rule is not assigned to any location"
+msgstr "این قاعده به هیچ مکانی واگذار نشده"
+
+#. TPPC settings interface translation
+msgid "This shows up in the title bar of browsers and in syndication feeds."
+msgstr "این در نوار عنوان مرورگرها و خوراک‌های خبری نمایش داده می‌شود."
+
+#. TPPC settings interface translation
+msgid "Toggle sidebar visibility"
+msgstr "تغییر نمایش نوار کناری"
+
+#. TPPC settings interface translation
+msgid "Uninstall"
+msgstr "حذف نصب"
+
+#. TPPC settings interface translation
+msgid "Upgrade them ALL!"
+msgstr "ارتقای همه!"
+
+#. TPPC settings interface translation
+msgid "Upgrades"
+msgstr "ارتقاها"
+
+#. TPPC settings interface translation
+msgid "Users and Groups"
+msgstr "کاربران و گروه‌ها"
+
+#. TPPC settings interface translation
+msgid ""
+"Whether or not content rules should be disabled globally. If this is "
+"selected, no rules will be executed anywhere in the portal."
+msgstr ""
+"اینکه قواعد محتوا به‌صورت سراسری غیرفعال شوند یا نه. در صورت انتخاب، هیچ "
+"قاعده‌ای در هیچ‌کجای سامانه اجرا نمی‌شود."
+
+#. TPPC settings interface translation
+msgid "You are up to date. High fives."
+msgstr "همه‌چیز به‌روز است. آفرین!"
+
+#. TPPC settings interface translation
+msgid "action_convert_legacy_portlets"
+msgstr "تبدیل پورتلت‌های قدیمی"
+
+#. TPPC settings interface translation
+msgid "batch_next_x_items"
+msgstr "موارد بعدی"
+
+#. TPPC settings interface translation
+msgid "batch_previous_x_items"
+msgstr "موارد قبلی"
+
+#. TPPC settings interface translation
+msgid "contentrules_add_action"
+msgstr "افزودن عملیات"
+
+#. TPPC settings interface translation
+msgid "contentrules_add_condition"
+msgstr "افزودن شرط"
+
+#. TPPC settings interface translation
+msgid "contentrules_assignments_shortcuts"
+msgstr "میان‌برهای واگذاری"
+
+#. TPPC settings interface translation
+msgid "contentrules_description_cascading"
+msgstr "اجرای آبشاری قواعد"
+
+#. TPPC settings interface translation
+msgid "contentrules_description_description"
+msgstr "توضیحات قاعده"
+
+#. TPPC settings interface translation
+msgid "contentrules_description_execution"
+msgstr "اجرای عملیات قاعده"
+
+#. TPPC settings interface translation
+msgid "contentrules_description_stop"
+msgstr "توقف اجرای قواعد بعدی"
+
+#. TPPC settings interface translation
+msgid "contentrules_description_trigger"
+msgstr "رویدادی که این قاعده را فعال می‌کند"
+
+#. TPPC settings interface translation
+msgid "contentrules_perform_actions"
+msgstr "انجام عملیات"
+
+#. TPPC settings interface translation
+msgid "continue with the upgrade"
+msgstr "ادامه ارتقا"
+
+#. TPPC settings interface translation
+msgid "decription_no_members_assigned"
+msgstr "عضوی واگذار نشده"
+
+#. TPPC settings interface translation
+msgid "description-contentrules-controlpanel"
+msgstr "قواعدی برای انجام خودکار عملیات روی محتوا تعریف کنید."
+
+#. TPPC settings interface translation
+msgid "description_available_languages"
+msgstr "زبان‌هایی که سایت باید به آن‌ها قابل ترجمه باشد."
+
+#. TPPC settings interface translation
+msgid "description_contentrule_title"
+msgstr "عنوان قاعده محتوا"
+
+#. TPPC settings interface translation
+msgid "description_contentrules_rule_assignments"
+msgstr "واگذاری‌های این قاعده"
+
+#. TPPC settings interface translation
+msgid "description_control_panel"
+msgstr "پنل کنترل"
+
+#. TPPC settings interface translation
+msgid "description_cookie_manual_override"
+msgstr "برای نمایش انتخاب‌گر زبان لازم است."
+
+#. TPPC settings interface translation
+msgid "description_debug_mode"
+msgstr "حالت اشکال‌زدایی"
+
+#. TPPC settings interface translation
+msgid "description_group_members_of"
+msgstr "اعضای این گروه"
+
+#. TPPC settings interface translation
+msgid "description_groups_management"
+msgstr "مدیریت گروه‌ها"
+
+#. TPPC settings interface translation
+msgid "description_groups_management2"
+msgstr "مدیریت گروه‌ها"
+
+#. TPPC settings interface translation
+msgid "description_manage_contextual_portlets"
+msgstr "مدیریت پورتلت‌های زمینه‌ای"
+
+#. TPPC settings interface translation
+msgid "description_pas_group_listing"
+msgstr "فهرست گروه‌ها"
+
+#. TPPC settings interface translation
+msgid "description_pas_show_all_search_results"
+msgstr "نمایش همه نتایج جستجو"
+
+#. TPPC settings interface translation
+msgid "description_pas_users_listing"
+msgstr "فهرست کاربران"
+
+#. TPPC settings interface translation
+msgid "description_portlets_block_unblock"
+msgstr "مسدود/آزادکردن پورتلت‌ها"
+
+#. TPPC settings interface translation
+msgid "description_production_mode"
+msgstr "حالت تولید (Production)"
+
+#. TPPC settings interface translation
+msgid "description_sharing_control"
+msgstr "کنترل اشتراک‌گذاری"
+
+#. TPPC settings interface translation
+msgid "enable_cookies_message_before_login"
+msgstr "برای ورود باید کوکی‌ها فعال باشند"
+
+#. TPPC settings interface translation
+msgid "file_already_uploaded"
+msgstr "فایل قبلاً بارگذاری شده"
+
+#. TPPC settings interface translation
+msgid "footer_login_link_get_help"
+msgstr "دریافت راهنمایی"
+
+#. TPPC settings interface translation
+msgid "footer_login_link_signup"
+msgstr "ثبت‌نام"
+
+#. TPPC settings interface translation
+msgid "go_to_contentrules_management"
+msgstr "رفتن به مدیریت قواعد محتوا"
+
+#. TPPC settings interface translation
+msgid "heading_add_item"
+msgstr "افزودن مورد"
+
+#. TPPC settings interface translation
+msgid "heading_assign_to_groups"
+msgstr "واگذاری به گروه‌ها"
+
+#. TPPC settings interface translation
+msgid "heading_available_languages"
+msgstr "زبان‌های موجود"
+
+#. TPPC settings interface translation
+msgid "heading_cookie_manual_override"
+msgstr "بازنویسی دستی کوکی"
+
+#. TPPC settings interface translation
+msgid "heading_create_group"
+msgstr "ایجاد گروه"
+
+#. TPPC settings interface translation
+msgid "heading_currently_assigned_shares"
+msgstr "اشتراک‌های واگذارشده فعلی"
+
+#. TPPC settings interface translation
+msgid "heading_edit_groupproperties"
+msgstr "ویرایش ویژگی‌های گروه"
+
+#. TPPC settings interface translation
+msgid "heading_edit_item"
+msgstr "ویرایش مورد"
+
+#. TPPC settings interface translation
+msgid "heading_group_members"
+msgstr "اعضای گروه"
+
+#. TPPC settings interface translation
+msgid "heading_group_members_of"
+msgstr "اعضای گروه"
+
+#. TPPC settings interface translation
+msgid "heading_groupmembers_current"
+msgstr "اعضای فعلی گروه"
+
+#. TPPC settings interface translation
+msgid "heading_memberships_current"
+msgstr "عضویت‌های فعلی"
+
+#. TPPC settings interface translation
+msgid "heading_portlets_assigned_here"
+msgstr "پورتلت‌های واگذارشده اینجا"
+
+#. TPPC settings interface translation
+msgid "heading_search_groups"
+msgstr "جستجوی گروه‌ها"
+
+#. TPPC settings interface translation
+msgid "heading_search_newmembers"
+msgstr "جستجوی اعضای جدید"
+
+#. TPPC settings interface translation
+msgid "heading_version_overview"
+msgstr "نمای کلی نسخه"
+
+#. TPPC settings interface translation
+msgid "help_format_wysiwyg"
+msgstr "قالب ویرایشگر بصری"
+
+#. TPPC settings interface translation
+msgid "help_groupname"
+msgstr "نام گروه"
+
+#. TPPC settings interface translation
+msgid "help_inherit_local_roles"
+msgstr "ارث‌بری نقش‌های محلی"
+
+#. TPPC settings interface translation
+msgid "help_sharing_go_here"
+msgstr "برو به"
+
+#. TPPC settings interface translation
+msgid "help_sharing_page_default_page"
+msgstr "صفحه پیش‌فرض"
+
+#. TPPC settings interface translation
+msgid "if_all_conditions_met"
+msgstr "اگر همه شرایط برقرار باشد"
+
+#. TPPC settings interface translation
+msgid "inactive"
+msgstr "غیرفعال"
+
+#. TPPC settings interface translation
+msgid "label_add"
+msgstr "افزودن"
+
+#. TPPC settings interface translation
+msgid "label_add_new_group"
+msgstr "افزودن گروه جدید"
+
+#. TPPC settings interface translation
+msgid "label_add_new_user"
+msgstr "افزودن کاربر جدید"
+
+#. TPPC settings interface translation
+msgid "label_add_portlet"
+msgstr "افزودن پورتلت"
+
+#. TPPC settings interface translation
+msgid "label_add_portlet_ellipsis"
+msgstr "افزودن پورتلت…"
+
+#. TPPC settings interface translation
+msgid "label_add_user_to_group"
+msgstr "افزودن کاربر به گروه"
+
+#. TPPC settings interface translation
+msgid "label_add_users_to_group"
+msgstr "افزودن کاربران به گروه"
+
+#. TPPC settings interface translation
+msgid "label_cancel"
+msgstr "انصراف"
+
+#. TPPC settings interface translation
+msgid "label_contentrule_add"
+msgstr "افزودن قاعده محتوا"
+
+#. TPPC settings interface translation
+msgid "label_contentrules_rule_assignments"
+msgstr "واگذاری‌های قاعده"
+
+#. TPPC settings interface translation
+msgid "label_contentrules_rule_enabled"
+msgstr "قاعده فعال است"
+
+#. TPPC settings interface translation
+msgid "label_contentrules_rule_event"
+msgstr "رویداد قاعده"
+
+#. TPPC settings interface translation
+msgid "label_contentrules_rule_listing"
+msgstr "فهرست قواعد"
+
+#. TPPC settings interface translation
+msgid "label_convert_portlets"
+msgstr "تبدیل پورتلت‌ها"
+
+#. TPPC settings interface translation
+msgid "label_delete"
+msgstr "حذف"
+
+#. TPPC settings interface translation
+msgid "label_description"
+msgstr "توضیح"
+
+#. TPPC settings interface translation
+msgid "label_disable"
+msgstr "غیرفعال‌سازی"
+
+#. TPPC settings interface translation
+msgid "label_edit"
+msgstr "ویرایش"
+
+#. TPPC settings interface translation
+msgid "label_enable"
+msgstr "فعال‌سازی"
+
+#. TPPC settings interface translation
+msgid "label_find_group"
+msgstr "یافتن گروه"
+
+#. TPPC settings interface translation
+msgid "label_format"
+msgstr "قالب"
+
+#. TPPC settings interface translation
+msgid "label_group_members"
+msgstr "اعضای گروه"
+
+#. TPPC settings interface translation
+msgid "label_group_memberships"
+msgstr "عضویت‌های گروه"
+
+#. TPPC settings interface translation
+msgid "label_group_properties"
+msgstr "ویژگی‌های گروه"
+
+#. TPPC settings interface translation
+msgid "label_group_search"
+msgstr "جستجوی گروه"
+
+#. TPPC settings interface translation
+msgid "label_groups"
+msgstr "گروه‌ها"
+
+#. TPPC settings interface translation
+msgid "label_hide_item"
+msgstr "پنهان‌کردن"
+
+#. TPPC settings interface translation
+msgid "label_inherit_local_roles"
+msgstr "ارث‌بری نقش‌های محلی"
+
+#. TPPC settings interface translation
+msgid "label_manage_portlets_default_view_container"
+msgstr "مدیریت پورتلت‌ها"
+
+#. TPPC settings interface translation
+msgid "label_manage_portlets_default_view_container_go_here"
+msgstr "برو به"
+
+#. TPPC settings interface translation
+msgid "label_name"
+msgstr "نام"
+
+#. TPPC settings interface translation
+msgid "label_next"
+msgstr "بعدی"
+
+#. TPPC settings interface translation
+msgid "label_no_group_specified"
+msgstr "گروهی مشخص نشده"
+
+#. TPPC settings interface translation
+msgid "label_no_prefs_panels_available"
+msgstr "پنل تنظیماتی موجود نیست"
+
+#. TPPC settings interface translation
+msgid "label_previous"
+msgstr "قبلی"
+
+#. TPPC settings interface translation
+msgid "label_product_upgrade_all_action"
+msgstr "ارتقای همه"
+
+#. TPPC settings interface translation
+msgid "label_product_upgrade_new_profile_version"
+msgstr "نسخه جدید پروفایل"
+
+#. TPPC settings interface translation
+msgid "label_product_upgrade_old_profile_version"
+msgstr "نسخه قدیمی پروفایل"
+
+#. TPPC settings interface translation
+msgid "label_product_upgrade_old_version"
+msgstr "نسخه قدیمی"
+
+#. TPPC settings interface translation
+msgid "label_quick_search"
+msgstr "جستجوی سریع"
+
+#. TPPC settings interface translation
+msgid "label_remove"
+msgstr "حذف"
+
+#. TPPC settings interface translation
+msgid "label_remove_selected_groups"
+msgstr "حذف گروه‌های انتخاب‌شده"
+
+#. TPPC settings interface translation
+msgid "label_remove_selected_users"
+msgstr "حذف کاربران انتخاب‌شده"
+
+#. TPPC settings interface translation
+msgid "label_required"
+msgstr "(الزامی)"
+
+#. TPPC settings interface translation
+msgid "label_rule_event_trigger"
+msgstr "رویداد فعال‌ساز قاعده"
+
+#. TPPC settings interface translation
+msgid "label_search"
+msgstr "جست‌وجو"
+
+#. TPPC settings interface translation
+msgid "label_search_large"
+msgstr "نمایش همه"
+
+#. TPPC settings interface translation
+msgid "label_show_item"
+msgstr "نمایش مورد"
+
+#. TPPC settings interface translation
+msgid "label_showall"
+msgstr "نمایش همه"
+
+#. TPPC settings interface translation
+msgid "label_up_to_groups_overview"
+msgstr "بازگشت به نمای کلی گروه‌ها"
+
+#. TPPC settings interface translation
+msgid "label_up_to_usersoverview"
+msgstr "بازگشت به نمای کلی کاربران"
+
+#. TPPC settings interface translation
+msgid "label_user_search"
+msgstr "جستجوی کاربر"
+
+#. TPPC settings interface translation
+msgid "label_users"
+msgstr "کاربران"
+
+#. TPPC settings interface translation
+msgid "legend-contentrules"
+msgstr "قواعد محتوا"
+
+#. TPPC settings interface translation
+msgid "listingheader_email_address"
+msgstr "نشانی ایمیل"
+
+#. TPPC settings interface translation
+msgid "listingheader_group_name"
+msgstr "نام گروه"
+
+#. TPPC settings interface translation
+msgid "listingheader_group_remove"
+msgstr "حذف"
+
+#. TPPC settings interface translation
+msgid "listingheader_group_user_name"
+msgstr "نام کاربری"
+
+#. TPPC settings interface translation
+msgid "listingheader_remove"
+msgstr "حذف"
+
+#. TPPC settings interface translation
+msgid "listingheader_reset_password"
+msgstr "بازنشانی رمز عبور"
+
+#. TPPC settings interface translation
+msgid "listingheader_user_name"
+msgstr "نام کاربری"
+
+#. TPPC settings interface translation
+msgid "need_an_account"
+msgstr "به حساب کاربری نیاز دارید"
+
+#. TPPC settings interface translation
+msgid "no_file"
+msgstr "بدون فایل"
+
+#. TPPC settings interface translation
+msgid "plain_text"
+msgstr "متن ساده"
+
+#. TPPC settings interface translation
+msgid "return_to_view"
+msgstr "بازگشت به نما"
+
+#. TPPC settings interface translation
+msgid "structured_text"
+msgstr "متن ساختاریافته"
+
+#. TPPC settings interface translation
+msgid "summary_assigned_roles"
+msgstr "نقش‌های واگذارشده"
+
+#. TPPC settings interface translation
+msgid "summary_roles_for_groups"
+msgstr "نقش‌های گروه‌ها"
+
+#. TPPC settings interface translation
+msgid "text_no_mailhost_configured"
+msgstr "سرور ایمیل پیکربندی نشده"
+
+#. TPPC settings interface translation
+msgid "text_no_mailhost_configured_control_panel_link"
+msgstr "سرور ایمیل پیکربندی نشده"
+
+#. TPPC settings interface translation
+msgid "text_no_pil_installed"
+msgstr "کتابخانه PIL نصب نیست"
+
+#. TPPC settings interface translation
+msgid "text_no_searchstring"
+msgstr "عبارت جستجویی وارد نشده"
+
+#. TPPC settings interface translation
+msgid "text_no_searchstring_large"
+msgstr "عبارت جستجویی وارد نشده"
+
+#. TPPC settings interface translation
+msgid "text_no_timezone_configured"
+msgstr "منطقه زمانی پیکربندی نشده"
+
+#. TPPC settings interface translation
+msgid "text_no_timezone_configured_control_panel_link"
+msgstr "منطقه زمانی پیکربندی نشده"
+
+#. TPPC settings interface translation
+msgid "text_no_user_searchstring"
+msgstr "عبارت جستجوی کاربر وارد نشده"
+
+#. TPPC settings interface translation
+msgid "text_no_user_searchstring_largesite"
+msgstr "عبارت جستجوی کاربر وارد نشده"
+
+#. TPPC settings interface translation
+msgid "text_nomatches"
+msgstr "موردی یافت نشد"
+
+#. TPPC settings interface translation
+msgid "text_user_not_in_any_group"
+msgstr "کاربر عضو هیچ گروهی نیست"
+
+#. TPPC settings interface translation
+msgid "title_edit_contentrule"
+msgstr "ویرایش قاعده محتوا"
+
+#. TPPC settings interface translation
+msgid "title_legacy_portlets"
+msgstr "پورتلت‌های قدیمی"
+
+#. TPPC settings interface translation
+msgid "title_manage_contentrules"
+msgstr "مدیریت قواعد محتوا"
+
+#. TPPC settings interface translation
+msgid "title_manage_contextual_portlets"
+msgstr "مدیریت پورتلت‌های زمینه‌ای"
+
+#. TPPC settings interface translation
+msgid "title_personal_information_form"
+msgstr "فرم اطلاعات شخصی"
+
+#. TPPC settings interface translation
+msgid "title_send_mail_to_user"
+msgstr "ارسال ایمیل به کاربر"
+
+#. TPPC settings interface translation
+msgid "trouble_logging_in"
+msgstr "مشکل در ورود"
+
+#. TPPC settings interface translation
+msgid "unassigned"
+msgstr "واگذارنشده"
+
+#. TPPC settings interface translation
+msgid "user_roles_note"
+msgstr "توجه نقش‌های کاربر"
+
+#. TPPC settings interface translation
+msgid "Manage portlets"
+msgstr "مدیریت پورتلت‌ها"
+
+#. TPPC settings interface translation
+msgid "All..."
+msgstr "همه…"
+
+#. TPPC settings interface translation
+msgid "Plone Footerportlets"
+msgstr "پورتلت‌های فوتر"
+
+#. TPPC settings interface translation
+msgid "Plone Leftcolumn"
+msgstr "ستون چپ"
+
+#. TPPC settings interface translation
+msgid "Plone Rightcolumn"
+msgstr "ستون راست"
+
+#. TPPC settings interface translation
+msgid "Plone Dashboard"
+msgstr "داشبورد"
+
+#. TPPC settings interface translation
+msgid "Contents"
+msgstr "محتواها"
+
+#. TPPC settings interface translation
+msgid "Sharing"
+msgstr "اشتراک‌گذاری"
+
+#. TPPC settings interface translation
+msgid "Rules"
+msgstr "قواعد"
+
+#. TPPC settings interface translation
+msgid "History"
+msgstr "تاریخچه"
+
+#. TPPC settings interface translation
+msgid "Add new…"
+msgstr "افزودن جدید…"
+
+#. TPPC settings interface translation
+msgid "State:"
+msgstr "وضعیت:"
+
+#. TPPC settings interface translation
+msgid "Actions"
+msgstr "عملیات"
+
+#. TPPC settings interface translation
+msgid "Display"
+msgstr "نمایش"
+
+#. TPPC settings interface translation
+msgid "Properties"
+msgstr "ویژگی‌ها"
+
+#. TPPC settings interface translation
+msgid "Rename"
+msgstr "تغییر نام"
+
+#. TPPC settings interface translation
+msgid "Cut"
+msgstr "برش"
+
+#. TPPC settings interface translation
+msgid "Paste"
+msgstr "چسباندن"
+
+#. TPPC settings interface translation
+msgid "Add to clipboard"
+msgstr "افزودن به کلیپ‌بورد"
+
+#. TPPC settings interface translation
+msgid "Personal Preferences"
+msgstr "تنظیمات شخصی"
+
+#. TPPC settings interface translation
+msgid "Preferences"
+msgstr "تنظیمات"
+
+#. TPPC settings interface translation
+msgid "Dashboard"
+msgstr "داشبورد"
+
+#. TPPC settings interface translation
+msgid "Search Site"
+msgstr "جستجوی سایت"
+
+#. TPPC settings interface translation
+msgid "Advanced Search…"
+msgstr "جستجوی پیشرفته…"
+
+#. TPPC settings interface translation
+msgid "You are here:"
+msgstr "شما اینجا هستید:"
+
+#. TPPC settings interface translation
+msgid "Site Administrator"
+msgstr "مدیر سایت"
+
+#. TPPC settings interface translation
+msgid "LabManager"
+msgstr "مدیر آزمایشگاه"
+
+#. TPPC settings interface translation
+msgid "LabClerk"
+msgstr "کارمند آزمایشگاه"
+
+#. TPPC settings interface translation
+msgid "Verifier"
+msgstr "تأییدکننده"
+
+#. TPPC settings interface translation
+msgid "SamplingCoordinator"
+msgstr "هماهنگ‌کنندهٔ نمونه‌برداری"
+
+#. TPPC settings interface translation
+msgid "Publisher"
+msgstr "صادرکنندهٔ گزارش"
+
+#. TPPC settings interface translation
+msgid "RegulatoryInspector"
+msgstr "بازرس نظارتی"
+
+#. TPPC settings interface translation
+msgid "ClientGuest"
+msgstr "مهمان مشتری"
+
+#. TPPC settings interface translation
+msgid "Owner"
+msgstr "مالک"
+
+#. TPPC settings interface translation
+msgid "Member"
+msgstr "عضو"
+
+#. TPPC settings interface translation
+msgid "Reviewer"
+msgstr "بازبین"
+
+#. TPPC settings interface translation
+msgid "Editor"
+msgstr "ویرایشگر"
+
+#. TPPC settings interface translation
+msgid "Contributor"
+msgstr "مشارکت‌کننده"
+
+#. TPPC settings interface translation
+msgid "Reader"
+msgstr "خواننده"
+
+#. TPPC settings interface translation
+msgid ""
+"<p>The formula you type here will be dynamically calculated when an analysis"
+" using this calculation is displayed.</p><p>To enter a Calculation, use "
+"standard maths operators, + - * / ( ), and all keywords available, both from"
+" other Analysis Services and the Interim Fields specified here, as "
+"variables. Enclose them in square brackets [ ].</p><p>E.g, the calculation "
+"for Total Hardness, the total of Calcium (ppm) and Magnesium (ppm) ions in "
+"water, is entered as [Ca] + [Mg], where Ca and MG are the keywords for those"
+" two Analysis Services.</p>"
+msgstr ""
+"<p> فرمولی که در اینجا تایپ می کنید ، هنگام نمایش تجزیه و تحلیل با استفاده "
+"از این محاسبه ، به صورت پویا محاسبه می شود. </ p> <p> برای ورود به محاسبه ، "
+"از عملگرهای استاندارد ریاضی ، + - * / () و همه کلمات کلیدی موجود استفاده "
+"کنید ، هم از سایر خدمات تجزیه و تحلیل و هم از زمینه های موقت مشخص شده در "
+"اینجا ، به عنوان متغیرها. آنها را در براکت های مربع محصور کنید []. </ p> <p>"
+" به عنوان مثال ، محاسبه سختی کل ، کل یون های کلسیم (ppm) و منیزیم (ppm) در "
+"آب به صورت [Ca] + [Mg] وارد می شود ، جایی که Ca و MG کلمات کلیدی آن دو سرویس"
+" تجزیه و تحلیل هستند. </ p>"
+
+#. TPPC settings interface translation
+msgid "Allowed analysis states: {allowed_states},"
+msgstr "وضعیت‌های مجاز آنالیز: {allowed_states}، "
+
+#. TPPC settings interface translation
+msgid "Allowed sample states: {allowed_states},"
+msgstr "وضعیت‌های مجاز نمونه: {allowed_states}، "
+
+#. TPPC settings interface translation
+msgid ""
+"Define the precision when converting values to exponent notation. The "
+"default is 7."
+msgstr "دقت تبدیل مقادیر به نماد علمی را تعیین کنید؛ پیش‌فرض 7 است."
+
+#. TPPC settings interface translation
+msgid ""
+"Invalid specifications file detected. Please upload an Excel spreadsheet "
+"with at least the following columns defined: '{}',"
+msgstr ""
+"فایل مشخصات نامعتبر است. یک فایل اکسل با حداقل ستون‌های زیر بارگذاری کنید: "
+"'{}'، "
+
+#. TPPC settings interface translation
+msgid "Message sent to {},"
+msgstr "پیام ارسال شد به {}، "
+
+#. TPPC settings interface translation
+msgid ""
+"No Sample with '{allowed_ar_states}' statesfound, and no QC analyses found "
+"for {sid},"
+msgstr ""
+"نمونه‌ای با وضعیت‌های '{allowed_ar_states}' یافت نشد و آنالیز کنترل کیفیتی "
+"برای {sid} وجود ندارد، "
+
+#. TPPC settings interface translation
+msgid "No analyses found for {sid} in the states '{allowed_sample_states}' ,"
+msgstr "آنالیزی برای {sid} در وضعیت‌های '{allowed_sample_states}' یافت نشد، "
+
+#. TPPC settings interface translation
+msgid ""
+"Once preserved, the sample must be disposed of within this time period. If "
+"not specified, the sample type retention period will be used."
+msgstr ""
+"پس از نگهداری، نمونه باید در این بازه امحا شود. در صورت عدم تعیین، دوره "
+"نگهداری نوع نمونه استفاده می‌شود."
+
+#. TPPC settings interface translation
+msgid "Published {},"
+msgstr "منتشر شد {}، "
+
+#. TPPC settings interface translation
+msgid ""
+"Result values with at least this number of significant digits are displayed "
+"in scientific notation using the letter 'e' to indicate the exponent. The "
+"precision can be configured in individual Analysis Services."
+msgstr ""
+"مقادیر نتیجه با حداقل این تعداد رقم معنادار با نماد علمی و حرف 'e' برای "
+"نمایش توان نشان داده می‌شوند. دقت را می‌توان در هر سرویس آنالیز جداگانه "
+"پیکربندی کرد."
+
+#. TPPC settings interface translation
+msgid "The lab is not accredited, or accreditation has not been configured."
+msgstr "آزمایشگاه اعتباربخشی ندارد یا اعتباربخشی پیکربندی نشده است. "
+
+#. TPPC settings interface translation
+msgid ""
+"The result after the calculation has taken place with test values. You will "
+"need to save the calculation before this value will be calculated."
+msgstr ""
+"نتیجه پس از انجام محاسبه با مقادیر آزمایشی. پیش از محاسبه این مقدار باید "
+"محاسبه را ذخیره کنید."
+
+#. TPPC settings interface translation
+msgid ""
+"This worksheet has been rejected. The replacement worksheet is ${ws_id}"
+msgstr "این کاربرگ رد شده است. کاربرگ جایگزین ${ws_id} است"
+
+#. TPPC settings interface translation
+msgid ""
+"To test the calculation, enter values here for all calculation parameters. "
+"This includes Interim fields defined above, as well as any services that "
+"this calculation depends on to calculate results."
+msgstr ""
+"برای آزمودن محاسبه، مقادیر همه پارامترها را اینجا وارد کنید. شامل فیلدهای "
+"میانی تعریف‌شده در بالا و همچنین سرویس‌هایی که محاسبه برای نتیجه به آن‌ها "
+"وابسته است."
+
+#. TPPC settings interface translation
+msgid "Active templates"
+msgstr "قالب‌های فعال"
+
+#. TPPC settings interface translation
+msgid "Allow PDF download"
+msgstr "اجازهٔ دانلود PDF"
+
+#. TPPC settings interface translation
+msgid "Allow PDF email share"
+msgstr "اجازهٔ اشتراک PDF با ایمیل"
+
+#. TPPC settings interface translation
+msgid "Allow direct download of the generated report"
+msgstr "اجازهٔ دانلود مستقیم گزارش تولیدشده"
+
+#. TPPC settings interface translation
+msgid "Allow to share the generated PDF directly via email"
+msgstr "اجازهٔ اشتراک مستقیم PDF تولیدشده از طریق ایمیل"
+
+#. TPPC settings interface translation
+msgid "Analysis results relate only to the samples tested."
+msgstr "نتایج آنالیز فقط به نمونه‌های آزمون‌شده مربوط می‌شوند."
+
+#. TPPC settings interface translation
+msgid "Attachment for"
+msgstr "پیوست برای"
+
+#. TPPC settings interface translation
+msgid "Attachments for ${DYNAMIC_CONTENT}"
+msgstr "پیوست‌های ${DYNAMIC_CONTENT}"
+
+#. TPPC settings interface translation
+msgid "Attachments per Row"
+msgstr "پیوست در هر ردیف"
+
+#. TPPC settings interface translation
+msgid "Available Templates"
+msgstr "قالب‌های موجود"
+
+#. TPPC settings interface translation
+msgid "Default Orientation"
+msgstr "جهت پیش‌فرض"
+
+#. TPPC settings interface translation
+msgid "Default Paper Format"
+msgstr "قطع کاغذ پیش‌فرض"
+
+#. TPPC settings interface translation
+msgid "Default Template"
+msgstr "قالب پیش‌فرض"
+
+#. TPPC settings interface translation
+msgid "Developer Mode"
+msgstr "حالت توسعه‌دهنده"
+
+#. TPPC settings interface translation
+msgid "Download the generated PDF to your computer"
+msgstr "دانلود PDF تولیدشده روی رایانهٔ شما"
+
+#. TPPC settings interface translation
+msgid "Failed to send Email"
+msgstr "ارسال ایمیل ناموفق بود"
+
+#. TPPC settings interface translation
+msgid "Filename:"
+msgstr "نام فایل:"
+
+#. TPPC settings interface translation
+msgid "Footer Text"
+msgstr "متن پاورقی"
+
+#. TPPC settings interface translation
+msgid "Generated reports for: {},"
+msgstr "گزارش‌های تولیدشده برای: {}، "
+
+#. TPPC settings interface translation
+msgid "HTML to PDF report engine for SENAITE"
+msgstr "موتور گزارش HTML به PDF برای سامانه"
+
+#. TPPC settings interface translation
+msgid "Impress Settings"
+msgstr "تنظیمات گزارش"
+
+#. TPPC settings interface translation
+msgid "Initially loaded orientation"
+msgstr "جهت بارگذاری اولیه"
+
+#. TPPC settings interface translation
+msgid "Initially loaded paper format"
+msgstr "قطع کاغذ بارگذاری اولیه"
+
+#. TPPC settings interface translation
+msgid "Initially loaded report template"
+msgstr "قالب گزارش بارگذاری اولیه"
+
+#. TPPC settings interface translation
+msgid ""
+"Methods included in the ${accreditation_body} schedule of Accreditation for "
+"this Laboratory. Analysis remarks are not accredited"
+msgstr ""
+"روش‌ها در دامنهٔ اعتباربخشی ${accreditation_body} این آزمایشگاه گنجانده "
+"شده‌اند. ملاحظات آنالیز اعتباربخشی‌شده نیستند"
+
+#. TPPC settings interface translation
+msgid "Not invoiced"
+msgstr "فاکتورنشده"
+
+#. TPPC settings interface translation
+msgid "Number of attachments rendered within one row per Analysis Request"
+msgstr "تعداد پیوست‌های نمایش‌داده‌شده در یک ردیف برای هر نمونه"
+
+#. TPPC settings interface translation
+msgid "PDF attachment is missing"
+msgstr "پیوست PDF موجود نیست"
+
+#. TPPC settings interface translation
+msgid "Please choose the templates that can be selected"
+msgstr "قالب‌هایی که قابل انتخاب‌اند را برگزینید"
+
+#. TPPC settings interface translation
+msgid "Provisional report"
+msgstr "گزارش موقت"
+
+#. TPPC settings interface translation
+msgid "Published by"
+msgstr "منتشرشده توسط"
+
+#. TPPC settings interface translation
+msgid "Range"
+msgstr "محدوده"
+
+#. TPPC settings interface translation
+msgid "Reload after reorder"
+msgstr "بارگذاری مجدد پس از مرتب‌سازی"
+
+#. TPPC settings interface translation
+msgid "Reload report automatically when items order changed"
+msgstr "بارگذاری خودکار گزارش هنگام تغییر ترتیب آیتم‌ها"
+
+#. TPPC settings interface translation
+msgid "Report Options"
+msgstr "گزینه‌های گزارش"
+
+#. TPPC settings interface translation
+msgid "Report Settings"
+msgstr "تنظیمات گزارش"
+
+#. TPPC settings interface translation
+msgid "Result out of client specified range."
+msgstr "نتیجه خارج از بازهٔ تعیین‌شدهٔ مشتری."
+
+#. TPPC settings interface translation
+msgid "Returns the raw HTML in the report preview."
+msgstr "HTML خام را در پیش‌نمایش گزارش برمی‌گرداند."
+
+#. TPPC settings interface translation
+msgid "SENAITE IMPRESS"
+msgstr "موتور گزارش"
+
+#. TPPC settings interface translation
+msgid "SENAITE IMPRESS Settings"
+msgstr "تنظیمات موتور گزارش"
+
+#. TPPC settings interface translation
+msgid "Share PDF via email"
+msgstr "اشتراک PDF از طریق ایمیل"
+
+#. TPPC settings interface translation
+msgid "Show Sample Remarks"
+msgstr "نمایش ملاحظات نمونه"
+
+#. TPPC settings interface translation
+msgid "Store Multi-Report PDFs Individually"
+msgstr "ذخیرهٔ جداگانهٔ PDFهای چندگزارشی"
+
+#. TPPC settings interface translation
+msgid ""
+"Store generated multi-report PDFs individually. Turn off to store the multi-"
+"report PDF only for the primary item of the report"
+msgstr ""
+"PDFهای چندگزارشی تولیدشده را جداگانه ذخیره کن. برای ذخیرهٔ فقط برای آیتم "
+"اصلی گزارش، خاموش کنید"
+
+#. TPPC settings interface translation
+msgid "Summary"
+msgstr "خلاصه"
+
+#. TPPC settings interface translation
+msgid "Supervisor"
+msgstr "سرپرست"
+
+#. TPPC settings interface translation
+msgid "Test results are at a ${lab_confidence}% confidence level"
+msgstr "نتایج آزمون در سطح اطمینان ${lab_confidence}٪ هستند"
+
+#. TPPC settings interface translation
+msgid ""
+"The footer text will be rendered on every PDF page and may contain arbitrary"
+" HTML"
+msgstr ""
+"متن پاورقی در هر صفحهٔ PDF نمایش داده می‌شود و می‌تواند شامل HTML دلخواه "
+"باشد"
+
+#. TPPC settings interface translation
+msgid ""
+"This Analysis Request has been invalidated due to erroneously published "
+"results"
+msgstr "این نمونه به‌دلیل انتشار نادرست نتایج باطل شده است"
+
+#. TPPC settings interface translation
+msgid "This Analysis request has been replaced by"
+msgstr "این نمونه جایگزین شده است با"
+
+#. TPPC settings interface translation
+msgid ""
+"This document shall not be reproduced except in full, without the written "
+"approval of ${name_lab}"
+msgstr ""
+"این سند جز به‌صورت کامل و بدون تأیید کتبی ${name_lab} قابل بازتولید نیست"
+
+#. TPPC settings interface translation
+msgid "Workflow State ID"
+msgstr "شناسهٔ وضعیت گردش‌کار"
+
+#. TPPC settings interface translation
+msgid "Results for"
+msgstr "نتایج برای"
+
+#. TPPC settings interface translation
+msgid "Results for ${id}"
+msgstr "نتایج برای ${id}"
+
+#. TPPC settings interface translation
+msgid "Test Method"
+msgstr "روش آزمون"
+
+#. TPPC settings interface translation
+msgid ""
+"A list of error types which the \"After the Deadline\" spellchecker should "
+"check for. By default, all the available error type will be listed here."
+msgstr ""
+"انواع خطاهایی که غلط‌یاب «After the Deadline» بررسی می‌کند. به‌صورت پیش‌فرض،"
+" همهٔ انواع خطای موجود در این فهرست قرار دارند."
+
+#. TPPC settings interface translation
+msgid ""
+"A list of portlet manager names that will not be shown in the toolbar "
+"dropdown"
+msgstr ""
+"نام مدیران ابزارک‌هایی که در منوی کشویی نوار ابزار نمایش داده نمی‌شوند."
+
+#. TPPC settings interface translation
+msgid ""
+"A list of strings which the \"After the Deadline\" spellchecker should "
+"ignore. Note: This option is only applicable when the appropriate "
+"spellchecker has been chosen above."
+msgstr ""
+"عبارت‌هایی که غلط‌یاب «After the Deadline» نادیده می‌گیرد. این گزینه فقط "
+"هنگام انتخاب همین غلط‌یاب کاربرد دارد."
+
+#. TPPC settings interface translation
+msgid "A list of valid tags which will be not filtered out."
+msgstr "تگ‌های HTML مجاز که از متن حذف نمی‌شوند."
+
+#. TPPC settings interface translation
+msgid ""
+"A value for the quality of 2x high pixel density images, from 1 (lowest) to "
+"95 (highest). A value of 0 will mean plone.scaling's default will be used, "
+"which is currently 62."
+msgstr ""
+"کیفیت تصاویر با تراکم پیکسل 2x، از ۱ تا ۹۵. مقدار صفر از پیش‌فرض "
+"plone.scaling استفاده می‌کند که در این نسخه ۶۲ است."
+
+#. TPPC settings interface translation
+msgid ""
+"A value for the quality of 3x high pixel density images, from 1 (lowest) to "
+"95 (highest). A value of 0 will mean plone.scaling's default will be used, "
+"which is currently 51."
+msgstr ""
+"کیفیت تصاویر با تراکم پیکسل 3x، از ۱ تا ۹۵. مقدار صفر از پیش‌فرض "
+"plone.scaling استفاده می‌کند که در این نسخه ۵۱ است."
+
+#. TPPC settings interface translation
+msgid ""
+"A value for the quality of scaled images, from 1 (lowest) to 95 (highest). A"
+" value of 0 will mean plone.scaling's default will be used, which is "
+"currently 88."
+msgstr ""
+"کیفیت تصاویر تغییراندازه‌یافته، از ۱ تا ۹۵. مقدار صفر از پیش‌فرض "
+"plone.scaling استفاده می‌کند که در این نسخه ۸۸ است."
+
+#. TPPC settings interface translation
+msgid "Absolute URL prefix"
+msgstr "پیشوند نشانی مطلق"
+
+#. TPPC settings interface translation
+msgid "Active ajax transitions"
+msgstr "انتقال‌های فعال با Ajax"
+
+#. TPPC settings interface translation
+msgid "Address to which moderator notifications will be sent."
+msgstr "نشانی دریافت اعلان‌های مدیر بررسی نظرات."
+
+#. TPPC settings interface translation
+msgid ""
+"After successful password reset the user will be logged in automatically."
+msgstr "پس از بازنشانی موفق گذرواژه، کاربر خودکار وارد حساب می‌شود."
+
+#. TPPC settings interface translation
+msgid "Alignment styles"
+msgstr "سبک‌های تراز متن"
+
+#. TPPC settings interface translation
+msgid "Allow anyone to view 'about' information"
+msgstr "نمایش اطلاعات «دربارهٔ محتوا» برای همه"
+
+#. TPPC settings interface translation
+msgid "Allow external login sites"
+msgstr "مجازبودن سامانه‌های ورود خارجی"
+
+#. TPPC settings interface translation
+msgid "Allow syndication for collections and folders on site."
+msgstr "اجازهٔ انتشار خوراک برای مجموعه‌ها و پوشه‌های سایت."
+
+#. TPPC settings interface translation
+msgid "Allowed"
+msgstr "مجاز"
+
+#. TPPC settings interface translation
+msgid "Allowed Feed Types"
+msgstr "انواع خوراک مجاز"
+
+#. TPPC settings interface translation
+msgid "Allowed image sizes"
+msgstr "اندازه‌های مجاز تصویر"
+
+#. TPPC settings interface translation
+msgid ""
+"Allows users to login with their email address instead of specifying a "
+"separate login name. This also updates the login name of existing users, "
+"which may take a while on large sites. The login name is saved as lower "
+"case, but to be userfriendly it does not matter which case you use to login."
+" When duplicates are found, saving this form will fail. You can use the "
+"@@migrate-to-emaillogin page to show the duplicates."
+msgstr ""
+"کاربران می‌توانند با ایمیل وارد شوند. نام ورود کاربران فعلی نیز به‌روزرسانی "
+"می‌شود و در سایت‌های بزرگ ممکن است زمان‌بر باشد. نام ورود با حروف کوچک ذخیره"
+" می‌شود، ولی بزرگی و کوچکی حروف هنگام ورود تفاوتی ندارد. در صورت وجود ایمیل "
+"تکراری، ذخیره انجام نمی‌شود. موارد تکراری را در @@migrate-to-emaillogin "
+"بررسی کنید."
+
+#. TPPC settings interface translation
+msgid ""
+"Allows users to register themselves on the site. If not selected, only site "
+"managers can add new users."
+msgstr ""
+"کاربران می‌توانند خودشان ثبت‌نام کنند. در غیر این صورت فقط مدیران سایت "
+"می‌توانند کاربر جدید بسازند."
+
+#. TPPC settings interface translation
+msgid "Allows users to subscribe to feeds of search results"
+msgstr "امکان اشتراک در خوراک نتایج جست‌وجو برای کاربران"
+
+#. TPPC settings interface translation
+msgid "Always show language selector"
+msgstr "نمایش همیشگی انتخابگر زبان"
+
+#. TPPC settings interface translation
+msgid "AtD error types to show"
+msgstr "انواع خطای قابل نمایش در غلط‌یاب AtD"
+
+#. TPPC settings interface translation
+msgid "AtD ignore strings"
+msgstr "عبارت‌های نادیده‌گرفته‌شده در AtD"
+
+#. TPPC settings interface translation
+msgid "AtD service URL"
+msgstr "نشانی سرویس AtD"
+
+#. TPPC settings interface translation
+msgid "Auth cookie length"
+msgstr "طول کوکی احراز هویت"
+
+#. TPPC settings interface translation
+msgid "Authenticated users only"
+msgstr "فقط کاربران واردشده"
+
+#. TPPC settings interface translation
+msgid ""
+"Automatically fetch the possible workflow transitions when items get "
+"selected in listings. Disabling this can speed up listings (especially "
+"samples with many analyses) at the cost of having to fetch the transitions "
+"manually via the row context menu. Individual listings can still override "
+"this default."
+msgstr ""
+"هنگام انتخاب ردیف‌ها، انتقال‌های مجاز گردش‌کار خودکار دریافت می‌شوند. "
+"غیرفعال‌کردن این گزینه می‌تواند فهرست‌ها، به‌خصوص نمونه‌های دارای آزمون‌های "
+"زیاد، را سریع‌تر کند؛ در این حالت انتقال‌ها باید از منوی همان ردیف دریافت "
+"شوند. هر فهرست می‌تواند این پیش‌فرض را تغییر دهد."
+
+#. TPPC settings interface translation
+msgid "Automatically generate tabs"
+msgstr "ساخت خودکار زبانه‌ها"
+
+#. TPPC settings interface translation
+msgid "Available editors"
+msgstr "ویرایشگرهای موجود"
+
+#. TPPC settings interface translation
+msgid "Available editors in the portal."
+msgstr "ویرایشگرهای قابل استفاده در سامانه."
+
+#. TPPC settings interface translation
+msgid "Available timezones"
+msgstr "مناطق زمانی قابل انتخاب"
+
+#. TPPC settings interface translation
+msgid "Base pattern configuration options"
+msgstr "تنظیمات پایهٔ الگو"
+
+#. TPPC settings interface translation
+msgid "Block styles"
+msgstr "سبک‌های بلوک متن"
+
+#. TPPC settings interface translation
+msgid "Body class path depth"
+msgstr "عمق مسیر برای کلاس بدنهٔ صفحه"
+
+#. TPPC settings interface translation
+msgid ""
+"By default, all items created at the root level will appear as tabs. You can"
+" turn this off if you prefer manually constructing this part of the "
+"navigation."
+msgstr ""
+"به‌صورت پیش‌فرض، محتوای ساخته‌شده در ریشهٔ سایت در زبانه‌ها نمایش داده "
+"می‌شود. برای ساخت دستی این بخش از منو، گزینه را غیرفعال کنید."
+
+#. TPPC settings interface translation
+msgid ""
+"By default, any content item in the root of the portal will appear as a tab."
+" If you turn this option off, only folders will be shown. This only has an "
+"effect if 'automatically generate tabs' is enabled."
+msgstr ""
+"به‌صورت پیش‌فرض، هر محتوای ریشهٔ سایت یک زبانه می‌سازد. با غیرفعال‌کردن این "
+"گزینه فقط پوشه‌ها نمایش داده می‌شوند. این تنظیم تنها با فعال‌بودن ساخت "
+"خودکار زبانه‌ها اثر دارد."
+
+#. TPPC settings interface translation
+msgid "CSS styles for the toolbar logo"
+msgstr "سبک CSS لوگوی نوار ابزار"
+
+#. TPPC settings interface translation
+msgid "CSS/LESS files"
+msgstr "فایل‌های CSS و LESS"
+
+#. TPPC settings interface translation
+msgid "Captcha"
+msgstr "کپچا"
+
+#. TPPC settings interface translation
+msgid "Catalogs"
+msgstr "فهرست‌های جست‌وجو"
+
+#. TPPC settings interface translation
+msgid "Characterset to use when sending e-mails."
+msgstr "کدگذاری متن ایمیل‌ها."
+
+#. TPPC settings interface translation
+msgid "Choose the CSS used in WYSIWYG Editor Area"
+msgstr "انتخاب CSS ناحیهٔ ویرایشگر دیداری"
+
+#. TPPC settings interface translation
+msgid "Comma separated values of resource for shim"
+msgstr "نام منابع shim، جداشده با ویرگول"
+
+#. TPPC settings interface translation
+msgid "Commands"
+msgstr "فرمان‌ها"
+
+#. TPPC settings interface translation
+msgid "Comment text transform"
+msgstr "تبدیل قالب متن نظر"
+
+#. TPPC settings interface translation
+msgid "Conditional comment"
+msgstr "توضیح شرطی"
+
+#. TPPC settings interface translation
+msgid "Configuration in JSON for the widget"
+msgstr "تنظیمات ابزارک در قالب JSON"
+
+#. TPPC settings interface translation
+msgid "Contains objects"
+msgstr "قابل نگهداری محتوای دیگر"
+
+#. TPPC settings interface translation
+msgid ""
+"Convert relative URLs in the theme file to absolute paths using this prefix."
+msgstr ""
+"نشانی‌های نسبی فایل پوسته با استفاده از این پیشوند به نشانی مطلق تبدیل "
+"می‌شوند."
+
+#. TPPC settings interface translation
+msgid ""
+"Crop the item description in search result listings after a number of "
+"characters."
+msgstr "توضیح هر مورد در نتایج جست‌وجو پس از تعداد مشخصی نویسه کوتاه می‌شود."
+
+#. TPPC settings interface translation
+msgid "Current theme"
+msgstr "پوستهٔ فعلی"
+
+#. TPPC settings interface translation
+msgid "Custom CSS"
+msgstr "CSS سفارشی"
+
+#. TPPC settings interface translation
+msgid "Custom CSS Timestamp"
+msgstr "زمان تغییر CSS سفارشی"
+
+#. TPPC settings interface translation
+msgid "Custom Paper Formats"
+msgstr "اندازه‌های سفارشی کاغذ"
+
+#. TPPC settings interface translation
+msgid "Custom attributes"
+msgstr "ویژگی‌های سفارشی"
+
+#. TPPC settings interface translation
+msgid "Custom buttons"
+msgstr "دکمه‌های سفارشی"
+
+#. TPPC settings interface translation
+msgid ""
+"Custom logo to display in report headers. If not set, the default SENAITE "
+"logo is used."
+msgstr ""
+"لوگوی سربرگ گزارش. اگر تعیین نشود، لوگوی پیش‌فرض SENAITE استفاده می‌شود."
+
+#. TPPC settings interface translation
+msgid "Custom plugins"
+msgstr "افزونه‌های سفارشی"
+
+#. TPPC settings interface translation
+msgid "Date time of the last compilation of this bundle"
+msgstr "تاریخ و ساعت آخرین ساخت این بسته"
+
+#. TPPC settings interface translation
+msgid "Days of object history to keep after packing"
+msgstr "روزهای نگهداری سابقه پس از فشرده‌سازی پایگاه داده"
+
+#. TPPC settings interface translation
+msgid "Default editor"
+msgstr "ویرایشگر پیش‌فرض"
+
+#. TPPC settings interface translation
+msgid "Default format"
+msgstr "قالب پیش‌فرض"
+
+#. TPPC settings interface translation
+msgid "Default page IDs"
+msgstr "شناسه‌های صفحهٔ پیش‌فرض"
+
+#. TPPC settings interface translation
+msgid "Default value: %H:%M (03:14)"
+msgstr "مقدار پیش‌فرض: %H:%M (03:14)"
+
+#. TPPC settings interface translation
+msgid "Default value: %Y-%m-%d %H:%M (2038-01-19 03:14)"
+msgstr "مقدار پیش‌فرض: %Y-%m-%d %H:%M (2038-01-19 03:14)"
+
+#. TPPC settings interface translation
+msgid "Default value: %Y-%m-%d (2038-01-19)"
+msgstr "مقدار پیش‌فرض: %Y-%m-%d (2038-01-19)"
+
+#. TPPC settings interface translation
+msgid ""
+"Define custom paper formats with specific dimensions and margins. Use the "
+"key to reference the format in template mappings. If a key matches a built-"
+"in format (e.g. A4), it overrides it."
+msgstr ""
+"اندازه و حاشیه‌های سفارشی کاغذ را تعریف کنید. کلید هر اندازه در نگاشت "
+"قالب‌ها استفاده می‌شود. کلیدی مانند A4، اندازهٔ داخلی هم‌نام را جایگزین "
+"می‌کند."
+
+#. TPPC settings interface translation
+msgid ""
+"Define list of modules that will be defined empty on RequireJS build steps "
+"to prevent loading modules multiple times."
+msgstr ""
+"ماژول‌هایی که هنگام ساخت RequireJS خالی تعریف می‌شوند تا چند بار بارگذاری "
+"نشوند."
+
+#. TPPC settings interface translation
+msgid ""
+"Define the types that should be searched and be available in the user facing"
+" part of the site. Note that if new content types are installed, they will "
+"be enabled by default unless explicitly turned off here or by the relevant "
+"installer."
+msgstr ""
+"انواع محتوای قابل جست‌وجو و قابل نمایش به کاربران را تعیین کنید. نوع محتوای "
+"تازه نصب‌شده پیش‌فرض فعال است؛ مگر اینجا یا در نصب‌کنندهٔ مربوط غیرفعال شود."
+
+#. TPPC settings interface translation
+msgid "Define the types to be shown in the site and searched"
+msgstr "انواع محتوای قابل نمایش و جست‌وجو"
+
+#. TPPC settings interface translation
+msgid ""
+"Define your own custom CSS in the field below. This is a good place for "
+"quick customizations of things like colors and the toolbar. Definitions here"
+" will override previously defined CSS of Plone. Please use this only for "
+"small customizations, as it is hard to keep track of changes here. For "
+"bigger changes you most likely want to customize a full theme and make your "
+"changes there."
+msgstr ""
+"CSS سفارشی را وارد کنید. این تنظیم برای تغییرات کوچک مانند رنگ یا نوار ابزار"
+" است و CSS قبلی Plone را بازنویسی می‌کند. برای تغییرات بزرگ‌تر، پوستهٔ کامل "
+"را ویرایش کنید تا پیگیری تغییرات آسان‌تر باشد."
+
+#. TPPC settings interface translation
+msgid "Dependencies for shim"
+msgstr "وابستگی‌های shim"
+
+#. TPPC settings interface translation
+msgid "Depends on another bundle"
+msgstr "وابستگی به بستهٔ دیگر"
+
+#. TPPC settings interface translation
+msgid "Depth relative the site root that body class are generated for."
+msgstr "عمق مسیر نسبت به ریشهٔ سایت که برای آن کلاس بدنه تولید می‌شود."
+
+#. TPPC settings interface translation
+msgid ""
+"Determines if the external editor feature is enabled. This feature requires "
+"a special client-side application installed. The users also have to enable "
+"this in their preferences."
+msgstr ""
+"فعال‌بودن ویرایشگر خارجی. این قابلیت به برنامهٔ مخصوص روی رایانهٔ کاربر و "
+"فعال‌سازی در تنظیمات شخصی او نیاز دارد."
+
+#. TPPC settings interface translation
+msgid ""
+"Determines if the users should get warnings when they delete or move content"
+" that is linked from inside the site."
+msgstr ""
+"نمایش هشدار هنگام حذف یا جابه‌جایی محتوایی که در داخل سایت به آن پیوند داده "
+"شده است."
+
+#. TPPC settings interface translation
+msgid ""
+"Determines if your Plone is optimized for small or large sites. In "
+"environments with a lot of groups it can be very slow or impossible to build"
+" a list all groups. This option tunes the user interface and behaviour of "
+"Plone for this case by allowing you to search for groups instead of listing "
+"all of them."
+msgstr ""
+"بهینه‌سازی برای سایت‌های دارای گروه‌های زیاد. به‌جای بارگذاری فهرست همهٔ "
+"گروه‌ها، امکان جست‌وجوی گروه فراهم می‌شود."
+
+#. TPPC settings interface translation
+msgid ""
+"Determines if your Plone is optimized for small or large sites. In "
+"environments with a lot of users it can be very slow or impossible to build "
+"a list all users. This option tunes the user interface and behaviour of "
+"Plone for this case by allowing you to search for users instead of listing "
+"all of them."
+msgstr ""
+"بهینه‌سازی برای سایت‌های دارای کاربران زیاد. به‌جای بارگذاری فهرست همهٔ "
+"کاربران، امکان جست‌وجوی کاربر فراهم می‌شود."
+
+#. TPPC settings interface translation
+msgid "Develop CSS"
+msgstr "حالت توسعهٔ CSS"
+
+#. TPPC settings interface translation
+msgid "Develop JavaScript"
+msgstr "حالت توسعهٔ JavaScript"
+
+#. TPPC settings interface translation
+msgid "Disable HTML filtering"
+msgstr "غیرفعال‌کردن محدودیت‌های محتوای HTML"
+
+#. TPPC settings interface translation
+msgid ""
+"Disabling locking here will only affect users editing content through the "
+"Plone web UI. Content edited via WebDAV clients will still be subject to "
+"locking."
+msgstr ""
+"غیرفعال‌کردن قفل فقط بر ویرایش در رابط وب Plone اثر دارد؛ ویرایش از طریق "
+"WebDAV همچنان مشمول قفل است."
+
+#. TPPC settings interface translation
+msgid "Display publication date"
+msgstr "نمایش تاریخ انتشار"
+
+#. TPPC settings interface translation
+msgid "Displayed content types"
+msgstr "انواع محتوای نمایشی"
+
+#. TPPC settings interface translation
+msgid "Doctype"
+msgstr "اعلان نوع سند (Doctype)"
+
+#. TPPC settings interface translation
+msgid "Does your bundle contains any RequireJS or LESS file?"
+msgstr "آیا این بسته فایل RequireJS یا LESS دارد؟"
+
+#. TPPC settings interface translation
+msgid "E-mail characterset"
+msgstr "کدگذاری متن ایمیل"
+
+#. TPPC settings interface translation
+msgid "E.g. standard view; This default can be overriden individually."
+msgstr "برای مثال، نمای عادی؛ این پیش‌فرض برای هر مورد قابل تغییر است."
+
+#. TPPC settings interface translation
+msgid ""
+"E.g., tabular view, folder content listing; This default can be overriden "
+"individually."
+msgstr ""
+"برای مثال، نمای جدولی یا محتوای پوشه؛ این پیش‌فرض برای هر مورد قابل تغییر "
+"است."
+
+#. TPPC settings interface translation
+msgid "ESMTP password"
+msgstr "گذرواژهٔ ESMTP"
+
+#. TPPC settings interface translation
+msgid "ESMTP username"
+msgstr "نام کاربری ESMTP"
+
+#. TPPC settings interface translation
+msgid "Editor height"
+msgstr "ارتفاع ویرایشگر"
+
+#. TPPC settings interface translation
+msgid "Editor plugins"
+msgstr "افزونه‌های ویرایشگر"
+
+#. TPPC settings interface translation
+msgid "Editor width"
+msgstr "عرض ویرایشگر"
+
+#. TPPC settings interface translation
+msgid "Enable Ajax Transitions"
+msgstr "فعال‌کردن انتقال گردش‌کار با Ajax"
+
+#. TPPC settings interface translation
+msgid "Enable External Editor feature"
+msgstr "فعال‌کردن ویرایشگر خارجی"
+
+#. TPPC settings interface translation
+msgid "Enable LiveSearch"
+msgstr "فعال‌کردن جست‌وجوی زنده"
+
+#. TPPC settings interface translation
+msgid "Enable RSS link document action on the syndication content item."
+msgstr "فعال‌کردن پیوند RSS در عملیات سند برای محتوای دارای خوراک."
+
+#. TPPC settings interface translation
+msgid "Enable User Folders"
+msgstr "فعال‌کردن پوشهٔ شخصی کاربران"
+
+#. TPPC settings interface translation
+msgid "Enable anonymous comments"
+msgstr "فعال‌کردن نظر ناشناس"
+
+#. TPPC settings interface translation
+msgid "Enable anonymous email field"
+msgstr "فعال‌کردن فیلد ایمیل برای نظر ناشناس"
+
+#. TPPC settings interface translation
+msgid "Enable auto resizing of the editor window."
+msgstr "تغییر خودکار اندازهٔ پنجرهٔ ویرایشگر."
+
+#. TPPC settings interface translation
+msgid ""
+"Enable automatic image captioning for images set in the richtext editor "
+"based on the description of images."
+msgstr "ساخت خودکار زیرنویس تصویر در ویرایشگر بر اساس توضیح تصویر."
+
+#. TPPC settings interface translation
+msgid "Enable comment moderation"
+msgstr "فعال‌کردن بررسی نظر پیش از انتشار"
+
+#. TPPC settings interface translation
+msgid "Enable deleting own comments"
+msgstr "اجازهٔ حذف نظر خود کاربر"
+
+#. TPPC settings interface translation
+msgid "Enable editing of comments"
+msgstr "اجازهٔ ویرایش نظرها"
+
+#. TPPC settings interface translation
+msgid "Enable image captioning"
+msgstr "فعال‌کردن زیرنویس تصویر"
+
+#. TPPC settings interface translation
+msgid "Enable link integrity checks"
+msgstr "فعال‌کردن بررسی سلامت پیوندها"
+
+#. TPPC settings interface translation
+msgid "Enable locking for through-the-web edits"
+msgstr "فعال‌کردن قفل هنگام ویرایش از وب"
+
+#. TPPC settings interface translation
+msgid "Enable moderator email notification"
+msgstr "ارسال اعلان ایمیلی برای مدیر نظرات"
+
+#. TPPC settings interface translation
+msgid "Enable resizing the editor window."
+msgstr "اجازهٔ تغییر اندازهٔ پنجرهٔ ویرایشگر."
+
+#. TPPC settings interface translation
+msgid "Enable self-registration"
+msgstr "فعال‌کردن ثبت‌نام عمومی"
+
+#. TPPC settings interface translation
+msgid "Enable sequential ajax workflow transitions"
+msgstr "اجرای ترتیبی انتقال‌های گردش‌کار با Ajax"
+
+#. TPPC settings interface translation
+msgid "Enable user email notification"
+msgstr "ارسال اعلان ایمیلی برای کاربر"
+
+#. TPPC settings interface translation
+msgid "Enabled by default"
+msgstr "فعال به‌صورت پیش‌فرض"
+
+#. TPPC settings interface translation
+msgid "Enabled markdown extensions"
+msgstr "افزونه‌های فعال Markdown"
+
+#. TPPC settings interface translation
+msgid ""
+"Enables the LiveSearch feature, which shows live results if the browser "
+"supports JavaScript."
+msgstr ""
+"جست‌وجوی زنده را فعال می‌کند؛ نمایش نتایج فوری به پشتیبانی مرورگر از "
+"JavaScript نیاز دارد."
+
+#. TPPC settings interface translation
+msgid ""
+"Enter a JSON-formatted style format configuration. A format is for example "
+"the style that get applied when you press the bold button inside the editor."
+" See https://www.tinymce.com/docs/configure/content-formatting/#formats"
+msgstr ""
+"تنظیمات قالب‌بندی را به‌صورت JSON وارد کنید. قالب، سبک اعمال‌شده با دکمه‌ای "
+"مانند ضخیم‌کردن متن است. راهنما: "
+"https://www.tinymce.com/docs/configure/content-formatting/#formats"
+
+#. TPPC settings interface translation
+msgid ""
+"Enter a list of content types which can be used as images. Format is one "
+"contenttype per line."
+msgstr "انواع محتوای قابل استفاده به‌عنوان تصویر را بنویسید؛ هر نوع در یک خط."
+
+#. TPPC settings interface translation
+msgid ""
+"Enter a list of content types which can contain other objects. Format is one"
+" contenttype per line."
+msgstr "انواع محتوای قابل نگهداری محتوای دیگر را بنویسید؛ هر نوع در یک خط."
+
+#. TPPC settings interface translation
+msgid "Enter a list of custom buttons which will be added to toolbar"
+msgstr "دکمه‌های سفارشی نوار ابزار را فهرست کنید."
+
+#. TPPC settings interface translation
+msgid ""
+"Enter a list of custom plugins which will be loaded in the editor. Format is"
+" pluginname|location, one per line."
+msgstr ""
+"افزونه‌های سفارشی ویرایشگر را با قالب pluginname|location وارد کنید؛ هر مورد"
+" در یک خط."
+
+#. TPPC settings interface translation
+msgid "Enter how you would like the toolbar items to list."
+msgstr "چیدمان موارد نوار ابزار را تعیین کنید."
+
+#. TPPC settings interface translation
+msgid ""
+"Enter the list of templates in json format "
+"https://www.tinymce.com/docs/plugins/template/"
+msgstr ""
+"فهرست قالب‌ها را به‌صورت JSON وارد کنید. راهنما: "
+"https://www.tinymce.com/docs/plugins/template/"
+
+#. TPPC settings interface translation
+msgid "Enter what items you would like in the menu bar."
+msgstr "موارد منوی ویرایشگر را تعیین کنید."
+
+#. TPPC settings interface translation
+msgid "Entity encoding"
+msgstr "شیوهٔ کدگذاری نویسه‌های HTML"
+
+#. TPPC settings interface translation
+msgid "Examples: pt-br (Brazilian Portuguese), en-us (American English) etc."
+msgstr "برای نمونه: pt-br برای پرتغالی برزیل و en-us برای انگلیسی آمریکا."
+
+#. TPPC settings interface translation
+msgid "Export vars for shim"
+msgstr "متغیرهای خروجی shim"
+
+#. TPPC settings interface translation
+msgid "Expose Dublin Core metadata"
+msgstr "نمایش فرادادهٔ Dublin Core"
+
+#. TPPC settings interface translation
+msgid "Expose sitemap.xml.gz"
+msgstr "انتشار sitemap.xml.gz"
+
+#. TPPC settings interface translation
+msgid "Exposes the Dublin Core properties as metatags."
+msgstr "ویژگی‌های Dublin Core را در متاتگ‌ها قرار می‌دهد."
+
+#. TPPC settings interface translation
+msgid ""
+"Exposes your content as a file according to the <a "
+"href='http://sitemaps.org'>sitemaps.org</a> standard. You can submit this to"
+" compliant search engines like Google, Yahoo and Microsoft. It allows these "
+"search engines to more intelligently crawl your site."
+msgstr ""
+"محتوای سایت را در قالب فایل استاندارد <a "
+"href='http://sitemaps.org'>sitemaps.org</a> منتشر می‌کند تا موتورهای "
+"جست‌وجوی سازگار بتوانند سایت را بهتر پیمایش کنند."
+
+#. TPPC settings interface translation
+msgid "Expression to render"
+msgstr "عبارت شرط نمایش"
+
+#. TPPC settings interface translation
+msgid "External login iframe"
+msgstr "قاب ورود خارجی در صفحه"
+
+#. TPPC settings interface translation
+msgid "External login url"
+msgstr "نشانی ورود خارجی"
+
+#. TPPC settings interface translation
+msgid "External logout url"
+msgstr "نشانی خروج خارجی"
+
+#. TPPC settings interface translation
+msgid "Facebook App ID"
+msgstr "شناسهٔ برنامهٔ Facebook"
+
+#. TPPC settings interface translation
+msgid "Facebook username"
+msgstr "نام کاربری Facebook"
+
+#. TPPC settings interface translation
+msgid "Fetch transitions on select"
+msgstr "دریافت انتقال‌های گردش‌کار هنگام انتخاب ردیف"
+
+#. TPPC settings interface translation
+msgid "Fetch vocabulary"
+msgstr "دریافت واژگان"
+
+#. TPPC settings interface translation
+msgid "File path to the rules file"
+msgstr "مسیر فایل قواعد"
+
+#. TPPC settings interface translation
+msgid "Filter on workflow state"
+msgstr "محدودکردن بر اساس وضعیت گردش‌کار"
+
+#. TPPC settings interface translation
+msgid "First day in the week."
+msgstr "اولین روز هفته."
+
+#. TPPC settings interface translation
+msgid "First weekday"
+msgstr "روز آغاز هفته"
+
+#. TPPC settings interface translation
+msgid ""
+"For enabling web statistics support from external providers (e.g. Google "
+"Analytics). Paste the provided code snippet here. It will be rendered as "
+"entered near the end of the page."
+msgstr ""
+"برای آمارگیری با سرویس خارجی مانند Google Analytics، کد ارائه‌شده را اینجا "
+"قرار دهید. کد بدون تغییر در انتهای صفحه درج می‌شود."
+
+#. TPPC settings interface translation
+msgid "For linking Open Graph data to a Facebook account"
+msgstr "اتصال داده‌های Open Graph به حساب Facebook"
+
+#. TPPC settings interface translation
+msgid "Formats"
+msgstr "قالب‌ها"
+
+#. TPPC settings interface translation
+msgid "Frontend development mode"
+msgstr "حالت توسعهٔ رابط کاربری"
+
+#. TPPC settings interface translation
+msgid "Generate tabs for items other than folders."
+msgstr "ساخت زبانه برای محتوای غیرپوشه‌ای."
+
+#. TPPC settings interface translation
+msgid "Globally enable comments"
+msgstr "فعال‌کردن نظرات در کل سایت"
+
+#. TPPC settings interface translation
+msgid "Group"
+msgstr "گروه"
+
+#. TPPC settings interface translation
+msgid "Header styles"
+msgstr "سبک‌های عنوان"
+
+#. TPPC settings interface translation
+msgid "Hide children of these types"
+msgstr "پنهان‌کردن زیرمجموعهٔ این انواع محتوا"
+
+#. TPPC settings interface translation
+msgid "Hide content inside the following types in Navigation."
+msgstr "پنهان‌کردن محتوای داخل انواع زیر از منوی پیمایش."
+
+#. TPPC settings interface translation
+msgid "High pixel density mode"
+msgstr "حالت تراکم پیکسل بالا"
+
+#. TPPC settings interface translation
+msgid "Highlight matches"
+msgstr "برجسته‌کردن تطابق‌ها"
+
+#. TPPC settings interface translation
+msgid "Highlight the matching parts of the search term in the results."
+msgstr "بخش‌های مطابق عبارت جست‌وجو در نتایج برجسته می‌شوند."
+
+#. TPPC settings interface translation
+msgid "Hotkey"
+msgstr "میان‌بر صفحه‌کلید"
+
+#. TPPC settings interface translation
+msgid "Icon visibility"
+msgstr "نمایش آیکن‌ها"
+
+#. TPPC settings interface translation
+msgid ""
+"If an item has been excluded from navigation should it be shown in "
+"navigation when viewing content contained within it or within a subfolder."
+msgstr ""
+"اگر موردی از منوی پیمایش حذف شده، آیا هنگام نمایش محتوای داخل آن یا "
+"زیرپوشه‌هایش در منو دیده شود؟"
+
+#. TPPC settings interface translation
+msgid "If body text available for item, render it, otherwise use description."
+msgstr ""
+"اگر متن بدنه موجود است، آن را نمایش بده؛ در غیر این صورت توضیح را نمایش بده."
+
+#. TPPC settings interface translation
+msgid ""
+"If enabled, network (http, https) urls are allowed in the rules file and "
+"this config."
+msgstr ""
+"با فعال‌بودن این گزینه، نشانی‌های شبکه با http و https در فایل قواعد و این "
+"تنظیمات مجازند."
+
+#. TPPC settings interface translation
+msgid ""
+"If its true and you modify this bundle you need to build it before "
+"production"
+msgstr ""
+"با فعال‌بودن این گزینه، پس از تغییر بسته باید پیش از استفاده در محیط اصلی آن"
+" را بسازید."
+
+#. TPPC settings interface translation
+msgid ""
+"If not selected only logged-in users will be able to view information about "
+"who created an item and when it was modified."
+msgstr ""
+"در صورت غیرفعال‌بودن، فقط کاربران واردشده اطلاعات سازنده و زمان تغییر محتوا "
+"را می‌بینند."
+
+#. TPPC settings interface translation
+msgid ""
+"If not selected, a URL will be generated and e-mailed. Users are instructed "
+"to follow the link to reach a page where they can change their password and "
+"complete the registration process; this also verifies that they have entered"
+" a valid email address."
+msgstr ""
+"در صورت غیرفعال‌بودن، پیوندی برای کاربر ایمیل می‌شود تا گذرواژه را تعیین و "
+"ثبت‌نام را تکمیل کند. این روند، معتبر بودن ایمیل واردشده را نیز بررسی "
+"می‌کند."
+
+#. TPPC settings interface translation
+msgid "If selected, an image of the user is shown next to the comment."
+msgstr "تصویر کاربر کنار نظر نمایش داده می‌شود."
+
+#. TPPC settings interface translation
+msgid "If selected, anonymous user will have to give their email."
+msgstr "کاربر ناشناس باید ایمیل خود را وارد کند."
+
+#. TPPC settings interface translation
+msgid ""
+"If selected, anonymous users are able to post comments without logging in. "
+"It is highly recommended to use a captcha solution to prevent spam if this "
+"setting is enabled."
+msgstr ""
+"کاربر ناشناس بدون ورود می‌تواند نظر بگذارد. برای جلوگیری از هرزنامه، استفاده"
+" از کپچا توصیه می‌شود."
+
+#. TPPC settings interface translation
+msgid ""
+"If selected, comments will enter a \"Pending\" state in which they are "
+"invisible to the public. A user with the \"Review comments\" permission "
+"(\"Reviewer\" or \"Manager\") can approve comments to make them visible to "
+"the public. If you want to enable a custom comment workflow, you have to go "
+"to the types control panel."
+msgstr ""
+"نظرها ابتدا در وضعیت «در انتظار» و پنهان از عموم قرار می‌گیرند. کاربر دارای "
+"مجوز Review comments مانند Reviewer یا Manager می‌تواند آن‌ها را تأیید کند. "
+"گردش‌کار سفارشی نظرها از تنظیمات انواع محتوا تعیین می‌شود."
+
+#. TPPC settings interface translation
+msgid ""
+"If selected, home folders where users can create content will be created "
+"when they log in."
+msgstr "هنگام ورود، پوشهٔ شخصی برای ساخت محتوا ایجاد می‌شود."
+
+#. TPPC settings interface translation
+msgid ""
+"If selected, supports deleting of own comments for users with the \"Delete "
+"own comments\" permission."
+msgstr "کاربران دارای مجوز Delete own comments می‌توانند نظر خود را حذف کنند."
+
+#. TPPC settings interface translation
+msgid ""
+"If selected, supports editing of comments for users with the \"Edit "
+"comments\" permission."
+msgstr "کاربران دارای مجوز Edit comments می‌توانند نظرها را ویرایش کنند."
+
+#. TPPC settings interface translation
+msgid ""
+"If selected, the moderator is notified if a comment needs attention. The "
+"moderator email address can be set below."
+msgstr ""
+"اگر نظری نیاز به بررسی داشته باشد، مدیر نظرات مطلع می‌شود. ایمیل مدیر را "
+"پایین‌تر تعیین کنید."
+
+#. TPPC settings interface translation
+msgid ""
+"If selected, users are able to post comments on the site. However, you will "
+"still need to enable comments for specific content types, folders or content"
+" objects before users will be able to post comments."
+msgstr ""
+"نظرگذاری در سایت فعال می‌شود. برای استفاده، باید نظرگذاری برای نوع محتوا، "
+"پوشه یا محتوای مورد نظر نیز فعال باشد."
+
+#. TPPC settings interface translation
+msgid "If selected, users can choose to be notified of new comments by email."
+msgstr "کاربران می‌توانند دریافت اعلان ایمیلی نظرهای جدید را انتخاب کنند."
+
+#. TPPC settings interface translation
+msgid ""
+"If syndication should be enabled by default for all folders and collections."
+msgstr "فعال‌بودن پیش‌فرض خوراک برای همهٔ پوشه‌ها و مجموعه‌ها."
+
+#. TPPC settings interface translation
+msgid ""
+"If there are hostnames that you do not want to be themed, you can list them "
+"here. This is useful during theme development, so that you can compare the "
+"themed and unthemed sites. In some cases, you may also want to provided an "
+"unthemed host alias for content administrators to be able to use 'plain' "
+"Plone."
+msgstr ""
+"نام میزبان‌هایی را که نباید پوسته روی آن‌ها اعمال شود وارد کنید. این کار "
+"برای مقایسهٔ نسخهٔ دارای پوسته و بدون پوسته هنگام توسعه یا دسترسی مدیر محتوا"
+" به Plone ساده کاربرد دارد."
+
+#. TPPC settings interface translation
+msgid "Image objects"
+msgstr "انواع محتوای تصویری"
+
+#. TPPC settings interface translation
+msgid "Image quality at 2x"
+msgstr "کیفیت تصویر در تراکم 2x"
+
+#. TPPC settings interface translation
+msgid "Image quality at 3x"
+msgstr "کیفیت تصویر در تراکم 3x"
+
+#. TPPC settings interface translation
+msgid ""
+"In case its a bundle we can have a condition to render it (it does not apply"
+" if the bundle is merged)."
+msgstr ""
+"شرط نمایش بسته؛ اگر بسته با بستهٔ دیگر ادغام شود، این شرط اعمال نمی‌شود."
+
+#. TPPC settings interface translation
+msgid ""
+"In case you want to be the last: *, in case its the first should be empty"
+msgstr ""
+"برای قرارگرفتن در انتها * وارد کنید؛ برای قرارگرفتن در ابتدا خالی بگذارید."
+
+#. TPPC settings interface translation
+msgid ""
+"In case you want to render this resource on conditional comment (it does not"
+" apply if the bundle is merged)."
+msgstr "شرط درج این منبع در توضیح شرطی؛ برای بستهٔ ادغام‌شده اعمال نمی‌شود."
+
+#. TPPC settings interface translation
+msgid ""
+"In production mode, bundles are merged together to reduce the quantity of JS"
+" and CSS resources loaded by the browser. Choose 'default' if this bundle "
+"must be available for all the visitors, choose 'logged-in' if it must be "
+"available for logged-in users only, or leave it empty if it must not be "
+"merged."
+msgstr ""
+"در محیط اصلی، بسته‌ها برای کاهش تعداد فایل‌های JS و CSS ادغام می‌شوند. برای "
+"همهٔ بازدیدکنندگان default، فقط برای کاربران واردشده logged-in و برای "
+"جلوگیری از ادغام مقدار خالی انتخاب کنید."
+
+#. TPPC settings interface translation
+msgid ""
+"Include meta tags on pages to give hints to social media on how to better "
+"render your pages when shared"
+msgstr ""
+"افزودن متاتگ‌هایی برای نمایش مناسب‌تر صفحات هنگام اشتراک در شبکه‌های اجتماعی"
+
+#. TPPC settings interface translation
+msgid "Index used to sort the tabs"
+msgstr "شاخص مرتب‌سازی زبانه‌ها"
+
+#. TPPC settings interface translation
+msgid "Init instruction for shim"
+msgstr "دستور آغازین shim"
+
+#. TPPC settings interface translation
+msgid "Inline styles"
+msgstr "سبک‌های درون‌خطی"
+
+#. TPPC settings interface translation
+msgid "It can be on the side (vertical mode) or on the top (horizontal mode)"
+msgstr ""
+"نوار ابزار می‌تواند کنار صفحه به‌صورت عمودی یا بالای صفحه به‌صورت افقی قرار "
+"گیرد."
+
+#. TPPC settings interface translation
+msgid "It's enabled?"
+msgstr "فعال است؟"
+
+#. TPPC settings interface translation
+msgid ""
+"It's used to decide if its needed to compile or not the production css/js"
+msgstr ""
+"مشخص می‌کند فایل‌های CSS و JS محیط اصلی به ساخت دوباره نیاز دارند یا نه."
+
+#. TPPC settings interface translation
+msgid "JSON formatted Menu configuration."
+msgstr "تنظیمات منو در قالب JSON."
+
+#. TPPC settings interface translation
+msgid "JavaScript for web statistics support"
+msgstr "کد JavaScript آمارگیری وب"
+
+#. TPPC settings interface translation
+msgid ""
+"Keyboard shortcut to toggle the spotlight overlay. Join modifier keys and "
+"the final key with '+', e.g. 'Control+Space', 'Meta+k' or 'Control+Shift+f'."
+msgstr ""
+"میان‌بر نمایش و بستن جست‌وجوی سریع. کلیدهای کمکی و کلید آخر را با + جدا "
+"کنید؛ مانند Control+Space، Meta+k یا Control+Shift+f."
+
+#. TPPC settings interface translation
+msgid "LESS variables js definer"
+msgstr "تعریف‌کنندهٔ JavaScript متغیرهای LESS"
+
+#. TPPC settings interface translation
+msgid "Last compiled date"
+msgstr "تاریخ آخرین ساخت"
+
+#. TPPC settings interface translation
+msgid "Last legacy js/css import date"
+msgstr "تاریخ آخرین ورود منابع قدیمی JS و CSS"
+
+#. TPPC settings interface translation
+msgid "Less variables"
+msgstr "متغیرهای LESS"
+
+#. TPPC settings interface translation
+msgid "Let users select their own passwords"
+msgstr "انتخاب گذرواژه توسط خود کاربران"
+
+#. TPPC settings interface translation
+msgid ""
+"Limit tags aka keywords vocabulary used for Tags field and in searches to "
+"the terms used inside the subtree of the current navigation root. This can "
+"be used together with Plone's multilingual extension plone.app.multilingual "
+"to only offer keywords of the current selected language. Other addons may "
+"utilize this feature for its specific purposes."
+msgstr ""
+"واژگان برچسب‌ها را به اصطلاح‌های زیرشاخهٔ ریشهٔ پیمایش فعلی محدود می‌کند. "
+"همراه plone.app.multilingual می‌توان فقط برچسب‌های زبان انتخاب‌شده را ارائه "
+"کرد. افزونه‌های دیگر نیز ممکن است از این قابلیت استفاده کنند."
+
+#. TPPC settings interface translation
+msgid "Limit tags/keywords to the current navigation root"
+msgstr "محدودکردن برچسب‌ها به ریشهٔ پیمایش فعلی"
+
+#. TPPC settings interface translation
+msgid "Load asynchronously"
+msgstr "بارگذاری غیرهم‌زمان"
+
+#. TPPC settings interface translation
+msgid "Load deferred"
+msgstr "بارگذاری با تأخیر"
+
+#. TPPC settings interface translation
+msgid ""
+"Load the JavaScript files asynchronously by adding an ``async`` attribute to"
+" the script tag."
+msgstr ""
+"بارگذاری غیرهم‌زمان فایل‌های JavaScript با افزودن ویژگی async به تگ اسکریپت."
+
+#. TPPC settings interface translation
+msgid ""
+"Load the JavaScript files deferred after the document has been parsed but "
+"before ``DOMContentLoaded`` by adding a ``defer`` attribute to the script "
+"tag."
+msgstr ""
+"بارگذاری JavaScript پس از پردازش سند و پیش از DOMContentLoaded با ویژگی "
+"defer."
+
+#. TPPC settings interface translation
+msgid "Loaded resources"
+msgstr "منابع بارگذاری‌شده"
+
+#. TPPC settings interface translation
+msgid "Login user after password reset"
+msgstr "ورود خودکار پس از بازنشانی گذرواژه"
+
+#. TPPC settings interface translation
+msgid ""
+"Look for available extensions at https://python-"
+"markdown.github.io/extensions/ or write your own."
+msgstr ""
+"افزونه‌های موجود را در https://python-markdown.github.io/extensions/ ببینید "
+"یا افزونهٔ خود را بنویسید."
+
+#. TPPC settings interface translation
+msgid "Main js file"
+msgstr "فایل اصلی JavaScript"
+
+#. TPPC settings interface translation
+msgid ""
+"Makes it possible to customize syndication settings for particular folders "
+"and collections"
+msgstr "امکان تنظیم جداگانهٔ خوراک برای هر پوشه و مجموعه را فراهم می‌کند."
+
+#. TPPC settings interface translation
+msgid "Many groups?"
+msgstr "گروه‌های زیاد؟"
+
+#. TPPC settings interface translation
+msgid "Many users?"
+msgstr "کاربران زیاد؟"
+
+#. TPPC settings interface translation
+msgid ""
+"Map report templates to default paper formats. When a template is selected, "
+"the mapped format is automatically applied."
+msgstr ""
+"قالب‌های گزارش را به اندازهٔ پیش‌فرض کاغذ نگاشت کنید. با انتخاب قالب، "
+"اندازهٔ متناظر خودکار اعمال می‌شود."
+
+#. TPPC settings interface translation
+msgid "Mark special links"
+msgstr "علامت‌گذاری پیوندهای ویژه"
+
+#. TPPC settings interface translation
+msgid "Marks external or special protocol links with class."
+msgstr "برای پیوند خارجی یا پروتکل ویژه، کلاس CSS تعیین می‌کند."
+
+#. TPPC settings interface translation
+msgid "Maximum items"
+msgstr "حداکثر تعداد موارد"
+
+#. TPPC settings interface translation
+msgid "Maximum number of items that will be syndicated."
+msgstr "حداکثر تعداد موارد منتشرشده در خوراک."
+
+#. TPPC settings interface translation
+msgid "Maximum number of search results to return."
+msgstr "حداکثر تعداد نتایج جست‌وجو."
+
+#. TPPC settings interface translation
+msgid "Maximum results"
+msgstr "حداکثر نتایج"
+
+#. TPPC settings interface translation
+msgid "Menu"
+msgstr "منو"
+
+#. TPPC settings interface translation
+msgid "Menubar"
+msgstr "نوار منو"
+
+#. TPPC settings interface translation
+msgid "Merge with"
+msgstr "ادغام با"
+
+#. TPPC settings interface translation
+msgid "Minimum characters"
+msgstr "حداقل تعداد نویسه"
+
+#. TPPC settings interface translation
+msgid "Minimum number of characters before a search is triggered."
+msgstr "حداقل تعداد نویسه برای آغاز جست‌وجو."
+
+#. TPPC settings interface translation
+msgid "Moderator Email Address"
+msgstr "ایمیل مدیر بررسی نظرات"
+
+#. TPPC settings interface translation
+msgid "Name|class"
+msgstr "نام|کلاس"
+
+#. TPPC settings interface translation
+msgid "Name|format"
+msgstr "نام|قالب"
+
+#. TPPC settings interface translation
+msgid "Name|format|icon"
+msgstr "نام|قالب|آیکن"
+
+#. TPPC settings interface translation
+msgid "Name|tag"
+msgstr "نام|تگ"
+
+#. TPPC settings interface translation
+msgid "Nasty tags"
+msgstr "تگ‌های مسدودشده"
+
+#. TPPC settings interface translation
+msgid "Navigation depth"
+msgstr "عمق منوی پیمایش"
+
+#. TPPC settings interface translation
+msgid "No Thumbs in portlets"
+msgstr "پنهان‌کردن تصاویر کوچک در ابزارک‌ها"
+
+#. TPPC settings interface translation
+msgid "No thumbs in list views"
+msgstr "پنهان‌کردن تصاویر کوچک در فهرست‌ها"
+
+#. TPPC settings interface translation
+msgid "No thumbs in summary views"
+msgstr "پنهان‌کردن تصاویر کوچک در نمای خلاصه"
+
+#. TPPC settings interface translation
+msgid "No thumbs in table views"
+msgstr "پنهان‌کردن تصاویر کوچک در جدول‌ها"
+
+#. TPPC settings interface translation
+msgid "Number of folder levels to show in the navigation."
+msgstr "تعداد سطوح پوشهٔ قابل نمایش در منوی پیمایش."
+
+#. TPPC settings interface translation
+msgid "Number of folder levels to show in the site map."
+msgstr "تعداد سطوح پوشهٔ قابل نمایش در نقشهٔ سایت."
+
+#. TPPC settings interface translation
+msgid "Number of future years available for Archetypes date widgets"
+msgstr "تعداد سال‌های آیندهٔ قابل انتخاب در ابزارک تاریخ Archetypes"
+
+#. TPPC settings interface translation
+msgid "Only the following roles can add new keywords"
+msgstr "فقط نقش‌های زیر می‌توانند برچسب جدید اضافه کنند."
+
+#. TPPC settings interface translation
+msgid "Open external links in new a window"
+msgstr "بازکردن پیوند خارجی در پنجرهٔ جدید"
+
+#. TPPC settings interface translation
+msgid "Operation"
+msgstr "عملیات"
+
+#. TPPC settings interface translation
+msgid "Operations"
+msgstr "عملیات"
+
+#. TPPC settings interface translation
+msgid "Other TinyMCE configuration formatted as JSON."
+msgstr "سایر تنظیمات TinyMCE در قالب JSON."
+
+#. TPPC settings interface translation
+msgid "Other settings"
+msgstr "سایر تنظیمات"
+
+#. TPPC settings interface translation
+msgid "Override the translation machinery"
+msgstr "جایگزینی سازوکار ترجمه"
+
+#. TPPC settings interface translation
+msgid "Parameter expressions"
+msgstr "عبارت‌های پارامتر"
+
+#. TPPC settings interface translation
+msgid ""
+"Path to be used as navigation root, relative to Plone site root.Starts with "
+"'/'"
+msgstr "مسیر ریشهٔ پیمایش نسبت به ریشهٔ Plone؛ با / شروع می‌شود."
+
+#. TPPC settings interface translation
+msgid "Paths to folders and collections to link to at the portal root."
+msgstr ""
+"مسیر پوشه‌ها و مجموعه‌هایی که در ریشهٔ سایت به آن‌ها پیوند داده می‌شود."
+
+#. TPPC settings interface translation
+msgid "Patterns configuration"
+msgstr "تنظیمات الگوها"
+
+#. TPPC settings interface translation
+msgid ""
+"Plone generates e-mail using this address as the e-mail return address. It "
+"is also used as the destination address for the site-wide contact form and "
+"the 'Send test e-mail' feature."
+msgstr ""
+"نشانی فرستنده و دریافت پاسخ ایمیل‌ها؛ پیام فرم تماس و ایمیل آزمایشی نیز به "
+"این نشانی ارسال می‌شود."
+
+#. TPPC settings interface translation
+msgid "Plone generates e-mail using this name as the e-mail sender."
+msgstr "این نام به‌عنوان فرستندهٔ ایمیل‌های سامانه نمایش داده می‌شود."
+
+#. TPPC settings interface translation
+msgid "Portal default timezone"
+msgstr "منطقهٔ زمانی پیش‌فرض سایت"
+
+#. TPPC settings interface translation
+msgid "Read network"
+msgstr "دسترسی خواندن از شبکه"
+
+#. TPPC settings interface translation
+msgid "Redirect links"
+msgstr "هدایت مستقیم پیوندها"
+
+#. TPPC settings interface translation
+msgid "Related to: use cookie for manual override"
+msgstr "مرتبط با استفاده از کوکی برای انتخاب دستی زبان"
+
+#. TPPC settings interface translation
+msgid "Relative URL for the toolbar logo"
+msgstr "نشانی نسبی لوگوی نوار ابزار"
+
+#. TPPC settings interface translation
+msgid "Render Body"
+msgstr "نمایش متن بدنه"
+
+#. TPPC settings interface translation
+msgid "Report Logo"
+msgstr "لوگوی گزارش"
+
+#. TPPC settings interface translation
+msgid "Resources base URL"
+msgstr "نشانی پایهٔ منابع"
+
+#. TPPC settings interface translation
+msgid "Reversed sort order for tabs."
+msgstr "ترتیب معکوس زبانه‌ها."
+
+#. TPPC settings interface translation
+msgid "Roles that can add keywords"
+msgstr "نقش‌های مجاز افزودن برچسب"
+
+#. TPPC settings interface translation
+msgid "Root"
+msgstr "ریشه"
+
+#. TPPC settings interface translation
+msgid "Rules file"
+msgstr "فایل قواعد"
+
+#. TPPC settings interface translation
+msgid "SMTP port"
+msgstr "پورت SMTP"
+
+#. TPPC settings interface translation
+msgid "SMTP server"
+msgstr "سرور SMTP"
+
+#. TPPC settings interface translation
+msgid "Scaled image quality"
+msgstr "کیفیت تصویر تغییراندازه‌یافته"
+
+#. TPPC settings interface translation
+msgid "Search RSS enabled"
+msgstr "فعال‌بودن RSS نتایج جست‌وجو"
+
+#. TPPC settings interface translation
+msgid "Search debounce (ms)"
+msgstr "تأخیر جست‌وجو (میلی‌ثانیه)"
+
+#. TPPC settings interface translation
+msgid "Select plugins to include with tinymce"
+msgstr "افزونه‌های مورد استفاده در TinyMCE را انتخاب کنید."
+
+#. TPPC settings interface translation
+msgid ""
+"Select the default format of textfields for newly created content objects."
+msgstr "قالب پیش‌فرض فیلدهای متن برای محتوای جدید را انتخاب کنید."
+
+#. TPPC settings interface translation
+msgid ""
+"Select the default wysiwyg editor. Users will be able to choose their own or"
+" select to use the site default."
+msgstr ""
+"ویرایشگر دیداری پیش‌فرض را انتخاب کنید. هر کاربر می‌تواند ویرایشگر خود یا "
+"پیش‌فرض سایت را انتخاب کند."
+
+#. TPPC settings interface translation
+msgid ""
+"Select which IDs (short names) can act as fallback default pages for a "
+"container."
+msgstr ""
+"شناسه‌هایی که می‌توانند صفحهٔ پیش‌فرض جایگزین یک پوشه باشند را انتخاب کنید."
+
+#. TPPC settings interface translation
+msgid "Separate view name and title by '|'"
+msgstr "نام نما و عنوان را با | جدا کنید."
+
+#. TPPC settings interface translation
+msgid "Set the language cookie always"
+msgstr "تنظیم همیشگی کوکی زبان"
+
+#. TPPC settings interface translation
+msgid "Share social data"
+msgstr "اشتراک فرادادهٔ شبکه‌های اجتماعی"
+
+#. TPPC settings interface translation
+msgid "Should be accessible on @@getWCconfig?id=name"
+msgstr "باید از @@getWCconfig?id=name قابل دسترسی باشد."
+
+#. TPPC settings interface translation
+msgid "Should feeds include author information"
+msgstr "آیا اطلاعات نویسنده در خوراک قرار گیرد؟"
+
+#. TPPC settings interface translation
+msgid "Show author info"
+msgstr "نمایش اطلاعات نویسنده"
+
+#. TPPC settings interface translation
+msgid "Show commenter image"
+msgstr "نمایش تصویر نویسندهٔ نظر"
+
+#. TPPC settings interface translation
+msgid "Show country-specific language variants"
+msgstr "نمایش گونه‌های زبانی کشورها"
+
+#. TPPC settings interface translation
+msgid "Show feed link"
+msgstr "نمایش پیوند خوراک"
+
+#. TPPC settings interface translation
+msgid "Show icons in listings"
+msgstr "نمایش آیکن در فهرست‌ها"
+
+#. TPPC settings interface translation
+msgid "Show in the byline the date a content item was published."
+msgstr "نمایش تاریخ انتشار محتوا در اطلاعات جانبی آن."
+
+#. TPPC settings interface translation
+msgid ""
+"Show items normally excluded from navigation if viewing their children."
+msgstr "نمایش موارد پنهان از منو هنگام مشاهدهٔ زیرمجموعهٔ آن‌ها."
+
+#. TPPC settings interface translation
+msgid "Show language flags"
+msgstr "نمایش پرچم زبان‌ها"
+
+#. TPPC settings interface translation
+msgid "Show settings button"
+msgstr "نمایش دکمهٔ تنظیمات"
+
+#. TPPC settings interface translation
+msgid "Show thumbnail images in listings"
+msgstr "نمایش تصویر کوچک در فهرست‌ها"
+
+#. TPPC settings interface translation
+msgid "Site 'From' address"
+msgstr "آدرس ایمیل فرستنده"
+
+#. TPPC settings interface translation
+msgid "Site 'From' name"
+msgstr "نام فرستندهٔ ایمیل"
+
+#. TPPC settings interface translation
+msgid "Site RSS"
+msgstr "خوراک RSS سایت"
+
+#. TPPC settings interface translation
+msgid "Site language"
+msgstr "زبان سایت"
+
+#. TPPC settings interface translation
+msgid "Sitemap depth"
+msgstr "عمق نقشهٔ سایت"
+
+#. TPPC settings interface translation
+msgid "Sort on"
+msgstr "مرتب‌سازی بر اساس"
+
+#. TPPC settings interface translation
+msgid "Sort tabs in descending."
+msgstr "مرتب‌سازی نزولی زبانه‌ها."
+
+#. TPPC settings interface translation
+msgid "Sort tabs on"
+msgstr "شاخص مرتب‌سازی زبانه‌ها"
+
+#. TPPC settings interface translation
+msgid "Sort the default search on this index"
+msgstr "مرتب‌سازی پیش‌فرض جست‌وجو با این شاخص"
+
+#. TPPC settings interface translation
+msgid "Sortable"
+msgstr "قابل مرتب‌سازی"
+
+#. TPPC settings interface translation
+msgid ""
+"Specify all allowed maximum image dimensions, one per line. The required "
+"format is &lt;name&gt; &lt;width&gt;:&lt;height&gt;."
+msgstr ""
+"حداکثر اندازه‌های مجاز تصویر را بنویسید؛ هر مورد در یک خط با قالب "
+"&lt;name&gt; &lt;width&gt;:&lt;height&gt;."
+
+#. TPPC settings interface translation
+msgid "Spellchecker plugin to use"
+msgstr "افزونهٔ غلط‌یاب"
+
+#. TPPC settings interface translation
+msgid "Start year for Archetypes date widgets"
+msgstr "سال آغاز ابزارک تاریخ Archetypes"
+
+#. TPPC settings interface translation
+msgid "Stub JavaScript modules"
+msgstr "ماژول‌های جایگزین خالی JavaScript"
+
+#. TPPC settings interface translation
+msgid ""
+"Suppress thumbs in all list views; this default can be overriden "
+"individually"
+msgstr ""
+"تصویر کوچک را در همهٔ فهرست‌ها پنهان می‌کند؛ هر مورد می‌تواند این پیش‌فرض را"
+" تغییر دهد."
+
+#. TPPC settings interface translation
+msgid ""
+"Suppress thumbs in all portlets; this default can be overridden individually"
+" in selected portlets"
+msgstr ""
+"تصویر کوچک را در همهٔ ابزارک‌ها پنهان می‌کند؛ ابزارک‌های انتخابی می‌توانند "
+"این پیش‌فرض را تغییر دهند."
+
+#. TPPC settings interface translation
+msgid ""
+"Suppress thumbs in all summary views; this default can be overriden "
+"individually"
+msgstr ""
+"تصویر کوچک را در همهٔ نماهای خلاصه پنهان می‌کند؛ هر مورد می‌تواند این "
+"پیش‌فرض را تغییر دهد."
+
+#. TPPC settings interface translation
+msgid ""
+"Suppress thumbs in all tableviews and in folder contents view; this default "
+"can be overriden individually"
+msgstr ""
+"تصویر کوچک را در جدول‌ها و فهرست محتوای پوشه پنهان می‌کند؛ هر مورد می‌تواند "
+"این پیش‌فرض را تغییر دهد."
+
+#. TPPC settings interface translation
+msgid "Table styles"
+msgstr "سبک‌های جدول"
+
+#. TPPC settings interface translation
+msgid "Template Format Mapping"
+msgstr "نگاشت قالب گزارش به اندازهٔ کاغذ"
+
+#. TPPC settings interface translation
+msgid "Templates"
+msgstr "قالب‌ها"
+
+#. TPPC settings interface translation
+msgid ""
+"The URL of the \"After the Deadline\" grammar and spell checking server. The"
+" default value is the public server, but ideally you should download and "
+"install your own and specify its address here."
+msgstr ""
+"نشانی سرور بررسی املا و دستور زبان After the Deadline. پیش‌فرض، سرور عمومی "
+"است؛ می‌توانید سرور اختصاصی نصب و نشانی آن را تعیین کنید."
+
+#. TPPC settings interface translation
+msgid ""
+"The address of your local SMTP (outgoing e-mail) server. Usually "
+"'localhost', unless you use an external server to send e-mail."
+msgstr ""
+"نشانی سرور ارسال ایمیل؛ برای سرویس خارجی، نشانی اعلام‌شدهٔ ارائه‌دهنده را "
+"وارد کنید."
+
+#. TPPC settings interface translation
+msgid ""
+"The catalogs to search. Add-ons may append further catalogs through their "
+"own registry profile."
+msgstr ""
+"فهرست‌های مورد جست‌وجو. افزونه‌ها می‌توانند از پروفایل رجیستری خود فهرست "
+"دیگری اضافه کنند."
+
+#. TPPC settings interface translation
+msgid ""
+"The command palette actions. Add-ons may append further commands through "
+"their own registry profile."
+msgstr ""
+"عملیات منوی فرمان‌ها. افزونه‌ها می‌توانند از پروفایل رجیستری خود فرمان دیگری"
+" اضافه کنند."
+
+#. TPPC settings interface translation
+msgid ""
+"The content types that should be available for selection when setting a "
+"default page."
+msgstr "انواع محتوای قابل انتخاب به‌عنوان صفحهٔ پیش‌فرض."
+
+#. TPPC settings interface translation
+msgid "The content types that should be shown in the navigation and site map."
+msgstr "انواع محتوای قابل نمایش در منوی پیمایش و نقشهٔ سایت."
+
+#. TPPC settings interface translation
+msgid "The language used for the content and the UI of this site."
+msgstr "زبان محتوا و رابط کاربری سایت."
+
+#. TPPC settings interface translation
+msgid "The name of the current theme, i.e. the one applied most recently."
+msgstr "نام آخرین پوستهٔ اعمال‌شده."
+
+#. TPPC settings interface translation
+msgid "The password for the ESMTP user account."
+msgstr "گذرواژهٔ حساب کاربری ESMTP."
+
+#. TPPC settings interface translation
+msgid "The port of your local SMTP (outgoing e-mail) server. Usually '25'."
+msgstr ""
+"پورت سرور ایمیل را مطابق تنظیمات ارائه‌دهنده وارد کنید؛ پیش‌فرض معمول 25 "
+"است."
+
+#. TPPC settings interface translation
+msgid "The resources that are going to be loaded on this bundle in order"
+msgstr "منابعی که به‌ترتیب در این بسته بارگذاری می‌شوند."
+
+#. TPPC settings interface translation
+msgid ""
+"The timezone setting of the portal. Users can set their own timezone, if "
+"available timezones are defined."
+msgstr ""
+"منطقهٔ زمانی سایت. در صورت تعریف مناطق قابل انتخاب، هر کاربر می‌تواند منطقهٔ"
+" زمانی خود را تعیین کند."
+
+#. TPPC settings interface translation
+msgid ""
+"The timezones, which should be available for the portal. Can be set for "
+"users and events"
+msgstr "مناطق زمانی قابل انتخاب برای کاربران و رویدادها."
+
+#. TPPC settings interface translation
+msgid ""
+"The workflow states that should be shown in the navigation and the site map."
+msgstr "وضعیت‌های گردش‌کار قابل نمایش در منوی پیمایش و نقشهٔ سایت."
+
+#. TPPC settings interface translation
+msgid "These attributes are additionally allowed."
+msgstr "ویژگی‌های HTML دیگری که استفاده از آن‌ها مجاز است."
+
+#. TPPC settings interface translation
+msgid ""
+"These tags and their content are completely blocked when a page is saved or "
+"rendered. They are only deleted if they are not marked as valid_tags"
+msgstr ""
+"این تگ‌ها همراه محتوا هنگام ذخیره یا نمایش مسدود می‌شوند؛ مگر در فهرست "
+"تگ‌های مجاز قرار گرفته باشند."
+
+#. TPPC settings interface translation
+msgid "This default can be overriden individually."
+msgstr "این پیش‌فرض برای هر مورد قابل تغییر است."
+
+#. TPPC settings interface translation
+msgid ""
+"This must be a URL relative to the site root. By default it is "
+"/++plone++static/plone-toolbarlogo.svg"
+msgstr ""
+"نشانی باید نسبت به ریشهٔ سایت باشد. پیش‌فرض /++plone++static/plone-"
+"toolbarlogo.svg است."
+
+#. TPPC settings interface translation
+msgid "This option allows you to choose the spellchecker for TinyMCE."
+msgstr "انتخاب غلط‌یاب TinyMCE."
+
+#. TPPC settings interface translation
+msgid ""
+"This option controls how entities/characters get processed. Named: "
+"Characters will be converted into named entities based on the entities "
+"option. Numeric: Characters will be converted into numeric entities. Raw: "
+"All characters will be stored in non-entity form except these XML default "
+"entities: amp lt gt quot"
+msgstr ""
+"شیوهٔ پردازش نویسه‌ها: در حالت Named نویسه‌ها به نام موجودیت، در Numeric به "
+"کد عددی و در Raw به خود نویسه تبدیل می‌شوند. در Raw موجودیت‌های XML شامل "
+"amp، lt، gt و quot همچنان کدگذاری می‌شوند."
+
+#. TPPC settings interface translation
+msgid ""
+"This option enables you to specify a custom CSS file that provides content "
+"CSS. This CSS file is the one used within the editor (the editable area). In"
+" addition to what is listed, here the plone bundle CSS and diazo themes "
+"using the tinymce-content-css setting are also added."
+msgstr ""
+"فایل CSS سفارشی ناحیهٔ ویرایش محتوا. CSS بستهٔ Plone و پوسته‌های Diazo دارای"
+" تنظیم tinymce-content-css نیز افزوده می‌شوند."
+
+#. TPPC settings interface translation
+msgid ""
+"This option gives you the ability to enable/disable auto resizing the editor"
+" window depending on the content."
+msgstr "فعال یا غیرفعال‌کردن تغییر خودکار اندازهٔ ویرایشگر متناسب با محتوا."
+
+#. TPPC settings interface translation
+msgid ""
+"This option gives you the ability to enable/disable resizing the editor "
+"window."
+msgstr "فعال یا غیرفعال‌کردن امکان تغییر اندازهٔ ویرایشگر."
+
+#. TPPC settings interface translation
+msgid ""
+"This option gives you the ability to specify the height of the editor in "
+"pixels. If auto resize is enabled this value is used as minimum height."
+msgstr ""
+"ارتفاع ویرایشگر بر حسب پیکسل. در حالت تغییر اندازهٔ خودکار، این مقدار حداقل "
+"ارتفاع است."
+
+#. TPPC settings interface translation
+msgid ""
+"This option gives you the ability to specify the width of the editor (like "
+"100% or 400px)."
+msgstr "عرض ویرایشگر؛ مانند 100% یا 400px."
+
+#. TPPC settings interface translation
+msgid "This shows a custom logo on your site."
+msgstr "لوگوی سفارشی سایت را نمایش می‌دهد."
+
+#. TPPC settings interface translation
+msgid "Thumb scale for listings"
+msgstr "اندازهٔ تصویر کوچک در فهرست‌ها"
+
+#. TPPC settings interface translation
+msgid "Thumb scale for portlets"
+msgstr "اندازهٔ تصویر کوچک در ابزارک‌ها"
+
+#. TPPC settings interface translation
+msgid "Thumb scale for summary view"
+msgstr "اندازهٔ تصویر کوچک در نمای خلاصه"
+
+#. TPPC settings interface translation
+msgid "Thumb scale for tables"
+msgstr "اندازهٔ تصویر کوچک در جدول‌ها"
+
+#. TPPC settings interface translation
+msgid "Thumb visibility"
+msgstr "نمایش تصویر کوچک"
+
+#. TPPC settings interface translation
+msgid ""
+"Time in milliseconds to wait after the last keystroke before sending the "
+"search request."
+msgstr ""
+"مدت انتظار پس از آخرین فشردن کلید و پیش از ارسال جست‌وجو، بر حسب میلی‌ثانیه."
+
+#. TPPC settings interface translation
+msgid ""
+"Time stamp when the custom CSS was changed. Used to generate custom.css with"
+" timestamp in URL."
+msgstr ""
+"زمان آخرین تغییر CSS سفارشی؛ برای درج زمان در نشانی custom.css و جلوگیری از "
+"کش قدیمی استفاده می‌شود."
+
+#. TPPC settings interface translation
+msgid "To be used with some integrations like Open Graph data"
+msgstr "برای یکپارچه‌سازی‌هایی مانند داده‌های Open Graph"
+
+#. TPPC settings interface translation
+msgid ""
+"To identify things like Twitter Cards. Do not include the \"@\" prefix "
+"character."
+msgstr "برای شناسایی مواردی مانند Twitter Cards؛ نویسهٔ @ را وارد نکنید."
+
+#. TPPC settings interface translation
+msgid "Toolbar"
+msgstr "نوار ابزار"
+
+#. TPPC settings interface translation
+msgid "Toolbar CSS"
+msgstr "CSS نوار ابزار"
+
+#. TPPC settings interface translation
+msgid "Toolbar Portlet Manager Blacklist"
+msgstr "مدیران ابزارک پنهان در نوار ابزار"
+
+#. TPPC settings interface translation
+msgid "Toolbar position"
+msgstr "محل نوار ابزار"
+
+#. TPPC settings interface translation
+msgid "Transitions that are processed sequentially via ajax"
+msgstr "انتقال‌هایی که با Ajax به‌ترتیب اجرا می‌شوند."
+
+#. TPPC settings interface translation
+msgid "Twitter username"
+msgstr "نام کاربری Twitter"
+
+#. TPPC settings interface translation
+msgid "Types that can be set as a default page"
+msgstr "انواع محتوای قابل انتخاب به‌عنوان صفحهٔ پیش‌فرض"
+
+#. TPPC settings interface translation
+msgid "Types which use the view action in listing views."
+msgstr "انواع محتوای دارای عملیات مشاهده در فهرست‌ها"
+
+#. TPPC settings interface translation
+msgid "URL of less.js"
+msgstr "نشانی less.js"
+
+#. TPPC settings interface translation
+msgid "URL of r.js"
+msgstr "نشانی r.js"
+
+#. TPPC settings interface translation
+msgid "URL of require.js"
+msgstr "نشانی require.js"
+
+#. TPPC settings interface translation
+msgid "URL of the last css compilation"
+msgstr "نشانی آخرین CSS ساخته‌شده"
+
+#. TPPC settings interface translation
+msgid "URL of the last js compilation"
+msgstr "نشانی آخرین JavaScript ساخته‌شده"
+
+#. TPPC settings interface translation
+msgid "Unthemed host names"
+msgstr "میزبان‌های بدون پوسته"
+
+#. TPPC settings interface translation
+msgid "Use UUID user ids"
+msgstr "استفاده از UUID برای شناسهٔ کاربر"
+
+#. TPPC settings interface translation
+msgid ""
+"Use automatically generated UUIDs as user id for new users. When not turned "
+"on, the default is to use the same as the login name, or when using the "
+"email address as login name we generate a user id based on the fullname."
+msgstr ""
+"برای کاربران جدید UUID تولید می‌شود. در غیر این صورت شناسه معمولاً همان نام "
+"ورود است؛ هنگام ورود با ایمیل، شناسه از نام کامل تولید می‌شود."
+
+#. TPPC settings interface translation
+msgid "Use browser language request negotiation"
+msgstr "انتخاب زبان بر اساس درخواست مرورگر"
+
+#. TPPC settings interface translation
+msgid "Use browser language request negotiation."
+msgstr "انتخاب زبان بر اساس زبان‌های درخواستی مرورگر."
+
+#. TPPC settings interface translation
+msgid "Use email address as login name"
+msgstr "استفاده از ایمیل به‌عنوان نام ورود"
+
+#. TPPC settings interface translation
+msgid "Use language codes in URL path for manual override"
+msgstr "انتخاب دستی زبان با کد زبان در مسیر نشانی"
+
+#. TPPC settings interface translation
+msgid "Use language codes in URL path for manual override."
+msgstr "استفاده از کد زبان در مسیر نشانی برای انتخاب دستی زبان."
+
+#. TPPC settings interface translation
+msgid "Use subdomain"
+msgstr "استفاده از زیردامنه"
+
+#. TPPC settings interface translation
+msgid "Use the language of the content item"
+msgstr "استفاده از زبان خود محتوا"
+
+#. TPPC settings interface translation
+msgid "Use the language of the content item."
+msgstr "استفاده از زبان محتوای انتخاب‌شده."
+
+#. TPPC settings interface translation
+msgid ""
+"Use this option to enable or disable the theme globally. Note that the "
+"options will also affect whether the theme is used when this option is "
+"enabled."
+msgstr ""
+"فعال یا غیرفعال‌کردن پوسته در کل سایت. سایر گزینه‌ها نیز بر اعمال پوسته در "
+"حالت فعال اثر دارند."
+
+#. TPPC settings interface translation
+msgid ""
+"Use this setting to choose if the comment text should be transformed in any "
+"way. You can choose between \"Plain text\" and \"Intelligent text\". "
+"\"Intelligent text\" converts plain text into HTML where line breaks and "
+"indentation is preserved, and web and email addresses are made into "
+"clickable links."
+msgstr ""
+"شیوهٔ تبدیل متن نظر: متن ساده یا متن هوشمند. متن هوشمند شکست خط و تورفتگی را"
+" نگه می‌دارد و نشانی وب و ایمیل را به پیوند تبدیل می‌کند."
+
+#. TPPC settings interface translation
+msgid ""
+"Use this setting to enable or disable Captcha validation for comments. "
+"Install plone.formwidget.captcha, plone.formwidget.recaptcha, "
+"plone.formwidget.hcaptcha, collective.akismet, or "
+"collective.z3cform.norobots if there are no options available."
+msgstr ""
+"فعال یا غیرفعال‌کردن کپچا برای نظرات. اگر گزینه‌ای وجود ندارد، یکی از "
+"افزونه‌های plone.formwidget.captcha، plone.formwidget.recaptcha، "
+"plone.formwidget.hcaptcha، collective.akismet یا collective.z3cform.norobots"
+" را نصب کنید."
+
+#. TPPC settings interface translation
+msgid "Use top-level domain"
+msgstr "استفاده از دامنهٔ سطح بالا"
+
+#. TPPC settings interface translation
+msgid ""
+"Username for authentication to your e-mail server. Not required unless you "
+"are using ESMTP."
+msgstr ""
+"نام کاربری احراز هویت سرور ایمیل؛ فقط هنگام استفاده از ESMTP لازم است."
+
+#. TPPC settings interface translation
+msgid "Valid tags"
+msgstr "تگ‌های مجاز"
+
+#. TPPC settings interface translation
+msgid "Variables that are going to be compiled on less"
+msgstr "متغیرهایی که در LESS کامپایل می‌شوند."
+
+#. TPPC settings interface translation
+msgid "Verify login name"
+msgstr "بررسی نام ورود"
+
+#. TPPC settings interface translation
+msgid "Vocabulary"
+msgstr "واژگان"
+
+#. TPPC settings interface translation
+msgid ""
+"Warning: disabling this can be dangerous. Only disable if you know what you "
+"are doing."
+msgstr ""
+"هشدار: غیرفعال‌کردن این گزینه می‌تواند خطرناک باشد. فقط با آگاهی از پیامدها "
+"آن را غیرفعال کنید."
+
+#. TPPC settings interface translation
+msgid ""
+"When clicking items in listing views, these types will use the 'view' action"
+" instead of using their default view."
+msgstr ""
+"هنگام انتخاب این انواع محتوا در فهرست، به‌جای نمای پیش‌فرض از عملیات view "
+"استفاده می‌شود."
+
+#. TPPC settings interface translation
+msgid ""
+"When clicking on a Link type, should the user be taken to the default view "
+"or be redirected to the Link's URL?"
+msgstr ""
+"با انتخاب محتوای نوع پیوند، نمای پیش‌فرض باز شود یا کاربر مستقیم به نشانی "
+"پیوند هدایت شود؟"
+
+#. TPPC settings interface translation
+msgid "Widget"
+msgstr "ابزارک"
+
+#. TPPC settings interface translation
+msgid ""
+"You can define parameters here, which will be passed to the compiled theme. "
+"In your rules file, you can refer to a parameter by $name. Parameters are "
+"defined using TALES expressions, which should evaluate to a string, a "
+"number, a boolean or None. Available variables are `context`, `request`, "
+"`portal`, `portal_state`, and `context_state`."
+msgstr ""
+"پارامترهای پوسته را تعریف کنید و در فایل قواعد با $name به آن‌ها ارجاع دهید."
+" عبارت‌های TALES باید رشته، عدد، مقدار منطقی یا None برگردانند. متغیرهای "
+"موجود: context، request، portal، portal_state و context_state."
+
+#. TPPC settings interface translation
+msgid ""
+"You can specify a Doctype string which will be set on the for example "
+"\"<!DOCTYPE html>\". If left blank the default XHTML 1.0 transitional "
+"Doctype or that set in the Diazo theme is used."
+msgstr ""
+"اعلان نوع سند مانند <!DOCTYPE html> را مشخص کنید. در صورت خالی‌بودن، اعلان "
+"پوستهٔ Diazo یا پیش‌فرض XHTML 1.0 Transitional استفاده می‌شود."
+
+#. TPPC settings interface translation
+msgid ""
+"You should pack your database regularly. This number indicates how many days"
+" of undo history you want to keep. It is unrelated to versioning, so even if"
+" you pack the database, the history of the content changes will be kept. "
+"Recommended value is 7 days."
+msgstr ""
+"پایگاه داده باید دوره‌ای فشرده‌سازی شود. این عدد، روزهای حفظ سابقهٔ "
+"بازگردانی را مشخص می‌کند و به نسخه‌بندی محتوا مربوط نیست. مقدار پیشنهادی متن"
+" اصلی ۷ روز است."
+
+#. TPPC settings interface translation
+msgid "config.js"
+msgstr "فایل config.js"
+
+#. TPPC settings interface translation
+msgid "e.g.: de.plone.org"
+msgstr "برای نمونه: de.plone.org"
+
+#. TPPC settings interface translation
+msgid "e.g.: www.plone.de"
+msgstr "برای نمونه: www.plone.de"
+
+#. TPPC settings interface translation
+msgid "i.e. also when the 'set_language' request parameter is absent"
+msgstr "حتی اگر پارامتر set_language در درخواست وجود نداشته باشد."
+
+#. TPPC settings interface translation
+msgid "less-modify js"
+msgstr "فایل JavaScript تغییر متغیرهای LESS"
+
+#. TPPC settings interface translation
+msgid "old ZMI property: localLongTimeFormat"
+msgstr "ویژگی قدیمی ZMI: localLongTimeFormat"
+
+#. TPPC settings interface translation
+msgid "old ZMI property: localTimeFormat"
+msgstr "ویژگی قدیمی ZMI: localTimeFormat"
+
+#. TPPC settings interface translation
+msgid "old ZMI property: localTimeOnlyFormat"
+msgstr "ویژگی قدیمی ZMI: localTimeOnlyFormat"
+
+#. TPPC settings interface translation
+msgid "robots.txt"
+msgstr "فایل robots.txt"
+
+#. TPPC settings interface translation
+msgid ""
+"robots.txt is read by search engines to determine how to index your site. "
+"For details see <a "
+"href='http://www.robotstxt.org'>http://www.robotstxt.org</a>. Use "
+"'{portal_url}' for the site URL."
+msgstr ""
+"موتورهای جست‌وجو با robots.txt روش نمایه‌سازی سایت را تعیین می‌کنند. راهنما:"
+" <a href='http://www.robotstxt.org'>http://www.robotstxt.org</a>. برای نشانی"
+" سایت از {portal_url} استفاده کنید."
+
+#. TPPC settings interface translation
+msgid "Save and send test e-mail"
+msgstr "ذخیره و ارسال ایمیل آزمایشی"
+
+#. TPPC settings interface translation
+msgid "Default"
+msgstr "پیش‌فرض"
+
+#. TPPC settings interface translation
+msgid "Records"
+msgstr "تنظیمات ثبت‌شده"
+
+#. TPPC settings interface translation
+msgid "Filter"
+msgstr "جست‌وجو"
+
+#. TPPC settings interface translation
+msgid "Clear filter"
+msgstr "پاک‌کردن جست‌وجو"
+
+#. TPPC settings interface translation
+msgid "filter by..."
+msgstr "عبارت جست‌وجو…"
+
+#. TPPC settings interface translation
+msgid "Select Prefix"
+msgstr "انتخاب پیشوند"
+
+#. TPPC settings interface translation
+msgid "or"
+msgstr "یا"
+
+#. TPPC settings interface translation
+msgid "Delete record"
+msgstr "حذف تنظیم"
+
+#. TPPC settings interface translation
+msgid "Record"
+msgstr "تنظیم"
+
+#. TPPC settings interface translation
+msgid "Delete Record"
+msgstr "حذف تنظیم"
+
+#. TPPC settings interface translation
+msgid "Yes, delete"
+msgstr "بله، حذف شود"
+
+#. TPPC settings interface translation
+msgid "Export Now"
+msgstr "دریافت خروجی"
+
+#. TPPC settings interface translation
+msgid "Import File"
+msgstr "واردکردن فایل"
+
+#. TPPC settings interface translation
+msgid "Registry XML File"
+msgstr "فایل XML رجیستری"
+
+#. TPPC settings interface translation
+msgid "Add new record"
+msgstr "افزودن تنظیم جدید"
+
+#. TPPC settings interface translation
+msgid "Add field"
+msgstr "افزودن فیلد"
+
+#. TPPC settings interface translation
+msgid "Field Type"
+msgstr "نوع فیلد"
+
+#. TPPC settings interface translation
+msgid "Edit record: ${name}"
+msgstr "ویرایش تنظیم: ${name}"
+
+#. TPPC settings interface translation
+msgid ""
+"The table below shows record currently managed by the configuration "
+"registry. Click on a record to edit it."
+msgstr ""
+"تنظیمات ثبت‌شدهٔ سامانه در جدول زیر آمده‌اند. برای ویرایش، نام تنظیم را "
+"انتخاب کنید."
+
+#. TPPC settings interface translation
+msgid "Use the form below to edit the value of this particular record."
+msgstr "مقدار این تنظیم را در فرم زیر ویرایش کنید."
+
+#. TPPC settings interface translation
+msgid ""
+"Are you certain you want to delete this record? This can not be undone and "
+"can be potentially harmful if you don't know what you are doing."
+msgstr ""
+"از حذف این تنظیم مطمئن هستید؟ این کار قابل بازگردانی نیست و ممکن است عملکرد "
+"سامانه را مختل کند."
+
+#. TPPC settings interface translation
+msgid "Will export the entire registry into a single XML file."
+msgstr "همهٔ تنظیمات رجیستری در یک فایل XML خروجی گرفته می‌شوند."
+
+#. TPPC settings interface translation
+msgid "Export parts"
+msgstr "خروجی بخشی از تنظیمات"
+
+#. TPPC settings interface translation
+msgid "by Interface"
+msgstr "بر اساس رابط"
+
+#. TPPC settings interface translation
+msgid "by Prefix"
+msgstr "بر اساس پیشوند"
+
+#. TPPC settings interface translation
+msgid ""
+"Download of a XML-file optimized to be used in a GenericSetup profile of an "
+"add-on or policy profile. It contains only the selected parts."
+msgstr ""
+"دریافت فایل XML شامل فقط بخش‌های انتخاب‌شده، مناسب استفاده در پروفایل "
+"GenericSetup افزونه یا سیاست سامانه."
+
+#. TPPC settings interface translation
+msgid ""
+"Must be in a format like \"plone.my_name\". Only letters, periods and "
+"underscores."
+msgstr ""
+"قالب نام باید مانند plone.my_name باشد؛ فقط حروف، نقطه و زیرخط مجاز است."
+
+#. TPPC settings interface translation
+msgid "Int"
+msgstr "عدد صحیح"
+
+#. TPPC settings interface translation
+msgid "Bool"
+msgstr "مقدار منطقی"
+
+#. TPPC settings interface translation
+msgid "Float"
+msgstr "عدد اعشاری"
+
+#. TPPC settings interface translation
+msgid "Decimal"
+msgstr "عدد اعشاری دقیق"
+
+#. TPPC settings interface translation
+msgid "TextLine"
+msgstr "متن تک‌خطی"
+
+#. TPPC settings interface translation
+msgid "ASCIILine"
+msgstr "متن تک‌خطی ASCII"
+
+#. TPPC settings interface translation
+msgid "ASCII"
+msgstr "متن ASCII"
+
+#. TPPC settings interface translation
+msgid "Bytes"
+msgstr "دادهٔ بایتی"
+
+#. TPPC settings interface translation
+msgid "BytesLine"
+msgstr "دادهٔ بایتی تک‌خطی"
+
+#. TPPC settings interface translation
+msgid "Choice"
+msgstr "گزینهٔ انتخابی"
+
+#. TPPC settings interface translation
+msgid "List"
+msgstr "فهرست"
+
+#. TPPC settings interface translation
+msgid "Tuple"
+msgstr "دنبالهٔ ثابت"
+
+#. TPPC settings interface translation
+msgid "Set"
+msgstr "مجموعه"
+
+#. TPPC settings interface translation
+msgid "FrozenSet"
+msgstr "مجموعهٔ ثابت"
+
+#. TPPC settings interface translation
+msgid "Dict"
+msgstr "نگاشت کلید و مقدار"
+
+#. TPPC settings interface translation
+msgid "Timedelta"
+msgstr "بازهٔ زمانی"
+
+#. TPPC settings interface translation
+msgid "SourceText"
+msgstr "متن کد"
+
+#. TPPC settings interface translation
+msgid "URI"
+msgstr "نشانی منبع"
+
+#. TPPC settings interface translation
+msgid "Id"
+msgstr "شناسه"
+
+#. TPPC settings interface translation
+msgid "DottedName"
+msgstr "نام بخش‌بندی‌شده با نقطه"
+
+#. TPPC settings interface translation
+msgid "Portal actions"
+msgstr "منوها و عملیات"
+
+#. TPPC settings interface translation
+msgid ""
+"This is the portal actions configuration section, you can manage the actions"
+" contained in the different action categories."
+msgstr "منوها و عملیات سامانه را بر اساس گروه مربوط مدیریت کنید."
+
+#. TPPC settings interface translation
+msgid "Add new action"
+msgstr "افزودن عملیات"
+
+#. TPPC settings interface translation
+msgid "Hide"
+msgstr "پنهان‌کردن"
+
+#. TPPC settings interface translation
+msgid ""
+"To make new add-ons show up here, add them to your buildout configuration, "
+"run buildout, and restart the server process. For detailed instructions see"
+msgstr ""
+"برای نمایش افزونهٔ جدید، آن را به تنظیمات buildout اضافه کنید، buildout را "
+"اجرا و سرویس را راه‌اندازی مجدد کنید. راهنمای تفصیلی:"
+
+#. TPPC settings interface translation
+msgid "Installing a third party add-on"
+msgstr "نصب افزونهٔ دیگر"
+
+#. TPPC settings interface translation
+msgid "Sample storage module for SENAITE"
+msgstr "ماژول نگهداری نمونه در SENAITE"
+
+#. TPPC settings interface translation
+msgid "Data Grid Field for z3c.form"
+msgstr "فیلد جدول داده برای z3c.form"
+
+#. TPPC settings interface translation
+msgid "Install collective.z3cform.datagridfield"
+msgstr "نصب collective.z3cform.datagridfield"
+
+#. TPPC settings interface translation
+msgid "Session refresh support"
+msgstr "پشتیبانی از تمدید نشست"
+
+#. TPPC settings interface translation
+msgid "Optional plone.session refresh support."
+msgstr "پشتیبانی اختیاری از تمدید نشست plone.session."
+
+#. TPPC settings interface translation
+msgid "Archetypes Content Types for Plone (backward compatibility)"
+msgstr "انواع محتوای Archetypes برای سازگاری با نسخه‌های قدیمی Plone"
+
+#. TPPC settings interface translation
+msgid ""
+"Standard content types based on the old framework Archetypes. Usually only "
+"needed for backward compatibility with migrated sites or old addons."
+msgstr ""
+"انواع محتوای استاندارد مبتنی بر چارچوب قدیمی Archetypes؛ معمولاً فقط برای "
+"سازگاری سایت‌های مهاجرت‌داده‌شده یا افزونه‌های قدیمی لازم است."
+
+#. TPPC settings interface translation
+msgid "Installs SENAITE DATABOX"
+msgstr "نصب SENAITE DATABOX"
+
+#. TPPC settings interface translation
+msgid "Working Copy Support (Iterate)"
+msgstr "پشتیبانی از نسخهٔ کاری (Iterate)"
+
+#. TPPC settings interface translation
+msgid "Adds working copy support (aka. in-place staging) to Plone."
+msgstr "امکان ساخت نسخهٔ کاری محتوا پیش از انتشار در Plone."
+
+#. TPPC settings interface translation
+msgid "Install senaite.ldap"
+msgstr "نصب senaite.ldap"
+
+#. TPPC settings interface translation
+msgid "Installs SENAITE PATIENT"
+msgstr "نصب SENAITE PATIENT"
+
+#. TPPC settings interface translation
+msgid "RESTful hypermedia API for Plone."
+msgstr "رابط برنامه‌نویسی REST برای Plone."
+
+#. TPPC settings interface translation
+msgid "Installs SENAITE JSONAPI's JWT PAS plugin"
+msgstr "نصب افزونهٔ احراز هویت JWT PAS برای SENAITE JSONAPI"
+
+#. TPPC settings interface translation
+msgid "Multilingual Support"
+msgstr "پشتیبانی چندزبانه"
+
+#. TPPC settings interface translation
+msgid ""
+"Install to enable multilingual content support with plone.app.multilingual"
+msgstr "نصب پشتیبانی از محتوای چندزبانه با plone.app.multilingual"
+
+#. TPPC settings interface translation
+msgid "SENAITE LIMS Add-on"
+msgstr "افزونهٔ سامانهٔ آزمایشگاه SENAITE"
+
+#. TPPC settings interface translation
+msgid "Upgrade senaite.app.spotlight"
+msgstr "ارتقای senaite.app.spotlight"
+
+#. TPPC settings interface translation
+msgid "Date and Time Settings"
+msgstr "تنظیمات تاریخ و زمان"
+
+#. TPPC settings interface translation
+msgid "Date and Time related settings like timezone(s), etc."
+msgstr "تنظیمات تاریخ، روز آغاز هفته و مناطق زمانی."
+
+#. TPPC settings interface translation
+msgid "Language Settings"
+msgstr "تنظیمات زبان"
+
+#. TPPC settings interface translation
+msgid "Settings related to interface languages and content translations."
+msgstr "تنظیمات زبان رابط کاربری و ترجمهٔ محتوا."
+
+#. TPPC settings interface translation
+msgid "Negotiation scheme"
+msgstr "روش انتخاب زبان"
+
+#. TPPC settings interface translation
+msgid "Mail Settings"
+msgstr "تنظیمات ایمیل"
+
+#. TPPC settings interface translation
+msgid "Markup Settings"
+msgstr "تنظیمات قالب متن"
+
+#. TPPC settings interface translation
+msgid "Search for an error log entry"
+msgstr "جست‌وجوی خطای ثبت‌شده"
+
+#. TPPC settings interface translation
+msgid "(such as \"1257962690.640.49636048561\")"
+msgstr "برای نمونه: «1257962690.640.49636048561»"
+
+#. TPPC settings interface translation
+msgid "HTML Filtering Settings"
+msgstr "تنظیمات محتوای HTML"
+
+#. TPPC settings interface translation
+msgid "Keep in mind that editors like TinyMCE might have additional filters."
+msgstr ""
+"ویرایشگرهایی مانند TinyMCE ممکن است محدودیت‌های بیشتری برای HTML داشته "
+"باشند."
+
+#. TPPC settings interface translation
+msgid "Security Settings"
+msgstr "تنظیمات امنیت"
+
+#. TPPC settings interface translation
+msgid "Maintenance Settings"
+msgstr "نگهداری سامانه"
+
+#. TPPC settings interface translation
+msgid "You are not allowed to manage the Zope server."
+msgstr "حساب فعلی مجوز مدیریت سرور Zope را ندارد."
+
+#. TPPC settings interface translation
+msgid "Keep existing file"
+msgstr "نگه‌داشتن فایل فعلی"
+
+#. TPPC settings interface translation
+msgid "Remove existing file"
+msgstr "حذف فایل فعلی"
+
+#. TPPC settings interface translation
+msgid "Replace with new file"
+msgstr "جایگزینی با فایل جدید"
+
+#. TPPC settings interface translation
+msgid "Unique format identifier"
+msgstr "شناسهٔ یکتای اندازهٔ کاغذ"
+
+#. TPPC settings interface translation
+msgid "Display name"
+msgstr "نام نمایشی"
+
+#. TPPC settings interface translation
+msgid "Width (mm)"
+msgstr "عرض (میلی‌متر)"
+
+#. TPPC settings interface translation
+msgid "Height (mm)"
+msgstr "ارتفاع (میلی‌متر)"
+
+#. TPPC settings interface translation
+msgid "Top (mm)"
+msgstr "بالا (میلی‌متر)"
+
+#. TPPC settings interface translation
+msgid "Right (mm)"
+msgstr "راست (میلی‌متر)"
+
+#. TPPC settings interface translation
+msgid "Bottom (mm)"
+msgstr "پایین (میلی‌متر)"
+
+#. TPPC settings interface translation
+msgid "Left (mm)"
+msgstr "چپ (میلی‌متر)"
+
+#. TPPC settings interface translation
+msgid "Paper Format"
+msgstr "اندازهٔ کاغذ"
+
+#. TPPC settings interface translation
+msgid "Add row"
+msgstr "افزودن ردیف"
+
+#. TPPC settings interface translation
+msgid "Delete row"
+msgstr "حذف ردیف"
+
+#. TPPC settings interface translation
+msgid "portrait"
+msgstr "عمودی"
+
+#. TPPC settings interface translation
+msgid "landscape"
+msgstr "افقی"
+
+#. TPPC settings interface translation
+msgid "Listings"
+msgstr "فهرست‌ها"
+
+#. TPPC settings interface translation
+msgid "Configuration for listings"
+msgstr "تنظیمات فهرست‌ها"
+
+#. TPPC settings interface translation
+msgid "SENAITE Spotlight Settings"
+msgstr "تنظیمات جست‌وجوی سریع"
+
+#. TPPC settings interface translation
+msgid ""
+"The catalogs to search. Every installed SENAITE catalog is listed here "
+"automatically; set a label or prefix, reorder, or uncheck Enabled to exclude"
+" one. Saving persists the list."
+msgstr ""
+"همهٔ فهرست‌های جست‌وجوی نصب‌شدهٔ SENAITE اینجا نمایش داده می‌شوند. عنوان، "
+"پیشوند و ترتیب را تعیین کنید یا برای کنارگذاشتن یک فهرست، گزینهٔ فعال را "
+"بردارید. تغییرات با ذخیره ثبت می‌شوند."
+
+#. TPPC settings interface translation
+msgid "Catalog"
+msgstr "فهرست جست‌وجو"
+
+#. TPPC settings interface translation
+msgid "The catalog id to search, e.g. senaite_catalog_sample"
+msgstr "شناسهٔ فهرست جست‌وجو؛ مانند senaite_catalog_sample"
+
+#. TPPC settings interface translation
+msgid "Label shown in the scope bar"
+msgstr "عنوان نمایش‌داده‌شده در نوار محدودهٔ جست‌وجو"
+
+#. TPPC settings interface translation
+msgid ""
+"Short token to scope a search to this catalog, e.g. 's' to search with "
+"'s:water'"
+msgstr ""
+"پیشوند کوتاه برای محدودکردن جست‌وجو به این فهرست؛ مانند s برای عبارت s:water"
+
+#. TPPC settings interface translation
+msgid "Portal types"
+msgstr "انواع محتوا"
+
+#. TPPC settings interface translation
+msgid "Comma separated list of portal types to restrict the search to"
+msgstr "انواع محتوای قابل جست‌وجو، جداشده با ویرگول"
+
+#. TPPC settings interface translation
+msgid "Search index"
+msgstr "شاخص جست‌وجو"
+
+#. TPPC settings interface translation
+msgid "Searchable text index to query (optional override)"
+msgstr "شاخص متن قابل جست‌وجو؛ تعیین آن اختیاری است."
+
+#. TPPC settings interface translation
+msgid "Index to sort the catalog results on"
+msgstr "شاخص مرتب‌سازی نتایج فهرست"
+
+#. TPPC settings interface translation
+msgid "Sort order"
+msgstr "ترتیب مرتب‌سازی"
+
+#. TPPC settings interface translation
+msgid "Show for clients"
+msgstr "نمایش برای مشتریان"
+
+#. TPPC settings interface translation
+msgid "No value"
+msgstr "بدون مقدار"
+
+#. TPPC settings interface translation
+msgid "ascending"
+msgstr "صعودی"
+
+#. TPPC settings interface translation
+msgid "descending"
+msgstr "نزولی"
+
+#. TPPC settings interface translation
+msgid "Unique command identifier"
+msgstr "شناسهٔ یکتای فرمان"
+
+#. TPPC settings interface translation
+msgid "Title shown in the command palette"
+msgstr "عنوان نمایشی در منوی فرمان‌ها"
+
+#. TPPC settings interface translation
+msgid "Icon"
+msgstr "آیکن"
+
+#. TPPC settings interface translation
+msgid "Icon class, e.g. 'fas fa-plus'"
+msgstr "کلاس آیکن؛ مانند fas fa-plus"
+
+#. TPPC settings interface translation
+msgid "URL"
+msgstr "نشانی"
+
+#. TPPC settings interface translation
+msgid "Target URL, may contain the '${portal_url}' placeholder"
+msgstr "نشانی مقصد؛ می‌تواند متغیر ${portal_url} را داشته باشد."
+
+#. TPPC settings interface translation
+msgid "Permission"
+msgstr "مجوز"
+
+#. TPPC settings interface translation
+msgid "Zope permission required to see the command"
+msgstr "مجوز Zope لازم برای مشاهدهٔ فرمان"
+
+#. TPPC settings interface translation
+msgid "Comma separated list of extra search terms"
+msgstr "عبارت‌های جست‌وجوی تکمیلی، جداشده با ویرگول"
+
+#. TPPC settings interface translation
+msgid "Configure site"
+msgstr "تنظیمات سایت"
+
+#. TPPC settings interface translation
+msgid "Edit cancelled."
+msgstr "ویرایش لغو شد."
+
+#. TPPC settings interface translation
+msgid "label_boolean_criteria_bool"
+msgstr "مقدار"
+
+#. TPPC settings interface translation
+msgid "label_date_range_criteria_end"
+msgstr "تاریخ پایان"
+
+#. TPPC settings interface translation
+msgid "label_date_range_criteria_start"
+msgstr "تاریخ شروع"
+
+#. TPPC settings interface translation
+msgid "label_download_as_pdf"
+msgstr "دانلود PDF"
+
+#. TPPC settings interface translation
+msgid "label_file"
+msgstr "فایل"
+
+#. TPPC settings interface translation
+msgid "label_int_criteria_value"
+msgstr "مقدار"
+
+#. TPPC settings interface translation
+msgid "label_string_criteria_value"
+msgstr "مقدار"
+
+#. TPPC settings interface translation
+msgid "label_summary"
+msgstr "خلاصه"
+
+#. TPPC settings interface translation
+msgid "label_url"
+msgstr "نشانی"
+
+#. TPPC settings interface translation
+msgid "table_criteria_field"
+msgstr "فیلد"
+
+#. TPPC settings interface translation
+msgid "referencebrowser_history"
+msgstr "تاریخچه"
+
+#. TPPC settings interface translation
+msgid "referencebrowser_search_index_label"
+msgstr "شاخص جست‌وجو"
+
+#. TPPC settings interface translation
+msgid "referencebrowser_search_site"
+msgstr "جستجوی سایت"
+
+#. TPPC settings interface translation
+msgid "label_current"
+msgstr "جاری"
+
+#. TPPC settings interface translation
+msgid "listingheader_actions"
+msgstr "عملیات"
+
+#. TPPC settings interface translation
+msgid "label_discussion_default"
+msgstr "پیش‌فرض"
+
+#. TPPC settings interface translation
+msgid "label_discussion_enabled"
+msgstr "فعال"
+
+#. TPPC settings interface translation
+msgid "label_keywords"
+msgstr "کلید واژه ها"
+
+#. TPPC settings interface translation
+msgid "label_portal_type_criteria_value"
+msgstr "مقدار"
+
+#. TPPC settings interface translation
+msgid "label_selection_criteria_value"
+msgstr "مقدار"
+
+#. TPPC settings interface translation
+msgid "label_schema_default"
+msgstr "پیش‌فرض"
+
+#. TPPC settings interface translation
+msgid "plone.footerportlets"
+msgstr "پورتلت‌های فوتر"
+
+#. TPPC settings interface translation
+msgid "plone.leftcolumn"
+msgstr "ستون چپ"
+
+#. TPPC settings interface translation
+msgid "plone.rightcolumn"
+msgstr "ستون راست"
+
+#. TPPC settings interface translation
+msgid "title_view_revision"
+msgstr "مشاهده"
+
+#. TPPC settings interface translation
+msgid "heading_action"
+msgstr "انجام"
+
+#. TPPC settings interface translation
+msgid "label_publish"
+msgstr "تأیید"
+
+#. TPPC settings interface translation
+msgid "weekday_fri"
+msgstr "جمعه"
+
+#. TPPC settings interface translation
+msgid "weekday_mon"
+msgstr "دوشنبه"
+
+#. TPPC settings interface translation
+msgid "weekday_sat"
+msgstr "شنبه"
+
+#. TPPC settings interface translation
+msgid "weekday_sun"
+msgstr "یکشنبه"
+
+#. TPPC settings interface translation
+msgid "weekday_thu"
+msgstr "پنجشنبه"
+
+#. TPPC settings interface translation
+msgid "weekday_tue"
+msgstr "سه‌شنبه"
+
+#. TPPC settings interface translation
+msgid "weekday_wed"
+msgstr "چهارشنبه"
+
+#. TPPC settings interface translation
+msgid "label_delete_property"
+msgstr "حذف"
+
+#. TPPC settings interface translation
+msgid "label_ldap_description"
+msgstr "توضیح"
+
+#. TPPC settings interface translation
+msgid "label_ldap_enabled"
+msgstr "فعال"
+
+#. TPPC settings interface translation
+msgid "label_no"
+msgstr "خیر"
+
+#. TPPC settings interface translation
+msgid "label_yes"
+msgstr "بلی"
+
+#. TPPC settings interface translation
+msgid "absolute_url_prefix"
+msgstr "پیشوند نشانی مطلق"
+
+#. TPPC settings interface translation
+msgid "action_position_heading"
+msgstr "موقعیت"
+
+#. TPPC settings interface translation
+msgid "box_error"
+msgstr "خطا"
+
+#. TPPC settings interface translation
+msgid "box_search"
+msgstr "جست‌وجو"
+
+#. TPPC settings interface translation
+msgid "box_sign_in"
+msgstr "ورود"
+
+#. TPPC settings interface translation
+msgid "bulkactions_delete"
+msgstr "حذف"
+
+#. TPPC settings interface translation
+msgid "bulkactions_publish"
+msgstr "تأیید"
+
+#. TPPC settings interface translation
+msgid "cancel_form_button"
+msgstr "انصراف"
+
+#. TPPC settings interface translation
+msgid "category-contentrules-mailsub"
+msgstr "طبقه"
+
+#. TPPC settings interface translation
+msgid "clear_filter"
+msgstr "پاک‌کردن جست‌وجو"
+
+#. TPPC settings interface translation
+msgid "convert_relative_url"
+msgstr ""
+"نشانی‌های نسبی فایل پوسته با استفاده از این پیشوند به نشانی مطلق تبدیل "
+"می‌شوند."
+
+#. TPPC settings interface translation
+msgid "current_theme"
+msgstr "پوستهٔ فعلی"
+
+#. TPPC settings interface translation
+msgid "current_theme_description"
+msgstr "نام آخرین پوستهٔ اعمال‌شده."
+
+#. TPPC settings interface translation
+msgid "description_auth_ookie_manual_override"
+msgstr "مرتبط با استفاده از کوکی برای انتخاب دستی زبان"
+
+#. TPPC settings interface translation
+msgid "description_browser_language_request_negotiation"
+msgstr "انتخاب زبان بر اساس زبان‌های درخواستی مرورگر."
+
+#. TPPC settings interface translation
+msgid "description_language_codes_in_URL"
+msgstr "استفاده از کد زبان در مسیر نشانی برای انتخاب دستی زبان."
+
+#. TPPC settings interface translation
+msgid "description_language_of_the_content"
+msgstr "استفاده از زبان محتوای انتخاب‌شده."
+
+#. TPPC settings interface translation
+msgid "description_language_settings"
+msgstr "تنظیمات زبان رابط کاربری و ترجمهٔ محتوا."
+
+#. TPPC settings interface translation
+msgid "description_record_delete"
+msgstr ""
+"از حذف این تنظیم مطمئن هستید؟ این کار قابل بازگردانی نیست و ممکن است عملکرد "
+"سامانه را مختل کند."
+
+#. TPPC settings interface translation
+msgid "description_record_edit"
+msgstr "مقدار این تنظیم را در فرم زیر ویرایش کنید."
+
+#. TPPC settings interface translation
+msgid "description_registry"
+msgstr ""
+"تنظیمات ثبت‌شدهٔ سامانه در جدول زیر آمده‌اند. برای ویرایش، نام تنظیم را "
+"انتخاب کنید."
+
+#. TPPC settings interface translation
+msgid "description_set_language_cookie_always"
+msgstr "حتی اگر پارامتر set_language در درخواست وجود نداشته باشد."
+
+#. TPPC settings interface translation
+msgid "description_site_language"
+msgstr "زبان محتوا و رابط کاربری سایت."
+
+#. TPPC settings interface translation
+msgid "description_top_level_domain"
+msgstr "برای نمونه: www.plone.de"
+
+#. TPPC settings interface translation
+msgid "description_use_subdomain"
+msgstr "برای نمونه: de.plone.org"
+
+#. TPPC settings interface translation
+msgid "doctype"
+msgstr "اعلان نوع سند (Doctype)"
+
+#. TPPC settings interface translation
+msgid "doctype_description"
+msgstr ""
+"اعلان نوع سند مانند <!DOCTYPE html> را مشخص کنید. در صورت خالی‌بودن، اعلان "
+"پوستهٔ Diazo یا پیش‌فرض XHTML 1.0 Transitional استفاده می‌شود."
+
+#. TPPC settings interface translation
+msgid "enable_theme_globally"
+msgstr ""
+"فعال یا غیرفعال‌کردن پوسته در کل سایت. سایر گزینه‌ها نیز بر اعمال پوسته در "
+"حالت فعال اثر دارند."
+
+#. TPPC settings interface translation
+msgid "enabled"
+msgstr "فعال"
+
+#. TPPC settings interface translation
+msgid "export"
+msgstr "خروجی گرفتن"
+
+#. TPPC settings interface translation
+msgid "export_button"
+msgstr "دریافت خروجی"
+
+#. TPPC settings interface translation
+msgid "file_keep"
+msgstr "نگه‌داشتن فایل فعلی"
+
+#. TPPC settings interface translation
+msgid "file_remove"
+msgstr "حذف فایل فعلی"
+
+#. TPPC settings interface translation
+msgid "file_replace"
+msgstr "جایگزینی با فایل جدید"
+
+#. TPPC settings interface translation
+msgid "heading_auth_cookie_manual_override"
+msgstr "فقط کاربران واردشده"
+
+#. TPPC settings interface translation
+msgid "heading_browser_language_request_negotiation"
+msgstr "انتخاب زبان بر اساس درخواست مرورگر"
+
+#. TPPC settings interface translation
+msgid "heading_date"
+msgstr "تاریخ"
+
+#. TPPC settings interface translation
+msgid "heading_description"
+msgstr "توضیح"
+
+#. TPPC settings interface translation
+msgid "heading_language_codes_in_URL"
+msgstr "انتخاب دستی زبان با کد زبان در مسیر نشانی"
+
+#. TPPC settings interface translation
+msgid "heading_language_of_the_content"
+msgstr "استفاده از زبان خود محتوا"
+
+#. TPPC settings interface translation
+msgid "heading_language_settings"
+msgstr "تنظیمات زبان"
+
+#. TPPC settings interface translation
+msgid "heading_name"
+msgstr "نام"
+
+#. TPPC settings interface translation
+msgid "heading_operation"
+msgstr "عملیات"
+
+#. TPPC settings interface translation
+msgid "heading_purged"
+msgstr "وضعیت"
+
+#. TPPC settings interface translation
+msgid "heading_set_language_cookie_always"
+msgstr "تنظیم همیشگی کوکی زبان"
+
+#. TPPC settings interface translation
+msgid "heading_site_language"
+msgstr "زبان سایت"
+
+#. TPPC settings interface translation
+msgid "heading_templates"
+msgstr "قالب‌ها"
+
+#. TPPC settings interface translation
+msgid "heading_title"
+msgstr "عنوان"
+
+#. TPPC settings interface translation
+msgid "heading_top_level_domain"
+msgstr "استفاده از دامنهٔ سطح بالا"
+
+#. TPPC settings interface translation
+msgid "heading_type"
+msgstr "نوع"
+
+#. TPPC settings interface translation
+msgid "heading_use_subdomain"
+msgstr "استفاده از زیردامنه"
+
+#. TPPC settings interface translation
+msgid "heading_validation"
+msgstr "اعتبارسنجی"
+
+#. TPPC settings interface translation
+msgid "heading_value"
+msgstr "مقدار"
+
+#. TPPC settings interface translation
+msgid "help_allow_combined_language_codes"
+msgstr "برای نمونه: pt-br برای پرتغالی برزیل و en-us برای انگلیسی آمریکا."
+
+#. TPPC settings interface translation
+msgid "help_allow_roles_to_add_keywords"
+msgstr "فقط نقش‌های زیر می‌توانند برچسب جدید اضافه کنند."
+
+#. TPPC settings interface translation
+msgid "help_anonymous_comments"
+msgstr ""
+"کاربر ناشناس بدون ورود می‌تواند نظر بگذارد. برای جلوگیری از هرزنامه، استفاده"
+" از کپچا توصیه می‌شود."
+
+#. TPPC settings interface translation
+msgid "help_anonymous_email_enabled"
+msgstr "کاربر ناشناس باید ایمیل خود را وارد کند."
+
+#. TPPC settings interface translation
+msgid "help_atd_service_url"
+msgstr ""
+"نشانی سرور بررسی املا و دستور زبان After the Deadline. پیش‌فرض، سرور عمومی "
+"است؛ می‌توانید سرور اختصاصی نصب و نشانی آن را تعیین کنید."
+
+#. TPPC settings interface translation
+msgid "help_atderrortypes_to_show"
+msgstr ""
+"انواع خطاهایی که غلط‌یاب «After the Deadline» بررسی می‌کند. به‌صورت پیش‌فرض،"
+" همهٔ انواع خطای موجود در این فهرست قرار دارند."
+
+#. TPPC settings interface translation
+msgid "help_available_timezones"
+msgstr "مناطق زمانی قابل انتخاب برای کاربران و رویدادها."
+
+#. TPPC settings interface translation
+msgid "help_custom_css"
+msgstr ""
+"CSS سفارشی را وارد کنید. این تنظیم برای تغییرات کوچک مانند رنگ یا نوار ابزار"
+" است و CSS قبلی Plone را بازنویسی می‌کند. برای تغییرات بزرگ‌تر، پوستهٔ کامل "
+"را ویرایش کنید تا پیگیری تغییرات آسان‌تر باشد."
+
+#. TPPC settings interface translation
+msgid "help_delete_own_comment_enabled"
+msgstr "کاربران دارای مجوز Delete own comments می‌توانند نظر خود را حذف کنند."
+
+#. TPPC settings interface translation
+msgid "help_edit_comment_enabled"
+msgstr "کاربران دارای مجوز Edit comments می‌توانند نظرها را ویرایش کنند."
+
+#. TPPC settings interface translation
+msgid "help_email_creation"
+msgstr ""
+"یک نشانی ایمیل وارد کنید. در صورت گم‌شدن رمز عبور لازم است. ما به حریم خصوصی"
+" شما احترام می‌گذاریم و این نشانی را به هیچ شخص ثالثی نمی‌دهیم و جایی افشا "
+"نمی‌کنیم."
+
+#. TPPC settings interface translation
+msgid "help_email_url"
+msgstr "آدرس پست الکترونیک"
+
+#. TPPC settings interface translation
+msgid "help_event_settings"
+msgstr "تنظیمات تاریخ، روز آغاز هفته و مناطق زمانی."
+
+#. TPPC settings interface translation
+msgid "help_first_weekday"
+msgstr "اولین روز هفته."
+
+#. TPPC settings interface translation
+msgid "help_globally_enabled"
+msgstr ""
+"نظرگذاری در سایت فعال می‌شود. برای استفاده، باید نظرگذاری برای نوع محتوا، "
+"پوشه یا محتوای مورد نظر نیز فعال باشد."
+
+#. TPPC settings interface translation
+msgid "help_moderation_enabled"
+msgstr ""
+"نظرها ابتدا در وضعیت «در انتظار» و پنهان از عموم قرار می‌گیرند. کاربر دارای "
+"مجوز Review comments مانند Reviewer یا Manager می‌تواند آن‌ها را تأیید کند. "
+"گردش‌کار سفارشی نظرها از تنظیمات انواع محتوا تعیین می‌شود."
+
+#. TPPC settings interface translation
+msgid "help_moderator_email"
+msgstr "نشانی دریافت اعلان‌های مدیر بررسی نظرات."
+
+#. TPPC settings interface translation
+msgid "help_moderator_notification_enabled"
+msgstr ""
+"اگر نظری نیاز به بررسی داشته باشد، مدیر نظرات مطلع می‌شود. ایمیل مدیر را "
+"پایین‌تر تعیین کنید."
+
+#. TPPC settings interface translation
+msgid "help_portal_timezone"
+msgstr ""
+"منطقهٔ زمانی سایت. در صورت تعریف مناطق قابل انتخاب، هر کاربر می‌تواند منطقهٔ"
+" زمانی خود را تعیین کند."
+
+#. TPPC settings interface translation
+msgid "help_redirect_links"
+msgstr ""
+"با انتخاب محتوای نوع پیوند، نمای پیش‌فرض باز شود یا کاربر مستقیم به نشانی "
+"پیوند هدایت شود؟"
+
+#. TPPC settings interface translation
+msgid "help_render_body"
+msgstr ""
+"اگر متن بدنه موجود است، آن را نمایش بده؛ در غیر این صورت توضیح را نمایش بده."
+
+#. TPPC settings interface translation
+msgid "help_robots_txt"
+msgstr ""
+"موتورهای جست‌وجو با robots.txt روش نمایه‌سازی سایت را تعیین می‌کنند. راهنما:"
+" <a href='http://www.robotstxt.org'>http://www.robotstxt.org</a>. برای نشانی"
+" سایت از {portal_url} استفاده کنید."
+
+#. TPPC settings interface translation
+msgid "help_show_commenter_image"
+msgstr "تصویر کاربر کنار نظر نمایش داده می‌شود."
+
+#. TPPC settings interface translation
+msgid "help_smtp_pass"
+msgstr "گذرواژهٔ حساب کاربری ESMTP."
+
+#. TPPC settings interface translation
+msgid "help_smtp_port"
+msgstr ""
+"پورت سرور ایمیل را مطابق تنظیمات ارائه‌دهنده وارد کنید؛ پیش‌فرض معمول 25 "
+"است."
+
+#. TPPC settings interface translation
+msgid "help_smtp_server"
+msgstr ""
+"نشانی سرور ارسال ایمیل؛ برای سرویس خارجی، نشانی اعلام‌شدهٔ ارائه‌دهنده را "
+"وارد کنید."
+
+#. TPPC settings interface translation
+msgid "help_smtp_userid"
+msgstr ""
+"نام کاربری احراز هویت سرور ایمیل؛ فقط هنگام استفاده از ESMTP لازم است."
+
+#. TPPC settings interface translation
+msgid "help_syndication_max_items"
+msgstr "حداکثر تعداد موارد منتشرشده در خوراک."
+
+#. TPPC settings interface translation
+msgid "help_text_transform"
+msgstr ""
+"شیوهٔ تبدیل متن نظر: متن ساده یا متن هوشمند. متن هوشمند شکست خط و تورفتگی را"
+" نگه می‌دارد و نشانی وب و ایمیل را به پیوند تبدیل می‌کند."
+
+#. TPPC settings interface translation
+msgid "help_tinymce_menubar"
+msgstr "موارد منوی ویرایشگر را تعیین کنید."
+
+#. TPPC settings interface translation
+msgid "help_tinymce_plugins"
+msgstr "افزونه‌های مورد استفاده در TinyMCE را انتخاب کنید."
+
+#. TPPC settings interface translation
+msgid "help_tinymce_templates"
+msgstr ""
+"فهرست قالب‌ها را به‌صورت JSON وارد کنید. راهنما: "
+"https://www.tinymce.com/docs/plugins/template/"
+
+#. TPPC settings interface translation
+msgid "help_tinymce_toolbar"
+msgstr "چیدمان موارد نوار ابزار را تعیین کنید."
+
+#. TPPC settings interface translation
+msgid "help_types_use_view_action_in_listings"
+msgstr ""
+"هنگام انتخاب این انواع محتوا در فهرست، به‌جای نمای پیش‌فرض از عملیات view "
+"استفاده می‌شود."
+
+#. TPPC settings interface translation
+msgid "help_user_name_creation_casesensitive"
+msgstr ""
+"یک نام کاربری وارد کنید، معمولاً چیزی مثل 'jsmith'. بدون فاصله یا کاراکتر "
+"خاص. نام کاربری و رمز عبور به بزرگی/کوچکی حروف حساس‌اند؛ مطمئن شوید Caps "
+"Lock فعال نیست. این نام برای ورود استفاده می‌شود."
+
+#. TPPC settings interface translation
+msgid "help_user_notification_enabled"
+msgstr "کاربران می‌توانند دریافت اعلان ایمیلی نظرهای جدید را انتخاب کنند."
+
+#. TPPC settings interface translation
+msgid "hint_tinymce_menu"
+msgstr "تنظیمات منو در قالب JSON."
+
+#. TPPC settings interface translation
+msgid "hint_tinymce_other_settings"
+msgstr "سایر تنظیمات TinyMCE در قالب JSON."
+
+#. TPPC settings interface translation
+msgid "hostname_blacklist"
+msgstr "میزبان‌های بدون پوسته"
+
+#. TPPC settings interface translation
+msgid "hostname_blacklist_description"
+msgstr ""
+"نام میزبان‌هایی را که نباید پوسته روی آن‌ها اعمال شود وارد کنید. این کار "
+"برای مقایسهٔ نسخهٔ دارای پوسته و بدون پوسته هنگام توسعه یا دسترسی مدیر محتوا"
+" به Plone ساده کاربرد دارد."
+
+#. TPPC settings interface translation
+msgid "image_captioning_description"
+msgstr "ساخت خودکار زیرنویس تصویر در ویرایشگر بر اساس توضیح تصویر."
+
+#. TPPC settings interface translation
+msgid "image_captioning_title"
+msgstr "فعال‌کردن زیرنویس تصویر"
+
+#. TPPC settings interface translation
+msgid "import"
+msgstr "ورود اطلاعات"
+
+#. TPPC settings interface translation
+msgid "import_button"
+msgstr "واردکردن فایل"
+
+#. TPPC settings interface translation
+msgid "label_actions_menu"
+msgstr "عملیات"
+
+#. TPPC settings interface translation
+msgid "label_add_new_item"
+msgstr "افزودن جدید…"
+
+#. TPPC settings interface translation
+msgid "label_advanced_search"
+msgstr "جستجوی پیشرفته…"
+
+#. TPPC settings interface translation
+msgid "label_all"
+msgstr "همه"
+
+#. TPPC settings interface translation
+msgid "label_allow_combined_language_codes"
+msgstr "نمایش گونه‌های زبانی کشورها"
+
+#. TPPC settings interface translation
+msgid "label_always_show_selector"
+msgstr "نمایش همیشگی انتخابگر زبان"
+
+#. TPPC settings interface translation
+msgid "label_anonymous_comments"
+msgstr "فعال‌کردن نظر ناشناس"
+
+#. TPPC settings interface translation
+msgid "label_anonymous_email_enabled"
+msgstr "فعال‌کردن فیلد ایمیل برای نظر ناشناس"
+
+#. TPPC settings interface translation
+msgid "label_apply"
+msgstr "اعمال"
+
+#. TPPC settings interface translation
+msgid "label_atd_ignore_strings"
+msgstr ""
+"عبارت‌هایی که غلط‌یاب «After the Deadline» نادیده می‌گیرد. این گزینه فقط "
+"هنگام انتخاب همین غلط‌یاب کاربرد دارد."
+
+#. TPPC settings interface translation
+msgid "label_cache_key"
+msgstr "کلید"
+
+#. TPPC settings interface translation
+msgid "label_captcha"
+msgstr "کپچا"
+
+#. TPPC settings interface translation
+msgid "label_choice_field"
+msgstr "گزینهٔ انتخابی"
+
+#. TPPC settings interface translation
+msgid "label_choose_template"
+msgstr "نمایش"
+
+#. TPPC settings interface translation
+msgid "label_comments"
+msgstr "نظرات"
+
+#. TPPC settings interface translation
+msgid "label_contentrules_active"
+msgstr "فعال"
+
+#. TPPC settings interface translation
+msgid "label_contentrules_rule_unassigned"
+msgstr "واگذارنشده"
+
+#. TPPC settings interface translation
+msgid "label_custom_css"
+msgstr "CSS سفارشی"
+
+#. TPPC settings interface translation
+msgid "label_dashboard"
+msgstr "داشبورد"
+
+#. TPPC settings interface translation
+msgid "label_date_field"
+msgstr "تاریخ"
+
+#. TPPC settings interface translation
+msgid "label_dateandtime_settings"
+msgstr "تنظیمات تاریخ و زمان"
+
+#. TPPC settings interface translation
+msgid "label_delete_own_comment_enabled"
+msgstr "اجازهٔ حذف نظر خود کاربر"
+
+#. TPPC settings interface translation
+msgid "label_display_flags"
+msgstr "نمایش پرچم زبان‌ها"
+
+#. TPPC settings interface translation
+msgid "label_doctype"
+msgstr "اعلان نوع سند (Doctype)"
+
+#. TPPC settings interface translation
+msgid "label_edit_comment_enabled"
+msgstr "اجازهٔ ویرایش نظرها"
+
+#. TPPC settings interface translation
+msgid "label_email"
+msgstr "پست الکترونیک"
+
+#. TPPC settings interface translation
+msgid "label_email_url"
+msgstr "پست الکترونیک"
+
+#. TPPC settings interface translation
+msgid "label_event_location"
+msgstr "مکان"
+
+#. TPPC settings interface translation
+msgid "label_field_name"
+msgstr "نام فیلد"
+
+#. TPPC settings interface translation
+msgid "label_field_title"
+msgstr "عنوان فیلد"
+
+#. TPPC settings interface translation
+msgid "label_first_weekday"
+msgstr "روز آغاز هفته"
+
+#. TPPC settings interface translation
+msgid "label_full_name"
+msgstr "نام کامل"
+
+#. TPPC settings interface translation
+msgid "label_fullname"
+msgstr "نام کامل"
+
+#. TPPC settings interface translation
+msgid "label_general"
+msgstr "عمومی"
+
+#. TPPC settings interface translation
+msgid "label_globally_enabled"
+msgstr "فعال‌کردن نظرات در کل سایت"
+
+#. TPPC settings interface translation
+msgid "label_history"
+msgstr "تاریخچه"
+
+#. TPPC settings interface translation
+msgid "label_home"
+msgstr "خانه"
+
+#. TPPC settings interface translation
+msgid "label_hostname_blacklist"
+msgstr "میزبان‌های بدون پوسته"
+
+#. TPPC settings interface translation
+msgid "label_language"
+msgstr "زبان"
+
+#. TPPC settings interface translation
+msgid "label_location"
+msgstr "مکان"
+
+#. TPPC settings interface translation
+msgid "label_log_in"
+msgstr "ورود"
+
+#. TPPC settings interface translation
+msgid "label_mark_special_links"
+msgstr "علامت‌گذاری پیوندهای ویژه"
+
+#. TPPC settings interface translation
+msgid "label_moderation_enabled"
+msgstr "فعال‌کردن بررسی نظر پیش از انتشار"
+
+#. TPPC settings interface translation
+msgid "label_moderator_email"
+msgstr "ایمیل مدیر بررسی نظرات"
+
+#. TPPC settings interface translation
+msgid "label_moderator_notification_enabled"
+msgstr "ارسال اعلان ایمیلی برای مدیر نظرات"
+
+#. TPPC settings interface translation
+msgid "label_navigation_title"
+msgstr "عنوان"
+
+#. TPPC settings interface translation
+msgid "label_new_theme_description"
+msgstr "توضیح"
+
+#. TPPC settings interface translation
+msgid "label_new_theme_title"
+msgstr "عنوان"
+
+#. TPPC settings interface translation
+msgid "label_or"
+msgstr "یا"
+
+#. TPPC settings interface translation
+msgid "label_parameter_expressions"
+msgstr "عبارت‌های پارامتر"
+
+#. TPPC settings interface translation
+msgid "label_password"
+msgstr "گذرواژه"
+
+#. TPPC settings interface translation
+msgid "label_password_field"
+msgstr "گذرواژه"
+
+#. TPPC settings interface translation
+msgid "label_pwreset_email"
+msgstr "پست الکترونیک"
+
+#. TPPC settings interface translation
+msgid "label_pwreset_username"
+msgstr "نام کاربری"
+
+#. TPPC settings interface translation
+msgid "label_read_network"
+msgstr "دسترسی خواندن از شبکه"
+
+#. TPPC settings interface translation
+msgid "label_register"
+msgstr "ثبت‌نام"
+
+#. TPPC settings interface translation
+msgid "label_rule_enabled"
+msgstr "فعال"
+
+#. TPPC settings interface translation
+msgid "label_rules"
+msgstr "فایل قواعد"
+
+#. TPPC settings interface translation
+msgid "label_send"
+msgstr "ارسال"
+
+#. TPPC settings interface translation
+msgid "label_send_from"
+msgstr "از"
+
+#. TPPC settings interface translation
+msgid "label_sender_from_address"
+msgstr "از"
+
+#. TPPC settings interface translation
+msgid "label_sender_fullname"
+msgstr "نام"
+
+#. TPPC settings interface translation
+msgid "label_show_commenter_image"
+msgstr "نمایش تصویر نویسندهٔ نظر"
+
+#. TPPC settings interface translation
+msgid "label_size"
+msgstr "ابعاد"
+
+#. TPPC settings interface translation
+msgid "label_smtp_pass"
+msgstr "گذرواژهٔ ESMTP"
+
+#. TPPC settings interface translation
+msgid "label_smtp_port"
+msgstr "پورت SMTP"
+
+#. TPPC settings interface translation
+msgid "label_smtp_server"
+msgstr "سرور SMTP"
+
+#. TPPC settings interface translation
+msgid "label_smtp_test"
+msgstr "ذخیره و ارسال ایمیل آزمایشی"
+
+#. TPPC settings interface translation
+msgid "label_smtp_userid"
+msgstr "نام کاربری ESMTP"
+
+#. TPPC settings interface translation
+msgid "label_sort_on"
+msgstr "مرتب‌سازی بر اساس"
+
+#. TPPC settings interface translation
+msgid "label_state"
+msgstr "وضعیت:"
+
+#. TPPC settings interface translation
+msgid "label_subject"
+msgstr "موضوع"
+
+#. TPPC settings interface translation
+msgid "label_syndication_max_items"
+msgstr "حداکثر تعداد موارد"
+
+#. TPPC settings interface translation
+msgid "label_tableofcontents"
+msgstr "محتواها"
+
+#. TPPC settings interface translation
+msgid "label_text_field"
+msgstr "متن"
+
+#. TPPC settings interface translation
+msgid "label_text_transform"
+msgstr "تبدیل قالب متن نظر"
+
+#. TPPC settings interface translation
+msgid "label_time"
+msgstr "زمان"
+
+#. TPPC settings interface translation
+msgid "label_tinymce_menu"
+msgstr "منو"
+
+#. TPPC settings interface translation
+msgid "label_tinymce_menubar"
+msgstr "نوار منو"
+
+#. TPPC settings interface translation
+msgid "label_tinymce_other_settings"
+msgstr "سایر تنظیمات"
+
+#. TPPC settings interface translation
+msgid "label_tinymce_plugins"
+msgstr "افزونه‌های ویرایشگر"
+
+#. TPPC settings interface translation
+msgid "label_tinymce_templates"
+msgstr "قالب‌ها"
+
+#. TPPC settings interface translation
+msgid "label_tinymce_toolbar"
+msgstr "نوار ابزار"
+
+#. TPPC settings interface translation
+msgid "label_unassign"
+msgstr "لغو واگذاری"
+
+#. TPPC settings interface translation
+msgid "label_user_name"
+msgstr "نام کاربری"
+
+#. TPPC settings interface translation
+msgid "label_user_notification_enabled"
+msgstr "ارسال اعلان ایمیلی برای کاربر"
+
+#. TPPC settings interface translation
+msgid "label_view"
+msgstr "مشاهده"
+
+#. TPPC settings interface translation
+msgid "listingheader_action"
+msgstr "انجام"
+
+#. TPPC settings interface translation
+msgid "listingheader_size"
+msgstr "ابعاد"
+
+#. TPPC settings interface translation
+msgid "listingheader_title"
+msgstr "عنوان"
+
+#. TPPC settings interface translation
+msgid "manage_portlets_link"
+msgstr "مدیریت پورتلت‌ها"
+
+#. TPPC settings interface translation
+msgid "message_edit_item_cancelled"
+msgstr "ویرایش لغو شد."
+
+#. TPPC settings interface translation
+msgid "network_urls_allowed"
+msgstr ""
+"با فعال‌بودن این گزینه، نشانی‌های شبکه با http و https در فایل قواعد و این "
+"تنظیمات مجازند."
+
+#. TPPC settings interface translation
+msgid "no"
+msgstr "خیر"
+
+#. TPPC settings interface translation
+msgid "nochange_file"
+msgstr "نگه‌داشتن فایل فعلی"
+
+#. TPPC settings interface translation
+msgid "parameter_expressions"
+msgstr "عبارت‌های پارامتر"
+
+#. TPPC settings interface translation
+msgid "parameter_expressions_description"
+msgstr ""
+"پارامترهای پوسته را تعریف کنید و در فایل قواعد با $name به آن‌ها ارجاع دهید."
+" عبارت‌های TALES باید رشته، عدد، مقدار منطقی یا None برگردانند. متغیرهای "
+"موجود: context، request، portal، portal_state و context_state."
+
+#. TPPC settings interface translation
+msgid "portal_actions_controlpanel_description"
+msgstr "منوها و عملیات سامانه را بر اساس گروه مربوط مدیریت کنید."
+
+#. TPPC settings interface translation
+msgid "portal_actions_controlpanel_header"
+msgstr "منوها و عملیات"
+
+#. TPPC settings interface translation
+msgid "readNetwork"
+msgstr "دسترسی خواندن از شبکه"
+
+#. TPPC settings interface translation
+msgid "registry_add_record_label"
+msgstr "افزودن تنظیم جدید"
+
+#. TPPC settings interface translation
+msgid "registry_export_text"
+msgstr "همهٔ تنظیمات رجیستری در یک فایل XML خروجی گرفته می‌شوند."
+
+#. TPPC settings interface translation
+msgid "rules_file"
+msgstr "فایل قواعد"
+
+#. TPPC settings interface translation
+msgid "rules_file_path"
+msgstr "مسیر فایل قواعد"
+
+#. TPPC settings interface translation
+msgid "select_prefix"
+msgstr "انتخاب پیشوند"
+
+#. TPPC settings interface translation
+msgid "tableheading_clear_selection"
+msgstr "پاک‌کردن انتخاب"
+
+#. TPPC settings interface translation
+msgid "tabs_home"
+msgstr "خانه"
+
+#. TPPC settings interface translation
+msgid "text_not_allowed_manage_server"
+msgstr "حساب فعلی مجوز مدیریت سرور Zope را ندارد."
+
+#. TPPC settings interface translation
+msgid "text_search"
+msgstr "جستجوی سایت"
+
+#. TPPC settings interface translation
+msgid "title_language"
+msgstr "زبان"
+
+#. TPPC settings interface translation
+msgid "title_search_site"
+msgstr "جستجوی سایت"
+
+#. TPPC settings interface translation
+msgid "title_search_title"
+msgstr "جستجوی سایت"
+
+#. TPPC settings interface translation
+msgid "versioning_manual"
+msgstr "دستی"
+
+#. TPPC settings interface translation
+msgid "yes"
+msgstr "بلی"
+
+#. TPPC settings interface translation
+msgid "you_are_here"
+msgstr "شما اینجا هستید:"
+
+#. TPPC settings interface translation
+msgid ""
+"Makes it possible to customize syndication settings for particular folders "
+"and collections "
+msgstr "امکان تنظیم جداگانهٔ خوراک برای هر پوشه و مجموعه را فراهم می‌کند."
+
+#. TPPC settings interface translation
+msgid "help_captcha"
+msgstr ""
+"فعال یا غیرفعال‌کردن کپچا برای نظرات. اگر گزینه‌ای وجود ندارد، یکی از "
+"افزونه‌های plone.formwidget.captcha، plone.formwidget.recaptcha، "
+"plone.formwidget.hcaptcha، collective.akismet یا collective.z3cform.norobots"
+" را نصب کنید."
+
+#. TPPC settings interface translation
+msgid ""
+"Depth relative the site root that body class are generated for.\n"
+"      "
+msgstr "عمق مسیر نسبت به ریشهٔ سایت که برای آن کلاس بدنه تولید می‌شود."
+
+#. TPPC settings interface translation
+msgid ""
+"Disabling locking here will only affect users editing content through the "
+"Plone web UI.  Content edited via WebDAV clients will still be subject to "
+"locking."
+msgstr ""
+"غیرفعال‌کردن قفل فقط بر ویرایش در رابط وب Plone اثر دارد؛ ویرایش از طریق "
+"WebDAV همچنان مشمول قفل است."
+
+#. TPPC settings interface translation
+msgid ""
+"This option gives you the ability to enable/disable resizing the editor "
+"window. "
+msgstr "فعال یا غیرفعال‌کردن امکان تغییر اندازهٔ ویرایشگر."
+
+#. TPPC settings interface translation
+msgid "Configuration Registry"
+msgstr "رجیستری تنظیمات"
+
+#. TPPC settings interface translation
+msgid "heading_registry"
+msgstr "رجیستری تنظیمات"
+
+#. TPPC settings interface translation
+msgid "registry_export_parts_heading"
+msgstr "خروجی بخشی از تنظیمات"
+
+#. TPPC settings interface translation
+msgid "registry_export_parts_label_iface"
+msgstr "بر اساس رابط"
+
+#. TPPC settings interface translation
+msgid "registry_export_parts_label_prefix"
+msgstr "بر اساس پیشوند"
+
+#. TPPC settings second-pass translation
+msgid "Date and Time"
+msgstr "تاریخ و زمان"
+
+#. TPPC settings second-pass translation
+msgid "Mail"
+msgstr "ایمیل"
+
+#. TPPC settings second-pass translation
+msgid "Content"
+msgstr "محتوا"
+
+#. TPPC settings second-pass translation
+msgid "Content Rules"
+msgstr "قوانین محتوا"
+
+#. TPPC settings second-pass translation
+msgid "Markup"
+msgstr "قالب متن"
+
+#. TPPC settings second-pass translation
+msgid "Users"
+msgstr "کاربران"
+
+#. TPPC settings second-pass translation
+msgid "Errors"
+msgstr "خطاهای سامانه"
+
+#. TPPC settings second-pass translation
+msgid "HTML Filtering"
+msgstr "تنظیمات محتوای HTML"
+
+#. TPPC settings second-pass translation
+msgid "Management Interface"
+msgstr "رابط مدیریت فنی"
+
+#. TPPC settings second-pass translation
+msgid "Add-on Configuration"
+msgstr "تنظیمات افزونه‌ها"
+
+#. TPPC settings second-pass translation
+msgid "Spotlight Settings"
+msgstr "تنظیمات جست‌وجوی سریع"
+
+#. TPPC settings second-pass translation
+msgid "AutoImportLog"
+msgstr "سوابق ورود خودکار اطلاعات"
+
+#. TPPC settings second-pass translation
+msgid "Calibration Certificate"
+msgstr "گواهی کالیبراسیون"
+
+#. TPPC settings second-pass translation
+msgid "Collection"
+msgstr "مجموعه"
+
+#. TPPC settings second-pass translation
+msgid "Comment"
+msgstr "نظر"
+
+#. TPPC settings second-pass translation
+msgid "Instrument Calibration"
+msgstr "کالیبراسیون دستگاه"
+
+#. TPPC settings second-pass translation
+msgid "Instrument Scheduled Task"
+msgstr "کار زمان‌بندی‌شدهٔ دستگاه"
+
+#. TPPC settings second-pass translation
+msgid "Instrument Validation"
+msgstr "اعتبارسنجی دستگاه"
+
+#. TPPC settings second-pass translation
+msgid "InstrumentMaintenanceTask"
+msgstr "کار نگهداری دستگاه"
+
+#. TPPC settings second-pass translation
+msgid "Plone Site"
+msgstr "سایت Plone"
+
+#. TPPC settings second-pass translation
+msgid "TempFolder"
+msgstr "پوشهٔ موقت"
+
+#. TPPC settings second-pass translation
+msgid "text/html"
+msgstr "متن HTML (text/html)"
+
+#. TPPC settings second-pass translation
+msgid "text/plain"
+msgstr "متن ساده (text/plain)"
+
+#. TPPC settings second-pass translation
+msgid "text/plain-pre"
+msgstr "متن ساده با حفظ فاصله‌ها (text/plain-pre)"
+
+#. TPPC settings second-pass translation
+msgid "text/restructured"
+msgstr "متن ساخت‌یافته (text/restructured)"
+
+#. TPPC settings second-pass translation
+msgid "text/structured"
+msgstr "متن ساخت‌یافته (text/structured)"
+
+#. TPPC settings second-pass translation
+msgid "text/x-python"
+msgstr "کد Python (text/x-python)"
+
+#. TPPC settings second-pass translation
+msgid "text/x-rst"
+msgstr "متن reStructuredText (text/x-rst)"
+
+#. TPPC settings second-pass translation
+msgid "text/x-web-intelligent"
+msgstr "متن هوشمند (text/x-web-intelligent)"
+
+#. TPPC settings second-pass translation
+msgid "text/x-web-markdown"
+msgstr "متن Markdown (text/x-web-markdown)"
+
+#. TPPC settings second-pass translation
+msgid "text/x-web-textile"
+msgstr "متن Textile (text/x-web-textile)"
+
+#. TPPC settings second-pass translation
+msgid "IBundleRegistry"
+msgstr "بسته‌های منابع (IBundleRegistry)"
+
+#. TPPC settings second-pass translation
+msgid "ICatalogRegistry"
+msgstr "فهرست‌های جست‌وجو (ICatalogRegistry)"
+
+#. TPPC settings second-pass translation
+msgid "IClientRegistry"
+msgstr "مشتریان (IClientRegistry)"
+
+#. TPPC settings second-pass translation
+msgid "IDateAndTimeSchema"
+msgstr "تاریخ و زمان (IDateAndTimeSchema)"
+
+#. TPPC settings second-pass translation
+msgid "IDiscussionSettings"
+msgstr "نظرات (IDiscussionSettings)"
+
+#. TPPC settings second-pass translation
+msgid "IEditingSchema"
+msgstr "ویرایش محتوا (IEditingSchema)"
+
+#. TPPC settings second-pass translation
+msgid "IFilterSchema"
+msgstr "محتوای مجاز HTML (IFilterSchema)"
+
+#. TPPC settings second-pass translation
+msgid "IGenericSetupRegistry"
+msgstr "تنظیمات راه‌اندازی (IGenericSetupRegistry)"
+
+#. TPPC settings second-pass translation
+msgid "IImagingSchema"
+msgstr "تصاویر (IImagingSchema)"
+
+#. TPPC settings second-pass translation
+msgid "IImportRegistry"
+msgstr "ورود اطلاعات (IImportRegistry)"
+
+#. TPPC settings second-pass translation
+msgid "IImpressControlPanel"
+msgstr "گزارش‌ها (IImpressControlPanel)"
+
+#. TPPC settings second-pass translation
+msgid "ILabelRegistry"
+msgstr "برچسب‌ها (ILabelRegistry)"
+
+#. TPPC settings second-pass translation
+msgid "ILanguageSchema"
+msgstr "زبان (ILanguageSchema)"
+
+#. TPPC settings second-pass translation
+msgid "ILinkSchema"
+msgstr "پیوندها (ILinkSchema)"
+
+#. TPPC settings second-pass translation
+msgid "IListingRegistry"
+msgstr "فهرست‌ها (IListingRegistry)"
+
+#. TPPC settings second-pass translation
+msgid "ILoginSchema"
+msgstr "ورود کاربران (ILoginSchema)"
+
+#. TPPC settings second-pass translation
+msgid "IMailSchema"
+msgstr "ایمیل (IMailSchema)"
+
+#. TPPC settings second-pass translation
+msgid "IMaintenanceSchema"
+msgstr "نگهداری سامانه (IMaintenanceSchema)"
+
+#. TPPC settings second-pass translation
+msgid "IMarkupSchema"
+msgstr "قالب متن (IMarkupSchema)"
+
+#. TPPC settings second-pass translation
+msgid "INavigationSchema"
+msgstr "پیمایش سایت (INavigationSchema)"
+
+#. TPPC settings second-pass translation
+msgid "IQueryField"
+msgstr "فیلد جست‌وجو (IQueryField)"
+
+#. TPPC settings second-pass translation
+msgid "IQueryOperation"
+msgstr "عملیات جست‌وجو (IQueryOperation)"
+
+#. TPPC settings second-pass translation
+msgid "IResourceRegistry"
+msgstr "منابع سایت (IResourceRegistry)"
+
+#. TPPC settings second-pass translation
+msgid "ISampleHeaderRegistry"
+msgstr "سربرگ نمونه (ISampleHeaderRegistry)"
+
+#. TPPC settings second-pass translation
+msgid "ISampleRegistry"
+msgstr "نمونه‌ها (ISampleRegistry)"
+
+#. TPPC settings second-pass translation
+msgid "ISampleViewRegistry"
+msgstr "نمای نمونه (ISampleViewRegistry)"
+
+#. TPPC settings second-pass translation
+msgid "ISearchSchema"
+msgstr "جست‌وجو (ISearchSchema)"
+
+#. TPPC settings second-pass translation
+msgid "ISecuritySchema"
+msgstr "امنیت (ISecuritySchema)"
+
+#. TPPC settings second-pass translation
+msgid "ISiteSchema"
+msgstr "تنظیمات عمومی سایت (ISiteSchema)"
+
+#. TPPC settings second-pass translation
+msgid "ISiteSyndicationSettings"
+msgstr "خوراک سایت (ISiteSyndicationSettings)"
+
+#. TPPC settings second-pass translation
+msgid "ISocialMediaSchema"
+msgstr "شبکه‌های اجتماعی (ISocialMediaSchema)"
+
+#. TPPC settings second-pass translation
+msgid "ISpotlightControlPanel"
+msgstr "جست‌وجوی سریع (ISpotlightControlPanel)"
+
+#. TPPC settings second-pass translation
+msgid "IThemeSettings"
+msgstr "پوسته (IThemeSettings)"
+
+#. TPPC settings second-pass translation
+msgid "ITinyMCESchema"
+msgstr "ویرایشگر متن (ITinyMCESchema)"
+
+#. TPPC settings second-pass translation
+msgid "ITypesSchema"
+msgstr "انواع محتوا (ITypesSchema)"
+
+#. TPPC settings second-pass translation
+msgid "IUserGroupsSettingsSchema"
+msgstr "کاربران و گروه‌ها (IUserGroupsSettingsSchema)"
+
+#. TPPC settings second-pass translation
+msgid "IWorksheetViewRegistry"
+msgstr "نمای کاربرگ (IWorksheetViewRegistry)"
