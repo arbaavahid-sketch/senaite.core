@@ -67,7 +67,7 @@ class OverviewControlPanel(Base):
             'markup-controlpanel': ('code', u'قالب متن', u'قالب‌های متن و تبدیل محتوا', u'Text formats and content transforms'),
             'usergroup-userprefs': ('users', u'کاربران و گروه‌ها', u'حساب‌های کاربری و عضویت گروه‌ها', u'User accounts and group membership'),
             'security-controlpanel': ('shield-halved', u'امنیت', u'سیاست‌های امنیت و ورود کاربران', u'Security and user access policies'),
-            'filter-controlpanel': ('filter', u'پالایش HTML', u'تگ‌ها و ویژگی‌های مجاز محتوای HTML', u'Allowed HTML tags and attributes'),
+            'filter-controlpanel': ('filter', u'تنظیمات محتوای HTML', u'تعیین تگ‌ها و ویژگی‌های مجاز در متن‌های سامانه', u'Allowed HTML tags and attributes'),
             'prefs_error_log_form': ('triangle-exclamation', u'خطاهای سامانه', u'مشاهدهٔ خطاهای ثبت‌شده', u'Inspect recorded application errors'),
             'portal_registry': ('database', u'رجیستری تنظیمات', u'مقادیر ثبت‌شدهٔ تنظیمات سامانه', u'Registered site configuration values'),
             'maintenance-controlpanel': ('screwdriver-wrench', u'نگهداری سامانه', u'ابزارهای نگهداری و مدیریت پایگاه داده', u'Maintenance and database tools'),
