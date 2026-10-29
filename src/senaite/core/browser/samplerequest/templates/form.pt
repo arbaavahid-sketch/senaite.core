@@ -51,23 +51,26 @@ body{background:#f3f7f8}
 @media(max-width:900px){.tppc-request.rq-enhanced .rq-layout{grid-template-columns:minmax(0,1fr) 240px;gap:16px}.tppc-request .rq-grid{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:760px){.tppc-request{padding:0 8px}.tppc-request .rq-brand{gap:10px;padding:13px 0}.tppc-request .rq-brand strong{font-size:12px}.tppc-request .rq-brand>.rq-logo{width:175px;height:76px;flex-shrink:1}.tppc-request .rq-hero{padding:20px;border-radius:10px;margin-bottom:16px}.tppc-request h1{font-size:21px}.tppc-request .rq-hero p{font-size:12px}.tppc-request .rq-wizard-nav{gap:0;margin-bottom:14px}.tppc-request .rq-wizard-nav button{flex-direction:column;gap:7px;font-size:10px;padding:12px 5px;line-height:1.8}.tppc-request .rq-step-number{width:24px;height:24px}.tppc-request.rq-enhanced .rq-layout{display:flex;flex-direction:column;gap:14px}.tppc-request .rq-main{width:100%;order:2}.tppc-request .rq-summary{order:1;position:static;width:100%;padding:13px 16px}.tppc-request .rq-summary summary{font-size:12px}.tppc-request .rq-section{padding:20px 17px}.tppc-request .rq-actions{flex-wrap:wrap}.tppc-request .rq-actions-group{margin-inline-start:auto}.tppc-request .rq-submit-bar{flex-direction:row;align-items:center}.tppc-request .rq-submit-bar button{width:auto}.tppc-request .rq-actions button{font-size:12px;padding:11px 17px}.tppc-request .rq-hero .rq-eyebrow{font-size:9px}.tppc-request .rq-mobile-hint{display:inline;color:#607875;font-size:10px;font-weight:normal;margin-inline-start:8px}}
 
+
+/* Compact, unified intake header; form behavior and values are unchanged. */
+.tppc-request .rq-masthead{background:#fff;border:1px solid #dbe6e2;border-top:3px solid #237c6c;border-radius:12px;margin:22px 0;overflow:hidden}.tppc-request .rq-masthead-top{display:flex;align-items:center;gap:17px;padding:16px 25px;border-bottom:1px solid #edf2ef}.tppc-request .rq-masthead-logo{display:flex;align-items:center;justify-content:center;width:166px;height:70px;flex-shrink:0}.tppc-request .rq-masthead-logo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}.tppc-request .rq-masthead-identity{display:flex;flex-direction:column;gap:5px;flex:1;min-width:0}.tppc-request .rq-masthead-identity strong{font-size:15px;font-weight:600;color:#274c43}.tppc-request .rq-masthead-identity>span{font-size:11px;color:#7b8b84}.tppc-request .rq-track-link{display:inline-flex;gap:8px;align-items:center;border:1px solid #d7e4dc;border-radius:7px;color:#2e6e5d;background:#fafdfb;padding:9px 13px;font-size:12px;text-decoration:none;white-space:nowrap}.tppc-request .rq-track-link:hover,.tppc-request .rq-track-link:focus-visible{background:#eef7f2;border-color:#77ad97;outline-offset:3px}.tppc-request .rq-masthead-content{display:grid;grid-template-columns:minmax(0,1fr) 265px;gap:30px;align-items:center;padding:24px 27px}.tppc-request .rq-intake-label{display:inline-block;font-size:11px;font-weight:500;color:#53816d;margin-bottom:7px}.tppc-request .rq-masthead h1{font-size:25px;font-weight:700;line-height:1.6;color:#23463c;margin:0 0 10px}.tppc-request .rq-masthead-content>div>p{font-size:13px;line-height:2;color:#687a71;margin:0;max-width:720px}.tppc-request .rq-delivery-note{display:flex;align-items:flex-start;gap:12px;background:#f4f8f5;border:1px solid #e2ece5;border-radius:9px;padding:15px}.tppc-request .rq-delivery-icon{font-size:17px;color:#69977e;flex-shrink:0;padding-top:3px}.tppc-request .rq-delivery-note p{margin:0;font-size:12px;line-height:2;color:#58735f}
+@media(max-width:760px){.tppc-request .rq-masthead{margin:14px 0 18px}.tppc-request .rq-masthead-top{display:grid;grid-template-columns:120px minmax(0,1fr);padding:13px 16px;gap:10px 13px}.tppc-request .rq-masthead-logo{width:120px;height:58px}.tppc-request .rq-masthead-identity strong{font-size:12px}.tppc-request .rq-masthead-identity>span{font-size:10px}.tppc-request .rq-track-link{grid-column:1/-1;justify-self:end;margin-inline-start:0;font-size:11px;padding:7px 11px}.tppc-request .rq-masthead-content{display:block;padding:18px 20px}.tppc-request .rq-masthead h1{font-size:21px}.tppc-request .rq-masthead-content>div>p{font-size:12px}.tppc-request .rq-delivery-note{margin-top:18px;padding:12px}.tppc-request .rq-delivery-note p{font-size:11px}}
 </style>
 
-    <header class="rq-brand">
-      <span class="rq-logo"><img tal:attributes="src view/get_request_logo; alt context/@@plone_portal_state/navigation_root_title" /></span>
-      <strong tal:content="context/@@plone_portal_state/navigation_root_title">Laboratory</strong>
-      <span tal:content="python:u'پذیرش آنلاین نمونه' if rtl else 'Online sample intake'">Online sample intake</span>
-    </header>
-    <div class="rq-hero">
-      <div class="rq-eyebrow">TPPC / LABORATORY SERVICES</div>
-      <h1 tal:content="L/title">Request a test</h1>
-      <p tal:content="L/intro">Introduction</p>
-      <div class="rq-flow" tal:attributes="aria-label python:u'مراحل درخواست' if rtl else 'Request process'">
-        <span tal:content="python:u'۱. تکمیل اطلاعات' if rtl else '1. Complete the form'" />
-        <span tal:content="python:u'۲. دریافت شماره پیگیری' if rtl else '2. Receive tracking number'" />
-        <span tal:content="python:u'۳. ارسال نمونه فیزیکی' if rtl else '3. Send the physical sample'" />
+    <header class="rq-masthead">
+      <div class="rq-masthead-top">
+        <span class="rq-masthead-logo"><img tal:attributes="src view/get_request_logo; alt context/@@plone_portal_state/navigation_root_title" /></span>
+        <div class="rq-masthead-identity"><strong tal:content="context/@@plone_portal_state/navigation_root_title">Laboratory</strong><span tal:content="python:u'پرتال خدمات آزمایشگاه' if rtl else 'Laboratory services portal'">Services portal</span></div>
+        <a href="@@track-request" class="rq-track-link"><i class="fas fa-magnifying-glass" aria-hidden="true"></i><span tal:content="python:u'پیگیری درخواست' if rtl else 'Track a request'">Track request</span></a>
       </div>
-    </div>
+      <div class="rq-masthead-content">
+        <div><span class="rq-intake-label" tal:content="python:u'پذیرش آنلاین نمونه' if rtl else 'Online sample intake'">Online sample intake</span>
+          <h1 tal:content="python:u'درخواست آزمون و ارسال نمونه' if rtl else 'Request a test and submit a sample'">Request a test</h1>
+          <p tal:content="python:u'اطلاعات متقاضی و نمونه را وارد کنید و آزمون‌ها را انتخاب کنید. پس از ثبت، شماره و لینک پیگیری دریافت می‌کنید.' if rtl else 'Enter the applicant and sample details, then select the tests. You will receive a tracking number and link after submitting.'">Complete the form to receive a tracking number.</p>
+        </div>
+        <aside class="rq-delivery-note"><span class="rq-delivery-icon" aria-hidden="true"><i class="fas fa-box"></i></span><p tal:content="python:u'پس از ثبت درخواست، نمونهٔ فیزیکی را با شمارهٔ پیگیری برای آزمایشگاه ارسال کنید.' if rtl else 'After submitting your request, send the physical sample to the laboratory with its tracking number.'">Send your sample with its tracking number.</p></aside>
+      </div>
+    </header>
 
     <!-- Thank-you -->
     <div tal:condition="view/tracking" class="alert alert-success"
