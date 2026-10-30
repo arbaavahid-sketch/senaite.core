@@ -1,113 +1,34 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      lang="en"
-      metal:use-macro="here/prefs_main_template/macros/master"
-      i18n:domain="senaite.core">
-
-  <body>
-
-    <metal:override fill-slot="top_slot"
-                    tal:define="disable_column_one python:request.set('disable_plone.leftcolumn', 1);
-                                disable_column_two python:request.set('disable_plone.rightcolumn', 1);"/>
-
-    <metal:block fill-slot="senaite_legacy_js"
-                 tal:define="portal context/@@plone_portal_state/portal;">
-      <script type="text/javascript"
-              src="senaite.core.setupview.js"
-              tal:attributes="src string:${portal/absolute_url}/++plone++senaite.core.static/js/senaite.core.setupview.js"></script>
-    </metal:block>
-
-    <div metal:fill-slot="prefs_configlet_main" id="lims-controlpanel">
-
-      <div id="setupview" class="row">
-
-        <div class="col-sm-12 mb-4">
-          <input id="searchbox"
-                 autofocus
-                 type="text"
-                 class="form-control form-control-lg"
-                 placeholder="Type to filter ..."
-                 i18n:attributes="placeholder">
-        </div>
-
-        <!-- The setup item -->
-        <tal:setup tal:define="setup python:view.setup">
-          <div class="tilewrapper col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            <a class="tile setup text-capitalized text-decoration-none"
-               tal:attributes="href setup/absolute_url;
-                               title setup/Title"
-               i18n:attributes="title">
-              <div class="item text-truncate">
-                <img src="#"
-                     tal:replace="structure python:view.get_icon_for(setup, css_class='icon')"/>
-                <span class="title vcenter text-truncate d-inline-block"
-                     i18n:translate=""
-                     tal:content="setup/Title">
-                  Setup Item Title
-                </span>
-              </div>
-            </a>
-          </div>
-        </tal:setup>
-
-        <!-- The other setup items -->
-        <tal:tiles tal:repeat="item view/setupitems">
-          <div class="tilewrapper col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            <a class="tile text-capitalized text-decoration-none"
-               tal:attributes="href item/absolute_url;
-                               title item/Title"
-               i18n:attributes="title">
-              <div class="item text-truncate">
-                <img src="#"
-                     class="icon"
-                     tal:replace="structure python:view.get_icon_for(item, css_class='icon')"/>
-                <span class="title"
-                      i18n:translate=""
-                      tal:content="item/Title">
-                  Setup Item Title
-                </span>
-              </div>
-              <div class="small text-right"
-                   tal:define="count python:view.get_count(item)"
-                   tal:condition="python:count>0">
-                <span class="text-secondary">
-                  <span tal:content="count"></span>
-                </span>
-                <span i18n:translate="label_setupview_item"
-                      tal:condition="python:count == 1"
-                      class="text-secondary">Item</span>
-                <span i18n:translate="label_setupview_items"
-                      tal:condition="python:count > 1"
-                      class="text-secondary">Items</span>
-              </div>
-            </a>
-          </div>
-        </tal:tiles>
-
-        <!-- Custom (non-content) tiles: reports, dashboards, ... -->
-        <tal:extra tal:repeat="tile view/extra_tiles">
-          <div class="tilewrapper col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            <a class="tile text-capitalized text-decoration-none"
-               tal:attributes="href tile/url;
-                               title tile/title">
-              <div class="item text-truncate">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                     stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="18" y1="20" x2="18" y2="10"></line>
-                  <line x1="12" y1="20" x2="12" y2="4"></line>
-                  <line x1="6" y1="20" x2="6" y2="14"></line>
-                </svg>
-                <span class="title" tal:content="tile/title">Report</span>
-              </div>
-            </a>
-          </div>
-        </tal:extra>
-      </div>
-
-    </div>
-
-  </body>
-</html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:metal="http://xml.zope.org/namespaces/metal" xmlns:i18n="http://xml.zope.org/namespaces/i18n" metal:use-macro="here/prefs_main_template/macros/master" i18n:domain="senaite.core">
+<body>
+ <metal:block fill-slot="top_slot" tal:define="left python:request.set('disable_plone.leftcolumn',1); right python:request.set('disable_plone.rightcolumn',1)"/>
+ <metal:block fill-slot="senaite_legacy_js">
+  <script tal:attributes="src string:${view/portal/absolute_url}/++plone++senaite.core.static/js/senaite.core.setupview.js?v=20261030-workspace1"></script>
+ </metal:block>
+ <div metal:fill-slot="prefs_configlet_main" id="lims-controlpanel">
+  <style tal:content="structure view/ui_styles"></style>
+  <main class="setup-workspace" id="setupview" tal:define="groups view/ui_groups" tal:attributes="dir python:'rtl' if view.is_farsi() else 'ltr'; lang python:'fa' if view.is_farsi() else 'en'; data-section-label python:view.ui_text('section'); data-results-label python:view.ui_text('results')">
+   <header class="su-hero">
+    <div class="su-identity"><span class="su-mark" aria-hidden="true"><i class="fas fa-sliders-h"></i></span><div><p class="su-eyebrow" tal:content="python:view.ui_text('eyebrow')"></p><h1 tal:content="python:view.ui_text('title')"></h1><p class="su-intro" tal:content="python:view.ui_text('intro')"></p></div></div>
+    <div class="su-search"><label for="searchbox" tal:content="python:view.ui_text('search')"></label><div class="su-search-field"><i class="fas fa-search" aria-hidden="true"></i><input id="searchbox" type="search" autocomplete="off" tal:attributes="placeholder python:view.ui_text('placeholder')"/><button type="button" id="setup-clear" hidden="hidden" tal:attributes="aria-label python:view.ui_text('reset')">&#215;</button></div></div>
+   </header>
+   <nav class="su-groups" tal:attributes="aria-label python:view.ui_text('all')">
+    <button type="button" class="su-filter is-active" data-group="all" aria-pressed="true" tal:content="python:view.ui_text('all')"></button>
+    <button tal:repeat="group groups" type="button" class="su-filter" aria-pressed="false" tal:attributes="data-group group/id"><span tal:content="group/title"></span><small tal:content="group/count"></small></button>
+   </nav>
+   <div class="su-help"><p><i class="fas fa-info-circle" aria-hidden="true"></i><span tal:content="python:view.ui_text('hint')"></span></p><span id="setup-result-count" role="status" aria-live="polite" aria-atomic="true"></span></div>
+   <section class="su-sections">
+    <details tal:repeat="group groups" class="su-group" tal:attributes="data-group-id group/id; open python:'open' if group['id']=='analyses' else None">
+     <summary><span class="su-group-icon" aria-hidden="true"><i tal:attributes="class string:fas fa-${group/icon}"></i></span><span class="su-group-heading"><strong tal:content="group/title"></strong><span tal:content="group/description"></span></span><span class="su-group-count"><span tal:content="group/count"></span> <span tal:content="python:view.ui_text('section')"></span></span><span class="su-chevron" aria-hidden="true">&#8964;</span></summary>
+     <div class="su-card-grid">
+      <a tal:repeat="card group/cards" class="su-card" tal:attributes="href card/url; data-card-id card/id; data-search python:card['title']+' '+card['description']+' '+card['id']">
+       <span class="su-card-top"><span class="su-card-icon" aria-hidden="true"><i tal:attributes="class string:fas fa-${card/icon}"></i></span><span class="su-card-arrow" aria-hidden="true">&#8250;</span></span>
+       <h2 tal:content="card/title"></h2><p tal:content="card/description"></p>
+       <span class="su-card-meta"><span tal:condition="python:card['count'] is not None" tal:content="card/count"></span><span tal:content="card/kind"></span></span>
+      </a>
+     </div>
+    </details>
+   </section>
+   <div id="setup-empty" class="su-empty" hidden="hidden"><i class="fas fa-search" aria-hidden="true"></i><p tal:content="python:view.ui_text('empty')"></p><button type="button" id="setup-reset" tal:content="python:view.ui_text('reset')"></button></div>
+  </main>
+ </div>
+</body></html>

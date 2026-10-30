@@ -1,66 +1,14 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      metal:use-macro="here/main_template/macros/master"
-      i18n:domain="senaite.core">
-
-  <metal:content-title fill-slot="content-title">
-    <h1 class="documentFirstHeading">
-      <span i18n:translate="">Welcome</span>,
-      <span tal:content="python:view.get_user_fullname()">User</span>
-    </h1>
-  </metal:content-title>
-
-  <metal:content-description fill-slot="content-description">
-    <div class="documentDescription text-muted">
-      <span tal:content="python:view.get_current_date()">Monday, 22 April 2026</span>
-      &mdash;
-      <span tal:content="python:view.get_current_time()">14:30</span>
-      <span class="small" dir="ltr" tal:content="view/get_current_timezone">Asia/Tehran</span>
-    </div>
-  </metal:content-description>
-
-  <metal:content-core fill-slot="content-core">
-
-    <link rel="stylesheet"
-          tal:attributes="href string:${portal_url}/++resource++senaite.core.dashboard.css" />
-
-    <!-- Configuration for dashboard.js -->
-    <div id="dashboard-config"
-         style="display:none"
-         data-label-status="Status"
-         data-label-quick-actions="Quick Actions"
-         data-label-timeline="Show/hide timeline"
-         i18n:attributes="data-label-status; data-label-quick-actions; data-label-timeline"
-         tal:attributes="data-base-url string:${view/portal_url}/senaite-dashboard-data;
-                         data-periodicity view/periodicity;
-                         data-can-view-stats python:'true' if view.can_view_statistics() else 'false';
-                         data-portal-url view/portal_url;
-                         data-date-from python:plone_view.toLocalizedTime(view.date_from);
-                         data-date-to python:plone_view.toLocalizedTime(view.date_to)">
-    </div>
-
-    <!-- Status Cards + Quick Links (async) -->
-    <div id="dashboard-overview" class="mt-4">
-      <div class="text-muted">
-        <i class="fas fa-spinner fa-spin mr-2"></i>
-        <span i18n:translate="">Loading...</span>
-      </div>
-    </div>
-
-    <!-- Statistics Sections (async, permission-gated) -->
-    <tal:statistics condition="python:view.can_view_statistics()">
-      <div tal:repeat="section_id python:['analysisrequests', 'analyses', 'worksheets']">
-        <div tal:attributes="id string:dashboard-section-${section_id}"
-             class="dashboard-section">
-          <div class="text-muted py-3">
-            <i class="fas fa-spinner fa-spin mr-2"></i>
-            <span i18n:translate="">Loading...</span>
-          </div>
-        </div>
-      </div>
-    </tal:statistics>
-
-    <script tal:attributes="src string:${portal_url}/++resource++senaite.core.dashboard.js"></script>
-
-    <input tal:replace="structure context/@@authenticator/authenticator"/>
-  </metal:content-core>
+<html xmlns="http://www.w3.org/1999/xhtml" metal:use-macro="here/main_template/macros/master" i18n:domain="senaite.core">
+ <metal:title fill-slot="content-title"></metal:title><metal:description fill-slot="content-description"></metal:description>
+ <metal:content fill-slot="content-core">
+  <link rel="stylesheet" tal:attributes="href string:${portal_url}/++resource++senaite.core.dashboard.css?v=20261030-workspace1"/>
+  <main id="dashboard-workspace" class="dashboard-workspace" tal:define="fa view/is_farsi" tal:attributes="dir python:'rtl' if fa else 'ltr'; lang python:'fa' if fa else 'en'">
+   <header class="dw-hero"><div><p class="dw-eyebrow" tal:content="python:u'آزمایشگاه تندیس پارس' if fa else 'Tandis Pars laboratory'"></p><h1 tal:content="python:u'میز کار' if fa else 'Your workspace'"></h1><p class="dw-welcome"><span tal:content="view/get_user_fullname"></span><span tal:content="python:u'، کارهای در دسترس شما اینجاست.' if fa else ', here are the tasks available to you.'"></span></p></div><div class="dw-date"><span class="dw-date-icon" aria-hidden="true"><i class="far fa-calendar-alt"></i></span><div><span tal:content="view/get_current_date"></span><strong tal:content="view/get_current_time"></strong><small dir="ltr" tal:content="view/get_current_timezone"></small></div></div></header>
+   <div id="dashboard-config" hidden="hidden" tal:attributes="data-base-url string:${view/portal_url}/senaite-dashboard-data; data-periodicity view/periodicity; data-can-view-stats python:'true' if view.can_view_statistics() else 'false'; data-portal-url view/portal_url; data-date-from python:plone_view.toLocalizedTime(view.date_from); data-date-to python:plone_view.toLocalizedTime(view.date_to)"></div>
+   <div id="dashboard-overview" class="dw-overview" aria-live="polite" aria-busy="true"><p class="dw-loading"><i class="fas fa-circle-notch fa-spin" aria-hidden="true"></i><span tal:content="python:u'در حال دریافت کارهای شما…' if fa else 'Loading your tasks…'"></span></p></div>
+   <details tal:condition="python:view.can_view_statistics()" id="dashboard-reports" class="dw-reports"><summary><span class="dw-report-icon" aria-hidden="true"><i class="fas fa-chart-bar"></i></span><span><strong tal:content="python:u'آمار و گزارش‌های مدیریتی' if fa else 'Statistics and management reports'"></strong><small tal:content="python:u'وضعیت نمونه‌ها، آزمون‌ها و کاربرگ‌ها در بازهٔ انتخابی' if fa else 'Samples, analyses and worksheets over the selected period'"></small></span><span class="dw-chevron" aria-hidden="true">&#8964;</span></summary><div class="dw-report-content"><section tal:repeat="section_id python:['analysisrequests','analyses','worksheets']" tal:attributes="id string:dashboard-section-${section_id}" class="dashboard-section"><p class="dw-loading" tal:content="python:u'در حال دریافت آمار…' if fa else 'Loading statistics…'"></p></section></div></details>
+  </main>
+  <script tal:attributes="src string:${portal_url}/++resource++senaite.core.dashboard.js?v=20261030-workspace1"></script>
+  <input tal:replace="structure context/@@authenticator/authenticator"/>
+ </metal:content>
 </html>

@@ -8,6 +8,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var config = document.getElementById("dashboard-config");
   if (!config) return;
+  var workspace = document.getElementById('dashboard-workspace');
+  var fa = workspace && workspace.lang === 'fa';
+  var words = {
+    status:['کارهای در انتظار اقدام','Tasks awaiting action'],
+    'quick-actions':['دسترسی سریع','Quick access'],timeline:['نمایش یا بستن نمودار روند','Show or hide timeline'],
+    empty:['در حال حاضر کاری برای این نقش نمایش داده نمی‌شود. برای تنظیم دسترسی با مدیر آزمایشگاه تماس بگیرید.','No tasks are available for this role. Contact your laboratory manager for access.'],
+    error:['دریافت اطلاعات انجام نشد. دوباره تلاش کنید.','Unable to load this information. Please try again.'],retry:['تلاش دوباره','Try again'],open:['مشاهدهٔ فهرست','View list'],
+    'no-data':['برای این بازه داده‌ای وجود ندارد.','No data for the selected period'],from:['از ','From '],to:[' تا ',' to '],updated:[' · به‌روزرسانی هر دو ساعت',' · refreshed every two hours']
+  };
+  function text(key){return words[key][fa?0:1];}
 
   var baseUrl = config.getAttribute("data-base-url");
   var periodicity = config.getAttribute("data-periodicity");
@@ -19,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Localised labels (translated server-side via i18n:attributes)
   function label(name, fallback) {
-    return config.getAttribute("data-label-" + name) || fallback;
+    return words[name] ? text(name) : config.getAttribute("data-label-" + name) || fallback;
   }
 
   // Load overview (cards + links) together
@@ -31,7 +41,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Load statistics sections
-  if (canViewStats) {
+  var reports = document.getElementById('dashboard-reports');
+  var reportsLoaded = false;
+  function loadReports() {
+    if (!canViewStats || reportsLoaded) return;
+    reportsLoaded = true;
     ["analysisrequests", "analyses", "worksheets"].forEach(
       function (id) {
         fetchSection(id).then(function (data) {
@@ -41,12 +55,14 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 
+  if (reports) reports.addEventListener('toggle',function(){if(reports.open)loadReports();});
+
   function fetchSection(section) {
     var url = baseUrl
       + "?section=" + section
       + "&p=" + periodicity;
     return fetch(url, { credentials: "same-origin" })
-      .then(function (r) { return r.json(); })
+      .then(function (r) { if(!r.ok)throw new Error('HTTP '+r.status);return r.json(); })
       .catch(function (err) {
         console.error(
           "Dashboard: failed to load " + section, err);
@@ -60,6 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var el = document.getElementById("dashboard-overview");
     if (!el) return;
     el.textContent = "";
+    el.setAttribute('aria-busy','false');
+    if (cards === null || links === null) {showError(el,function(){el.setAttribute('aria-busy','true');Promise.all([fetchSection('status_cards'),fetchSection('quick_links')]).then(function(result){renderOverview(result[0],result[1]);});});return;}
 
     var hasCards = cards && cards.length > 0;
     var hasLinks = links && links.length > 0;
@@ -72,9 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
       icon.className = "fas fa-info-circle mr-2";
       msg.appendChild(icon);
       msg.appendChild(document.createTextNode(
-        "No actions available. Please contact your "
-        + "laboratory manager to get permissions "
-        + "assigned."));
+        text('empty')));
       el.appendChild(msg);
       return;
     }
@@ -88,8 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
       el.appendChild(heading);
 
       var wrap = document.createElement("div");
-      wrap.className = "d-flex flex-wrap mb-4";
-      wrap.style.cssText = "gap: 15px;";
+      wrap.className = "dw-status-grid";
       cards.forEach(function (card) {
         wrap.appendChild(buildStatusCard(card));
       });
@@ -105,14 +120,14 @@ document.addEventListener("DOMContentLoaded", function () {
       el.appendChild(heading2);
 
       var linkWrap = document.createElement("div");
-      linkWrap.className = "mb-4";
+      linkWrap.className = "dw-actions";
       links.forEach(function (link) {
         var a = document.createElement("a");
-        a.className =
-          "btn btn-outline-secondary btn-sm mr-2 mb-2";
+        a.className = "dw-action";
         a.href = link.url;
         var i = document.createElement("i");
         i.className = "fas " + link.icon + " mr-1";
+        i.setAttribute('aria-hidden','true');
         a.appendChild(i);
         a.appendChild(
           document.createTextNode(link.title));
@@ -124,30 +139,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function buildStatusCard(card) {
     var a = document.createElement("a");
-    a.className = "card text-decoration-none";
-    a.style.cssText = "flex:1 1 140px;max-width:200px;";
+    a.className = "dw-status-card";
     a.href = card.url;
 
     var body = document.createElement("div");
-    body.className = "card-body text-center py-3 px-3";
+    body.className = "dw-status-body";
 
     var iconDiv = document.createElement("div");
-    iconDiv.className = "text-muted mb-2";
+    iconDiv.className = "dw-status-icon";
     var i = document.createElement("i");
     i.className = "fas " + card.icon;
+    i.setAttribute('aria-hidden','true');
     iconDiv.appendChild(i);
 
     var count = document.createElement("div");
-    count.className = "h2 mb-1 font-weight-bold";
+    count.className = "dw-status-count";
     count.textContent = card.count;
 
     var title = document.createElement("div");
-    title.className = "small text-muted text-nowrap";
+    title.className = "dw-status-title";
     title.textContent = card.title;
 
     body.appendChild(iconDiv);
     body.appendChild(count);
     body.appendChild(title);
+    var explanations={
+      'fa-inbox':['نمونه‌های ثبت‌شده که هنوز به آزمایشگاه تحویل نشده‌اند.','Registered samples awaiting physical reception.'],
+      'fa-flask':['نمونه‌های دریافت‌شده با نتایج در حال تکمیل.','Received samples whose results are still in progress.'],
+      'fa-check-circle':['نتایجی که برای بررسی و تأیید آماده‌اند.','Results ready for review and verification.'],
+      'fa-paper-plane':['نمونه‌های تأییدشده که گزارششان هنوز منتشر نشده است.','Verified samples awaiting report publication.'],
+      'fa-th-list':['کاربرگ‌های باز برای ادامهٔ ثبت نتایج.','Open worksheets for continuing result entry.']
+    };
+    if(explanations[card.icon]){var help=document.createElement('p');help.className='dw-card-description';help.textContent=explanations[card.icon][fa?0:1];body.appendChild(help);}
+    var caption=document.createElement('span');caption.className='dw-card-hint';caption.textContent=text('open');body.appendChild(caption);
     a.appendChild(body);
     return a;
   }
@@ -157,7 +181,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function renderStatisticsSection(sectionId, section) {
     var container = document.getElementById(
       "dashboard-section-" + sectionId);
-    if (!container || !section) return;
+    if (!container) return;
+    if (!section) {container.textContent='';showError(container,function(){fetchSection(sectionId).then(function(result){renderStatisticsSection(sectionId,result);});});return;}
 
     var panels = section.panels || [];
     var simplePanels = panels.filter(function (p) {
@@ -187,12 +212,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       var btnWrap = document.createElement("div");
       btnWrap.className = "mb-3";
-      var btn = document.createElement("a");
+      var btn = document.createElement("button");
+      btn.type='button';btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-controls',chartId);
       btn.className = "btn btn-outline-secondary btn-sm";
-      btn.href = "#";
       btn.setAttribute("target-id", chartId);
       var btnIcon = document.createElement("i");
       btnIcon.className = "fas fa-chart-bar mr-1";
+      btnIcon.setAttribute('aria-hidden','true');
       btn.appendChild(btnIcon);
       btn.appendChild(
         document.createTextNode(label("timeline", "Show/hide timeline")));
@@ -211,8 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       var legendDiv = document.createElement("div");
       legendDiv.className = "h2-legend mb-3";
-      legendDiv.textContent = "From " + dateFrom
-        + " to " + dateTo + " (updated every 2 hours)";
+      legendDiv.textContent = text('from') + dateFrom + text('to') + dateTo + text('updated');
       period.appendChild(legendDiv);
 
       period.appendChild(buildNavPills());
@@ -227,17 +252,15 @@ document.addEventListener("DOMContentLoaded", function () {
       chartDiv.style.display = "none";
       var noData = document.createElement("div");
       noData.className = "bar-chart-no-data";
-      noData.textContent =
-        "No data for the selected period";
+      noData.textContent = text('no-data');
       chartDiv.appendChild(noData);
-      container.appendChild(chartDiv);
+      var chartScroll=document.createElement('div');chartScroll.className='dw-chart-scroll';chartScroll.appendChild(chartDiv);container.appendChild(chartScroll);
     });
 
     // Simple panel cards
     if (simplePanels.length > 0) {
       var wrap = document.createElement("div");
-      wrap.className = "d-flex flex-wrap mb-3";
-      wrap.style.cssText = "gap: 15px;";
+      wrap.className = "dw-panel-grid";
 
       simplePanels.forEach(function (panel) {
         wrap.appendChild(buildPanelCard(panel));
@@ -251,9 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function buildPanelCard(panel) {
     var a = document.createElement("a");
-    a.className = "card text-decoration-none";
-    a.style.cssText =
-      "flex:1 1 140px;max-width:200px;overflow:hidden;";
+    a.className = "card dw-panel-card";
     a.href = panel.link;
     if (panel.tooltip) {
       a.title = panel.tooltip;
@@ -268,7 +289,7 @@ document.addEventListener("DOMContentLoaded", function () {
     num.textContent = panel.number;
 
     var desc = document.createElement("div");
-    desc.className = "small text-muted text-nowrap";
+    desc.className = "small text-muted";
     desc.textContent = panel.description;
 
     body.appendChild(num);
@@ -276,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (panel.legend) {
       var leg = document.createElement("div");
-      leg.className = "small text-muted text-nowrap mt-1";
+      leg.className = "small text-muted mt-1";
       leg.textContent = panel.legend;
       body.appendChild(leg);
     }
@@ -321,7 +342,8 @@ document.addEventListener("DOMContentLoaded", function () {
         + (pill.value === periodicity ? " active" : "");
       a.href = portalUrl
         + "/senaite-dashboard?p=" + pill.value;
-      a.textContent = pill.label;
+      var faPeriods={d:'روزانه',w:'هفتگی',m:'ماهانه',q:'فصلی',b:'شش‌ماهه',y:'سالانه'};
+      a.textContent = fa ? faPeriods[pill.value] : pill.label;
       li.appendChild(a);
       ul.appendChild(li);
     });
@@ -329,18 +351,25 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // --- Chart Toggle + D3 Rendering ---
+  function showError(container,retry){
+    var box=document.createElement('div');box.className='dw-error';box.setAttribute('role','alert');
+    var message=document.createElement('span');message.textContent=text('error');box.appendChild(message);
+    var button=document.createElement('button');button.type='button';button.textContent=text('retry');button.addEventListener('click',function(){button.disabled=true;retry();});box.appendChild(button);container.appendChild(box);
+  }
 
   function initChartToggles(container) {
-    $(container).find("a[target-id]").on(
+    $(container).find("button[target-id]").on(
       "click", function (e) {
         e.preventDefault();
         var chartId = $(this).attr("target-id");
         if ($("#" + chartId).is(":visible")) {
+          this.setAttribute('aria-expanded','false');
           senaite.core.controllers.SiteView.set_cookie(
             "visible." + chartId, 0);
           $("#" + chartId + "-period").hide();
           $("#" + chartId).hide();
         } else {
+          this.setAttribute('aria-expanded','true');
           senaite.core.controllers.SiteView.set_cookie(
             "visible." + chartId, 1);
           $("#" + chartId + "-period").show();
@@ -356,6 +385,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var vis = senaite.core.controllers.SiteView.read_cookie(
         "visible." + id);
       if (vis == 1) {
+        $(container).find('button[target-id="'+id+'"]').attr('aria-expanded','true');
         $("#" + id).show();
         $("#" + id + "-period").show();
         loadBarChart(id);

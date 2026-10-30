@@ -1,95 +1,53 @@
-/**
- * SENAITE Setup View Controller
- *
- * This controller is loaded for the SENAITE Setup View, e.g. `/senaite/setup/@@lims-setup`
- */
+/* Grouped setup navigation. No configuration or record mutations. */
 window.SetupViewController = class SetupViewController {
-  constructor() {
-    this.onSearch = this.onSearch.bind(this);
-    this.onKeypress = this.onKeypress.bind(this);
-    this.first = null;
-    this.items = this.getItems();
-  }
-
   load() {
-    console.debug("SetupViewController::load");
-    this.bind_eventhandler();
-  }
-
-  bind_eventhandler() {
-    console.debug("SetupViewController::bind_eventhandler");
-    const $searchbox = $("#searchbox");
-    $searchbox.on("input", this.onSearch);
-    $searchbox.on("keypress", this.onKeypress);
-  }
-
-  hideTile(tile) {
-    $(tile).addClass("d-none");
-  }
-
-  showTile(tile) {
-    $(tile).removeClass("d-none");
-  }
-
-  getTiles() {
-    return $("div.tilewrapper");
-  }
-
-  getItems() {
-    return $("div.tilewrapper span.title").map(function () {
-      return {
-        title: $(this).text().toLowerCase(),
-        el: this
-      };
-    }).get();
-  }
-
-  showAll() {
-    this.getTiles().each((_, tile) => {
-      this.showTile(tile);
+    var root = document.querySelector('.setup-workspace');
+    if (!root || root.dataset.enhanced) return;
+    root.dataset.enhanced = 'true';
+    var search = root.querySelector('#searchbox');
+    var cards = Array.from(root.querySelectorAll('.su-card'));
+    var groups = Array.from(root.querySelectorAll('.su-group'));
+    var filters = Array.from(root.querySelectorAll('.su-filter'));
+    var selected = 'all';
+    var savedOpen = null;
+    function normalize(value) {
+      return value.toLowerCase().replace(/ي/g,'ی').replace(/ك/g,'ک').replace(/[\u064B-\u065F\u200c]/g,'').replace(/\s+/g,' ').trim();
+    }
+    function update() {
+      var term = normalize(search.value);
+      if (term && !savedOpen) savedOpen = groups.map(function(g){return g.open;});
+      var count = 0;
+      groups.forEach(function(group,index){
+        var visible = 0;
+        group.querySelectorAll('.su-card').forEach(function(card){
+          var match = (selected === 'all' || selected === group.dataset.groupId) && normalize(card.dataset.search).includes(term);
+          card.hidden = !match;
+          if (match) {visible++; count++;}
+        });
+        group.hidden = visible === 0;
+        group.querySelector('.su-group-count span').textContent = visible;
+        if (term && visible) group.open = true;
+        else if (!term && savedOpen) group.open = savedOpen[index];
+      });
+      if (!term) savedOpen = null;
+      root.querySelector('#setup-empty').hidden = count !== 0;
+      root.querySelector('#setup-clear').hidden = !search.value;
+      root.querySelector('#setup-result-count').textContent = count + ' ' + (term ? root.dataset.resultsLabel : root.dataset.sectionLabel);
+    }
+    search.addEventListener('input',update);
+    search.addEventListener('keydown',function(event){
+      if (event.key === 'Escape') {search.value='';update();}
+      // Enter retains focus; it never follows an unexpected result.
     });
+    filters.forEach(function(button){button.addEventListener('click',function(){
+      selected = button.dataset.group;
+      filters.forEach(function(item){var active=item===button;item.classList.toggle('is-active',active);item.setAttribute('aria-pressed',String(active));});
+      update();
+      if (selected !== 'all') groups.forEach(function(group){if(group.dataset.groupId===selected)group.open=true;});
+    });});
+    ['#setup-clear','#setup-reset'].forEach(function(id){root.querySelector(id).addEventListener('click',function(){search.value='';selected='all';filters.forEach(function(button){var active=button.dataset.group==='all';button.classList.toggle('is-active',active);button.setAttribute('aria-pressed',String(active));});update();search.focus();});});
+    update();
   }
-
-  filterItems(value) {
-    this.first = null;
-
-    if (!value) {
-      this.showAll();
-      return;
-    }
-
-    const rx = new RegExp(value, "gi");
-
-    this.items.forEach(item => {
-      const $tile = $(item.el).closest("div.tilewrapper");
-      if (item.title.match(rx)) {
-        this.showTile($tile);
-        if (this.first === null) {
-          this.first = $tile;
-        }
-      } else {
-        this.hideTile($tile);
-      }
-    });
-  }
-
-  navigate() {
-    if (this.first === null) return;
-
-    const href = this.first.find("a").attr("href");
-    if (href) {
-      window.location.href = href;
-    }
-  }
-
-  onSearch(event) {
-    const value = $(event.currentTarget).val().toLowerCase();
-    this.filterItems(value);
-  }
-
-  onKeypress(event) {
-    if (event.key === "Enter") {
-      this.navigate();
-    }
-  }
-}
+};
+function initializeGroupedSetup(){new window.SetupViewController().load();}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initializeGroupedSetup);else initializeGroupedSetup();

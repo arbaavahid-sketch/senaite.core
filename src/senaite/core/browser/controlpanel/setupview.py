@@ -26,6 +26,9 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from senaite.core.p3compat import cmp
 from zope.component import getMultiAdapter
+import io
+import json
+import os
 
 
 class SetupView(BrowserView):
@@ -39,6 +42,57 @@ class SetupView(BrowserView):
 
     def __call__(self):
         return self.template()
+
+    @memoize
+    def ui_metadata(self):
+        path = os.path.join(os.path.dirname(__file__), 'setupview-meta.json')
+        with io.open(path, encoding='utf-8') as source:
+            return json.load(source)
+
+    def is_farsi(self):
+        lang = getMultiAdapter((self.context, self.request), name='plone_portal_state').language() or 'fa'
+        return lang.lower().startswith('fa')
+
+    def ui_text(self, key):
+        return self.ui_metadata()['text'][key][0 if self.is_farsi() else 1]
+
+    def ui_styles(self):
+        with io.open(os.path.join(os.path.dirname(__file__), 'setupview.css'), encoding='utf-8') as source:
+            return source.read()
+
+    @memoize
+    def ui_groups(self):
+        """Presentation only: retain every original destination and record."""
+        meta = self.ui_metadata()
+        fa = self.is_farsi()
+        groups = []
+        by_id = {}
+        for row in meta['groups']:
+            group = {'id': row[0], 'title': row[1 if fa else 2],
+                     'description': row[3 if fa else 4], 'icon': row[5], 'cards': []}
+            groups.append(group)
+            by_id[row[0]] = group
+        for obj in self.setupitems():
+            key = api.get_id(obj)
+            row = meta['cards'].get(key)
+            title = row[1 if fa else 2] if row else t(api.get_title(obj))
+            description = row[3 if fa else 4] if row else self.ui_text('open')
+            group_id = row[0] if row else 'management'
+            by_id[group_id]['cards'].append({'id': key, 'url': api.get_url(obj),
+                'title': title, 'description': description, 'count': self.get_count(obj),
+                'kind': self.ui_text('record'), 'icon': by_id[group_id]['icon']})
+        by_id['management']['cards'].insert(0, {'id': 'general-settings',
+            'url': api.get_url(self.setup), 'title': self.ui_text('general'),
+            'description': self.ui_text('general_desc'), 'count': None,
+            'kind': self.ui_text('open'), 'icon': 'sliders-h'})
+        for index, tile in enumerate(self.extra_tiles()):
+            by_id['management']['cards'].append({'id': 'report-%s' % index,
+                'url': tile['url'], 'title': tile['title'],
+                'description': self.ui_text('report_desc'), 'count': None,
+                'kind': self.ui_text('reports'), 'icon': 'chart-line'})
+        for group in groups:
+            group['count'] = len(group['cards'])
+        return groups
 
     @property
     @memoize
@@ -115,12 +169,7 @@ class SetupView(BrowserView):
         Currently just the analyst performance report. Bilingual (fa/en)
         according to the current site language.
         """
-        try:
-            ltool = api.get_tool("portal_languages")
-            lang = (ltool.getPreferredLanguage() or "fa").split("-")[0].lower()
-        except Exception:
-            lang = "fa"
-        is_fa = lang == "fa"
+        is_fa = self.is_farsi()
         portal_url = api.get_portal().absolute_url()
         return [{
             "url": portal_url + "/@@analyst-performance",

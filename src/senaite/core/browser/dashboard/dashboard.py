@@ -40,6 +40,7 @@ from plone.app.event.base import default_timezone
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.i18n import translate as zope_translate
+from zope.component import getMultiAdapter
 from senaite.core.catalog import ANALYSIS_CATALOG
 from senaite.core.catalog import SAMPLE_CATALOG
 from senaite.core.catalog import WORKSHEET_CATALOG
@@ -105,7 +106,7 @@ STATUS_CARD_DEFS = [
 # Quick action links: (permission, title, url, icon)
 QUICK_LINK_DEFS = [
     (AddAnalysisRequest, "Register Samples",
-     "samples", "fa-plus-circle"),
+     "samples/ar_add", "fa-plus-circle"),
     (EditResults, "Worksheets",
      "worksheets", "fa-th-list"),
     (TransitionVerify, "Verify Results",
@@ -299,7 +300,16 @@ class DashboardView(BrowserView):
         user = api.get_current_user()
         return api.get_user_fullname(user)
 
+    def is_farsi(self):
+        language = getMultiAdapter((self.context, self.request), name='plone_portal_state').language() or 'fa'
+        return language.lower().startswith('fa')
+
     def get_current_date(self):
+        current = self.get_current_datetime()
+        if self.is_farsi():
+            weekdays = [u'دوشنبه', u'سه‌شنبه', u'چهارشنبه', u'پنج‌شنبه',
+                        u'جمعه', u'شنبه', u'یکشنبه']
+            return weekdays[current.weekday()] + u'، ' + current.strftime('%Y/%m/%d')
         return self.get_current_datetime().strftime(
             "%A, %d %B %Y")
 
