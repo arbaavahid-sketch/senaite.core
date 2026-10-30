@@ -36,6 +36,7 @@ from senaite.core.catalog import SETUP_CATALOG
 from senaite.core.i18n import translate
 from senaite.core.i18n import translate as t
 from senaite.core.permissions.worksheet import can_manage_worksheets
+from senaite.core.browser.worksheets.worksheet.ajax import check_assignment
 
 
 def getServiceUidsByMethod(method):
@@ -238,6 +239,7 @@ class AddAnalysesView(ListingView):
     def handle_submit(self):
         """Handle form submission
         """
+        check_assignment(self.context, self.request)
         wst_uid = self.request.form.get("getWorksheetTemplate")
         if not wst_uid:
             return False

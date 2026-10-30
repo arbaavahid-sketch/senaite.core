@@ -33,6 +33,7 @@ from bika.lims.utils import getUsers
 from senaite.core.config.worksheet import DEFAULT_WORKSHEET_LAYOUT
 from senaite.core.p3compat import cmp
 from senaite.core.permissions.worksheet import can_manage_worksheets
+from senaite.core.browser.worksheets.worksheet.ajax import check_assignment
 
 
 class ManageResultsView(DefaultView):
@@ -53,6 +54,7 @@ class ManageResultsView(DefaultView):
         current_layout = self.context.getResultsLayout()
         request_layout = self.request.get("resultslayout", "")
         if request_layout in layout_names and request_layout != current_layout:
+            check_assignment(self.context, self.request)
             self.context.setResultsLayout(request_layout)
             message = _(
                 u"change_worksheet_result_layout_message",

@@ -99,6 +99,7 @@
                       class="form-inline"
                       enctype="multipart/form-data"
                       method="post">
+                  <span tal:replace="structure context/@@authenticator/authenticator" />
                   <div class="input-group input-group-sm flex-nowrap d-inline-flex w-auto">
                     <div class="input-group-prepend">
                       <span class="input-group-text" i18n:translate="">

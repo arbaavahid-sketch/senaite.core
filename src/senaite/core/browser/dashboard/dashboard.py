@@ -200,9 +200,11 @@ def build_colors_palette():
 # Helpers
 # -------------------------------------------------------
 
-def format_date_label(period, created):
+def format_date_label(period, created, timezone=None):
     """Format a DateTime into a chart x-axis label
     """
+    if timezone:
+        created = created.toZone(timezone)
     year2 = str(created.year())[2:]
     if period in (PERIODICITY_YEARLY, PERIODICITY_ALL):
         return created.year()
@@ -614,10 +616,20 @@ class DashboardView(BrowserView):
 
     def get_date_range(
             self, periodicity=PERIODICITY_WEEKLY):
-        today = datetime.date.today()
+        now = self.get_current_datetime()
+        today = now.date()
+        timezone = self.get_current_timezone()
+        def local_date(year, month, day, hour=0, minute=0, second=0):
+            year += (month - 1) // 12
+            month = (month - 1) % 12 + 1
+            value = datetime.datetime(year, month, day, hour, minute, second)
+            return DateTime(pytz.timezone(timezone).localize(value))
 
         if periodicity == PERIODICITY_DAILY:
-            return DateTime() - 30, DateTime() + 1
+            start = today - datetime.timedelta(days=29)
+            end = today + datetime.timedelta(days=1)
+            return (local_date(start.year, start.month, start.day),
+                    local_date(end.year, end.month, end.day))
 
         if periodicity == PERIODICITY_MONTHLY:
             min_year = (today.year - 1
@@ -626,39 +638,29 @@ class DashboardView(BrowserView):
             min_month = (1 if today.month == 12
                          else today.month)
             return (
-                DateTime(min_year, min_month, 1),
-                DateTime(today.year, today.month,
-                         monthrange(
-                             today.year,
-                             today.month)[1],
-                         23, 59, 59))
+                local_date(min_year, min_month, 1),
+                local_date(today.year, today.month + 1, 1))
 
         if periodicity == PERIODICITY_QUARTERLY:
             m = (((today.month - 1) / 3) * 3) + 1
             years_back = 4 if today.month == 12 else 5
             return (
-                DateTime(today.year - years_back, m, 1),
-                DateTime(today.year, m + 2,
-                         monthrange(
-                             today.year, m + 2)[1],
-                         23, 59, 59))
+                local_date(today.year - years_back, m, 1),
+                local_date(today.year, m + 3, 1))
 
         if periodicity == PERIODICITY_BIANNUAL:
             m = (((today.month - 1) / 6) * 6) + 1
             years_back = 10 if today.month == 12 else 11
             return (
-                DateTime(today.year - years_back, m, 1),
-                DateTime(today.year, m + 5,
-                         monthrange(
-                             today.year, m + 5)[1],
-                         23, 59, 59))
+                local_date(today.year - years_back, m, 1),
+                local_date(today.year, m + 6, 1))
 
         if periodicity in (PERIODICITY_YEARLY,
                            PERIODICITY_ALL):
             years_back = 15 if today.month == 12 else 16
             return (
-                DateTime(today.year - years_back, 1, 1),
-                DateTime(today.year, 12, 31, 23, 59, 59))
+                local_date(today.year - years_back, 1, 1),
+                local_date(today.year + 1, 1, 1))
 
         # Default: weekly (last 6 months)
         _year, _weeknum, dow = today.isocalendar()
@@ -666,9 +668,10 @@ class DashboardView(BrowserView):
                     else today.year - 1)
         min_month = (today.month - 6 if today.month > 6
                      else (today.month - 6) + 12)
+        next_monday = today + datetime.timedelta(days=8 - dow)
         return (
-            DateTime(min_year, min_month, 1),
-            DateTime() - dow + 7)
+            local_date(min_year, min_month, 1),
+            local_date(next_monday.year, next_monday.month, next_monday.day))
 
     # --- Cached search count ---
 
@@ -682,7 +685,8 @@ class DashboardView(BrowserView):
     def _search_count_cachekey(
             func, instance, query_json, catalog_name):
         period = time() // SEARCH_CACHE_TTL
-        return period, catalog_name, query_json
+        return (period, api.get_current_user().getId(),
+                catalog_name, query_json)
 
     @ram.cache(_search_count_cachekey)
     def _search_count(self, query_json, catalog_name):
@@ -702,7 +706,10 @@ class DashboardView(BrowserView):
             func, instance, query_json, catalog_name,
             periodicity):
         hour = time() // (60 * 60 * 2)
-        return hour, catalog_name, query_json, periodicity
+        return (hour, api.get_current_user().getId(),
+                instance.get_current_timezone(),
+                str(instance.get_current_datetime().date()),
+                catalog_name, query_json, periodicity)
 
     @ram.cache(_fill_evolution_cachekey)
     def _fill_evolution(
@@ -773,14 +780,22 @@ class DashboardView(BrowserView):
 
         while curr < end:
             label = format_date_label(
-                periodicity, DateTime(curr))
+                periodicity, DateTime(curr), self.get_current_timezone())
             if label not in bucket_index:
                 bucket = {"date": label}
                 for s in labels:
                     bucket[s] = 0
                 buckets.append(bucket)
                 bucket_index[label] = len(buckets) - 1
-            curr += datetime.timedelta(days=days)
+            months = {PERIODICITY_MONTHLY: 1, PERIODICITY_QUARTERLY: 3,
+                      PERIODICITY_BIANNUAL: 6, PERIODICITY_YEARLY: 12,
+                      PERIODICITY_ALL: 12}.get(periodicity)
+            if months:
+                month_index = curr.year * 12 + curr.month - 1 + months
+                curr = curr.replace(year=month_index // 12,
+                                    month=month_index % 12 + 1, day=1)
+            else:
+                curr += datetime.timedelta(days=days)
 
         return buckets, bucket_index
 
@@ -795,6 +810,12 @@ class DashboardView(BrowserView):
             + [other_label]}
 
         for brain in search(query, catalog_name):
+            # Catalog min:max is inclusive; chart intervals are [start, end).
+            created_filter = query.get('created', {})
+            bounds = created_filter.get('query') if isinstance(created_filter, dict) else None
+            if isinstance(bounds, (tuple, list)) and len(bounds) == 2:
+                if brain.created < bounds[0] or brain.created >= bounds[1]:
+                    continue
             state = brain.review_state
             if state not in statesmap:
                 logger.warn(
@@ -802,7 +823,7 @@ class DashboardView(BrowserView):
                     % (state, query["portal_type"]))
             label = statesmap.get(state, other_label)
             date_label = format_date_label(
-                periodicity, brain.created)
+                periodicity, brain.created, self.get_current_timezone())
 
             state_totals[label] += 1
 

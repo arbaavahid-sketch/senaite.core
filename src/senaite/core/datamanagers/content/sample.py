@@ -20,6 +20,7 @@
 
 from AccessControl import Unauthorized
 from bika.lims import api
+from bika.lims.api.security import check_permission
 from bika.lims.interfaces import IAnalysisRequest
 from bika.lims.interfaces import IBatchBookView
 from Products.Archetypes.utils import mapply
@@ -40,14 +41,14 @@ class SampleDataManager(DataManager):
     def is_field_readable(self, field):
         """Checks if the field is readable
         """
-        return field.checkPermission("get", self.context)
+        return self.can_access() and field.checkPermission("get", self.context)
 
     def is_field_writeable(self, field, context=None):
         """Checks if the field is writeable
         """
         if context is None:
             context = self.context
-        return field.checkPermission("set", context)
+        return check_permission('View', context) and field.checkPermission("set", context)
 
     def get_field_by_name(self, name):
         """Get the field by name

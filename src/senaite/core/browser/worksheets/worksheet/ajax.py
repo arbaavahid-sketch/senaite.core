@@ -23,6 +23,18 @@ from Products.Five.browser import BrowserView
 
 from bika.lims import api
 from bika.lims.api.user import get_user
+from senaite.core.permissions.worksheet import can_manage_worksheets
+from zExceptions import Unauthorized
+
+
+def check_assignment(context, request):
+    """Authorize the mutation, including direct AJAX requests."""
+    plone.protect.PostOnly(request)
+    plone.protect.CheckAuthenticator(request)
+    if not can_manage_worksheets(context):
+        raise Unauthorized('Worksheet assignment is not allowed')
+    if api.get_workflow_status_of(context) not in ('open', 'to_be_verified'):
+        raise Unauthorized('Worksheet assignment is locked')
 
 
 class SetAnalyst(BrowserView):
@@ -34,8 +46,7 @@ class SetAnalyst(BrowserView):
         self.request = request
 
     def __call__(self):
-        plone.protect.CheckAuthenticator(self.request)
-        plone.protect.PostOnly(self.request)
+        check_assignment(self.context, self.request)
         value = self.request.get("value", "")
         if not value:
             return
@@ -53,8 +64,7 @@ class SetInstrument(BrowserView):
         self.request = request
 
     def __call__(self):
-        plone.protect.CheckAuthenticator(self.request)
-        plone.protect.PostOnly(self.request)
+        check_assignment(self.context, self.request)
         value = self.request.get("value", "")
         if not value:
             raise Exception("Invalid instrument")
