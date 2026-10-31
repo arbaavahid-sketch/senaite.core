@@ -198,22 +198,20 @@ window.WorksheetManageResultsView = class WorksheetManageResultsView {
     event.preventDefault();
     const analysis = $("#wideinterims_analyses").val();
     const interim = $("#wideinterims_interims").val();
+    const metadata = document.getElementById(`wideinterim_${analysis}_${interim}`);
+    // Fail closed if the rendered targets are absent or stale.
+    if (!metadata) return;
+    const targets = new Set((metadata.getAttribute("data-analysis-uids") || "").split(/\s+/).filter(Boolean));
     const value = $("#wideinterims_value").val();
     const empty_only = $("#wideinterims_empty").is(":checked");
-    const set_value = (input, value) => {
-      const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
-      nativeInputValueSetter.call(input, value);
-      input.dispatchEvent(new Event("input", { bubbles: true }));
-    };
-    $(`tr td input[column_key='${interim}']`).each(function () {
-      if (empty_only) {
-        const val = $(this).val();
-        if (!val || val === "0") {
-          set_value(this, value);
-        }
-      } else {
-        set_value(this, value);
-      }
+    const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
+    $(".ajax-contents-table input[column_key]").each(function () {
+      if (this.getAttribute("column_key") !== interim || !targets.has(this.getAttribute("uid"))) return;
+      if (this.disabled || this.readOnly || this.type === "hidden") return;
+      const current = $(this).val();
+      if (empty_only && current && current !== "0") return;
+      setter.call(this, value);
+      this.dispatchEvent(new Event("input", { bubbles: true }));
     });
   }
 }

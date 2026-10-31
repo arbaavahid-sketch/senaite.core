@@ -178,7 +178,8 @@
                               tal:attributes="id python:'wideinterim_%s_%s' % (an, inter['keyword']);
                                               name python:inter['title'];
                                               value python:inter['value'];
-                                              keyword python:inter['keyword'];"/>
+                                              keyword python:inter['keyword'];
+                                              data-analysis-uids python:' '.join(inter['analysis_uids']);"/>
                       </tal:hiddeninterim>
                     </tal:hiddeninterims>
                   </div>

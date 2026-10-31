@@ -180,22 +180,26 @@ class ManageResultsView(DefaultView):
             if api.get_workflow_status_of(analysis) not in allowed_states:
                 continue
 
-            if analysis.getKeyword() in outdict.keys():
-                continue
-
-            andict = {
+            keyword = analysis.getKeyword()
+            andict = outdict.get(keyword, {
                 "analysis": analysis.Title(),
-                "keyword": analysis.getKeyword(),
+                "keyword": keyword,
                 "interims": {}
-            }
+            })
 
-            # Analysis Service interim defaults
+            # Keep each editable analysis UID with its own wide interim.
+            # A shared interim keyword does not make other services targets.
             for field in analysis.getInterimFields():
                 if field.get("wide", False):
-                    andict["interims"][field["keyword"]] = field
+                    interim = andict["interims"].get(field["keyword"])
+                    if interim is None:
+                        interim = dict(field)
+                        interim["analysis_uids"] = []
+                        andict["interims"][field["keyword"]] = interim
+                    interim["analysis_uids"].append(analysis.UID())
 
             if andict["interims"]:
-                outdict[analysis.getKeyword()] = andict
+                outdict[keyword] = andict
         return outdict
 
     def checkInstrumentsValidity(self):
