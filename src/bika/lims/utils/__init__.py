@@ -143,7 +143,9 @@ def getUsers(context, roles, allow_empty=True):
         if not fullname:
             fullname = uid
         pairs.append((uid, fullname))
-    pairs.sort(lambda x, y: cmp(x[1], y[1]))
+    # PAS may return UTF-8 byte strings alongside unicode full names on Py2.
+    # Normalize only the sort key; keep user IDs and display labels intact.
+    pairs.sort(key=lambda pair: u(pair[1]))
     return DisplayList(pairs)
 
 
