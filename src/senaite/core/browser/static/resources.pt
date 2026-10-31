@@ -8,3 +8,5 @@
 <script defer="defer" tal:attributes="src string:${view/site_url}/++plone++senaite.core.static/js/tppc-operational.js?v=20261031-1"></script>
 <link rel="stylesheet" tal:attributes="href string:${view/site_url}/++plone++senaite.core.static/css/tppc-intake-worksheet.css?v=20261031-1" />
 <script defer="defer" tal:attributes="src string:${view/site_url}/++plone++senaite.core.static/js/tppc-intake-worksheet.js?v=20261031-1"></script>
+<link rel="stylesheet" tal:attributes="href string:${view/site_url}/++plone++senaite.core.static/css/tppc-intake-actions.css?v=20261031-1" />
+<script defer="defer" tal:attributes="src string:${view/site_url}/++plone++senaite.core.static/js/tppc-intake-actions.js?v=20261031-1"></script>

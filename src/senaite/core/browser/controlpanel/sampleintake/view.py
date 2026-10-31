@@ -4,6 +4,7 @@
 # requests waiting to be converted into real Samples (AnalysisRequests).
 
 import collections
+from cgi import escape
 
 from AccessControl import getSecurityManager
 from bika.lims import api
@@ -13,6 +14,7 @@ from bika.lims.utils import get_link_for
 from senaite.core.browser.controlpanel.listing import ControlPanelListingView
 from senaite.core.catalog import SETUP_CATALOG
 from senaite.core.i18n import translate
+from zope.component import getMultiAdapter
 
 
 class SampleIntakeView(ControlPanelListingView):
@@ -68,7 +70,7 @@ class SampleIntakeView(ControlPanelListingView):
         # stock workflow_action delete cannot remove closed requests).
         delete_action = {
             "id": "delete",
-            "title": _(u"sampleintake_delete_action", default=u"Delete"),
+            "title": translate(_(u"sampleintake_delete_action", default=u"Delete")),
             # absolute: the view is registered on the portal root
             "url": "%s/@@sample-intake-delete" % api.get_url(api.get_portal()),
             "css_class": "btn btn-danger",
@@ -107,7 +109,19 @@ class SampleIntakeView(ControlPanelListingView):
             item["Created"] = created.strftime("%Y-%m-%d")
         except Exception:
             item["Created"] = ""
-        item["State"] = safe_unicode(translate(api.get_review_status(obj)))
+        language = getMultiAdapter((self.context, self.request), name="plone_portal_state").language() or "fa"
+        fa = language.lower().startswith("fa")
+        state = api.get_review_status(obj)
+        labels = {
+            "received": (u"دریافت‌شده", u"Received"),
+            "in_progress": (u"در حال بررسی", u"In progress"),
+            "resolved": (u"پاسخ داده‌شده", u"Resolved"),
+            "closed": (u"بسته‌شده", u"Closed"),
+        }
+        label = labels[state][0 if fa else 1] if state in labels else safe_unicode(translate(state))
+        item["State"] = label
+        css_state = state if state in labels else "other"
+        item["replace"]["State"] = u'<span class="intake-state intake-state--%s">%s</span>' % (css_state, escape(label))
 
         # Link to the registered Sample, if this request was already converted.
         sample_id = safe_unicode(getattr(obj, "created_sample_id", "") or "")
@@ -155,15 +169,17 @@ class SampleIntakeView(ControlPanelListingView):
         # gets via the "Review portal content" permission on the register
         # (see @@grant-intake-workflow).
         parts = [p for p in (convert_html, pay_html) if p]
-        item["replace"]["Convert"] = u" ".join(parts)
+        item["replace"]["Convert"] = u'<div class="intake-row-actions">%s</div>' % u" ".join(parts) if parts else u""
 
         token = getattr(obj, "access_token", None)
         if token:
             url = u"%s/@@track-request?token=%s" % (
                 safe_unicode(api.get_url(api.get_portal())), token)
             item["CustomerLink"] = url
+            label = u"پیگیری مشتری" if fa else u"Customer tracking"
             item["replace"]["CustomerLink"] = (
-                u'<a href="%s" target="_blank">%s</a>' % (url, url))
+                u'<a class="intake-tracking-link" href="%s" target="_blank" '
+                u'rel="noopener noreferrer">%s</a>' % (escape(url, quote=True), label))
         else:
             item["CustomerLink"] = ""
         return item
