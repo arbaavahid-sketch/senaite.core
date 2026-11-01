@@ -13,7 +13,10 @@
         <span tal:content="python:len(warning['items'])"/>
         <span tal:content="warning/label"/>
       </p>
-      <p tal:content="structure python:', '.join([i['link'] for i in warning['items']])"/>
+      <details class="instrument-warning-details" tal:define="portal_state context/@@plone_portal_state">
+        <summary tal:content="python:u'نمایش فهرست دستگاه‌ها' if portal_state.language().lower().startswith('fa') else 'Show instrument list'">Show instrument list</summary>
+        <p tal:content="structure python:', '.join([i['link'] for i in warning['items']])"/>
+      </details>
     </div>
   </tal:certificate-warning>
 
@@ -32,7 +35,10 @@
         <span tal:content="python:len(items)"/>
         <span i18n:translate="">Instruments' calibration certificates expired:</span>
       </p>
-      <p tal:content="structure python:', '.join([i['link'] for i in items])"/>
+      <details class="instrument-warning-details" tal:define="portal_state context/@@plone_portal_state">
+        <summary tal:content="python:u'نمایش فهرست دستگاه‌ها' if portal_state.language().lower().startswith('fa') else 'Show instrument list'">Show instrument list</summary>
+        <p tal:content="structure python:', '.join([i['link'] for i in items])"/>
+      </details>
     </div>
   </div>
 
@@ -51,7 +57,10 @@
         <span tal:content="python:len(items)"/>
         <span i18n:translate="">Instruments disabled until successful calibration:</span>
       </p>
-      <p tal:content="structure python:', '.join([i['link'] for i in items])"/>
+      <details class="instrument-warning-details" tal:define="portal_state context/@@plone_portal_state">
+        <summary tal:content="python:u'نمایش فهرست دستگاه‌ها' if portal_state.language().lower().startswith('fa') else 'Show instrument list'">Show instrument list</summary>
+        <p tal:content="structure python:', '.join([i['link'] for i in items])"/>
+      </details>
     </div>
   </div>
 
@@ -70,7 +79,10 @@
         <span tal:content="python:len(items)"/>
         <span i18n:translate="">Instruments disposed until new calibration tests being done:</span>
       </p>
-      <p tal:content="structure python:', '.join([i['link'] for i in items])"/>
+      <details class="instrument-warning-details" tal:define="portal_state context/@@plone_portal_state">
+        <summary tal:content="python:u'نمایش فهرست دستگاه‌ها' if portal_state.language().lower().startswith('fa') else 'Show instrument list'">Show instrument list</summary>
+        <p tal:content="structure python:', '.join([i['link'] for i in items])"/>
+      </details>
     </div>
   </div>
 
@@ -89,7 +101,10 @@
         <span tal:content="python:len(items)"/>
         <span i18n:translate="">Instruments in validation progress:</span>
       </p>
-      <p tal:content="structure python:', '.join([i['link'] for i in items])"/>
+      <details class="instrument-warning-details" tal:define="portal_state context/@@plone_portal_state">
+        <summary tal:content="python:u'نمایش فهرست دستگاه‌ها' if portal_state.language().lower().startswith('fa') else 'Show instrument list'">Show instrument list</summary>
+        <p tal:content="structure python:', '.join([i['link'] for i in items])"/>
+      </details>
     </div>
   </div>
 
@@ -108,7 +123,10 @@
         <span tal:content="python:len(items)"/>
         <span i18n:translate="">Instruments in calibration progress:</span>
       </p>
-      <p tal:content="structure python:', '.join([i['link'] for i in items])"/>
+      <details class="instrument-warning-details" tal:define="portal_state context/@@plone_portal_state">
+        <summary tal:content="python:u'نمایش فهرست دستگاه‌ها' if portal_state.language().lower().startswith('fa') else 'Show instrument list'">Show instrument list</summary>
+        <p tal:content="structure python:', '.join([i['link'] for i in items])"/>
+      </details>
     </div>
   </div>
 

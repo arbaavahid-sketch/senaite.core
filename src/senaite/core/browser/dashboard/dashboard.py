@@ -52,6 +52,7 @@ from senaite.core.permissions import TransitionReceiveSample
 from senaite.core.permissions import TransitionVerify
 from senaite.core.permissions import ViewDashboard
 from senaite.core.permissions import ViewResults
+from senaite.core.security.clientrole import get_linked_client_uid
 
 DASHBOARD_FILTER_COOKIE = "dashboard_filter_cookie"
 
@@ -252,7 +253,7 @@ class DashboardView(BrowserView):
 
     def __call__(self):
         # Client contacts go to their client page
-        client = get_current_client()
+        client = self.get_client()
         if client:
             return self.request.response.redirect(
                 get_url(client))
@@ -296,9 +297,27 @@ class DashboardView(BrowserView):
 
     # --- User info ---
 
+    def get_client(self):
+        """Resolve either supported client link without granting access."""
+        client = get_current_client()
+        if client:
+            return client
+        user = api.get_current_user()
+        if not user:
+            return None
+        uid = get_linked_client_uid(self.context, user.getId())
+        if not uid:
+            return None
+        client = api.get_object_by_uid(uid)
+        if (client and api.get_portal_type(client) == "Client"
+                and getSecurityManager().checkPermission("View", client)):
+            return client
+        return None
+
     def get_user_fullname(self):
         user = api.get_current_user()
-        return api.get_user_fullname(user)
+        name = api.safe_unicode(api.get_user_fullname(user) or "").strip()
+        return name or api.safe_unicode(user.getId() if user else "")
 
     def is_farsi(self):
         language = getMultiAdapter((self.context, self.request), name='plone_portal_state').language() or 'fa'
@@ -920,6 +939,11 @@ class DashboardDataView(BrowserView):
 
         view = DashboardView(self.context, self.request)
         view._setup(mtool)
+
+        if (section in ("analysisrequests", "analyses", "worksheets")
+                and not view.can_view_statistics()):
+            self.request.response.setStatus(403)
+            return json.dumps({"error": "Unauthorized"})
 
         data = getattr(view, handler_name)()
         data = _localise(data, self.request)
