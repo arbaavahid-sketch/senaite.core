@@ -1,4 +1,7 @@
 /* Navigation layout uses logical spacing in both Persian and English. */
+/* Keep advanced portlet configuration out of the everyday toolbar. */
+#senaite-toolbar .plonetoolbar-portlet-manager,
+#senaite-toolbar #plone-contentmenu-portletmanager { display: none !important; }
 #sidebar {
   background: #fbfdfd;
   border-color: #dfe9e8;
