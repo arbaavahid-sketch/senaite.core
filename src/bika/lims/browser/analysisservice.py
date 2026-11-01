@@ -23,6 +23,7 @@ import json
 import plone
 import plone.protect
 from bika.lims import api
+from senaite.core.api.currency import get_currency_symbol as currency_symbol
 from bika.lims.api.security import check_permission
 from bika.lims.browser import BrowserView
 from bika.lims.config import POINTS_OF_CAPTURE
@@ -39,7 +40,6 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from senaite.core import logger
 from zope.component import adapts
-from zope.i18n.locales import locales
 from zope.interface import implements
 
 
@@ -65,12 +65,9 @@ class AnalysisServiceInfoView(BrowserView):
 
     @view.memoize
     def get_currency_symbol(self):
-        """Get the currency Symbol
-        """
-        locale = locales.getLocale('en')
+        """Return the configured display label without converting amounts."""
         setup = api.get_senaite_setup()
-        currency = setup.getCurrency()
-        return locale.numbers.currencies[currency].symbol
+        return currency_symbol(setup.getCurrency(), self.request.get("LANGUAGE", "en"))
 
     def get_icon_for(self, typename):
         image = "{}_big.png".format(typename)

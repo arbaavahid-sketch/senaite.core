@@ -32,6 +32,7 @@ import six
 import transaction
 from bika.lims import POINTS_OF_CAPTURE
 from bika.lims import api
+from senaite.core.api.currency import get_currency_symbol as currency_symbol
 from bika.lims import bikaMessageFactory as _
 from bika.lims import logger
 from bika.lims.api.security import check_permission
@@ -259,6 +260,9 @@ class AnalysisRequestAddView(BrowserView):
         currency = setup.getCurrency()
         currencies = locales.getLocale("en").numbers.currencies
         return currencies[currency]
+
+    def get_currency_symbol(self):
+        return currency_symbol(api.get_senaite_setup().getCurrency(), self.request.get("LANGUAGE", "en"))
 
     def get_ar_count(self):
         """Return the ar_count request paramteter
@@ -1189,7 +1193,7 @@ class ajaxAnalysisRequestAddView(AnalysisRequestAddView):
             "methods": map(self.get_method_info, obj.getMethods()),
             "calculation": self.get_calculation_info(obj.getCalculation()),
             "price": obj.getPrice(),
-            "currency_symbol": self.get_currency().symbol,
+            "currency_symbol": self.get_currency_symbol(),
             "accredited": obj.getAccredited(),
             "category": obj.getCategoryTitle(),
             "poc": obj.getPointOfCapture(),

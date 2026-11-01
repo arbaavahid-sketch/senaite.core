@@ -60,10 +60,10 @@ class SetupLegacyLinkViewlet(ViewletBase):
         """
         # Check if we're on the DX SENAITE Setup
         if ISetup.providedBy(self.context):
-            return _("Legacy LIMS Setup")
+            return (u"تنظیمات تکمیلی لیمز" if self.request.get("LANGUAGE", "en").lower().split("-")[0] == "fa" else u"Additional LIMS settings")
 
         # Check if we're on the AT Bika Setup
         elif IBikaSetup.providedBy(self.context):
-            return _("New LIMS Setup")
+            return (u"بازگشت به تنظیمات عمومی لیمز" if self.request.get("LANGUAGE", "en").lower().split("-")[0] == "fa" else u"Back to general LIMS settings")
 
         return ""

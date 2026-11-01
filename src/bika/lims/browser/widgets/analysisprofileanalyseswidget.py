@@ -23,6 +23,7 @@ import itertools
 
 from AccessControl import ClassSecurityInfo
 from bika.lims import api
+from senaite.core.api.currency import get_currency_symbol as currency_symbol
 from bika.lims import bikaMessageFactory as _
 from bika.lims.api.security import check_permission
 from bika.lims.browser.bika_listing import BikaListingView
@@ -33,7 +34,6 @@ from bika.lims.utils import get_link
 from plone.memoize import view
 from Products.Archetypes.Registry import registerWidget
 from Products.Archetypes.Widget import TypesWidget
-from zope.i18n.locales import locales
 
 
 # XXX: To be removed
@@ -148,12 +148,9 @@ class AnalysisProfileAnalysesView(BikaListingView):
 
     @view.memoize
     def get_currency_symbol(self):
-        """Get the currency Symbol
-        """
-        locale = locales.getLocale("en")
+        """Return the configured display label without converting amounts."""
         setup = api.get_senaite_setup()
-        currency = setup.getCurrency()
-        return locale.numbers.currencies[currency].symbol
+        return currency_symbol(setup.getCurrency(), self.request.get("LANGUAGE", "en"))
 
     @view.memoize
     def get_decimal_mark(self):
