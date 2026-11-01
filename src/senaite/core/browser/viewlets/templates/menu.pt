@@ -9,6 +9,7 @@
     <li tal:define="actionid action/id;
                     selected python:view.is_action_selected(action);
                     workspace python:actionid == 'view' and context == portal_state.portal();"
+        tal:condition="not:workspace"
         tal:attributes="id string:contentview-${action/id};
                         class python:selected and 'active nav-item' or 'nav-item'">
 
@@ -17,9 +18,7 @@
            tal:attributes="href action/url;
                            target action/link_target|nothing;
                            class string:${action/cssClass} nav-link;">
-          <span tal:condition="workspace"
-                tal:content="python:u'میز کار' if portal_state.language().startswith('fa') else 'Workspace'">Workspace</span>
-          <span tal:condition="not:workspace" tal:content="action/title" i18n:translate="">View name</span>
+          <span tal:content="action/title" i18n:translate="">View name</span>
         </a>
       </tal:var>
     </li>

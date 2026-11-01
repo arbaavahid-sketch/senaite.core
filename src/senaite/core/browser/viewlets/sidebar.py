@@ -214,6 +214,26 @@ class SidebarNavigationAPI(BrowserView):
 
         # Process into JSON-friendly format
         tree = self._process_navigation_tree(data, current_url)
+        if not self.portal_state.anonymous():
+            portal_url = api.get_url(api.get_portal()).rstrip("/")
+            current = (current_url or "").split("?", 1)[0].split("#", 1)[0].rstrip("/")
+            workspace_url = portal_url + "/senaite-dashboard"
+            tree.insert(0, {
+                "id": "workspace",
+                "title": u"میز کار" if self.portal_state.language().startswith("fa") else u"Workspace",
+                "description": "",
+                "url": workspace_url,
+                "icon": "++plone++senaite.core.static/assets/icons/home.svg",
+                "review_state": "",
+                "is_current": current in (portal_url, workspace_url, portal_url + "/@@senaite-dashboard"),
+                "is_parent": False,
+                "is_folderish": False,
+                "portal_type": "",
+                "depth": 1,
+                "has_more": False,
+                "total_count": 0,
+                "children": [],
+            })
 
         # Append custom setup registers (Sample Intake, Customer Care) so staff
         # reach them from the sidebar with one click, without opening the Setup
