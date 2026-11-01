@@ -263,6 +263,12 @@ class SidebarNavigationAPI(BrowserView):
                 icon = fti.getIcon() or ""
             except Exception:
                 pass
+            semantic_icons = {
+                "sampleintake": "intake-tray.svg",
+                "customercare": "care-chat.svg",
+            }
+            if cid in semantic_icons:
+                icon = "++plone++senaite.core.static/assets/icons/" + semantic_icons[cid]
             out.append({
                 "id": cid,
                 "title": translate(api.get_title(container), to_utf8=False),

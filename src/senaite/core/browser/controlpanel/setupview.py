@@ -80,7 +80,8 @@ class SetupView(BrowserView):
             group_id = row[0] if row else 'management'
             by_id[group_id]['cards'].append({'id': key, 'url': api.get_url(obj),
                 'title': title, 'description': description, 'count': self.get_count(obj),
-                'kind': self.ui_text('record'), 'icon': by_id[group_id]['icon']})
+                'kind': self.ui_text('record'),
+                'icon': meta['icons'].get(key, 'folder-open')})
         by_id['management']['cards'].insert(0, {'id': 'general-settings',
             'url': api.get_url(self.setup), 'title': self.ui_text('general'),
             'description': self.ui_text('general_desc'), 'count': None,
@@ -89,7 +90,7 @@ class SetupView(BrowserView):
             by_id['management']['cards'].append({'id': 'report-%s' % index,
                 'url': tile['url'], 'title': tile['title'],
                 'description': self.ui_text('report_desc'), 'count': None,
-                'kind': self.ui_text('reports'), 'icon': 'chart-line'})
+                'kind': self.ui_text('reports'), 'icon': tile['icon']})
         for group in groups:
             group['count'] = len(group['cards'])
         return groups
@@ -173,15 +174,19 @@ class SetupView(BrowserView):
         portal_url = api.get_portal().absolute_url()
         return [{
             "url": portal_url + "/@@analyst-performance",
+            "icon": "chart-bar",
             "title": u"عملکرد آزمونگرها" if is_fa else u"Analyst Performance",
         }, {
             "url": portal_url + "/@@instrument-status",
+            "icon": "tachometer-alt",
             "title": u"وضعیت کالیبراسیون دستگاه‌ها" if is_fa else u"Instrument Calibration Status",
         }, {
             "url": portal_url + "/@@document-review-status",
+            "icon": "file-signature",
             "title": u"وضعیت بازنگری اسناد" if is_fa else u"Document Review Status",
         }, {
             "url": portal_url + "/@@customer-care-status",
+            "icon": "comments",
             "title": u"داشبورد امور مشتریان" if is_fa else u"Customer Care Dashboard",
         }]
 
