@@ -124,7 +124,7 @@
                       <input class="btn btn-sm btn-outline-secondary"
                             type="submit"
                             id="resultslayout_button"
-                            value="Apply"/>
+                            value="Apply" i18n:attributes="value"/>
                     </div>
                   </div>
                 </form>

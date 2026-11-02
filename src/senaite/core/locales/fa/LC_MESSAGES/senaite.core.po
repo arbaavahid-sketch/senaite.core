@@ -5683,7 +5683,7 @@ msgstr "آنالیزهای این قالب را انتخاب کنید"
 
 #: senaite/core/browser/worksheets/templates/view.pt:36
 msgid "Select analyst"
-msgstr "انتخاب انالیست"
+msgstr "انتخاب آزمایش‌گر"
 
 #: senaite/core/browser/install/templates/senaite-addsite.pt:203
 msgid ""
@@ -5736,7 +5736,7 @@ msgstr "انتخاب دلایل"
 #: senaite/core/browser/worksheets/templates/view.pt:51
 #: senaite/core/browser/worksheets/worksheet/templates/add_analyses.pt:33
 msgid "Select template"
-msgstr "انتخاب الگو"
+msgstr "انتخاب قالب"
 
 #: bika/lims/content/bikasetup.py:269
 msgid "Select the country the site will show by default"
@@ -6127,7 +6127,7 @@ msgstr "تاریخ شروع باید قبل از تاریخ پایان باشد"
 #: senaite/core/browser/worksheets/worksheet/analyses_listing.py:123
 #: senaite/core/skins/senaite_templates/senaite_widgets/addresswidget.pt:67
 msgid "State"
-msgstr "State"
+msgstr "وضعیت"
 
 #: bika/lims/browser/analyses/view.py:200
 msgid "Status"
@@ -7305,7 +7305,7 @@ msgstr "اعتبارسنج"
 
 #: senaite/core/browser/worksheets/worksheet/templates/manage_results.pt:206
 msgid "Value"
-msgstr "ارزش"
+msgstr "مقدار"
 
 #: senaite/core/schema/coordinatefield.py:109
 msgid "Value for degrees must be within 0 and 180"
@@ -11853,7 +11853,7 @@ msgstr "قالب"
 #. Default: "Worksheet"
 #: senaite/core/browser/worksheets/view.py:107
 msgid "listing_worksheets_column_title"
-msgstr "عنوان"
+msgstr "کاربرگ"
 
 #. Default: "Active"
 #: senaite/core/browser/worksheets/view.py:164
@@ -11868,7 +11868,7 @@ msgstr "همه"
 #. Default: "Mine"
 #: senaite/core/browser/worksheets/view.py:244
 msgid "listing_worksheets_state_mine"
-msgstr "برگه‌های من"
+msgstr "کاربرگ‌های من"
 
 #. Default: "Open"
 #: senaite/core/browser/worksheets/view.py:181
@@ -19046,3 +19046,30 @@ msgstr "کاربران و گروه‌ها (IUserGroupsSettingsSchema)"
 #. TPPC settings second-pass translation
 msgid "IWorksheetViewRegistry"
 msgstr "نمای کاربرگ (IWorksheetViewRegistry)"
+
+msgid "Visible / total columns"
+msgstr "ستون‌های نمایان از کل"
+
+msgid "Search columns…"
+msgstr "جست‌وجوی ستون‌ها…"
+
+msgid "Hide all"
+msgstr "پنهان‌کردن همه"
+
+msgid "Visible"
+msgstr "نمایان"
+
+msgid "Drag to reorder"
+msgstr "برای تغییر ترتیب بکشید"
+
+msgid "Hide this column"
+msgstr "پنهان‌کردن این ستون"
+
+msgid "Show this column"
+msgstr "نمایش این ستون"
+
+msgid "Sort ascending"
+msgstr "مرتب‌سازی صعودی"
+
+msgid "Sort descending"
+msgstr "مرتب‌سازی نزولی"

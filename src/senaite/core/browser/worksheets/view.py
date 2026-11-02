@@ -92,7 +92,7 @@ class WorksheetsView(ListingView):
 
         # this is a property of self, because self.getAnalysts returns it
         self.analysts = getUsers(self, ["Manager", "LabManager", "Analyst"])
-        self.analysts = self.analysts.sortedByValue()
+        # getUsers already sorts with a unicode key; do not re-sort mixed labels.
         self.analyst_choices = []
         for a in self.analysts:
             self.analyst_choices.append({

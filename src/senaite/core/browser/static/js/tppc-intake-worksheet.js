@@ -27,3 +27,26 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  var text=document.createElement('p');text.textContent=fa?'درخواست مشتری با نمونهٔ ثبت‌شده متفاوت است. اگر ستون نمونهٔ ثبت‌شده پیوند دارد، همان نمونه را باز کنید. انتخاب آزمون‌ها باید با روش و خدمات قابل ارائهٔ آزمایشگاه مطابقت داشته باشد.':'A customer request is different from a registered sample. If a registered-sample link exists, open that sample. Choose analyses that match the laboratory’s methods and available services.';detail.appendChild(text);guide.appendChild(detail);
  var anchor=convert||(root.querySelector('#folderlisting-main-table'));if(anchor)anchor.parentNode.insertBefore(guide,anchor);
 }if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',reception);else reception();})();
+
+/* Worksheet list: presentation around native permission-filtered controls. */
+(function(){'use strict';function init(){
+ var table=document.querySelector('.ajax-contents-table[data-form_id="worksheets"]'),root=document.querySelector('#portal-column-content');
+ if(!table||!root||root.classList.contains('iw-worklist'))return;
+ root.classList.add('iw-page','iw-worklist','tppc-operational');
+ var fa=/^fa(?:-|$)/i.test(document.documentElement.lang||'');
+ var title=root.querySelector('#viewlet-listing-table-title')||root.querySelector('h1');if(title)title.classList.add('op-title');
+ var guide=document.createElement('section');guide.className='iw-guide';
+ var lead=document.createElement('p');lead.textContent=fa?'هر کاربرگ، آزمون‌های واگذارشده برای انجام و ثبت نتیجه را کنار هم قرار می‌دهد. برای دیدن آزمون‌ها، شمارهٔ کاربرگ را باز کنید.':'A worksheet groups assigned analyses for execution and result entry. Open its ID to view the analyses.';guide.appendChild(lead);
+ var details=document.createElement('details'),summary=document.createElement('summary');summary.textContent=fa?'راهنمای کاربرگ‌ها':'Worksheet guide';details.appendChild(summary);
+ var lines=fa?['با فیلتر وضعیت یا جست‌وجو، کاربرگ مورد نظر را پیدا کنید.','در صورت نمایش، از فیلتر «کاربرگ‌های من» برای دیدن کاربرگ‌های مرتبط با حساب خود استفاده کنید.','تخصیص کارشناس و عملیات گروهی فقط مطابق دسترسی حساب و وضعیت کاربرگ نمایش داده می‌شوند.']:['Use status filters or search to find a worksheet.','If available, use the Mine filter to show worksheets associated with your account.','Analyst assignment and bulk actions depend on your permissions and worksheet status.'];
+ var ul=document.createElement('ul');lines.forEach(function(line){var li=document.createElement('li');li.textContent=line;ul.appendChild(li);});details.appendChild(ul);guide.appendChild(details);
+ var anchor=root.querySelector('#viewlet-listing-table-description')||table;anchor.parentNode.insertBefore(guide,anchor);
+}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();
+
+/* Sticker action accessibility labels omitted by the native icon macro. */
+(function(){'use strict';function init(){
+ if(!/^fa(?:-|$)/i.test(document.documentElement.lang||''))return;
+ var root=document.querySelector('#portal-column-content');if(!root||!root.classList.contains('iw-worksheet'))return;
+ var labels={'Sticker':'برچسب','Stickers preview':'پیش‌نمایش برچسب‌ها'};
+ root.querySelectorAll('a[href*="/sticker?"]').forEach(function(link){var elements=Array.prototype.slice.call(link.querySelectorAll('img'));elements.push(link);elements.forEach(function(e){['title','alt','aria-label'].forEach(function(a){var old=e.getAttribute(a);if(labels[old])e.setAttribute(a,labels[old]);});});});
+}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();

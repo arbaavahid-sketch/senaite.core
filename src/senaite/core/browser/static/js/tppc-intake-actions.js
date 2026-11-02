@@ -1,10 +1,10 @@
 /* Keep the original React workflow buttons in view. Never copy or invoke them. */
 (function(){'use strict';function initialize(){
- if(!/\/sampleintake(?:\/view)?\/?$/.test(location.pathname))return;
+ var intake=/\/sampleintake(?:\/view)?\/?$/.test(location.pathname);
  var root=document.querySelector('#portal-column-content');
  if(!root||root.classList.contains('intake-workbench'))return;
- var listing=root.querySelector('.ajax-contents-table');if(!listing)return;
- root.classList.add('intake-workbench');
+ var listing=root.querySelector(intake?'.ajax-contents-table':'.ajax-contents-table[data-form_id="samples"]');if(!listing)return;
+ root.classList.add('intake-workbench');if(!intake)root.classList.add('sample-workbench');
  var fa=(document.documentElement.lang||'fa').toLowerCase().indexOf('fa')===0;
  var live=document.createElement('p');live.className='intake-selection-status sr-only';live.setAttribute('role','status');live.setAttribute('aria-live','polite');live.setAttribute('aria-atomic','true');root.appendChild(live);
  var frame=0;
@@ -15,10 +15,11 @@
   var summary='';
   if(bar){
    var badge=bar.querySelector('.badge');
-   var count=badge?badge.textContent.trim():String(listing.querySelectorAll('input[name="uids:list"]:checked').length);
-   summary=Number(count)>0?(fa?count+' درخواست انتخاب شده':count+' request'+(Number(count)===1?'':'s')+' selected'):(fa?'درخواست‌های انتخاب‌شده':'Selected requests');
+   var checked=listing.querySelectorAll('input[name="uids:list"]:checked').length;
+   var count=intake?(badge?badge.textContent.trim():String(checked)):String(checked);
+   summary=Number(count)>0?(fa?count+(intake?' درخواست انتخاب شده':' نمونه انتخاب شده در این صفحه'):count+(intake?' request':' sample')+(Number(count)===1?'':'s')+(intake?' selected':' selected on this page')):(fa?(intake?'درخواست‌های انتخاب‌شده':'نمونه‌های انتخاب‌شده'):(intake?'Selected requests':'Selected samples'));
    if(bar.getAttribute('data-intake-summary')!==summary)bar.setAttribute('data-intake-summary',summary);
-   bar.setAttribute('role','group');bar.setAttribute('aria-label',fa?'عملیات درخواست‌های انتخاب‌شده':'Actions for selected requests');
+   bar.setAttribute('role','group');bar.setAttribute('aria-label',fa?(intake?'عملیات درخواست‌های انتخاب‌شده':'عملیات نمونه‌های انتخاب‌شده'):(intake?'Actions for selected requests':'Actions for selected samples'));
    var clear=bar.querySelector('#clear_selection');if(clear)clear.setAttribute('aria-label',fa?'لغو انتخاب‌ها':'Clear selection');
    var bounds=root.getBoundingClientRect(),left=Math.max(12,bounds.left),right=Math.min(innerWidth-12,bounds.right);
    root.style.setProperty('--intake-actions-left',left+'px');root.style.setProperty('--intake-actions-width',Math.max(0,right-left)+'px');

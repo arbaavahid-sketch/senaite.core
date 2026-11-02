@@ -117,7 +117,7 @@ class SamplesView(ListingView):
 
         self.columns = collections.OrderedDict((
             ("Priority", {
-                "title": "",
+                "title": _("Priority"),
                 "index": "getPrioritySortkey",
                 "sortable": True, }),
             ("Progress", {
