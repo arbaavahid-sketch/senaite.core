@@ -26,7 +26,7 @@
             <!-- Country -->
             <div class="form-group row">
               <label class="col-sm-2 col-form-label" i18n:translate=""
-                     tal:attributes="for string:${fieldName}_country">Country</label>
+                     tal:attributes="for string:${fieldName}.country">Country</label>
               <div class="col-sm-4">
                 <select class="form-control"
                         tal:attributes="name string:${fieldName}.country:record;
@@ -35,7 +35,8 @@
                   <option value=""></option>
                   <tal:x tal:repeat="value values">
                     <option tal:content="python:value[1]"
-                            tal:attributes="value python:value[1];
+                            tal:attributes="data-country-code python:value[0];
+                                         value python:value[1];
                                          selected python:value[1] == country and 'selected' or (country=='' and value[0] == defcountry and 'selected' or '')">
                     </option>
                   </tal:x>
@@ -65,7 +66,7 @@
             <!-- State -->
             <div class="form-group row">
               <label class="col-sm-2 col-form-label" i18n:translate=""
-                     tal:attributes="for string:${fieldName}_state">State</label>
+                     tal:attributes="for string:${fieldName}.state">State</label>
               <div class="col-sm-10">
                 <select class="form-control"
                         tal:attributes="name string:${fieldName}.state:record;
@@ -85,7 +86,7 @@
             <!-- District -->
             <div class="form-group row" tal:condition="widget/showDistrict">
               <label class="col-sm-2 col-form-label" i18n:translate=""
-                     tal:attributes="for string:${fieldName}_district">District</label>
+                     tal:attributes="for string:${fieldName}.district">District</label>
               <div class="col-sm-10">
                 <select class="form-control"
                         tal:attributes="name string:${fieldName}.district:record;
@@ -111,7 +112,7 @@
             <!-- City -->
             <div class="form-group row" tal:condition="widget/showCity">
               <label class="col-sm-2 col-form-label" i18n:translate=""
-                     tal:attributes="for string:${fieldName}_city">City</label>
+                     tal:attributes="for string:${fieldName}.city">City</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control"
                        tal:attributes="value city;
@@ -123,7 +124,7 @@
             <!-- Postal Code -->
             <div class="form-group row" tal:condition="widget/showPostalCode">
               <label class="col-sm-2 col-form-label" i18n:translate=""
-                     tal:attributes="for string:${fieldName}_zip">Postal code</label>
+                     tal:attributes="for string:${fieldName}.zip">Postal code</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control"
                        tal:attributes="value zip;
@@ -134,7 +135,7 @@
 
             <!-- Address -->
             <div class="form-group row" tal:condition="widget/showAddress">
-              <label class="col-sm-2 col-form-label" i18n:translate="">Address</label>
+              <label class="col-sm-2 col-form-label" i18n:translate="" tal:attributes="for string:${fieldName}.address">Address</label>
               <div class="col-sm-10">
                 <textarea class="form-control" rows="3"
                           tal:attributes="name string:${fieldName}.address:record;
