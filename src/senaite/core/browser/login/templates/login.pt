@@ -11,62 +11,108 @@
       <metal:main-macro define-macro="main">
 
         <style>
-          .tppc-login-photo {
+          body:has(.tppc-login-shell) { background: #edf3f1; }
+          body:has(.tppc-login-shell) #senaite-toolbar {
+            background: #102b2d;
+            border-block-end: 3px solid #72c7a9;
+          }
+          body:has(.tppc-login-shell) #portal-footer-wrapper { display: none; }
+          .tppc-login-shell {
+            max-inline-size: 76rem;
+            margin: clamp(1rem, 4vw, 3.5rem) auto;
+            color: #173632;
+          }
+          .tppc-login-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid #d3e3dd;
+            box-shadow: 0 18px 55px rgba(15, 53, 47, .12);
+          }
+          .tppc-login-identity {
+            position: relative;
+            isolation: isolate;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-block-size: 26rem;
+            padding: clamp(1.5rem, 4vw, 3rem);
+            background: #102b2d;
+            color: #fff;
+          }
+          .tppc-login-photo, .tppc-login-identity::after {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            object-position: left center;
+          }
+          .tppc-login-photo { object-fit: cover; object-position: 30% center; z-index: -2; }
+          .tppc-login-identity::after {
+            content: "";
+            background: linear-gradient(0deg, #081f21 4%, rgba(8, 31, 33, .82) 29%, transparent 77%);
             z-index: -1;
           }
-          @media (min-width: 768px) {
-            #login-form { margin-inline-start: 7% !important; }
-          }
-          @media (max-width: 767px) {
-            .tppc-login-photo { opacity: .55; }
-          }
-          body:has(#login-form) #senaite-toolbar {
-            background-color: #142527;
-          }
-          body:has(#login-form) #portal-footer-wrapper {
-            display: none;
-          }
+          .tppc-login-identity p { margin: 0; color: #d0f3e5; }
+          .tppc-login-identity h2 { color: #fff; margin: .6rem 0 0; font-size: clamp(1.35rem, 2.5vw, 2.15rem); }
+          #login-form { min-inline-size: 0; padding: clamp(1.15rem, 4vw, 3rem); }
+          #login-form .card-body { padding: 0; }
+          #login-form h1 { color: #173632; font-weight: 700; }
           #login-form .input-group-text {
-            background: #edf4f1;
-            color: #285d50;
-            border-color: #cbdad3;
+            background: #edf5f1;
+            color: #245d50;
+            border-color: #b8d1c7;
+            min-inline-size: 3rem;
+            justify-content: center;
           }
-          #login-form .input-group input {
-            min-height: 44px;
-            border-color: #cbdad3;
-          }
+          #login-form .input-group input { min-height: 46px; border-color: #b8d1c7; min-width: 0; }
           #login-form .tppc-login-actions input {
             width: 100%;
-            min-height: 44px;
-            border-radius: .6rem;
+            min-height: 46px;
+            border-radius: .65rem;
             border-color: #205e4d;
             background: #205e4d;
             color: #fff;
           }
-          #login-form .tppc-login-actions input:hover {
-            background: #194b3e;
-          }
-          #login-form :focus-visible {
-            outline: 2px solid #1b6b56;
-            outline-offset: 2px;
-          }
+          #login-form .tppc-login-actions input:hover { background: #17483b; }
+          .tppc-login-shell :focus-visible { outline: 2px solid #1b6b56; outline-offset: 3px; }
           #login-form .card-footer {
-            background: #f1f6f3;
+            border: 0;
+            border-block-start: 1px solid #dce9e3;
+            margin-block-start: 1.4rem;
+            padding: 1rem 0 0;
+            background: transparent;
           }
-          #login-form .card-footer a {
-            color: #205e4d;
+          .tppc-login-shell a { color: #205e4d; text-underline-offset: .2em; }
+          .tppc-login-links { display: flex; flex-wrap: wrap; gap: .5rem; margin: .75rem 0 0; }
+          .tppc-login-links a { padding: .45rem .7rem; background: #edf5f1; border-radius: .5rem; }
+          .tppc-login-footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: .6rem 1.5rem;
+            margin-block-start: 1rem;
+            padding: .9rem 1.25rem;
+            background: #e1eee8;
+            border: 1px solid #d3e3dd;
+            border-radius: .85rem;
+            color: #294b43;
+          }
+          @media (max-width: 767px) {
+            .tppc-login-grid { grid-template-columns: minmax(0, 1fr); }
+            .tppc-login-identity { min-block-size: 9rem; }
           }
         </style>
-        <div class="w-100 px-3 py-4 position-relative d-flex align-items-center"
-             style="min-height: 30rem; isolation: isolate; overflow: hidden; border-radius: 1rem; background: radial-gradient(ellipse at center, #233f3b, #142527 76%);">
-          <img alt="" class="tppc-login-photo" tal:attributes="src string:${context/@@plone_portal_state/portal_url}/++plone++senaite.core.static/login-laboratory.png" />
-          <div id="login-form" class="card w-100 mx-auto my-3 shadow-sm" style="max-width: 25rem; border: 1px solid #dce7e2; border-radius: 1.25rem; overflow: hidden;">
+        <div class="tppc-login-shell"
+             tal:define="portal_state context/@@plone_portal_state; portal_url portal_state/portal_url">
+          <div class="tppc-login-grid">
+            <div class="tppc-login-identity" i18n:domain="senaite.core">
+              <img alt="" class="tppc-login-photo" tal:attributes="src string:${portal_url}/++plone++senaite.core.static/login-laboratory.png" />
+              <p>LIMS</p>
+              <h2 i18n:translate="">آزمایشگاه پتروشیمی تندیس پارس</h2>
+            </div>
+            <div id="login-form">
 
             <div class="portalMessage error pat-cookietrigger alert alert-danger m-1" style="display:none">
               <strong i18n:translate="">
@@ -78,7 +124,7 @@
               </span>
             </div>
 
-            <div class="card-body p-4">
+            <div class="card-body">
 
               <tal:card-header tal:condition="python:view.show_lab_name">
                 <p class="small text-muted mb-2" tal:content="python:view.lab_name"/>
@@ -153,7 +199,7 @@
               </form>
             </div>
 
-            <div class="card-footer small px-4 py-3"
+            <div class="card-footer small"
                  tal:define="portal_state context/@@plone_portal_state;
                         portal_url portal_state/portal_url">
               <p class="form-text text-muted">
@@ -165,27 +211,25 @@
                 <span i18n:translate="need_an_account" tal:omit-tag="">Need an account?</span>
                 <a href="@@register" tal:attributes="href string:${portal_url}/@@register" class="emph" i18n:translate="footer_login_link_signup">Sign up here</a>.
               </p>
-              <hr class="dashed"/>
-              <p class="form-text text-muted" i18n:domain="senaite.core">
-                <i class="fas fa-comment-dots"></i>
-                <a tal:attributes="href string:${portal_url}/@@customer-feedback"
-                   i18n:translate="footer_submit_request">Submit a request</a>
-                &nbsp;|&nbsp;
-                <i class="fas fa-clipboard-list"></i>
-                <a tal:attributes="href string:${portal_url}/@@track-request"
-                   i18n:translate="footer_track_request">Track a request</a>
-              </p>
+              <div class="tppc-login-links" i18n:domain="senaite.core">
+                <a tal:attributes="href string:${portal_url}/@@customer-feedback">
+                  <i class="fas fa-comment-dots" aria-hidden="true"></i>
+                  <span i18n:translate="footer_submit_request">Submit a request</span>
+                </a>
+                <a tal:attributes="href string:${portal_url}/@@track-request">
+                  <i class="fas fa-clipboard-list" aria-hidden="true"></i>
+                  <span i18n:translate="footer_track_request">Track a request</span>
+                </a>
+              </div>
             </div>
 
           </div>
+          </div>
+          <footer class="tppc-login-footer small" i18n:domain="senaite.core">
+            <span i18n:translate="">آزمایشگاه پتروشیمی تندیس پارس</span>
+            <a href="https://tppc.ir/" i18n:translate="">وب‌سایت تندیس پارس</a>
+          </footer>
         </div>
-
-        <footer class="d-flex flex-wrap justify-content-between align-items-center px-3 py-3 small"
-                style="gap: .5rem 1.25rem; border-bottom: 1px solid #dce7e2; color: #445b55;"
-                i18n:domain="senaite.core">
-          <span i18n:translate="">آزمایشگاه پتروشیمی تندیس پارس</span>
-          <a href="https://tppc.ir/" style="color: #205e4d;" i18n:translate="">وب‌سایت تندیس پارس</a>
-        </footer>
       </metal:main-macro>
     </metal:main>
   </body>
