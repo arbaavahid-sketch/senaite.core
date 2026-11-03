@@ -1,6 +1,53 @@
 /* Presentation only. Native listing and result handlers own all data/actions. */
 (function(){
  'use strict';
+ function addTopScroll(listing, fa) {
+  var current;
+  var observer = new ResizeObserver(sync);
+  var control = document.createElement('input');
+  control.type = 'range';
+  control.min = 0;
+  control.step = 1;
+  control.dir = 'ltr';
+  control.setAttribute('aria-label', fa ? 'پیمایش افقی جدول نمونه‌ها' : 'Scroll samples table horizontally');
+  control.style.cssText = 'display:block;width:100%;height:22px;margin:4px 0;accent-color:#217d68';
+
+  function sync() {
+   if (!current) return;
+   var width = Math.max(0, current.scrollWidth - current.clientWidth);
+   var rtl = getComputedStyle(current).direction === 'rtl';
+   control.style.display = width ? 'block' : 'none';
+   control.max = width;
+   control.value = rtl ? width + current.scrollLeft : current.scrollLeft;
+  }
+
+  control.addEventListener('input', function () {
+   var rtl = getComputedStyle(current).direction === 'rtl';
+   current.scrollLeft = Number(control.value) - (rtl ? Number(control.max) : 0);
+  });
+
+  function attach() {
+   var table = listing.querySelector('.table-responsive table.contentstable');
+   var wrapper = table && table.closest('.table-responsive');
+   if (wrapper !== current) {
+    if (current) current.removeEventListener('scroll', sync);
+    observer.disconnect();
+    current = wrapper;
+    control.remove();
+    if (current) {
+     current.before(control);
+     current.addEventListener('scroll', sync, {passive:true});
+     observer.observe(current);
+    }
+   }
+   if (table) observer.observe(table);
+   sync();
+  }
+
+  new MutationObserver(attach).observe(listing, {childList:true, subtree:true});
+  attach();
+ }
+
  function start(){
   var listing=document.querySelector('.ajax-contents-table[data-form_id="samples"]');
   var results=document.querySelector('#sample-sections .analysis-listing-table');
@@ -22,6 +69,7 @@
   root.classList.add('tppc-operational',listing?'op-samples':'op-results');
   var fa=(document.documentElement.lang||'fa').toLowerCase().indexOf('fa')===0;
   root.setAttribute('data-op-language',fa?'fa':'en');
+  if (listing) addTopScroll(listing, fa);
   var title=root.querySelector('#viewlet-listing-table-title')||root.querySelector('h1');
   if(title){title.classList.add('op-title');}
   var help=document.createElement('section');help.className='op-guide';
