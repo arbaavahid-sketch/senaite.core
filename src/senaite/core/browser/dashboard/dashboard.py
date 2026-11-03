@@ -43,6 +43,7 @@ from zope.i18n import translate as zope_translate
 from zope.component import getMultiAdapter
 from senaite.core.catalog import ANALYSIS_CATALOG
 from senaite.core.catalog import SAMPLE_CATALOG
+from senaite.core.catalog import SETUP_CATALOG
 from senaite.core.catalog import WORKSHEET_CATALOG
 from senaite.core.permissions import AddAnalysisRequest
 from senaite.core.permissions import EditResults
@@ -98,10 +99,6 @@ STATUS_CARD_DEFS = [
      "AnalysisRequest", "verified", SAMPLE_CATALOG,
      "samples?samples_review_state=verified",
      "fa-paper-plane"),
-    (EditResults, "Open Worksheets",
-     "Worksheet", "open", WORKSHEET_CATALOG,
-     "worksheets?worksheets_review_state=open",
-     "fa-th-list"),
 ]
 
 # Quick action links: (permission, title, url, icon)
@@ -349,6 +346,34 @@ class DashboardView(BrowserView):
 
     def get_status_cards(self):
         cards = []
+        if self.has_permission(AddAnalysisRequest):
+            setup = api.get_senaite_setup()
+            intake = setup.get("sampleintake")
+            if intake is not None and getSecurityManager().checkPermission(AddAnalysisRequest, intake):
+                cards.append({
+                    "title": u"درخواست‌های منتظر اقدام" if self.is_farsi() else "Open intake requests",
+                    "count": len(search({
+                        "portal_type": "SampleRequest",
+                        "review_state": ["received", "in_progress"],
+                        "path": {"query": api.get_path(intake), "depth": 1},
+                    }, SETUP_CATALOG)),
+                    "url": self.portal_url + "/setup/sampleintake#?list_review_state=open",
+                    "icon": "fa-clipboard-list",
+                })
+        if self.has_permission(EditResults):
+            roles = set(self.member.getRoles())
+            restricted = (not roles.intersection(("Manager", "LabManager", "RegulatoryInspector"))
+                          and api.get_senaite_setup().getRestrictWorksheetUsersAccess())
+            cards.append({
+                "title": u"کاربرگ‌های من" if self.is_farsi() else "My worksheets",
+                "count": len(search({
+                    "portal_type": "Worksheet",
+                    "review_state": ["open", "to_be_verified", "verified", "rejected"],
+                    "getAnalyst": self.member.getId(),
+                }, WORKSHEET_CATALOG)),
+                "url": self.portal_url + "/worksheets#?worksheets_review_state=" + ("all" if restricted else "mine"),
+                "icon": "fa-th-list",
+            })
         for perm, title, ptype, state, cat, url, icon \
                 in STATUS_CARD_DEFS:
             if not self.has_permission(perm):

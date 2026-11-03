@@ -168,7 +168,8 @@ document.addEventListener("DOMContentLoaded", function () {
       'fa-flask':['نمونه‌های دریافت‌شده با نتایج در حال تکمیل.','Received samples whose results are still in progress.'],
       'fa-check-circle':['نتایجی که برای بررسی و تأیید آماده‌اند.','Results ready for review and verification.'],
       'fa-paper-plane':['نمونه‌های تأییدشده که گزارششان هنوز منتشر نشده است.','Verified samples awaiting report publication.'],
-      'fa-th-list':['کاربرگ‌های باز برای ادامهٔ ثبت نتایج.','Open worksheets for continuing result entry.']
+      'fa-clipboard-list':['درخواست‌های آنلاین باز برای رسیدگی پذیرش.','Open online requests for intake staff.'],
+      'fa-th-list':['کاربرگ‌هایی که به شما واگذار شده‌اند.','Worksheets assigned to you.']
     };
     if(explanations[card.icon]){var help=document.createElement('p');help.className='dw-card-description';help.textContent=explanations[card.icon][fa?0:1];body.appendChild(help);}
     var caption=document.createElement('span');caption.className='dw-card-hint';caption.textContent=text('open');body.appendChild(caption);
