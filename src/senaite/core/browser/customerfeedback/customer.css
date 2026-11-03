@@ -9,3 +9,17 @@
 
 /* Keep customer form text readable in the shared application font. */
 .cc-page label,.cc-kind label,.cc-hero p,.cc-side,.cc-progress,.cc-links a,.cc-step-nav span{font-size:15px}.cc-page .form-text,.cc-page .cc-field-error{font-size:14px}.cc-page .form-control{font-size:16px}.cc-page .btn-primary,.cc-page .btn-outline-primary,.cc-back{font-size:15px}.cc-side h2{font-size:17px}
+
+
+/* Public service palette shared with the LIMS login. */
+body:has(.cc-page) { background: #edf3f1; }
+.cc-page { --ink: #173632; --accent: #205e4d; --line: #d3e3dd; }
+.cc-page .cc-hero {
+  background: #102b2d;
+  border-block-start: 3px solid #72c7a9;
+  box-shadow: 0 12px 35px rgba(15, 53, 47, .09);
+}
+.cc-page .cc-kicker { color: #d0f3e5; }
+.cc-page .cc-card, .cc-page .cc-side { border-radius: .85rem; }
+.cc-page .btn-primary { background: #205e4d; border-color: #205e4d; }
+.cc-page .btn-primary:hover { background: #17483b; border-color: #17483b; }
