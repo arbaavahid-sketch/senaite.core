@@ -4,7 +4,19 @@
  function start(){
   var listing=document.querySelector('.ajax-contents-table[data-form_id="samples"]');
   var results=document.querySelector('#sample-sections .analysis-listing-table');
-  if(!listing&&!results)return;
+  if(!listing&&!results){
+   var internal = document.querySelector('#portal-column-content');
+   var section = document.body.matches(
+    '.portaltype-methods,.portaltype-method,.portaltype-batchfolder,.portaltype-batch,' +
+    '.portaltype-instruments,.portaltype-instrument,.portaltype-customercare'
+   ) || /\/(?:@@)?customer-care-status\/?$/.test(location.pathname)
+     || /\/(?:bika_methods|bika_instruments|customercare)(?:\/|$)/.test(location.pathname);
+   if (!section || !internal) return;
+   internal.classList.add('tppc-operational', 'op-internal');
+   var title = internal.querySelector('#viewlet-listing-table-title, h1');
+   if (title) title.classList.add('op-title');
+   return;
+  }
   var root=document.querySelector('#portal-column-content');
   if(!root||root.classList.contains('tppc-operational'))return;
   root.classList.add('tppc-operational',listing?'op-samples':'op-results');

@@ -22,3 +22,28 @@
     overflow-x: auto;
   }
 }
+
+
+/* Methods, batches, instruments and customer care. */
+.op-internal .table-responsive {
+  min-inline-size: 0;
+  overflow-x: auto;
+}
+.op-internal .op-title,
+.op-internal .top-toolbar {
+  gap: .65rem;
+  flex-wrap: wrap;
+}
+.op-internal .table-responsive td:is(.BatchID,.ClientID,.ClientBatchID,.Model,.SerialNo,.Keyword,.Unit,.WeeksToExpire,.ExpiryDate,.BatchDate,.created) {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: match-parent;
+}
+.op-internal .customer-care-summary > div { margin-block-end: .75rem; }
+.op-internal .customer-care-summary .card { height: 100%; }
+.op-internal .customer-care-summary .badge { margin-block: .2rem; }
+@media (max-width: 760px) {
+  .op-internal .table-responsive table { min-inline-size: max-content; }
+  .op-internal .table-responsive td { max-inline-size: 18rem; overflow-wrap: anywhere; }
+  .op-internal .table-responsive th { white-space: nowrap; }
+}
