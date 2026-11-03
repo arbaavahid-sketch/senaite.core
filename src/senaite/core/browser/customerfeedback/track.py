@@ -265,12 +265,28 @@ class TrackRequestView(PublicCustomerMixin, BrowserView):
         sample_id = safe_unicode(getattr(obj, "created_sample_id", "") or "")
         message = u""
         if sample_id:
-            message = self.labels["results_ready"]
-            status_label = self.labels["st_testing"]
             sample = self._resolve_sample(obj)
-            if sample is not None and self._report_issued(sample):
-                message = self.labels["report_sent"]
-                status_label = self.labels["st_published"]
+            if sample is not None:
+                sample_state = api.get_review_status(sample)
+                if sample_state in ("cancelled", "invalid", "rejected"):
+                    status_label = (u"نمونه نیازمند پیگیری است" if self.lang == "fa"
+                                    else u"Sample requires follow-up")
+                    message = (u"برای بررسی وضعیت نمونه با آزمایشگاه تماس بگیرید."
+                               if self.lang == "fa" else u"Contact the laboratory about your sample.")
+                elif self._report_issued(sample):
+                    message = self.labels["report_sent"]
+                    status_label = self.labels["st_published"]
+                elif sample_state == "sample_due":
+                    status_label = (u"در انتظار دریافت نمونه" if self.lang == "fa"
+                                    else u"Awaiting sample receipt")
+                    message = (u"اگر نمونه را تحویل داده‌اید، وضعیت دریافت را از آزمایشگاه پیگیری کنید."
+                               if self.lang == "fa" else u"If you delivered the sample, check receipt with the laboratory.")
+                elif sample_state in ("to_be_verified", "verified"):
+                    status_label = (u"در مرحله بررسی نتایج" if self.lang == "fa"
+                                    else u"Results under review")
+                elif sample_state == "sample_received":
+                    status_label = (u"نمونه دریافت شد" if self.lang == "fa"
+                                    else u"Sample received")
 
         # payment info (online Zarinpal payment for sample-requests)
         try:
