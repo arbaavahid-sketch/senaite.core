@@ -67,4 +67,23 @@
   form.addEventListener('submit',function(e){if(step<2){e.preventDefault();if(valid(step,true))show(step+1,true);return;}for(var i=0;i<2;i++){if(!valid(i,false)){e.preventDefault();show(i,true);valid(i,true);return;}}});
   form.noValidate=true;nav.hidden=false;next.hidden=false;toggle();show(0,false);
 }());
-</script></tal:form></div></body></html>
+</script></tal:form><style>body:has(.tppc-login-footer) #portal-footer-wrapper { display:none; }
+.tppc-login-footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: .6rem 1.5rem;
+            margin-block-start: 1rem;
+            padding: .9rem 1.25rem;
+            background: #e1eee8;
+            border: 1px solid #d3e3dd;
+            border-radius: .85rem;
+            color: #294b43;
+          }
+.tppc-login-footer a { color: #205e4d; }
+</style>
+<footer xmlns:i18n="http://xml.zope.org/namespaces/i18n" class="tppc-login-footer small" i18n:domain="senaite.core">
+            <span i18n:translate="">آزمایشگاه پتروشیمی تندیس پارس</span>
+            <a href="https://tppc.ir/" i18n:translate="">وب‌سایت تندیس پارس</a>
+          </footer>
+</div></body></html>

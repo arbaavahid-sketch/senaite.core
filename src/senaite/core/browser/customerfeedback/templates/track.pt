@@ -18,4 +18,23 @@
 <form method="get"><div class="cc-grid"><div class="form-group cc-wide"><label for="cc-tracking" tal:content="L/tracking"/><input type="text" class="form-control" name="tracking" id="cc-tracking" maxlength="128" dir="ltr" autocomplete="off" tal:attributes="value view/tracking_id"/></div><div class="form-group cc-wide"><label for="cc-client" tal:content="L/client"/><input type="text" class="form-control" name="client_name" id="cc-client" maxlength="512" autocomplete="organization" tal:attributes="value view/client_name"/></div></div><div class="cc-actions"><button type="submit" name="track" value="1" class="btn btn-primary" tal:content="L/track"/></div></form></section>
 <aside class="cc-side"><h2 tal:content="python:u'راهنمای پیگیری' if rtl else 'Tracking help'"/><p tal:content="python:u'شماره و نام مشتری را دقیقاً مطابق ثبت اولیه وارد کنید، یا از لینک خصوصی پیگیری استفاده کنید.' if rtl else 'Use your tracking number and registered client name, or open the private tracking link.'"/><p tal:content="python:u'اگر نام مشتری ثبت نکرده‌اید، لینک خصوصی یا کد داخل همان لینک برای پیگیری لازم است. لینک خصوصی را با دیگران به اشتراک نگذارید.' if rtl else 'If no client name was registered, use the private link or its access code. Do not share that link.'"/><a href="@@customer-feedback" tal:content="L/submit_link"/></aside></div>
 <div tal:condition="view/not_found" class="cc-notice" role="status" tal:content="L/not_found"></div>
+<style>body:has(.tppc-login-footer) #portal-footer-wrapper { display:none; }
+.tppc-login-footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: .6rem 1.5rem;
+            margin-block-start: 1rem;
+            padding: .9rem 1.25rem;
+            background: #e1eee8;
+            border: 1px solid #d3e3dd;
+            border-radius: .85rem;
+            color: #294b43;
+          }
+.tppc-login-footer a { color: #205e4d; }
+</style>
+<footer xmlns:i18n="http://xml.zope.org/namespaces/i18n" class="tppc-login-footer small" i18n:domain="senaite.core">
+            <span i18n:translate="">آزمایشگاه پتروشیمی تندیس پارس</span>
+            <a href="https://tppc.ir/" i18n:translate="">وب‌سایت تندیس پارس</a>
+          </footer>
 </div></body></html>
