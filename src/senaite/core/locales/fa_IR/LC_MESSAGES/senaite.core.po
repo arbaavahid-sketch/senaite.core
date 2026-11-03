@@ -13746,3 +13746,9 @@ msgstr "حضوری"
 
 msgid "samplerequest_delivery_post"
 msgstr "پست"
+
+msgid "Toggle column filter"
+msgstr "نمایش یا پنهان‌کردن فیلتر ستون"
+
+msgid "Reset column visibility and order to the defaults"
+msgstr "بازگرداندن نمایش و ترتیب پیش‌فرض ستون‌ها"
