@@ -104,18 +104,24 @@ def _find_by_token(token):
 
 
 def _page(title, body_html, color="#1e2f5e"):
-    return (
-        u'<!doctype html><html dir="rtl" lang="fa"><head>'
-        u'<meta charset="utf-8"><meta name="viewport" '
-        u'content="width=device-width, initial-scale=1">'
-        u'<title>%s</title><link rel="stylesheet" href="/++plone++senaite.core.static/css/tppc-vazirmatn.css"></head>'
-        u'<body style="font-family:Vazirmatn,Tahoma,Arial,sans-serif;background:#f6f8fb;'
-        u'margin:0;padding:24px;color:#1a2230">'
-        u'<div style="max-width:560px;margin:40px auto;background:#fff;'
-        u'border:1px solid #e3e7ee;border-radius:12px;padding:24px 28px">'
-        u'<h2 style="margin:0 0 12px;color:%s">%s</h2>%s</div>'
-        u'</body></html>'
-    ) % (title, color, title, body_html)
+    from senaite.core.browser.payment.presentation import shell
+    return shell(title, body_html, color)
+
+
+def change_amount(obj, new_amount):
+    """Shared amount write; leave paid quotes and gateway bindings protected."""
+    if isinstance(new_amount,bool) or new_amount < 0 or int(new_amount) != new_amount:
+        raise ValueError('invalid_amount')
+    old_amount = int(getattr(obj,'payment_amount',0) or 0)
+    if bool(getattr(obj,'payment_paid',False)) and new_amount != old_amount:
+        raise ValueError('paid_amount_locked')
+    changed = new_amount != old_amount
+    if changed:
+        obj.payment_amount = int(new_amount)
+        obj.payment_authority = u''
+        obj.payment_requested_amount = 0
+        obj.reindexObject()
+    return changed
 
 
 class SetPaymentView(BrowserView):
@@ -145,50 +151,22 @@ class SetPaymentView(BrowserView):
             if bool(getattr(obj, 'payment_paid', False)) and new_amount != old_amount:
                 self.request.response.setStatus(409)
                 return _page(u'پرداخت قبلاً ثبت شده', u'<p>مبلغ درخواست پرداخت‌شده از این بخش قابل تغییر نیست.</p>').encode('utf-8')
-            changed = new_amount != old_amount
-            if changed:
-                obj.payment_amount = new_amount
-                obj.payment_authority = u''
-                obj.payment_requested_amount = 0
-                obj.reindexObject()
+            changed = change_amount(obj,new_amount)
             saved = True
             if (changed and new_amount >= 1000 and zarinpal.is_configured()
                     and safe_unicode(getattr(obj, 'contact_email', '') or '').strip()):
                 transaction.get().addAfterCommitHook(_after_commit,
                     args=(self._notify_customer, (obj, new_amount)))
                 notified = True
-        amount = int(getattr(obj, "payment_amount", 0) or 0)
-        paid = bool(getattr(obj, "payment_paid", False))
-        ref = safe_unicode(getattr(obj, "payment_ref", u"") or u"")
-        toman = amount // 10 if amount else 0
-        msg = u""
         if saved:
-            msg = u'<p style="color:#169b4c">✔ ذخیره شد.%s</p>' % (
-                u" درخواست ارسال اعلان پرداخت ثبت شد." if notified else
-                u" اعلان پرداخت ارسال نشد.")
-        status = (
-            u'<p><b>وضعیت:</b> پرداخت‌شده ✅ (کد رهگیری: %s)</p>' % _h(ref)
-            if paid else u'<p><b>وضعیت:</b> پرداخت‌نشده</p>')
-        body = (
-            u'%s%s'
-            u'<form method="post">'
-            u'<input type="hidden" name="_authenticator" value="%s"/>'
-            u'<label>مبلغ به ریال:</label><br/>'
-            u'<input type="text" name="payment_amount" value="%s" '
-            u'style="font-size:16px;padding:8px;width:220px;'
-            u'margin:8px 0" inputmode="numeric"/>'
-            u'<div style="color:#777;font-size:12px">%s تومان</div>'
-            u'<button type="submit" style="margin-top:12px;background:#1e2f5e;'
-            u'color:#fff;border:0;border-radius:8px;padding:10px 18px;'
-            u'font-size:15px;cursor:pointer">ذخیرهٔ مبلغ</button>'
-            u'</form>'
-            u'<hr style="margin:18px 0;border:0;border-top:1px solid #eee"/>'
-            u'<p style="font-size:13px;color:#555">لینکِ پرداخت (به مشتری در '
-            u'صفحهٔ پیگیری نشان داده می‌شود) پس از تعیینِ مبلغ فعال می‌شود.</p>'
-        ) % (msg, status, createToken(), amount or u"", u"{:,}".format(toman))
-        self.request.response.setHeader("Content-Type",
-                                        "text/html; charset=utf-8")
-        return _page(u"تعیین مبلغ پرداخت", body).encode("utf-8")
+            return self.request.response.redirect(api.get_url(api.get_portal()) + '/@@payments?saved=1', status=303)
+        amount = int(getattr(obj,'payment_amount',0) or 0)
+        paid = bool(getattr(obj,'payment_paid',False))
+        ref = safe_unicode(getattr(obj,'payment_ref',u'') or u'')
+        from senaite.core.browser.payment.presentation import detail
+        body = detail(obj,amount,paid,ref,createToken())
+        self.request.response.setHeader('Content-Type','text/html; charset=utf-8')
+        return _page(u'مدیریت پرداخت درخواست',body).encode('utf-8')
 
     def _notify_customer(self, obj, amount):
         """Email the customer that a payable amount was set, with a pay link."""
@@ -444,6 +422,10 @@ class PaymentsListView(BrowserView):
                          u"<p>این بخش فقط برای مدیر است.</p>",
                          color="#d33").encode("utf-8")
         return self.template()
+
+    def content(self):
+        from senaite.core.browser.payment.presentation import dashboard
+        return dashboard(self)
 
     def get_rows(self):
         setup = api.get_senaite_setup()

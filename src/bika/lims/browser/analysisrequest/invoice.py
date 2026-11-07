@@ -27,7 +27,11 @@ from bika.lims.interfaces import IAnalysisProfile
 from bika.lims.interfaces import IInvoiceView
 from bika.lims.utils import createPdf
 from plone.memoize import view
-from plone.protect.interfaces import IDisableCSRFProtection
+from plone.protect import PostOnly, CheckAuthenticator
+from plone.protect.authenticator import createToken
+from AccessControl import Unauthorized
+import transaction
+from bika.lims.browser.analysisrequest import billing, editor
 from Products.CMFPlone.i18nl10n import ulocalized_time
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from senaite.app.supermodel.model import SuperModel
@@ -42,17 +46,20 @@ class InvoiceView(BrowserView):
 
     template = ViewPageTemplateFile("templates/invoice.pt")
     print_template = ViewPageTemplateFile("templates/invoice_print.pt")
-    content = ViewPageTemplateFile("templates/invoice_content.pt")
+    def content(self):
+        return editor.page(self)
 
     def __init__(self, context, request):
         self.context = context
         self.request = request
 
     def __call__(self):
-        # TODO: Refactor to permission
-        # Control the visibility of the invoice create/print document actions
-        if api.get_review_status(self.context) in ["verified", "published"]:
-            self.request["verified"] = 1
+        if not billing.allowed(self.context):
+            raise Unauthorized('Invoice access denied')
+        if self.request.get('REQUEST_METHOD') == 'POST' and self.request.form.get('billing_save'):
+            if editor.save(self):
+                return u''
+        self.request['verified'] = 0
         return self.template()
 
     @property
@@ -138,50 +145,79 @@ class InvoiceView(BrowserView):
 
 
 class InvoicePrintView(InvoiceView):
-    """Print view w/o outer contents
-    """
-    template = ViewPageTemplateFile("templates/invoice_print.pt")
-
     def __call__(self):
-        pdf = self.create_pdf()
-        filename = "{}.pdf".format(self.context.getId())
-        return self.download(pdf, filename)
+        if not billing.allowed(self.context):
+            raise Unauthorized('Invoice access denied')
+        invoice = self.context.getInvoice()
+        stored = invoice.getInvoicePDF() if invoice is not None else None
+        if self.request.get('revision') is not None:
+            try:
+                index = int(self.request.get('revision'))
+                history = list(getattr(invoice,'billing_history',[]))
+                if index < 0 or index >= len(history): raise ValueError('revision')
+                return self.download(history[index]['pdf'], '{}-revision-{}.pdf'.format(api.get_id(self.context),index))
+            except (ValueError, TypeError, IndexError):
+                self.request.response.setStatus(404)
+                return b'Revision not found'
+        pdf = stored.data if stored else self.create_pdf()
+        return self.download(pdf, '{}-invoice.pdf'.format(api.get_id(self.context)))
 
     def create_pdf(self):
-        """Create the invoice PDF
-        """
-        invoice = self.template()
-        return createPdf(invoice)
+        invoice = self.context.getInvoice()
+        number = api.get_id(invoice) if invoice is not None else ''
+        date = str(invoice.getInvoiceDate()) if invoice is not None else ''
+        return billing.pdf_bytes(billing.data_for(self.context), number, date)
 
-    def download(self, data, filename, content_type="application/pdf"):
-        """Download the PDF
-        """
-        self.request.response.setHeader(
-            "Content-Disposition", "inline; filename=%s" % filename)
-        self.request.response.setHeader("Content-Type", content_type)
-        self.request.response.setHeader("Content-Length", len(data))
-        self.request.response.setHeader("Cache-Control", "no-store")
-        self.request.response.setHeader("Pragma", "no-cache")
-        self.request.response.write(data)
+    def download(self, data, filename, content_type='application/pdf'):
+        response = self.request.response
+        response.setHeader('Content-Disposition', 'attachment; filename="%s"' % filename)
+        response.setHeader('Content-Type', content_type)
+        response.setHeader('Content-Length', len(data))
+        response.setHeader('Cache-Control', 'no-store')
+        return data
 
 
 class InvoiceCreate(InvoicePrintView):
-    """Create the invoice
-    """
+    def __call__(self):
+        PostOnly(self.request)
+        CheckAuthenticator(self.request)
+        if not billing.allowed(self.context):
+            raise Unauthorized('Invoice access denied')
+        sample = self.context
+        existing = sample.getInvoice()
+        if existing is not None:
+            # Repeated submissions must never replace an issued PDF/date.
+            return self.request.response.redirect(api.get_url(sample) + '/invoice')
+        data = billing.current_data(sample)
+        savepoint = transaction.savepoint(optimistic=True)
+        try:
+            invoice = sample.createInvoice(None)
+            invoice.billing_snapshot = data
+            pdf = billing.pdf_bytes(data, api.get_id(invoice), str(invoice.getInvoiceDate()))
+            if not pdf.startswith(b'%PDF-'):
+                raise ValueError('Invalid PDF result')
+            invoice.setInvoicePDF(pdf)
+        except Exception:
+            savepoint.rollback()
+            raise
+        return self.request.response.redirect(api.get_url(sample) + '/invoice')
+
+
+class ClientInvoicesView(BrowserView):
+    template = ViewPageTemplateFile('templates/invoice.pt')
 
     def __call__(self):
-        # disable CSRF protection to allow write on read
-        alsoProvides(self.request, IDisableCSRFProtection)
-        # Create the invoice object and link it to the current AR.
-        sample = self.context
-        # create first the invoice so that we have a unique invoice ID
-        invoice = sample.createInvoice(None)
-        # create then the PDF with the invoice ID
-        pdf = self.create_pdf()
-        # set it to the invoice object
-        invoice.setInvoicePDF(pdf)
-        # set message and redirect back
-        self.add_status_message(_("Invoice {} created").format(
-            api.get_id(invoice)))
-        self.request.response.redirect(
-            "%s/invoice" % sample.absolute_url())
+        if not billing.allowed(self.context):
+            raise Unauthorized('Invoice access denied')
+        return self.template()
+
+    def content(self):
+        rows = []
+        for sample in self.context.objectValues('AnalysisRequest'):
+            if not billing.allowed(sample):
+                continue
+            invoice = sample.getInvoice()
+            number = api.get_id(invoice) if invoice is not None else u'پیش‌فاکتور'
+            url = billing.h(api.get_url(sample))
+            rows.append(u'<tr><td><a href="%s/invoice">%s</a></td><td>%s</td><td><a href="%s/invoice">مشاهده و ویرایش</a> | <a href="%s/invoice_print">دریافت PDF</a></td></tr>' % (url, billing.h(api.get_id(sample)), billing.h(number), url, url))
+        return u'<section class="billing"><style>%s</style><h1>فاکتورهای %s</h1><p>نمونه را باز کنید تا مبلغ و جزئیات را بررسی و فاکتور را صادر کنید.</p><table><thead><tr><th>نمونه</th><th>شمارهٔ فاکتور</th><th>عملیات</th></tr></thead><tbody>%s</tbody></table>%s</section>' % (billing.STYLE, billing.h(api.get_title(self.context)), u''.join(rows), u'' if rows else u'<p>نمونه‌ای برای صدور فاکتور موجود نیست.</p>')
