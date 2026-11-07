@@ -36,6 +36,8 @@ def page(view):
     controls = u'<section class="billing"><style>%s</style><div class="actions"><a class="button" href="%s/invoice_print">دریافت PDF فعلی</a><a class="button" href="%s/@@invoices">فاکتورهای مشتری</a>' % (billing.STYLE,url,billing.h(api.get_url(sample.getClient())))
     if source is not None:
         controls += u'<a class="button" href="%s/@@set-payment">مشاهدهٔ پرداخت مرتبط</a>' % billing.h(api.get_url(source))
+    if is_template_manager(sample):
+        controls += u'<a class="button" href="%s/@@invoice-template">تنظیم قالب فاکتور</a>' % billing.h(api.get_url(api.get_portal()))
     controls += u'</div>'
     if getattr(view,'error',None): controls += u'<p role="alert" class="status error">%s</p>' % billing.h(view.error)
     if request.get('saved') == '1': controls += u'<p role="status" class="status">فاکتور و PDF ذخیره شد. نسخهٔ قبلی در سابقه نگهداری می‌شود.</p>'
@@ -131,3 +133,8 @@ def save(view):
         raise
     view.request.response.redirect(api.get_url(sample)+'/invoice?saved=1')
     return True
+
+
+def is_template_manager(context):
+    from senaite.core.browser.payment.views import is_price_manager
+    return is_price_manager(context)

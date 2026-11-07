@@ -59,6 +59,8 @@ def current_data(sample):
         for obj in sample.getBillableItems():
             price = obj.getAnalysisProfilePrice() if hasattr(obj, 'getAnalysisProfilePrice') else obj.getPrice()
             data['items'].append((api.safe_unicode(obj.Title()), str(price)))
+    from . import template_settings
+    data["template_settings"]=template_settings.read()
     return data
 
 
@@ -90,7 +92,7 @@ STYLE = u'''@page{size:A4;margin:16mm;@bottom-center{content:counter(page);font-
 @media print{.billing .actions,.billing .editor,.billing details{display:none}.billing .document{border:0;padding:0}.billing{font-size:10pt}.billing table{page-break-inside:auto}.billing tr{page-break-inside:avoid}.billing .masthead{page-break-after:avoid}}'''
 
 
-def render(data, number=u'', date=u''):
+def default_render(data, number=u'', date=u''):
     unit = u'ریال' if data['currency'] == 'IRR' else h(data['currency'])
     rows = u''.join(u'<tr><td class="num">%s</td><td>%s</td><td class="num">%s</td></tr>' % (i+1,h(title),money(price)) for i,(title,price) in enumerate(data['items']))
     source = u'مبلغ توافق‌شدهٔ درخواست' if data['source'] == 'request' else u'تعرفهٔ آزمون‌ها'
@@ -136,3 +138,8 @@ def logo_data():
     path = os.path.join(os.path.dirname(senaite.core.browser.__file__),'static','images','senaite-site-logo.png')
     with open(path,'rb') as image:
         return 'data:image/png;base64,' + base64.b64encode(image.read()).decode('ascii')
+
+
+def render(data, number=u'', date=u''):
+    from . import template_settings
+    return template_settings.render(data,number,date,default_render)
