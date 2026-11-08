@@ -127,7 +127,7 @@ STYLE = u'''@page{size:A4;margin:16mm;@bottom-center{content:counter(page);font-
 
 def default_render(data, number=u'', date=u''):
     unit = u'ریال' if data['currency'] == 'IRR' else h(data['currency'])
-    rows = u''.join(u'<tr><td class="num">%s</td><td>%s</td><td class="num">%s</td></tr>' % (i+1,h(title),money(price)) for i,(title,price) in enumerate(data['items']))
+    rows = u''.join(u'<tr><td class="num">%s</td><td dir="rtl" style="direction:rtl;text-align:right">%s</td><td class="num">%s</td></tr>' % (money(price),h(title),i+1) for i,(title,price) in enumerate(data['items']))
     source = u'جمع مبالغ نهایی نمونه‌های انتخاب‌شده' if data['source']=='aggregate' else (u'مبلغ توافق‌شدهٔ درخواست' if data['source']=='request' else u'تعرفهٔ آزمون‌ها')
     notes = h(data.get('note', u''))
     description = h(data.get('description', u''))
@@ -140,10 +140,10 @@ def default_render(data, number=u'', date=u''):
     <header class="masthead">%s<div class="eyebrow">صورتحساب خدمات آزمایشگاهی</div><h1>%s</h1><strong>%s</strong><p class="revision">%s</p></header>
     <table class="meta"><tr><td><span class="label">صورتحساب برای</span><strong>%s</strong></td><td><span class="label">شمارهٔ فاکتور</span><span dir="ltr">%s</span></td></tr>
     <tr><td><span class="label">شناسهٔ نمونه</span><span dir="ltr">%s</span></td><td><span class="label">تاریخ صدور / اصلاح</span><span dir="ltr">%s</span></td></tr></table>
-    %s<div class="table-wrap"><table><thead><tr><th>ردیف</th><th>شرح خدمات</th><th>مبلغ (%s)</th></tr></thead><tbody>%s</tbody></table></div>
-    %s<table class="total"><tr><td>مبلغ نهایی (%s)</td><td class="num">%s</td></tr></table>
+    %s<div class="table-wrap"><table class="invoice-items" dir="ltr" style="direction:ltr;table-layout:fixed"><colgroup><col style="width:20%%"/><col style="width:74%%"/><col style="width:6%%"/></colgroup><thead><tr><th dir="rtl">مبلغ (%s)</th><th dir="rtl">شرح خدمات</th><th dir="rtl">ردیف</th></tr></thead><tbody>%s</tbody></table></div>
+    %s<table class="total" dir="ltr" style="direction:ltr;table-layout:fixed"><tr><td class="num" style="width:20%%">%s</td><td dir="rtl" style="direction:rtl">مبلغ نهایی (%s)</td></tr></table>
     <p class="revision">مبنای محاسبه: %s%s</p>%s<footer class="note">این صورتحساب مربوط به خدمات نمونهٔ درج‌شده است. وضعیت پرداخت، در پروندهٔ پرداخت درخواست ثبت می‌شود.</footer></article></section>''' % (
-        STYLE,u'<img class="logo" alt="نشان آزمایشگاه" src="%s"/>' % h(data['logo']) if data.get('logo') else u'',u'فاکتور' if number else u'پیش‌فاکتور',h(data.get('issuer',u'')),h(data.get('issuer_contact',u'')),h(data['client']),h(number) or u'صادر نشده',h(data['sample']),h(date) or u'—',u'<p>%s</p>' % description if description else u'',unit,rows,extras,unit,money(data['total']),source,u' | نسخهٔ %s' % h(data.get('revision',1)) if number else u'',u'<p class="note">%s</p>' % notes if notes else u'')
+        STYLE,u'<img class="logo" alt="نشان آزمایشگاه" src="%s"/>' % h(data['logo']) if data.get('logo') else u'',u'فاکتور' if number else u'پیش‌فاکتور',h(data.get('issuer',u'')),h(data.get('issuer_contact',u'')),h(data['client']),h(number) or u'صادر نشده',h(data['sample']),h(date) or u'—',u'<p>%s</p>' % description if description else u'',unit,rows,extras,money(data['total']),unit,source,u' | نسخهٔ %s' % h(data.get('revision',1)) if number else u'',u'<p class="note">%s</p>' % notes if notes else u'')
 
 
 def pdf_bytes(data, number=u'', date=u''):

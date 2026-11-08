@@ -121,6 +121,7 @@ def logo_upload(upload):
 
 
 def render(data,number,date,default_render):
+    from lxml import html
     settings=data.get('template_settings',{})
     from . import stamp
     if not settings:return stamp.decorate(default_render(data,number,date),data,'')
@@ -136,8 +137,24 @@ def render(data,number,date,default_render):
         for key in ('seller_address', 'seller_postal_code', 'seller_phone', 'seller_tax_id', 'buyer_address', 'buyer_postal_code', 'buyer_phone', 'buyer_tax_id'):vals[key]=billing.h(data.get(key,'')) or u'—'
         vals['stamp']=stamp.image(data)
         vals['logo']=u'<img class="logo" alt="لوگو" src="%s"/>' % billing.h(copy['logo']) if copy.get('logo') else ''
-        vals['items_table']=u'<table><thead><tr><th>شرح خدمات</th><th>مبلغ (%s)</th></tr></thead><tbody>%s</tbody></table>' % (billing.h(unit),u''.join(u'<tr><td>%s</td><td class="num">%s</td></tr>' % (billing.h(t),billing.money(p)) for t,p in data['items']))
+        # Use physical LTR column order: old PDF engines ignore RTL table flow.
+        # Amount stays left; Persian descriptions retain RTL text on the right.
+        vals['items_table']=u'<table class="invoice-items" dir="ltr" style="direction:ltr;table-layout:fixed"><colgroup><col style="width:20%%"/><col style="width:80%%"/></colgroup><thead><tr><th dir="rtl" style="direction:rtl;text-align:center">مبلغ (%s)</th><th dir="rtl" style="direction:rtl;text-align:right">شرح خدمات</th></tr></thead><tbody>%s</tbody></table>' % (billing.h(unit),u''.join(u'<tr><td class="num" dir="ltr" style="direction:ltr;text-align:center">%s</td><td dir="rtl" style="direction:rtl;text-align:right">%s</td></tr>' % (billing.money(p),billing.h(t)) for t,p in data['items']))
         result=custom_html(settings['html'],vals)
+        # Keep totals aligned even for formal templates frozen in old invoices.
+        tree=html.fragment_fromstring(result,create_parent='div')
+        for row in tree.xpath('.//*[contains(concat(" ",normalize-space(@class)," ")," formal ")]//tr'):
+            if len(row)!=2 or row[0].tag!='th' or row[1].tag!='td':continue
+            if u'جمع کل' not in row[0].text_content() or 'money' not in row[1].get('class','').split():continue
+            table=row.getparent()
+            while table is not None and table.tag!='table':table=table.getparent()
+            if table is None:continue
+            table.set('dir','ltr');table.set('style',table.get('style','')+';direction:ltr;table-layout:fixed')
+            label,amount=row[0],row[1]
+            row.remove(label);row.append(label)
+            amount.set('style','width:20%;direction:ltr;text-align:center')
+            label.set('style','width:80%;direction:rtl;text-align:right')
+        result=u''.join(html.tostring(node,encoding='unicode') for node in tree)
     else:result=default_render(copy,number,date)
     color=settings.get('color','#174c69')
     result=stamp.decorate(result,data,settings.get('html',''))
