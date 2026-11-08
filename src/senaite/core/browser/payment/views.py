@@ -448,6 +448,7 @@ class PaymentsListView(BrowserView):
                 from . import tariff
                 quote=tariff.preview(obj)
                 rows.append({
+                    "_created": api.get_creation_date(obj).timeTime(),
                     "code": safe_unicode(getattr(obj, "tracking_code", u"")
                                          or api.get_id(obj)),
                     "who": safe_unicode(getattr(obj, "client_name", u"")
@@ -465,8 +466,8 @@ class PaymentsListView(BrowserView):
                                          or u"")[:10],
                     "url": safe_unicode(api.get_url(obj)) + u"/@@set-payment",
                 })
-        # unpaid first (need action), then paid
-        rows.sort(key=lambda r: (r["paid"], r["date"]))
+        # Request creation determines recency, independently of payment state.
+        rows.sort(key=lambda r: r["_created"], reverse=True)
         return rows
 
     def get_totals(self, rows):
