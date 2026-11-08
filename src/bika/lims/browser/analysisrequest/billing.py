@@ -34,6 +34,40 @@ def money(value):
     return u'{:,.0f}'.format(amount) if amount==amount.to_integral_value() else u'{:,.2f}'.format(amount)
 
 
+def service_prices(sample):
+    """Resolve zero legacy analysis quotes without mutating their stored fields."""
+    from bika.lims.interfaces import IAnalysis, IAnalysisProfile
+    objects=list(sample.getBillableItems())
+    covered=set()
+    for obj in objects:
+        if IAnalysisProfile.providedBy(obj):
+            covered.update(api.get_uid(s) for s in obj.getServices())
+    rows=[];subtotal=Decimal('0');vat_total=Decimal('0');fallbacks=[]
+    bulk=bool(sample.getClient().getBulkDiscount())
+    for obj in objects:
+        service=obj.getAnalysisService() if IAnalysis.providedBy(obj) else None
+        # Native getBillableItems may also include analyses covered by a fixed profile.
+        if service is not None and api.get_uid(service) in covered:continue
+        price=Decimal(str(obj.getPrice() or 0))
+        rate=obj.getAnalysisProfileVAT() if IAnalysisProfile.providedBy(obj) else obj.getVAT()
+        rate=Decimal(str(rate or 0))
+        if price==0 and service is not None:
+            candidate=Decimal(str((service.getBulkPrice() if bulk else service.getPrice()) or 0))
+            if not candidate.is_finite() or candidate<0:raise ValueError('Invalid service price')
+            if candidate>0:
+                price=candidate;fallbacks.append(api.get_uid(service))
+        if not price.is_finite() or price<0 or not rate.is_finite() or rate<0:
+            raise ValueError('Invalid analysis price or VAT')
+        rows.append((api.safe_unicode(obj.Title()),str(price)))
+        subtotal+=price;vat_total+=price*rate/Decimal('100')
+    discount=Decimal(str(sample.getDefaultMemberDiscount() or 0)) if sample.getClient().getMemberDiscountApplies() else Decimal('0')
+    if not discount.is_finite() or not 0<=discount<=100:raise ValueError('Invalid member discount')
+    discount_amount=subtotal*discount/Decimal('100')
+    tax=vat_total*(Decimal('1')-discount/Decimal('100'))
+    return dict(items=rows,subtotal=str(subtotal),discount=str(discount_amount),tax=str(tax),
+                total=str(subtotal-discount_amount+tax),price_fallbacks=fallbacks)
+
+
 def current_data(sample):
     if not allowed(sample):
         raise Unauthorized('Invoice access denied')
@@ -47,9 +81,7 @@ def current_data(sample):
     data = dict(issuer=issuer_info()[0], issuer_contact=issuer_info()[1], logo=logo_data(),
                 client=api.safe_unicode(client.Title()), sample=api.get_id(sample),
                 source='services', currency=api.get_senaite_setup().getCurrency(),
-                items=[], total=str(sample.getTotalPrice()),
-                subtotal=str(sample.getSubtotal()), tax=str(sample.getVATAmount()),
-                discount=str(sample.getDiscountAmount()))
+                items=[], total='0',subtotal='0',tax='0',discount='0')
     if amount > 0:
         if amount != amount.to_integral_value():
             raise ValueError('Payment amount must be whole Rial')
@@ -57,9 +89,7 @@ def current_data(sample):
                     subtotal=None, tax=None, discount=None,
                     items=[(u' / '.join(titles) or u'خدمات آزمایشگاهی', str(amount))])
     else:
-        for obj in sample.getBillableItems():
-            price = obj.getAnalysisProfilePrice() if hasattr(obj, 'getAnalysisProfilePrice') else obj.getPrice()
-            data['items'].append((api.safe_unicode(obj.Title()), str(price)))
+        data.update(service_prices(sample))
     from . import template_settings
     from . import party_info
     data.update(party_info.snapshot(sample))
