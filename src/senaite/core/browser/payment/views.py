@@ -141,6 +141,15 @@ class SetPaymentView(BrowserView):
         if self.request.get("REQUEST_METHOD") == "POST":
             PostOnly(self.request)
             CheckAuthenticator(self.request)
+            if self.request.form.get('payment_action')=='use_tariff':
+                from . import tariff
+                quote=tariff.preview(obj)
+                if bool(getattr(obj,'payment_paid',False)) or quote['amount'] is None or self.request.form.get('tariff_version')!=quote['version']:
+                    self.request.response.setStatus(409)
+                    return _page(u'تعرفه قابل ثبت نیست',u'<p>%s</p><p>صفحه را دوباره باز کنید و مبلغ را بررسی کنید.</p>' % _h(quote['error'] or u'تعرفه یا وضعیت پرداخت تغییر کرده است.')).encode('utf-8')
+                change_amount(obj,quote['amount'])
+                # Explicit tariff confirmation does not send a customer message.
+                return self.request.response.redirect(api.get_url(api.get_portal())+'/@@payments?saved=1',status=303)
             try:
                 amount = _digits(self.request.form.get("payment_amount"))
             except ValueError:
@@ -436,6 +445,8 @@ class PaymentsListView(BrowserView):
                 if api.get_portal_type(obj) not in _TYPES:
                     continue
                 amount = int(getattr(obj, "payment_amount", 0) or 0)
+                from . import tariff
+                quote=tariff.preview(obj)
                 rows.append({
                     "code": safe_unicode(getattr(obj, "tracking_code", u"")
                                          or api.get_id(obj)),
@@ -443,6 +454,9 @@ class PaymentsListView(BrowserView):
                                         or getattr(obj, "contact_name", u"")
                                         or u"—"),
                     "amount": amount,
+                    "tariff_amount": quote['amount'],
+                    "tariff_fmt": u'{:,}'.format(quote['amount']) if quote['amount'] is not None else u'—',
+                    "tariff_error": quote['error'],
                     "amount_fmt": (u"{:,}".format(amount) if amount else u"—"),
                     "paid": bool(getattr(obj, "payment_paid", False)),
                     "ref": safe_unicode(getattr(obj, "payment_ref", u"")
