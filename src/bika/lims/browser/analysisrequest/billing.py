@@ -42,14 +42,16 @@ def service_prices(sample):
     for obj in objects:
         if IAnalysisProfile.providedBy(obj):
             covered.update(api.get_uid(s) for s in obj.getServices())
-    rows=[];subtotal=Decimal('0');vat_total=Decimal('0');fallbacks=[]
+    rows=[];subtotal=Decimal('0');vat_total=Decimal('0');fallbacks=[];rates=set()
     bulk=bool(sample.getClient().getBulkDiscount())
     for obj in objects:
         service=obj.getAnalysisService() if IAnalysis.providedBy(obj) else None
         # Native getBillableItems may also include analyses covered by a fixed profile.
         if service is not None and api.get_uid(service) in covered:continue
         price=Decimal(str(obj.getPrice() or 0))
-        rate=obj.getAnalysisProfileVAT() if IAnalysisProfile.providedBy(obj) else obj.getVAT()
+        # Existing analyses keep the VAT copied at creation. New quotes use the
+        # current service configuration; issued snapshots remain immutable.
+        rate=obj.getAnalysisProfileVAT() if IAnalysisProfile.providedBy(obj) else (service.getVAT() if service is not None else obj.getVAT())
         rate=Decimal(str(rate or 0))
         if price==0 and service is not None:
             candidate=Decimal(str((service.getBulkPrice() if bulk else service.getPrice()) or 0))
@@ -58,6 +60,7 @@ def service_prices(sample):
                 price=candidate;fallbacks.append(api.get_uid(service))
         if not price.is_finite() or price<0 or not rate.is_finite() or rate<0:
             raise ValueError('Invalid analysis price or VAT')
+        rates.add(u'{:f}'.format(rate.normalize()))
         rows.append((api.safe_unicode(obj.Title()),str(price)))
         subtotal+=price;vat_total+=price*rate/Decimal('100')
     discount=Decimal(str(sample.getDefaultMemberDiscount() or 0)) if sample.getClient().getMemberDiscountApplies() else Decimal('0')
@@ -65,7 +68,7 @@ def service_prices(sample):
     discount_amount=subtotal*discount/Decimal('100')
     tax=vat_total*(Decimal('1')-discount/Decimal('100'))
     return dict(items=rows,subtotal=str(subtotal),discount=str(discount_amount),tax=str(tax),
-                total=str(subtotal-discount_amount+tax),price_fallbacks=fallbacks)
+                total=str(subtotal-discount_amount+tax),price_fallbacks=fallbacks,vat_rates=sorted(rates))
 
 
 def current_data(sample):

@@ -68,8 +68,10 @@ def tariff_panel(quote,amount,paid,token):
         return result+u'<p class="info">%s</p></section>' % h(quote['error'])
     from bika.lims.browser.analysisrequest.billing import money
     data=quote['data']
+    rates=data.get('vat_rates',[])
+    tax_label=(u'مالیات (%s٪)' % money(rates[0])) if len(rates)==1 else (u'مالیات (نرخ‌های متفاوت)' if rates else u'مالیات')
     rows=u''.join(u'<tr><td>%s</td><td class="num">%s</td></tr>' % (h(title),money(price)) for title,price in data['items'])
-    result+=u'<p class="muted">%s</p><div class="table-wrap"><table><tr><th>آزمون</th><th>تعرفه (ریال)</th></tr>%s<tr><th>تخفیف</th><td class="num">%s</td></tr><tr><th>مالیات</th><td class="num">%s</td></tr><tr><th>جمع تعرفه (ریال)</th><th class="num">%s</th></tr></table></div>' % (h(quote['basis']),rows,money(data['discount']),money(data['tax']),money(quote['amount']))
+    result+=u'<p class="muted">%s</p><div class="table-wrap"><table><tr><th>آزمون</th><th>تعرفه (ریال)</th></tr>%s<tr><th>تخفیف</th><td class="num">%s</td></tr><tr><th>%s</th><td class="num">%s</td></tr><tr><th>جمع تعرفه (ریال)</th><th class="num">%s</th></tr></table></div>' % (h(quote['basis']),rows,money(data['discount']),h(tax_label),money(data['tax']),money(quote['amount']))
     if paid:result+=u'<p class="info">این تعرفه فقط برای مقایسه است؛ مبلغ پرداخت‌شده تغییر نمی‌کند.</p>'
     elif amount==quote['amount']:result+=u'<p class="success">مبلغ ثبت‌شده با جمع تعرفه برابر است.</p>'
     else:

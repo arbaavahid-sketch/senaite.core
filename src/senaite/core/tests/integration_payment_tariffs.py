@@ -32,7 +32,7 @@ try:
             pairs.append((obj,sample))
     obj,sample=pairs[0];items=list(sample.getBillableItems())
     sample.getClient().setBulkDiscount(False);sample.getClient().setMemberDiscountApplies(False)
-    for item in items:item.setPrice('0');item.setVAT('10');item.getAnalysisService().setPrice('1000000')
+    for item in items:item.setPrice('0');item.setVAT('10');item.getAnalysisService().setVAT('10');item.getAnalysisService().setPrice('1000000')
     obj.payment_amount=0;obj.payment_paid=False;obj.payment_authority='old-pending';obj.payment_requested_amount=1234
     quote=tariff.preview(obj);expected=1100000*len(items)
     assert quote['amount']==expected,quote

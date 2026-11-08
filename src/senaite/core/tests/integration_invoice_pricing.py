@@ -25,13 +25,13 @@ try:
     billing.linked_request=lambda obj:None
     client.setBulkDiscount(False);client.setMemberDiscountApplies(False)
     for obj in items:
-        obj.setPrice('0');obj.setVAT('0');obj.getAnalysisService().setPrice('1200000')
+        obj.setPrice('0');obj.setVAT('0');obj.getAnalysisService().setVAT('0');obj.getAnalysisService().setPrice('1200000')
     data=billing.current_data(sample)
     assert Decimal(data['total'])==Decimal('1200000')*len(items),data['total']
     assert len(data['price_fallbacks'])==len(items)
     assert all(Decimal(obj.getPrice())==0 for obj in items)
     # Nonzero historical prices remain authoritative even when tariffs change.
-    items[0].setPrice('500000');items[0].setVAT('10')
+    items[0].setPrice('500000');items[0].setVAT('10');items[0].getAnalysisService().setVAT('10')
     data=billing.current_data(sample)
     assert Decimal(data['total'])==Decimal('550000')+Decimal('1200000')*(len(items)-1)
     # Bulk tariffs are selected explicitly, without substituting regular prices.
