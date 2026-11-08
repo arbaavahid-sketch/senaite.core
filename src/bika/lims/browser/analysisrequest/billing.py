@@ -30,7 +30,8 @@ def linked_request(sample):
 
 
 def money(value):
-    return u'{:,.2f}'.format(Decimal(str(value or 0)))
+    amount=Decimal(str(value or 0))
+    return u'{:,.0f}'.format(amount) if amount==amount.to_integral_value() else u'{:,.2f}'.format(amount)
 
 
 def current_data(sample):

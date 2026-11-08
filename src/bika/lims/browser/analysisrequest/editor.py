@@ -7,6 +7,7 @@ from AccessControl import getSecurityManager, Unauthorized
 from plone.protect.authenticator import createToken
 from bika.lims import api
 from . import billing
+from . import stamp as company_stamp
 
 
 def version(sample):
@@ -62,9 +63,9 @@ def page(view):
         <small>%s</small><label for="billing-description">توضیحات خدمات</label><textarea id="billing-description" name="billing_description" rows="2" maxlength="2000">%s</textarea>
         <label for="billing-note">متن پایین فاکتور</label><textarea id="billing-note" name="billing_note" rows="2" maxlength="2000">%s</textarea>
         <label for="billing-reason">علت اصلاح / توضیح ثبت</label><input id="billing-reason" name="billing_reason" maxlength="500" %s/>
-        <button class="primary" type="submit">%s</button></form></details>''' % (
+        %s<button class="primary" type="submit">%s</button></form></details>''' % (
             u'ویرایش و اصلاح فاکتور' if invoice is not None else u'تکمیل و صدور فاکتور',billing.h(createToken()),version(sample),amount if source is not None else '',u'readonly="readonly"' if locked else '',
-            u'مبلغ پرداخت‌شده قابل تغییر نیست.' if source is not None and locked else (u'این مبلغ در درخواست پرداخت مرتبط هم ثبت می‌شود.' if source is not None else u'برای تغییر مبلغ، تعرفهٔ آزمون‌ها را اصلاح کنید.'),billing.h(data.get('description','')),billing.h(data.get('note','')),u'required="required"' if invoice is not None else '',u'ثبت اصلاحیه و ساخت PDF جدید' if invoice is not None else u'صدور و ذخیرهٔ فاکتور')
+            u'مبلغ پرداخت‌شده قابل تغییر نیست.' if source is not None and locked else (u'این مبلغ در درخواست پرداخت مرتبط هم ثبت می‌شود.' if source is not None else u'برای تغییر مبلغ، تعرفهٔ آزمون‌ها را اصلاح کنید.'),billing.h(data.get('description','')),billing.h(data.get('note','')),u'required="required"' if invoice is not None else '',company_stamp.controls(data),u'ثبت اصلاحیه و ساخت PDF جدید' if invoice is not None else u'صدور و ذخیرهٔ فاکتور')
     history = list(getattr(invoice,'billing_history',[])) if invoice is not None else []
     if history:
         controls += u'<details><summary>سابقهٔ نسخه‌های قبلی (%s)</summary><table><tr><th>نسخه</th><th>تاریخ</th><th>علت جایگزینی</th><th>فایل</th></tr>' % len(history)
@@ -103,6 +104,7 @@ def save(view):
             change_amount(source,amount)
         data = billing.current_data(sample)
         data.update(description=api.safe_unicode(form.get('billing_description','')).strip(), note=api.safe_unicode(form.get('billing_note','')).strip())
+        company_stamp.apply(data,form,billing.data_for(sample))
         history = list(getattr(invoice,'billing_history',[])) if invoice is not None else []
         if invoice is not None:
             stored = invoice.getInvoicePDF()

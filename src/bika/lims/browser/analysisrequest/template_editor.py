@@ -39,6 +39,9 @@ class TemplateEditor(BrowserView):
                 if values['html']:config.validate_html(values['html'])
                 logo=self.request.form.get('logo_file')
                 if getattr(logo,'filename',''):values['logo']=config.logo_upload(logo)
+                stamp=self.request.form.get('stamp_file')
+                if getattr(stamp,'filename',''):values['stamp']=config.logo_upload(stamp)
+                if self.request.form.get('remove_stamp'):values.pop('stamp',None)
                 if self.request.form.get('default_logo'):values.pop('logo',None)
                 if self.request.form.get('action')=='save':
                     if self.request.form.get('version')!=config.revision(self.settings):
@@ -71,6 +74,9 @@ class TemplateEditor(BrowserView):
         <label for="color">رنگ اصلی</label><input id="color" type="color" name="color" value="%s"/>
         <label for="logo-file">بارگذاری لوگو (PNG یا JPG، حداکثر یک مگابایت)</label><input id="logo-file" type="file" name="logo_file" accept="image/png,image/jpeg"/>
         <label><input style="display:inline;width:auto" type="checkbox" name="default_logo" value="1"/> بازگشت به لوگوی اصلی آزمایشگاه</label>
+        <hr/><h2>مهر شرکت (اختیاری)</h2><label for="stamp-file">تصویر مهر (PNG یا JPG، حداکثر یک مگابایت)</label><input id="stamp-file" name="stamp_file" type="file" accept="image/png,image/jpeg"/>
+        <label><input style="display:inline;width:auto" name="remove_stamp" type="checkbox" value="1"/> حذف تصویر مهر از تنظیمات</label>
+        <p class="note">بارگذاری تصویر، مهر را خودکار روی فاکتورها نمی‌گذارد. در صفحهٔ هر فاکتور، گزینهٔ «نمایش مهر شرکت» را انتخاب کنید. در قالب HTML می‌توانید از {{stamp}} برای تعیین محل مهر استفاده کنید.</p>
         <hr/><h2>بارگذاری قالب HTML</h2><p><a class="button" href="%s/@@invoice-template?sample=1">دانلود قالب نمونه</a> <a class="button" href="/@@invoice-template?sample=formal">دانلود قالب جدولی فروش کالا و خدمات</a></p>
         <label for="template-file">فایل HTML با کدگذاری UTF-8 (حداکثر ۱۵۰ کیلوبایت)</label><input id="template-file" type="file" name="template_file" accept=".html,.htm,text/html"/>
         <p class="note">برای استفاده از فایل، نوع قالب را «HTML سفارشی» انتخاب کنید. فقط HTML و CSS ساده مجاز است؛ اسکریپت، لینک منابع خارجی و جای‌نگهدار داخل ویژگی‌های HTML پذیرفته نمی‌شود. برای لوگو از {{logo}} استفاده کنید.</p>

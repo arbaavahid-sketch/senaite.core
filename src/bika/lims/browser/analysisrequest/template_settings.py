@@ -8,7 +8,7 @@ from . import billing
 
 KEY='tppc.invoice.template.v1'
 FIELDS=('issuer','contact','footer','color','logo','html')
-TOKENS=('invoice_number','client_name','sample_id','date','issuer','contact','logo','items_table','total','currency','note','description','seller_address','seller_postal_code','seller_phone','seller_tax_id','buyer_address','buyer_postal_code','buyer_phone','buyer_tax_id')
+TOKENS=('invoice_number','client_name','sample_id','date','issuer','contact','logo','items_table','total','currency','note','description','stamp','seller_address','seller_postal_code','seller_phone','seller_tax_id','buyer_address','buyer_postal_code','buyer_phone','buyer_tax_id')
 DEFAULT_HTML=u'''<style>h1{color:#174c69}table{width:100%;border-collapse:collapse}td,th{padding:12px;border-bottom:1px solid #dbe4ed;text-align:right}.sum{font-size:22px;font-weight:bold}</style>
 <header>{{logo}}<h1>فاکتور خدمات آزمایشگاهی</h1><strong>{{issuer}}</strong><p>{{contact}}</p></header>
 <p>شمارهٔ فاکتور: {{invoice_number}} | تاریخ: {{date}}</p><p>مشتری: {{client_name}}</p><p>نمونه: {{sample_id}}</p>
@@ -122,7 +122,8 @@ def logo_upload(upload):
 
 def render(data,number,date,default_render):
     settings=data.get('template_settings',{})
-    if not settings:return default_render(data,number,date)
+    from . import stamp
+    if not settings:return stamp.decorate(default_render(data,number,date),data,'')
     copy=dict(data)
     if settings.get('issuer'):copy['issuer']=settings['issuer']
     if settings.get('contact'):copy['issuer_contact']=settings['contact']
@@ -133,11 +134,13 @@ def render(data,number,date,default_render):
     if settings.get('html'):
         vals=dict(invoice_number=billing.h(number or u'پیش‌فاکتور'),client_name=billing.h(data['client']),sample_id=billing.h(data['sample']),date=billing.h(date),issuer=billing.h(copy.get('issuer','')),contact=billing.h(copy.get('issuer_contact','')),total=billing.money(data['total']),currency=billing.h(unit),note=billing.h(note),description=billing.h(data.get('description','')))
         for key in ('seller_address', 'seller_postal_code', 'seller_phone', 'seller_tax_id', 'buyer_address', 'buyer_postal_code', 'buyer_phone', 'buyer_tax_id'):vals[key]=billing.h(data.get(key,'')) or u'—'
+        vals['stamp']=stamp.image(data)
         vals['logo']=u'<img class="logo" alt="لوگو" src="%s"/>' % billing.h(copy['logo']) if copy.get('logo') else ''
         vals['items_table']=u'<table><thead><tr><th>شرح خدمات</th><th>مبلغ (%s)</th></tr></thead><tbody>%s</tbody></table>' % (billing.h(unit),u''.join(u'<tr><td>%s</td><td class="num">%s</td></tr>' % (billing.h(t),billing.money(p)) for t,p in data['items']))
         result=custom_html(settings['html'],vals)
     else:result=default_render(copy,number,date)
     color=settings.get('color','#174c69')
+    result=stamp.decorate(result,data,settings.get('html',''))
     return result+u'<style>.billing .masthead{border-color:%s}.billing h1{color:%s}.billing .total{border-color:%s}</style>' % (color,color,color)
 
 

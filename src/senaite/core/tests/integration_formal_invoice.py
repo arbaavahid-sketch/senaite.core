@@ -21,7 +21,7 @@ try:
     assert config.read()==before
     data.update(client=u'مشتری نمونه',sample='SAMPLE-001',source='request',currency='IRR',total='150000000',items=[(u'خدمات آزمایشگاهی','150000000')],description=u'شرح خدمات ثبت‌شده در سامانه',note='',template_settings={'html':config.FORMAL_HTML,'color':'#174c69'})
     html=billing.render(data,'TEST-001','2026-11-07')
-    assert '150,000,000.00' in html and '825' not in html and '750.000' not in html
+    assert '150,000,000' in html and '825' not in html and '750.000' not in html
     assert u'طلای سیاه وستا' not in config.FORMAL_HTML
     assert '{{' not in html and '@page{size:A4 landscape' in html
     assert u'مشخصات فروشنده' in html and u'مشخصات خریدار' in html
