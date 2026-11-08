@@ -31,7 +31,7 @@ from plone.protect import PostOnly, CheckAuthenticator
 from plone.protect.authenticator import createToken
 from AccessControl import Unauthorized
 import transaction
-from bika.lims.browser.analysisrequest import billing, editor
+from bika.lims.browser.analysisrequest import billing, editor, aggregate
 from Products.CMFPlone.i18nl10n import ulocalized_time
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from senaite.app.supermodel.model import SuperModel
@@ -56,6 +56,9 @@ class InvoiceView(BrowserView):
     def __call__(self):
         if not billing.allowed(self.context):
             raise Unauthorized('Invoice access denied')
+        invoice=self.context.getInvoice()
+        if invoice is not None and getattr(invoice,'aggregate_sample_uids',None):
+            return self.request.response.redirect(aggregate.url(self.context.getClient(),invoice),status=303)
         if self.request.get('REQUEST_METHOD') == 'POST' and self.request.form.get('billing_save'):
             if editor.save(self):
                 return u''
@@ -160,7 +163,7 @@ class InvoicePrintView(InvoiceView):
                 self.request.response.setStatus(404)
                 return b'Revision not found'
         pdf = stored.data if stored else self.create_pdf()
-        return self.download(pdf, '{}-invoice.pdf'.format(api.get_id(self.context)))
+        return self.download(pdf, '{}-invoice.pdf'.format(api.get_id(invoice) if invoice is not None and getattr(invoice,'aggregate_sample_uids',None) else api.get_id(self.context)))
 
     def create_pdf(self):
         invoice = self.context.getInvoice()
@@ -204,20 +207,14 @@ class InvoiceCreate(InvoicePrintView):
 
 
 class ClientInvoicesView(BrowserView):
-    template = ViewPageTemplateFile('templates/invoice.pt')
+    template=ViewPageTemplateFile('templates/invoice.pt')
 
     def __call__(self):
         if not billing.allowed(self.context):
             raise Unauthorized('Invoice access denied')
+        if aggregate.dispatch(self):
+            return u''
         return self.template()
 
     def content(self):
-        rows = []
-        for sample in self.context.objectValues('AnalysisRequest'):
-            if not billing.allowed(sample):
-                continue
-            invoice = sample.getInvoice()
-            number = api.get_id(invoice) if invoice is not None else u'پیش‌فاکتور'
-            url = billing.h(api.get_url(sample))
-            rows.append(u'<tr><td><a href="%s/invoice">%s</a></td><td>%s</td><td><a href="%s/invoice">مشاهده و ویرایش</a> | <a href="%s/invoice_print">دریافت PDF</a></td></tr>' % (url, billing.h(api.get_id(sample)), billing.h(number), url, url))
-        return u'<section class="billing"><style>%s</style><h1>فاکتورهای %s</h1><p><a href="/@@invoice-template">تنظیم قالب فاکتور</a></p><p>نمونه را باز کنید تا مبلغ و جزئیات را بررسی و فاکتور را صادر کنید.</p><table><thead><tr><th>نمونه</th><th>شمارهٔ فاکتور</th><th>عملیات</th></tr></thead><tbody>%s</tbody></table>%s</section>' % (billing.STYLE, billing.h(api.get_title(self.context)), u''.join(rows), u'' if rows else u'<p>نمونه‌ای برای صدور فاکتور موجود نیست.</p>')
+        return aggregate.page(self)

@@ -98,7 +98,7 @@ STYLE = u'''@page{size:A4;margin:16mm;@bottom-center{content:counter(page);font-
 def default_render(data, number=u'', date=u''):
     unit = u'ریال' if data['currency'] == 'IRR' else h(data['currency'])
     rows = u''.join(u'<tr><td class="num">%s</td><td>%s</td><td class="num">%s</td></tr>' % (i+1,h(title),money(price)) for i,(title,price) in enumerate(data['items']))
-    source = u'مبلغ توافق‌شدهٔ درخواست' if data['source'] == 'request' else u'تعرفهٔ آزمون‌ها'
+    source = u'جمع مبالغ نهایی نمونه‌های انتخاب‌شده' if data['source']=='aggregate' else (u'مبلغ توافق‌شدهٔ درخواست' if data['source']=='request' else u'تعرفهٔ آزمون‌ها')
     notes = h(data.get('note', u''))
     description = h(data.get('description', u''))
     extras = u''

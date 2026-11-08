@@ -83,6 +83,11 @@ def save(view):
     PostOnly(view.request); CheckAuthenticator(view.request)
     sample = view.context
     if not billing.allowed(sample) or not is_price_manager(sample): raise Unauthorized('Invoice editing denied')
+    linked=sample.getInvoice()
+    if linked is not None and getattr(linked,'aggregate_sample_uids',None):
+        view.request.response.setStatus(409)
+        view.error=u'این نمونه در فاکتور تجمیعی است؛ اصلاح را از فاکتور تجمیعی انجام دهید.'
+        return False
     form = view.request.form
     if form.get('billing_version') != version(sample):
         view.request.response.setStatus(409)
