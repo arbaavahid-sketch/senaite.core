@@ -46,4 +46,6 @@ def preview(obj):
         version=hashlib.sha256(json.dumps(state,sort_keys=True,ensure_ascii=True).encode('utf-8')).hexdigest()
         return dict(amount=int(amount),data=data,basis=basis,version=version,error=u'')
     except (ValueError,InvalidOperation) as error:
-        return dict(amount=None,data=None,basis=u'',version='',error=api.safe_unicode(error))
+        # Python 2 str(ValueError(unicode)) loses Persian messages in safe_unicode.
+        message=api.safe_unicode(error.args[0] if error.args else u'تعرفه قابل محاسبه نیست.') or u'تعرفه قابل محاسبه نیست.'
+        return dict(amount=None,data=None,basis=u'',version='',error=message)

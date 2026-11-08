@@ -73,7 +73,9 @@ try:
     unconverted.requested_service_uids=[api.get_uid(items[0].getAnalysisService())]
     items[0].getAnalysisService().setPrice('3000000');items[0].getAnalysisService().setVAT('10')
     assert tariff.preview(unconverted)['amount']==3300000
-    unconverted.requested_service_uids=[];assert tariff.preview(unconverted)['amount'] is None
+    unconverted.requested_service_uids=[];missing=tariff.preview(unconverted)
+    assert missing['amount'] is None and u'انتخاب نشده' in missing['error']
+    form('GET');assert u'انتخاب نشده'.encode('utf-8') in views.SetPaymentView(unconverted,request)()
     unconverted.requested_service_uids=['missing-service'];assert tariff.preview(unconverted)['amount'] is None
     unconverted.requested_service_uids=[api.get_uid(items[0].getAnalysisService())]
     items[0].getAnalysisService().setPrice('0');assert tariff.preview(unconverted)['amount'] is None
