@@ -57,6 +57,26 @@ def find_invoice(client,identifier):
     return obj
 
 
+def sample_rows(obj,data):
+    """Show priced services separately while preserving the authoritative total."""
+    quote=data
+    if data['source']=='request':
+        if api.get_senaite_setup().getCurrency()!=data['currency']:
+            raise ValueError(u'واحد تعرفه‌ها با مبلغ توافق‌شده یکسان نیست؛ تفکیک مبلغ آزمون‌ها ممکن نیست.')
+        quote=billing.service_prices(obj)
+    rows=[(api.safe_unicode(title),Decimal(str(price)).quantize(Decimal('0.01'))) for title,price in quote['items']]
+    tax=Decimal(str(quote.get('tax') or 0)).quantize(Decimal('0.01'))
+    discount=Decimal(str(quote.get('discount') or 0)).quantize(Decimal('0.01'))
+    if discount:rows.append((u'تخفیف نمونه',-discount))
+    if tax:rows.append((u'مالیات نمونه',tax))
+    difference=Decimal(data['total']).quantize(Decimal('0.01'))-sum((price for title,price in rows),Decimal('0'))
+    if difference:
+        rows.append((u'تعدیل مبلغ توافق‌شده' if data['source']=='request' else u'تعدیل گردکردن مبلغ',difference))
+    if not rows:rows=[(u'خدمات آزمایشگاهی',Decimal('0'))]
+    prefix=u'نمونهٔ '+api.safe_unicode(api.get_id(obj))+u' — '
+    return [(prefix+title,str(price)) for title,price in rows]
+
+
 def combine(objects):
     rows=[];parts=[];total=Decimal('0');currency=None;seen=set()
     for obj in objects:
@@ -70,14 +90,13 @@ def combine(objects):
         request_uid=api.get_uid(source) if source is not None else ''
         if request_uid and request_uid in seen:raise ValueError(u'یک درخواست پرداخت به چند نمونه وصل است؛ مبلغ دوباره محاسبه نشد.')
         if request_uid:seen.add(request_uid)
-        title=u' / '.join(api.safe_unicode(t) for t,p in data['items']) or u'خدمات آزمایشگاهی'
-        rows.append((u'نمونهٔ '+api.safe_unicode(api.get_id(obj))+u' — '+title,str(amount)))
+        rows.extend(sample_rows(obj,data))
         parts.append(dict(uid=api.get_uid(obj),sample=api.get_id(obj),total=str(amount),currency=currency,
             request_uid=request_uid,payment_paid=bool(getattr(source,'payment_paid',False)) if source is not None else False))
         if len(parts)==1:combined=dict(data)
     combined.update(source='aggregate',items=rows,total=str(total),subtotal=str(total),discount='0',tax='0',
         sample=u'تجمیعی: %s نمونه' % len(parts),aggregate_members=parts,
-        description=u'فاکتور تجمیعی %s نمونه. مبلغ هر ردیف، مبلغ نهایی همان نمونه است.' % len(parts))
+        description=u'فاکتور تجمیعی %s نمونه؛ هر آزمون در ردیف جداگانه آمده است. مالیات، تخفیف و تعدیل مبلغ توافق‌شده، در صورت وجود، جدا نمایش داده می‌شود.' % len(parts))
     return combined
 
 
@@ -168,7 +187,7 @@ def page(view):
     preview=getattr(view,'preview',None)
     if preview:
         objects,data,digest=preview
-        html+=u'<h2>پیش‌نمایش فاکتور تجمیعی</h2><p class="note">هر ردیف شامل شناسه و خدمات یک نمونه و مبلغ نهایی آن است. پرداخت هر درخواست از پروندهٔ خودش مدیریت می‌شود.</p>'
+        html+=u'<h2>پیش‌نمایش فاکتور تجمیعی</h2><p class="note">هر آزمون با شناسهٔ نمونه و مبلغ خودش در ردیفی جدا آمده است. پرداخت هر درخواست از پروندهٔ خودش مدیریت می‌شود.</p>'
         html+=u'<form method="post">%s<button class="primary" name="aggregate_action" value="%s">%s</button></form>' % (form_fields(objects,digest,view.request.form),'revise' if invoice is not None else 'issue',u'ثبت اصلاحیهٔ فاکتور تجمیعی' if invoice is not None else u'صدور فاکتور تجمیعی و PDF')
         html+=u'</section>'+billing.render(data,api.get_id(invoice) if invoice is not None else '',DateTime().Date())
         return html
