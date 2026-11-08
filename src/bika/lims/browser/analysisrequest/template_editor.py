@@ -15,10 +15,10 @@ class TemplateEditor(BrowserView):
 
     def __call__(self):
         if not billing.allowed(self.context) or not is_price_manager(self.context):raise Unauthorized('Template configuration denied')
-        if self.request.get('sample')=='1':
+        if self.request.get('sample') in ('1','formal'):
             self.request.response.setHeader('Content-Type','text/html; charset=utf-8')
             self.request.response.setHeader('Content-Disposition','attachment; filename="invoice-template.html"')
-            return config.DEFAULT_HTML.encode('utf-8')
+            return (config.FORMAL_HTML if self.request.get('sample')=='formal' else config.DEFAULT_HTML).encode('utf-8')
         self.settings=config.read();self.error='';self.preview=None
         if self.request.get('REQUEST_METHOD')=='POST':
             PostOnly(self.request);CheckAuthenticator(self.request)
@@ -71,7 +71,7 @@ class TemplateEditor(BrowserView):
         <label for="color">رنگ اصلی</label><input id="color" type="color" name="color" value="%s"/>
         <label for="logo-file">بارگذاری لوگو (PNG یا JPG، حداکثر یک مگابایت)</label><input id="logo-file" type="file" name="logo_file" accept="image/png,image/jpeg"/>
         <label><input style="display:inline;width:auto" type="checkbox" name="default_logo" value="1"/> بازگشت به لوگوی اصلی آزمایشگاه</label>
-        <hr/><h2>بارگذاری قالب HTML</h2><p><a class="button" href="%s/@@invoice-template?sample=1">دانلود قالب نمونه</a></p>
+        <hr/><h2>بارگذاری قالب HTML</h2><p><a class="button" href="%s/@@invoice-template?sample=1">دانلود قالب نمونه</a> <a class="button" href="/@@invoice-template?sample=formal">دانلود قالب جدولی فروش کالا و خدمات</a></p>
         <label for="template-file">فایل HTML با کدگذاری UTF-8 (حداکثر ۱۵۰ کیلوبایت)</label><input id="template-file" type="file" name="template_file" accept=".html,.htm,text/html"/>
         <p class="note">برای استفاده از فایل، نوع قالب را «HTML سفارشی» انتخاب کنید. فقط HTML و CSS ساده مجاز است؛ اسکریپت، لینک منابع خارجی و جای‌نگهدار داخل ویژگی‌های HTML پذیرفته نمی‌شود. برای لوگو از {{logo}} استفاده کنید.</p>
         <label for="template-html">متن قالب HTML</label><textarea id="template-html" name="html" rows="12" dir="ltr" style="font-family:monospace!important;text-align:left">%s</textarea>

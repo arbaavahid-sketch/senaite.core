@@ -8,7 +8,7 @@ from . import billing
 
 KEY='tppc.invoice.template.v1'
 FIELDS=('issuer','contact','footer','color','logo','html')
-TOKENS=('invoice_number','client_name','sample_id','date','issuer','contact','logo','items_table','total','currency','note','description')
+TOKENS=('invoice_number','client_name','sample_id','date','issuer','contact','logo','items_table','total','currency','note','description','seller_address','seller_postal_code','seller_phone','seller_tax_id','buyer_address','buyer_postal_code','buyer_phone','buyer_tax_id')
 DEFAULT_HTML=u'''<style>h1{color:#174c69}table{width:100%;border-collapse:collapse}td,th{padding:12px;border-bottom:1px solid #dbe4ed;text-align:right}.sum{font-size:22px;font-weight:bold}</style>
 <header>{{logo}}<h1>فاکتور خدمات آزمایشگاهی</h1><strong>{{issuer}}</strong><p>{{contact}}</p></header>
 <p>شمارهٔ فاکتور: {{invoice_number}} | تاریخ: {{date}}</p><p>مشتری: {{client_name}}</p><p>نمونه: {{sample_id}}</p>
@@ -44,6 +44,15 @@ def stylesheet(text):
     for match in re.finditer(r'([^{}]+)\{([^{}]*)\}',text):
         if text[position:match.start()].strip():raise ValueError(u'ساختار CSS معتبر نیست.')
         selectors=match.group(1).strip()
+        if selectors=='@page':
+            page=[]
+            for part in match.group(2).split(';'):
+                if not part.strip():continue
+                key,sep,value=part.partition(':');key=key.strip();value=value.strip()
+                if not sep or not ((key=='size' and value in ('A4 landscape','A4 portrait','A4')) or (key=='margin' and re.match(r'^(?:[5-9]|[1-3][0-9])mm$',value))):
+                    raise ValueError(u'تنظیم صفحه فقط A4 و حاشیهٔ ۵ تا ۳۹ میلی‌متر را می‌پذیرد.')
+                page.append(key+':'+value)
+            result.append('@page{'+ ';'.join(page)+'}');position=match.end();continue
         if not re.match(r'^[a-zA-Z0-9\s.#,:>+()\-]+$',selectors):raise ValueError(u'انتخابگر CSS مجاز نیست. از CSS ساده استفاده کنید.')
         scoped=[]
         for selector in selectors.split(','):
@@ -123,9 +132,13 @@ def render(data,number,date,default_render):
     copy['note']=note
     if settings.get('html'):
         vals=dict(invoice_number=billing.h(number or u'پیش‌فاکتور'),client_name=billing.h(data['client']),sample_id=billing.h(data['sample']),date=billing.h(date),issuer=billing.h(copy.get('issuer','')),contact=billing.h(copy.get('issuer_contact','')),total=billing.money(data['total']),currency=billing.h(unit),note=billing.h(note),description=billing.h(data.get('description','')))
+        for key in ('seller_address', 'seller_postal_code', 'seller_phone', 'seller_tax_id', 'buyer_address', 'buyer_postal_code', 'buyer_phone', 'buyer_tax_id'):vals[key]=billing.h(data.get(key,'')) or u'—'
         vals['logo']=u'<img class="logo" alt="لوگو" src="%s"/>' % billing.h(copy['logo']) if copy.get('logo') else ''
         vals['items_table']=u'<table><thead><tr><th>شرح خدمات</th><th>مبلغ (%s)</th></tr></thead><tbody>%s</tbody></table>' % (billing.h(unit),u''.join(u'<tr><td>%s</td><td class="num">%s</td></tr>' % (billing.h(t),billing.money(p)) for t,p in data['items']))
         result=custom_html(settings['html'],vals)
     else:result=default_render(copy,number,date)
     color=settings.get('color','#174c69')
     return result+u'<style>.billing .masthead{border-color:%s}.billing h1{color:%s}.billing .total{border-color:%s}</style>' % (color,color,color)
+
+
+FORMAL_HTML = u'<style>\n@page{size:A4 landscape;margin:12mm}\n.formal{font-size:11px;line-height:1.8;color:#111111}\n.formal h1{font-size:20px;text-align:center;color:#111111;margin:0;padding:4px}\n.formal table{width:100%;border-collapse:collapse;margin:0;table-layout:fixed}\n.formal td,.formal th{border:1px solid #222222;padding:7px;vertical-align:middle;color:#111111;background-color:#ffffff}\n.formal .band{background-color:#eeeeee;text-align:center;font-weight:bold;font-size:13px}\n.formal .header td{border:0}.formal .caption{width:65%}.formal .sign{height:65px;vertical-align:top}\n.formal .logo{width:100px;max-height:55px;float:right}.formal .money{direction:ltr;text-align:center;font-size:16px;font-weight:bold}\n.formal .services th{background-color:#eeeeee}.formal .services td{height:55px}.formal .muted{color:#555555;font-size:10px}\n</style>\n<section class="formal">\n<table class="header"><tr><td style="width:17%">{{logo}}</td><td class="caption"><h1>فاکتور فروش کالا و خدمات</h1></td><td>شماره: {{invoice_number}}<br/>تاریخ: {{date}}<br/>شناسهٔ نمونه: {{sample_id}}</td></tr></table>\n<table><tr><th class="band" colspan="3">مشخصات فروشنده</th></tr>\n<tr><td style="width:50%">نام شخص حقیقی / حقوقی: {{issuer}}</td><td>شناسهٔ مالیاتی: {{seller_tax_id}}</td><td>کد پستی: {{seller_postal_code}}</td></tr>\n<tr><td colspan="2">نشانی کامل: {{seller_address}}</td><td>تلفن / نمابر: {{seller_phone}}</td></tr>\n<tr><th class="band" colspan="3">مشخصات خریدار</th></tr>\n<tr><td>نام شخص حقیقی / حقوقی: {{client_name}}</td><td>شناسهٔ مالیاتی: {{buyer_tax_id}}</td><td>کد پستی: {{buyer_postal_code}}</td></tr>\n<tr><td colspan="2">نشانی کامل: {{buyer_address}}</td><td>تلفن / نمابر: {{buyer_phone}}</td></tr>\n<tr><th class="band" colspan="3">مشخصات کالا یا خدمات مورد معامله</th></tr></table>\n<div class="services">{{items_table}}</div>\n<table><tr><th class="band" style="width:70%">جمع کل ({{currency}})</th><td class="money">{{total}}</td></tr>\n<tr><td colspan="2">توضیحات: {{description}}<br/>{{note}}</td></tr>\n<tr><td class="sign">مهر و امضای فروشنده</td><td class="sign">مهر و امضای خریدار</td></tr></table>\n</section>\n'

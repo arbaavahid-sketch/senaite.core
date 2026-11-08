@@ -60,6 +60,8 @@ def current_data(sample):
             price = obj.getAnalysisProfilePrice() if hasattr(obj, 'getAnalysisProfilePrice') else obj.getPrice()
             data['items'].append((api.safe_unicode(obj.Title()), str(price)))
     from . import template_settings
+    from . import party_info
+    data.update(party_info.snapshot(sample))
     data["template_settings"]=template_settings.read()
     return data
 
