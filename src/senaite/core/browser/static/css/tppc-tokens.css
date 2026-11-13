@@ -1,0 +1,184 @@
+/*
+ * TPPC theme tokens — one palette for the whole LIMS.
+ *
+ * Loaded right after the SENAITE bundles and before every other tppc-*.css,
+ * so later layers can use var(--tppc-*) instead of hard-coded colours.
+ *
+ * Section 1 declares the tokens. Section 2 maps them onto the third-party
+ * palettes that ship with SENAITE (Bootstrap "primary" #428aaf, the listing
+ * app's --sf-accent #0b5ed7 and spotlight's --sl-accent #2f6df6), which is why
+ * the save/add buttons, links, pagination and checkboxes were blue while the
+ * custom layers were green. Removing this file restores the stock colours.
+ *
+ * Contrast: --tppc-primary on white and white on --tppc-primary are ~5:1 (AA).
+ */
+
+/* ---------------------------------------------------------------- 1. tokens */
+:root {
+  /* brand */
+  --tppc-primary: #217d68;
+  --tppc-primary-hover: #1b6a58;
+  --tppc-primary-active: #175a4b;
+  --tppc-primary-soft: #e7f0eb;
+  --tppc-primary-border: #9fc3b5;
+  --tppc-primary-ring: rgba(33, 125, 104, .25);
+  --tppc-header: #102b2d;
+
+  /* text */
+  --tppc-ink: #244d42;
+  --tppc-ink-strong: #183f43;
+  --tppc-muted: #4e6860;
+
+  /* surfaces and lines */
+  --tppc-surface: #fff;
+  --tppc-surface-subtle: #f5f8f6;
+  --tppc-page: #edf3f1;
+  --tppc-line: #dce8e3;
+  --tppc-line-strong: #bdcec4;
+
+  /* status (kept close to Bootstrap so meaning does not change) */
+  --tppc-success: #1f7a4d;
+  --tppc-warning-soft: #fff4d8;
+  --tppc-danger: #c0392b;
+
+  /* shape */
+  --tppc-radius-sm: 6px;
+  --tppc-radius: 10px;
+  --tppc-radius-lg: 14px;
+  --tppc-shadow: 0 4px 18px rgba(16, 43, 45, .06);
+
+  /* Bootstrap's own custom property */
+  --primary: var(--tppc-primary);
+}
+
+/* `:root:root` outranks the listing/spotlight `:root` blocks that are
+   injected inline later in <head>. */
+:root:root {
+  --sf-accent: var(--tppc-primary);
+  --sf-accent-border: var(--tppc-primary-border);
+  --sf-accent-soft: var(--tppc-primary-soft);
+  --sf-accent-focus: #6fae9c;
+  --sf-accent-input-border: #c3d8cf;
+  --sf-accent-overlay-08: rgba(33, 125, 104, .08);
+  --sf-accent-overlay-15: rgba(33, 125, 104, .15);
+  --sf-accent-overlay-20: rgba(33, 125, 104, .20);
+  --sl-accent: var(--tppc-primary);
+  --sl-accent-soft: rgba(33, 125, 104, .1);
+  --sl-active: rgba(33, 125, 104, .1);
+}
+
+/* ------------------------------------- 2. Bootstrap "primary" → brand green */
+a,
+.btn-link,
+nav.pagination ul li a,
+.page-link { color: var(--tppc-primary); }
+.btn-link:hover,
+.page-link:hover { color: var(--tppc-primary-active); }
+
+.btn-primary,
+.formControls input[name*="form.button"][name="form.button.save"],
+.formControls input[name*="form.button"][name="form.buttons.save"],
+.portlet:not(.portletNavigationTree) input[name=submit],
+.btn-primary.disabled,
+.btn-primary:disabled {
+  background-color: var(--tppc-primary);
+  border-color: var(--tppc-primary);
+  color: #fff;
+}
+.btn-primary:hover,
+.formControls input[name*="form.button"][name="form.button.save"]:hover,
+.formControls input[name*="form.button"][name="form.buttons.save"]:hover,
+.portlet:not(.portletNavigationTree) input[name=submit]:hover {
+  background-color: var(--tppc-primary-hover);
+  border-color: var(--tppc-primary-hover);
+  color: #fff;
+}
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle,
+.btn-primary.dropdown-toggle {
+  background-color: var(--tppc-primary-active);
+  border-color: var(--tppc-primary-active);
+  color: #fff;
+}
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary.dropdown-toggle:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+  box-shadow: 0 0 0 .2rem var(--tppc-primary-ring);
+}
+
+.btn-outline-primary { border-color: var(--tppc-primary); color: var(--tppc-primary); }
+.btn-outline-primary:hover,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.show > .btn-outline-primary.dropdown-toggle {
+  background-color: var(--tppc-primary);
+  border-color: var(--tppc-primary);
+  color: #fff;
+}
+.btn-outline-primary.disabled,
+.btn-outline-primary:disabled { color: var(--tppc-primary); }
+
+.dropdown-item.active,
+.dropdown-item:active,
+div.autotoc-nav .nav-pills .show > a,
+div.autotoc-nav .nav-pills a.active,
+section > ol.configlets li.active,
+section > ul.configlets li.active,
+.page-item.active .page-link,
+nav.pagination ul li.active .page-link,
+nav.pagination ul li.active a {
+  background-color: var(--tppc-primary);
+  border-color: var(--tppc-primary);
+  color: #fff;
+}
+#senaite-toolbar .dropdown-menu a:hover,
+#senaite-toolbar .dropdown-menu a.active:hover { color: var(--tppc-primary); }
+
+.badge-primary,
+.progress-bar { background-color: var(--tppc-primary); }
+a.badge-primary:hover,
+a.badge-primary:focus { background-color: var(--tppc-primary-active); }
+.bg-primary { background-color: var(--tppc-primary) !important; }
+a.bg-primary:hover, a.bg-primary:focus,
+button.bg-primary:hover, button.bg-primary:focus { background-color: var(--tppc-primary-active) !important; }
+.border-primary { border-color: var(--tppc-primary) !important; }
+.text-primary { color: var(--tppc-primary) !important; }
+
+/* checkboxes, radios, switches, ranges */
+.custom-control-input:checked ~ .custom-control-label::before,
+.custom-control-input:indeterminate ~ .custom-control-label::before {
+  background-color: var(--tppc-primary);
+  border-color: var(--tppc-primary);
+}
+.custom-range::-webkit-slider-thumb { background-color: var(--tppc-primary); }
+.custom-range::-moz-range-thumb { background-color: var(--tppc-primary); }
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"],
+progress { accent-color: var(--tppc-primary); }
+
+/* one focus ring for every input */
+.form-control:focus,
+.custom-select:focus,
+.custom-file-input:focus ~ .custom-file-label {
+  border-color: var(--tppc-primary-border);
+  box-shadow: 0 0 0 .2rem var(--tppc-primary-ring);
+}
+.custom-control-input:focus ~ .custom-control-label::before,
+.page-link:focus,
+nav.pagination ul li a:focus {
+  box-shadow: 0 0 0 .2rem var(--tppc-primary-ring);
+}
+.custom-range:focus::-webkit-slider-thumb { box-shadow: 0 0 0 1px #fff, 0 0 0 .2rem var(--tppc-primary-ring); }
+
+/* Keyboard focus must stay visible after the colour change. */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--tppc-primary);
+  outline-offset: 2px;
+}
