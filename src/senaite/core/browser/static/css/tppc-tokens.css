@@ -62,6 +62,7 @@
   --sf-accent-overlay-08: rgba(33, 125, 104, .08);
   --sf-accent-overlay-15: rgba(33, 125, 104, .15);
   --sf-accent-overlay-20: rgba(33, 125, 104, .20);
+  --listing-progress-bg: var(--tppc-primary);
   --sl-accent: var(--tppc-primary);
   --sl-accent-soft: rgba(33, 125, 104, .1);
   --sl-active: rgba(33, 125, 104, .1);
