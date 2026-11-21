@@ -286,10 +286,10 @@ body:has(.tppc-request) { background: #edf3f1; }
         <script type="text/javascript">
           function ccFilterTests() {
             var q = (document.getElementById('cc-test-search').value || '')
-                      .toLowerCase().replace(/ي/g, 'ی').replace(/ك/g, 'ک');
+                      .toLowerCase().replace(/\u064a/g, '\u06cc').replace(/\u0643/g, '\u06a9');
             var items = document.querySelectorAll('#cc-test-list .cc-test-item');
             items.forEach(function (it) {
-              var t = it.textContent.toLowerCase().replace(/ي/g, 'ی').replace(/ك/g, 'ک');
+              var t = it.textContent.toLowerCase().replace(/\u064a/g, '\u06cc').replace(/\u0643/g, '\u06a9');
               it.style.display = (t.indexOf(q) > -1) ? '' : 'none';
             });
             // hide category headers with no visible items
@@ -411,8 +411,8 @@ body:has(.tppc-request) { background: #edf3f1; }
     if (group) {
       var error = group.querySelector('.rq-field-error');
       if (!error) { error = document.createElement('p'); error.className = 'rq-field-error'; error.setAttribute('role', 'alert'); group.appendChild(error); }
-      error.textContent = fa ? (control.validity.valueMissing ? 'تکمیل این فیلد الزامی است.' :
-        control.validity.typeMismatch ? 'آدرس ایمیل را با قالب درست وارد کنید.' : 'مقدار این فیلد را بررسی کنید.') : control.validationMessage;
+      error.textContent = fa ? (control.validity.valueMissing ? '\u062a\u06a9\u0645\u06cc\u0644 \u0627\u06cc\u0646 \u0641\u06cc\u0644\u062f \u0627\u0644\u0632\u0627\u0645\u06cc \u0627\u0633\u062a.' :
+        control.validity.typeMismatch ? '\u0622\u062f\u0631\u0633 \u0627\u06cc\u0645\u06cc\u0644 \u0631\u0627 \u0628\u0627 \u0642\u0627\u0644\u0628 \u062f\u0631\u0633\u062a \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f.' : '\u0645\u0642\u062f\u0627\u0631 \u0627\u06cc\u0646 \u0641\u06cc\u0644\u062f \u0631\u0627 \u0628\u0631\u0631\u0633\u06cc \u06a9\u0646\u06cc\u062f.') : control.validationMessage;
       if (control.id) { error.id = control.id + '-error'; control.setAttribute('aria-describedby', error.id); }
     }
   }
@@ -427,20 +427,20 @@ body:has(.tppc-request) { background: #edf3f1; }
   function line(container, label, text) {
     var item = document.createElement('div'); item.className = 'rq-summary-line';
     var key = document.createElement('span'); key.textContent = label;
-    var val = document.createElement('strong'); val.textContent = text || tr('هنوز وارد نشده', 'Not entered yet');
+    var val = document.createElement('strong'); val.textContent = text || tr('\u0647\u0646\u0648\u0632 \u0648\u0627\u0631\u062f \u0646\u0634\u062f\u0647', 'Not entered yet');
     item.appendChild(key); item.appendChild(val); container.appendChild(item);
   }
   function update() {
     var summary = root.querySelector('#rq-summary-fields'); summary.textContent = '';
-    line(summary, tr('متقاضی', 'Applicant'), value('contact_name'));
-    line(summary, tr('نوع نمونه', 'Sample type'), value('sample_type'));
-    line(summary, tr('تعداد آزمون‌ها', 'Selected tests'), String(selected().length));
+    line(summary, tr('\u0645\u062a\u0642\u0627\u0636\u06cc', 'Applicant'), value('contact_name'));
+    line(summary, tr('\u0646\u0648\u0639 \u0646\u0645\u0648\u0646\u0647', 'Sample type'), value('sample_type'));
+    line(summary, tr('\u062a\u0639\u062f\u0627\u062f \u0622\u0632\u0645\u0648\u0646\u200c\u0647\u0627', 'Selected tests'), String(selected().length));
     chips.textContent = '';
     selected().forEach(function (checkbox) {
       var chip = document.createElement('div'); chip.className = 'rq-chip';
       var text = document.createElement('span'); text.textContent = checkbox.parentElement.querySelector('span').textContent;
-      var remove = document.createElement('button'); remove.type = 'button'; remove.textContent = '×';
-      remove.setAttribute('aria-label', tr('حذف آزمون: ', 'Remove test: ') + text.textContent);
+      var remove = document.createElement('button'); remove.type = 'button'; remove.textContent = '\u00d7';
+      remove.setAttribute('aria-label', tr('\u062d\u0630\u0641 \u0622\u0632\u0645\u0648\u0646: ', 'Remove test: ') + text.textContent);
       remove.addEventListener('click', function () { checkbox.checked = false; checkbox.dispatchEvent(new Event('change', {bubbles:true})); });
       chip.appendChild(text); chip.appendChild(remove); chips.appendChild(chip);
     });
@@ -449,7 +449,7 @@ body:has(.tppc-request) { background: #edf3f1; }
     [0,1,2].forEach(function (index) {
       var group = document.createElement('div'); group.className = 'rq-review-group';
       var title = document.createElement('h3'); title.textContent = nav.children[index].querySelector('span:last-child').textContent;
-      var edit = document.createElement('button'); edit.type = 'button'; edit.className = 'rq-edit'; edit.textContent = tr('ویرایش', 'Edit');
+      var edit = document.createElement('button'); edit.type = 'button'; edit.className = 'rq-edit'; edit.textContent = tr('\u0648\u06cc\u0631\u0627\u06cc\u0634', 'Edit');
       edit.addEventListener('click', function () { go(index, true); });
       group.appendChild(title); group.appendChild(edit);
       stepControls(index).forEach(function (control) {
@@ -460,10 +460,10 @@ body:has(.tppc-request) { background: #edf3f1; }
       if (index === 1) {
         ['storage_conditions:list','safety_hazards:list'].forEach(function (name) {
           var values = Array.prototype.slice.call(form.querySelectorAll('input[name="'+name+'"]:checked')).map(function(c) { return c.value; });
-          if (values.length) line(group, name === 'storage_conditions:list' ? tr('نگهداری', 'Storage') : tr('ایمنی', 'Safety'), values.join('، '));
+          if (values.length) line(group, name === 'storage_conditions:list' ? tr('\u0646\u06af\u0647\u062f\u0627\u0631\u06cc', 'Storage') : tr('\u0627\u06cc\u0645\u0646\u06cc', 'Safety'), values.join('\u060c '));
         });
       }
-      if (index === 2) selected().forEach(function(c) { line(group, tr('آزمون', 'Test'), c.parentElement.querySelector('span').textContent); });
+      if (index === 2) selected().forEach(function(c) { line(group, tr('\u0622\u0632\u0645\u0648\u0646', 'Test'), c.parentElement.querySelector('span').textContent); });
       review.appendChild(group);
     });
   }
@@ -477,7 +477,7 @@ body:has(.tppc-request) { background: #edf3f1; }
       if (i === index) button.setAttribute('aria-current', 'step'); else button.removeAttribute('aria-current');
     });
     back.hidden = index === 0; next.hidden = index === 3; submit.hidden = index !== 3;
-    root.querySelector('#rq-progress').textContent = tr('مرحلهٔ ', 'Step ') + (index+1) + tr(' از ۴', ' of 4');
+    root.querySelector('#rq-progress').textContent = tr('\u0645\u0631\u062d\u0644\u0647\u0654 ', 'Step ') + (index+1) + tr(' \u0627\u0632 \u06f4', ' of 4');
     update();
     if (focus) {
       var heading = panels[index].querySelector('h2'); heading.tabIndex = -1; heading.focus();

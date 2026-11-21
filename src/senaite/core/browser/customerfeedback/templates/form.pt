@@ -50,15 +50,15 @@
       if(!control.name || control.name==='website' || control.disabled || (control.type==='radio' && !control.checked) || !control.value.trim())return;
       var label=control.labels && control.labels[0];
       var row=document.createElement('div'); row.className='cc-review-row';
-      var title=document.createElement('span');title.textContent=control.name==='kind' ? (fa?'نوع درخواست':'Request type') : label ? label.textContent.replace(/\*/g,'').trim() : control.name;
+      var title=document.createElement('span');title.textContent=control.name==='kind' ? (fa?'\u0646\u0648\u0639 \u062f\u0631\u062e\u0648\u0627\u0633\u062a':'Request type') : label ? label.textContent.replace(/\*/g,'').trim() : control.name;
       var value=document.createElement('strong');value.dir='auto';value.textContent=control.type==='radio' ? label.textContent.trim() : control.tagName==='SELECT' ? control.options[control.selectedIndex].textContent : control.value;
       row.appendChild(title);row.appendChild(value);root.appendChild(row);
     });
   }
-  function show(index,focus){step=index;panels.forEach(function(panel,i){panel.hidden=i!==step;});nav.querySelectorAll('span').forEach(function(item,i){item.classList.toggle('active',i===step);});back.hidden=step===0;next.hidden=step===2;submit.hidden=step!==2;document.querySelector('#cc-progress').textContent=(fa?'مرحلهٔ ':'Step ')+(step+1)+(fa?' از ۳':' of 3');review();if(focus){var heading=panels[step].querySelector('h2');heading.tabIndex=-1;heading.focus();nav.scrollIntoView({block:'start'});}}
+  function show(index,focus){step=index;panels.forEach(function(panel,i){panel.hidden=i!==step;});nav.querySelectorAll('span').forEach(function(item,i){item.classList.toggle('active',i===step);});back.hidden=step===0;next.hidden=step===2;submit.hidden=step!==2;document.querySelector('#cc-progress').textContent=(fa?'\u0645\u0631\u062d\u0644\u0647\u0654 ':'Step ')+(step+1)+(fa?' \u0627\u0632 \u06f3':' of 3');review();if(focus){var heading=panels[step].querySelector('h2');heading.tabIndex=-1;heading.focus();nav.scrollIntoView({block:'start'});}}
   function valid(index,report){
     var bad=[].filter.call(panels[index].querySelectorAll('input,select,textarea'),function(control){return control.willValidate&&!control.checkValidity();});
-    if(bad.length&&report){bad.forEach(function(control){control.setAttribute('aria-invalid','true');var group=control.closest('.form-group'),error=group.querySelector('.cc-field-error');if(!error){error=document.createElement('p');error.className='cc-field-error';error.setAttribute('role','alert');group.appendChild(error);}error.textContent=fa?(control.validity.typeMismatch?'آدرس ایمیل معتبر وارد کنید.':'تکمیل این فیلد الزامی است.'):control.validationMessage;});bad[0].focus();bad[0].reportValidity();}
+    if(bad.length&&report){bad.forEach(function(control){control.setAttribute('aria-invalid','true');var group=control.closest('.form-group'),error=group.querySelector('.cc-field-error');if(!error){error=document.createElement('p');error.className='cc-field-error';error.setAttribute('role','alert');group.appendChild(error);}error.textContent=fa?(control.validity.typeMismatch?'\u0622\u062f\u0631\u0633 \u0627\u06cc\u0645\u06cc\u0644 \u0645\u0639\u062a\u0628\u0631 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f.':'\u062a\u06a9\u0645\u06cc\u0644 \u0627\u06cc\u0646 \u0641\u06cc\u0644\u062f \u0627\u0644\u0632\u0627\u0645\u06cc \u0627\u0633\u062a.'):control.validationMessage;});bad[0].focus();bad[0].reportValidity();}
     return bad.length===0;
   }
   next.addEventListener('click',function(){if(valid(step,true))show(step+1,true);});back.addEventListener('click',function(){show(step-1,true);});
