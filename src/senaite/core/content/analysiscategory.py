@@ -88,7 +88,7 @@ class IAnalysisCategorySchema(model.Schema):
         ),
         allowed_types=("Department",),
         multi_valued=False,
-        required=True,
+        required=False,
     )
 
     sort_key = schema.Float(
